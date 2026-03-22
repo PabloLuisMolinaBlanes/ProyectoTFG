@@ -4,7 +4,7 @@
 #include "freertos/FreeRTOS.h"
 
 //static const gpio_num_t led_pin = GPIO_NUM_13;
-static const uint32_t sleep_time = 1000;
+static const uint32_t sleep_time = 10000;
 //#define BLINK_GPIO 13
 
 
