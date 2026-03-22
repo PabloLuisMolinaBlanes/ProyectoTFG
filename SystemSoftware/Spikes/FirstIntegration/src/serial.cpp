@@ -15,10 +15,6 @@ int serial_port = open("/dev/ttyUSB0", O_RDWR);
 char read_buf [256];
 struct termios tty;
 
-void hello_world_test() {
-    printf("Hello world\n");
-} 
-
 void default_configure() {
     
     tty.c_cflag &= ~PARENB; // Clear parity bit, disabling parity (most common)

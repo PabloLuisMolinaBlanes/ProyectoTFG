@@ -113,14 +113,13 @@ int main() {
             }
         }
         real_time_elapsed += clock.restart().asMilliseconds();
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !pressed){
+        if (strcmp(receive_serial_data(), "") != 0 && !pressed){
             printf("Position of t: %f\n", car.t);
             printf("Real time elapsed: %d\n", real_time_elapsed);
             printf("Game time elapsed: %d\n", game_time_elapsed);
             pressed = true;
             exit(0);
         }
-        printf("%s", receive_serial_data());
         window.clear(Color::Blue);
         car.moveAlongPath(&path, 600);
         window.draw(car.shape);
