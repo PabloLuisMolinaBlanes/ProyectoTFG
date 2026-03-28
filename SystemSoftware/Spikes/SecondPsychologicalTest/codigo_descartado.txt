@@ -1,0 +1,11 @@
+/*
+void dequeue(sf::RectangleShape * walls) {
+    for (int i = NUMBER_OF_WALLS-2; i > 0; i--) {
+        walls[i+1] = walls[i];  
+    } 
+} 
+
+void enqueue(sf::RectangleShape * walls, sf::RectangleShape * wall) {
+    walls[0] = *wall;
+} 
+*/

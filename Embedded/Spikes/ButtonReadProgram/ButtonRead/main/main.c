@@ -22,9 +22,10 @@ void app_main(void)
     gpio_reset_pin(button_pin);
     gpio_set_direction(button_pin, GPIO_MODE_INPUT);
     while (1) {
+        //printf("%d\n", gpio_get_level(button_pin));
         if (gpio_get_level(button_pin) == 0) {
             printf("7900\n");
-        } 
+        }
         vTaskDelay(sleep_time/portTICK_PERIOD_MS);
     }
 }
