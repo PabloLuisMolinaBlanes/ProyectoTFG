@@ -100,9 +100,9 @@ Car initCar(int car_x, int car_y) {
     return car;
 }
 
-void setPositions(sf::RectangleShape * walls, int * positions, int counter) {
+void setPositions(sf::RectangleShape * walls, int * positions, int counter, int direction) {
     for (int i = 0; i < NUMBER_OF_WALLS; i++) {
-        int nextPosition = walls[i].getPosition().x+positions[counter];
+        int nextPosition = walls[i].getPosition().x+(positions[counter]*direction);
         if (nextPosition < 0 || (abs(nextPosition-(SCREEN_SIZE_X/2)) < 50) || nextPosition > (SCREEN_SIZE_X - SIZE_X_WALL)) {
             nextPosition = walls[i].getPosition().x;
         } 
@@ -130,9 +130,10 @@ void initializePositions(int * positions) {
     std::srand(1);
     int multiplier = 1;
     for (int i = NUMBER_OF_WALLS; i < NUMBER_OF_POSITIONS; i++) {
-        if (std::rand() % 3 == 0) {
+        int result = std::rand();
+        if (result % 3 == 0) {
             multiplier = 1;
-        } else if (std::rand() % 3 == 1) {
+        } else if (result % 3 == 1) {
             multiplier = -1;
         } else {
             multiplier = 0;
@@ -192,8 +193,8 @@ int main() {
         window.display();
         if (positionCounter+NUMBER_OF_WALLS < NUMBER_OF_POSITIONS) {
             positionCounter++;
-            setPositions(walls, positions, positionCounter);
-            setPositions(walls_2, positions, positionCounter);
+            setPositions(walls, positions, positionCounter, 1);
+            setPositions(walls_2, positions, positionCounter, -1);
         }
         game_time_elapsed += clock.getElapsedTime().asMilliseconds();
         real_time_elapsed += clock.getElapsedTime().asMilliseconds();
