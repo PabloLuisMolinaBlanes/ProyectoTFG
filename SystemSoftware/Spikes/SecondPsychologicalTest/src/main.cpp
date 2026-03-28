@@ -24,6 +24,9 @@ using sf::Clock;
 #define INITIAL_Y_CAR 50.0f
 #define SCREEN_SIZE_X 600
 #define SCREEN_SIZE_Y 600
+#define CAR_SIZE_X 20.0f
+#define CAR_SIZE_Y 20.0f
+
 
 bool started = false;
 bool pressed = false;
@@ -56,29 +59,29 @@ class Car {
         float y;
         float t = 0;
         sf::RectangleShape shape;
-        void moveAlongPath(struct Path *path, float screen_y) {
+        void moveAlongPath(struct Path *path) {
             float vel = path->P1.y - path->P0.y;
             float next_y = path->P0.y + vel*t;
             float next_dy = next_y-actual_y;
             t = t + 0.005;
-            move(screen_y, next_dy);
+            move(next_dy);
         }
 
-        void move(float screen_y, float dy) {
-            actual_y += dy;
-            if (actual_y > screen_y) {
-                y = screen_y-20;
+        void move(float dx) {
+            actual_x += dx;
+            if (actual_x > SCREEN_SIZE_X) {
+                x = SCREEN_SIZE_X-20;
             } else if (actual_y < 0) {
-                y = 20;
+                x = 20;
             } else {
-                y = actual_y;
+                x = actual_x;
             }
-            shape.setPosition(sf::Vector2f(300, y));
+            shape.setPosition(sf::Vector2f(x, INITIAL_Y_CAR));
         }
 };
 
 sf::RectangleShape initShape(int pos_x, int pos_y) {
-    sf::RectangleShape shape(sf::Vector2f(20.0f, 20.0f));
+    sf::RectangleShape shape(sf::Vector2f(CAR_SIZE_X, CAR_SIZE_Y));
     shape.setPosition(sf::Vector2f(pos_x,pos_y));
     shape.setFillColor(sf::Color::Red);
     return shape;
@@ -141,6 +144,15 @@ void initializePositions(int * positions) {
         int nextPosition = (10*multiplier);
         positions[i] = nextPosition; 
     }
+}
+
+int verifyCollision(Car car, sf::RectangleShape wall) {
+    int result = car.shape.getPosition().x;
+    int result_2 = wall.getPosition().x;
+    if (result < result_2 || result > result_2+(SIZE_X_WALL-CAR_SIZE_X)) {
+        return 0;
+    }
+    return 1;
 } 
 
 /*Update method*/
@@ -174,9 +186,24 @@ int main() {
                 if (event->is<Event::Closed>()) {
                     window.close();
                 }
+                else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
+                    if (keyPressed->scancode == sf::Keyboard::Scancode::A) {
+                        car.move(-10);
+                        
+                    } else if (keyPressed->scancode == sf::Keyboard::Scancode::D) {
+                        car.move(10);
+                        
+                    } else if (keyPressed->scancode == sf::Keyboard::Scancode::Left) {
+                        car_2.move(-10);
+                        
+                    } else if (keyPressed->scancode == sf::Keyboard::Scancode::Right) {
+                        car_2.move(10);
+                    }
+                } 
             }
         }
         real_time_elapsed += clock.restart().asMilliseconds();
+        /*
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !pressed){
             printf("Position of t: %f\n", car.t);
             printf("Real time elapsed: %d\n", real_time_elapsed);
@@ -184,6 +211,7 @@ int main() {
             pressed = true;
             //exit(0);
         }
+        */
         window.clear(Color::Blue);
         //car.moveAlongPath(&path, 600);
         drawWalls(&window, walls);
