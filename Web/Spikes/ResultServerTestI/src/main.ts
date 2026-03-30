@@ -15,10 +15,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 app.post("/upload", async (req,res) => {
-    axios.post("http://localhost:5000/", req.body).then((response : AxiosResponse) => {
+    console.log("Received: " + JSON.stringify(req.body))
+    /*axios.post("http://localhost:5000/", req.body).then((response : AxiosResponse) => {
         res.setHeader('content-type', 'text/plain')
         res.send(response.data)
-    })
+    })*/
 });
 
 app.listen(port, () => {
