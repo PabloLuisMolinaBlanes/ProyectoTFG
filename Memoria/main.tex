@@ -1,211 +1,227 @@
-% ======================================================================
-\documentclass[12pt,a4paper,twoside,openright]{book}
-
-%───────── Auxiliary packages ──────────────────────────────────────────
-\usepackage{blindtext}
-\usepackage{mwe}
-\usepackage{csquotes}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{siunitx}
-\usepackage{amsmath,amssymb}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{listings}
-\usepackage{nomencl}
-\makenomenclature
-\usepackage[
-  backend=bibtex,
-  style=numeric,
-  sorting=nyt
-]{biblatex}
-\addbibresource{references.bib}
-
-% Listings config
-\lstset{
-  basicstyle=\ttfamily\small,
-  numbers=left,
-  numberstyle=\tiny,
-  columns=fullflexible,
-  frame=single,
-  breaklines=true,
-  tabsize=2
-}
-
-%───────── Template, covers, back cover ────────────────────────────────
-\usepackage{template/sty_files/template-TFGspanish-uma}
-
-\usepackage{template/sty_files/cotutor_cover-blueuma}
-\usepackage{template/sty_files/cotutor_cover-whiteuma}
-
-\usepackage{template/sty_files/backcover-uma}
-
-%======================================================================
-\begin{document}
-
-%────────────────────── Blue front cover (Cotutor) ───────────────────────
-
-\MakeBlueUMACover{
-  degree     = {Grado en Ingeniería del Software},
-  titleES    = {Recreación de exámenes psicotécnicos de conducción},
-  titleEN    = {Recreation of psychotechnical driving exams},
-  author     = {Pablo Luis Molina Blanes},
-  tutor      = {Cristian Martín Fernández},
-  cotutor= {Daniel Garrido Márquez},
-  dept       = {Departamento de Lenguajes y Ciencias de la Computación},
-  cityDate   = {Málaga, Junio, 2026},
-  logoLeft   = {template/logos/NEG-uma-logo.png},
-  logoRight  = {template/logos/NEG-etsi-logo.png}
-}
-
-%────────────────────── White front cover (Cotutor) ───────────────────────
-\MakeWhiteUMACover{
-  degree     = {Grado en Ingeniería del Software},
-  titleES    = {Recreación de exámenes psicotécnicos de conducción},
-  titleEN    = {Recreation of psychotechnical driving exams},
-  author     = {Pablo Luis Molina Blanes},
-  tutor      = {Cristian Martín Fernández},
-  cotutor= {Daniel Garrido Márquez},
-  dept       = {Departamento de Lenguajes y Ciencias de la Computación},
-  cityDate   = {Málaga, Junio, 2026},
-  defenseDate = {Julio, 2026},
-  logoLeft   = {template/logos/POS-uma-logo.png},
-  logoRight  = {template/logos/POS-etsi-logo.png}
-}
-
-\frontmatter
-
-%────────────────────── Abstracts ──────────────────────────────────────
-\renewcommand{\abstractname}{Resumen}
-
-
-%──────────────── Acknowledgments ───────────────────────────────────────
-\begin{umaacknowledgments}
-Agradezco su función a los tutores académicos de este proyecto. Agradezco el apoyo incondicional de mi familia. También me gustaría agradecer especialmente a todos los creadores de contenido tecnológico que hay en Internet; sin ellos, esto no habría sido posible. 
-\end{umaacknowledgments}
-
-%────────────────────── TOC and lists ──────────────────────────────────
-\clearpage
-\tableofcontents
-\clearpage
-\listoffigures
-\clearpage
-\listoftables
-\clearpage
-
-%────────────────────── Nomenclature ───────────────────────────────────
-
-\clearpage
-
-\mainmatter
-%────────────────────── Chapter 1 — Introduction ───────────────────────
-\chapter{Introducción}
-
-
-%────────────────────── Chapter 2 — Fundamentals ───────────────────────
-\chapter{Marco teórico}
-\section{Estado del arte}
-
-En el campo de los dispositivos para realizar test psicotécnicos a conductores, existen varios
-aparatos que realizan esta funcionalidad.
-
-\subsection{LN Deter}
-
-El principal dispositivo de la compañía consiste en el LND-100; licenciado por la compañía LN Deter.
-
-\subsection{ASDE}
-
-ASDE comercializa su dispositivo ASDE DRIVER TEST N-845; que utiliza por
-dentro el programa de ordenador denominado AUTO-TEST; originalmente implementado
-para dispositivos MSX por el equipo del profesor Héctor Monterde
-
-\section{Metodología de desarrollo}
-
-La metodología de desarrollo principal que se ha utilizado para el proyecto ha sido la metodología Agile.
-
-Bajo la metodología Agile, se implementa el software a lo largo de una serie de sprints; en los que se especifican tareas a cumplir
-por cada sprint; y tras terminar el sprint, se evalua el trabajo realizado hasta entonces y se planifica el siguiente sprint.
-
-El trabajo se ha planificado de forma diaría, para lo cual se ha ido desarrollando una agenda con las tareas planificadas por cada día;
-y también de forma semanal, a partir de un calendario de uso personal.
-
-\section{Buenas prácticas y costumbres de desarrollo software}
-
-
-
-%────────────────────── Chapter 3 — Design ────────────────────────────
-\chapter{Diseño}
-\section{Diseño hardware}
-
-Con respecto al diseño del Hardware, se ha decidido utilizar una arquitectura basada en microcontroladores, los cuales reciben información de aparatos electrónicos.
-
-Se detalla más a fondo el hardware y los dispositivos electrónicos utilizados a lo largo del proyecto.
-
-\subsection{Electrónica}
-
-Se ha hecho uso de varios dispositivos electrónicos a lo largo del proyecto.
-
-Muchos de estos dispositivos consisten en sensores de determinadas cantidades, por ejemplo; el botón mide si se ha pulsado este o no.
-
-Abajo, se detallan los dispositivos electrónicos a los que se ha hecho uso a lo largo de este Proyecto de Fin de Carrera; junto con una breve explicación de su funcionamiento
-
-\subsubsection{Cables puente}
-
-Los cables puente es un tipo de cableado con un conector en cada punta. Estos cables suelen ser utilizados en placas breadboard para conectar dispositivos electrónicos que se encuentren en columnas distintas del breadboard.\cite{eswiki:161708674}
-
-\subsubsection{Placa de pruebas}
-
-Una Placa de pruebas, o mejor conocido por el anglicismo *breadboard*, es una placa electrónica que se utiliza para realizar circuitos electrónicos sin la necesidad de realizar soldaduras. Es generalmente utilizado en el desarrollo de prototipos, y contrasta con los circuitos soldados o circuitos impresos.\cite{eswiki:172543964}
-
-\subsubsection{Botón pulsador electrónico}
-
-Un button pulsador electrónico consiste en una resistencia que no deja pasar la corriente cuando se activa un pulsador.
-
-\subsubsection{Potenciómetro}
-
-Un potenciometro consiste en una resistencia que se puede configurar con un mango. Un potenciómetro puede cambiar su resistencia con respecto al ángulo de rotación de forma linear o logarítmica.
-
-\subsection{Microcontroladores}
-
-Se ha utilizado un microcontrolador ESP-32 para el proyecto.
-
-\section{Diseño software}
-\subsection{Sistemas empotrados}
-\subsection{Software de sistemas}
-\subsection{Web}
-\subsection{Datos}
-\subsection{Cloud}
-
-
-%────────────────────── Chapter 4 — Results ────────────────────────────
-\chapter{Funcionamiento}
-\section{Flujo de usuario}
-\section{Demo en YouTube}
-
-
-%────────────────────── Chapter 5 — Discussion ─────────────────────────
-\chapter{Conclusiones}
-
-
-%────────────────────── Appendices ─────────────────────────────────────
-\begin{umaappendices}
-
-\umaappendix{Manual de usuario}
-
-\umaappendix{Snippets de código interesantes}
-
-\section{SQL data pipeline}
-
-\section{Bash automation}
-
-\end{umaappendices}
-
-%────────────────────── Back cover and bibliography ────────────────────
-\backmatter
-\printbibliography[title={Bibliografía}]
-\cleardoublepage
-\MakeUMABackCover
-
-\end{document}
-% ======================================================================
+% ======================================================================
+\documentclass[12pt,a4paper,twoside,openright]{book}
+
+%───────── Auxiliary packages ──────────────────────────────────────────
+\usepackage{blindtext}
+\usepackage{mwe}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{amsmath,amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{nomencl}
+\makenomenclature
+\usepackage[
+  backend=biber,
+  style=numeric,
+  sorting=nyt
+]{biblatex}
+\addbibresource{references.bib}
+
+% Listings config
+\lstset{
+  basicstyle=\ttfamily\small,
+  numbers=left,
+  numberstyle=\tiny,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  tabsize=2
+}
+
+%───────── Template, covers, back cover ────────────────────────────────
+\usepackage{template/sty_files/template-TFGspanish-uma}
+
+\usepackage{template/sty_files/cotutor_cover-blueuma}
+\usepackage{template/sty_files/cotutor_cover-whiteuma}
+
+\usepackage{template/sty_files/backcover-uma}
+
+%======================================================================
+\begin{document}
+
+%────────────────────── Blue front cover (Cotutor) ───────────────────────
+
+\MakeBlueUMACover{
+  degree     = {Grado en Ingeniería del Software},
+  titleES    = {Recreación de exámenes psicotécnicos de conducción},
+  titleEN    = {Recreation of psychotechnical driving exams},
+  author     = {Pablo Luis Molina Blanes},
+  tutor      = {Cristian Martín Fernández},
+  cotutor= {Daniel Garrido Márquez},
+  dept       = {Departamento de Lenguajes y Ciencias de la Computación},
+  cityDate   = {Málaga, Junio, 2026},
+  logoLeft   = {template/logos/NEG-uma-logo.png},
+  logoRight  = {template/logos/NEG-etsi-logo.png}
+}
+
+%────────────────────── White front cover (Cotutor) ───────────────────────
+\MakeWhiteUMACover{
+  degree     = {Grado en Ingeniería del Software},
+  titleES    = {Recreación de exámenes psicotécnicos de conducción},
+  titleEN    = {Recreation of psychotechnical driving exams},
+  author     = {Pablo Luis Molina Blanes},
+  tutor      = {Cristian Martín Fernández},
+  cotutor= {Daniel Garrido Márquez},
+  dept       = {Departamento de Lenguajes y Ciencias de la Computación},
+  cityDate   = {Málaga, Junio, 2026},
+  defenseDate = {Julio, 2026},
+  logoLeft   = {template/logos/POS-uma-logo.png},
+  logoRight  = {template/logos/POS-etsi-logo.png}
+}
+
+\frontmatter
+
+%────────────────────── Abstracts ──────────────────────────────────────
+\renewcommand{\abstractname}{Resumen}
+
+
+%──────────────── Acknowledgments ───────────────────────────────────────
+\begin{umaacknowledgments}
+Agradezco su función a los tutores académicos de este proyecto. Agradezco el apoyo incondicional de mi familia. También me gustaría agradecer especialmente a todos los creadores de contenido tecnológico que hay en Internet; sin ellos, esto no habría sido posible. 
+\end{umaacknowledgments}
+
+%────────────────────── TOC and lists ──────────────────────────────────
+\clearpage
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+
+%────────────────────── Nomenclature ───────────────────────────────────
+
+\clearpage
+
+\mainmatter
+%────────────────────── Chapter 1 — Introduction ───────────────────────
+\chapter{Introducción}
+
+
+%────────────────────── Chapter 2 — Fundamentals ───────────────────────
+\chapter{Marco teórico}
+\section{Estado del arte}
+
+En el campo de los dispositivos para realizar test psicotécnicos a conductores, existen varios
+aparatos que realizan esta funcionalidad.
+
+\subsection{General ASDE}
+
+Originalmente conocidos como \textit{ASDE-Operator} hasta convertirse en la llamada \textit{General ASDE} a finales de 1988\cite{commodorearticle}, es una empresa dedicada al diseño, fabricación y mantenimiento de Productos Sanitarios, inscrita ante la AEMPS (Agencia Española del Medicamento y el Producto Sanitario); sus productos más conocidos son aquellos relativos al Reconocimiento Médico y Psicotécnico.
+
+Es una empresa con certificado ISO 9001, y desarrolla sus productos conforme a normativas europeas e internacionales; entre los que se incluye la Directiva Europea 93/42/CEE\cite{asde1}
+
+Su principal producto relativo a realizar reconocimientos psicotécnicos es el denominado Asde Driver Test N-845; basado en el programa predecesor Driver-Test, entonces desarrollado por el equipo compuesto por el profesor de la UPV (Universidad Politécnica de Madrid) Dr. Héctor Monterde i Bort, junto con José Urnaga.\cite{asde2}
+
+\subsection{LN Deter}
+
+El principal dispositivo de la compañía consiste en el LND-100; licenciado por la compañía LN Deter.
+
+\subsection{Técnicas y fórmulas matemáticas}
+
+\subsection{Técnicas y métricas psicológicas}
+
+\section{Metodología de desarrollo}
+
+La metodología de desarrollo principal que se ha utilizado para el proyecto ha sido la metodología Agile.
+
+Bajo la metodología Agile, se implementa el software a lo largo de una serie de sprints; en los que se especifican tareas a cumplir
+por cada sprint; y tras terminar el sprint, se evalua el trabajo realizado hasta entonces y se planifica el siguiente sprint.
+
+El trabajo se ha planificado de forma diaría, para lo cual se ha ido desarrollando una agenda con las tareas planificadas por cada día;
+y también de forma semanal, a partir de un calendario de uso personal.
+
+\section{Buenas prácticas y costumbres de desarrollo software}
+
+
+
+%────────────────────── Chapter 3 — Design ────────────────────────────
+\chapter{Diseño}
+\section{Diseño hardware}
+
+Con respecto al diseño del Hardware, se ha decidido utilizar una arquitectura basada en microcontroladores, los cuales reciben información de aparatos electrónicos.
+
+Se detalla más a fondo el hardware y los dispositivos electrónicos utilizados a lo largo del proyecto.
+
+\subsection{Electrónica}
+
+Se ha hecho uso de varios dispositivos electrónicos a lo largo del proyecto.
+
+Muchos de estos dispositivos consisten en sensores de determinadas cantidades, por ejemplo; el botón mide si se ha pulsado este o no.
+
+Abajo, se detallan los dispositivos electrónicos a los que se ha hecho uso a lo largo de este Proyecto de Fin de Carrera; junto con una breve explicación de su funcionamiento
+
+\subsubsection{Cables puente}
+
+Los cables puente es un tipo de cableado con un conector en cada punta. Estos cables suelen ser utilizados en placas breadboard para conectar dispositivos electrónicos que se encuentren en columnas distintas del breadboard.\cite{eswiki:161708674}
+
+\subsubsection{Placa de pruebas}
+
+Una Placa de pruebas, o mejor conocido por el anglicismo *breadboard*, es una placa electrónica que se utiliza para realizar circuitos electrónicos sin la necesidad de realizar soldaduras. Es generalmente utilizado en el desarrollo de prototipos, y contrasta con los circuitos soldados o circuitos impresos.\cite{eswiki:172543964}\cite{breadboard1}
+
+\subsubsection{Botón pulsador electrónico}
+
+Un button pulsador electrónico consiste en una resistencia que no deja pasar la corriente cuando se activa un pulsador.\cite{pushbuttonswitch}
+
+\subsubsection{Potenciómetro}
+
+Un potenciometro consiste en una resistencia que se puede configurar con un mango. Un potenciómetro puede cambiar su resistencia con respecto al ángulo de rotación de forma linear o logarítmica.\cite{potentiometer1}
+
+\subsubsection{Cableado USB (Universal Serial Bus)}
+
+Se utiliza un cable USB en este proyecto para realizar comunicación entre el dispositivo Raspberry Pi 5 y el dispositivo ESP-32 (se explicarán estos en la siguiente sección. 
+
+Este cable puede realizar funciones útiles en el desarrollo de sistemas empotrados; como cableado serial y de posibilidad de subir firmware a los microcontroladores. Es un cable muy versatil y de gran utilidad en el desarrollo de sistemas embebidos.
+
+El cable específico que se utiliza para el proyecto es un cable USB-C a USB.
+
+\subsection{Microcontroladores}
+
+Se ha utilizado un microcontrolador ESP-32 para el proyecto.
+
+\subsection{Ordenadores monoplaca}
+
+\section{Diseño software}
+\subsection{Sistemas empotrados}
+\subsection{Software de sistemas}
+\subsection{Web}
+\subsection{Datos}
+\subsection{Cloud}
+
+
+%────────────────────── Chapter 4 — Results ────────────────────────────
+\chapter{Funcionamiento}
+\section{Flujo de usuario}
+\section{Demo en YouTube}
+
+
+%────────────────────── Chapter 5 — Discussion ─────────────────────────
+\chapter{Conclusiones}
+
+
+%────────────────────── Appendices ─────────────────────────────────────
+\begin{umaappendices}
+
+\umaappendix{Manual de usuario}
+
+\umaappendix{Snippets de código interesantes}
+
+\section{SQL data pipeline}
+
+\section{Bash automation}
+
+\end{umaappendices}
+
+%────────────────────── Back cover and bibliography ────────────────────
+\backmatter
+\printbibliography[title={Bibliografía}]
+\cleardoublepage
+\MakeUMABackCover
+
+\end{document}
+% ======================================================================
