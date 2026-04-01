@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <inttypes.h>
+#include <serial.hpp>
+#include <string.h>
+
 
 using sf::Color;
 using sf::CircleShape;
@@ -186,20 +189,13 @@ int main() {
                 if (event->is<Event::Closed>()) {
                     window.close();
                 }
-                else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
-                    if (keyPressed->scancode == sf::Keyboard::Scancode::A) {
-                        car.move(-10);
-                        
-                    } else if (keyPressed->scancode == sf::Keyboard::Scancode::D) {
-                        car.move(10);
-                        
-                    } else if (keyPressed->scancode == sf::Keyboard::Scancode::Left) {
-                        car_2.move(-10);
-                        
-                    } else if (keyPressed->scancode == sf::Keyboard::Scancode::Right) {
-                        car_2.move(10);
-                    }
-                } 
+               if (strcmp(receive_serial_data(), "") != 0 && !pressed) {
+                    printf("Position of t: %f\n", car.t);
+                    printf("Real time elapsed: %d\n", real_time_elapsed);
+                    printf("Game time elapsed: %d\n", game_time_elapsed);
+                    pressed = true;
+                    exit(0);
+                }
             }
         }
         real_time_elapsed += clock.restart().asMilliseconds();
