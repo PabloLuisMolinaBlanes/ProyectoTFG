@@ -30,7 +30,10 @@ using sf::Clock;
 #define SCREEN_SIZE_Y 600
 #define CAR_SIZE_X 20.0f
 #define CAR_SIZE_Y 20.0f
-
+#define FIRST_VALUE_FIRST_POTENTIOMETER 128
+#define FIRST_VALUE_SECOND_POTENTIOMETER 142
+#define SECOND_VALUE_FIRST_POTENTIOMETER 3139
+#define SECOND_VALUE_SECOND_POTENTIOMETER 3155
 
 bool started = false;
 bool pressed = false;
@@ -72,11 +75,11 @@ class Car {
             move(next_dy);
         }
 
-        void move(float dx) {
-            actual_x += dx;
+        void move(float x_received) {
+            actual_x = x_received;
             if (actual_x > SCREEN_SIZE_X) {
                 x = SCREEN_SIZE_X-20;
-            } else if (actual_y < 0) {
+            } else if (actual_x < 0) {
                 x = 20;
             } else {
                 x = actual_x;
@@ -158,6 +161,26 @@ int verifyCollision(Car car, sf::RectangleShape wall) {
         return 0;
     }
     return 1;
+}
+
+int resolvePosition(int index, int * collection, int size_array) {
+    if (index < 0) {
+        return 0;
+    } else if (index > size_array-1) {
+        return collection[size_array-1]; 
+    }   else {
+        return collection[index]; 
+    } 
+}
+
+void initializeLookUpTable(int * collection, int multiple) {
+    int current_position = 0;
+    for (int i = 0; i <= (multiple*SCREEN_SIZE_X)-multiple; i += multiple) {
+        for (int j = i; j < (i+multiple); j++) {
+            collection[j] = current_position;
+        }
+        current_position++;
+    }
 } 
 
 /*Update method*/
@@ -176,7 +199,33 @@ int main() {
     if (NUMBER_OF_POSITIONS < NUMBER_OF_WALLS) {
         printf("Error. Cannot have more positions than walls.\n");
         exit(-1);
+    }
+    if (SECOND_VALUE_FIRST_POTENTIOMETER <= FIRST_VALUE_FIRST_POTENTIOMETER) {
+        printf("Error. Top value of first potentiometer cannot be equal or shorter to bottom value");
+        exit(-1);
+    }
+    if (SECOND_VALUE_SECOND_POTENTIOMETER <= FIRST_VALUE_SECOND_POTENTIOMETER) {
+        printf("Error. Top value of second potentiometer cannot be equal or shorter to bottom value");
+        exit(-1);
+    }
+    float division_1 = (SECOND_VALUE_FIRST_POTENTIOMETER-FIRST_VALUE_FIRST_POTENTIOMETER)/SCREEN_SIZE_X;
+    if (division_1 < 1) {
+        printf("Error, the range of the first potentiometer must be larger or equal to that of the screen size in the x coordinate");
+        exit(-1);
     } 
+    float division_2 = (SECOND_VALUE_SECOND_POTENTIOMETER-FIRST_VALUE_SECOND_POTENTIOMETER)/SCREEN_SIZE_X;
+    if (division_2 < 1) {
+        printf("Error, the range of the second potentiometer must be larger or equal to that of the screen size in the x coordinate");
+        exit(-1);
+    }
+    const int multiple1 = (int)floor(division_1);
+    const int multiple2 = (int)floor(division_2);
+    const int lookuptable1_size = multiple1*SCREEN_SIZE_X;
+    const int lookuptable2_size = multiple2*SCREEN_SIZE_X;
+    int * lookuptable_firstPotentiometer = new int[lookuptable1_size];
+    int * lookuptable_secondPotentiometer = new int[lookuptable2_size];
+    initializeLookUpTable(lookuptable_firstPotentiometer, multiple1);
+    initializeLookUpTable(lookuptable_secondPotentiometer, multiple2);
     if (!started) {
         car = initCar(INITIAL_X_CAR, INITIAL_Y_CAR);
         car_2 = initCar(INITIAL_X_CAR_2, INITIAL_Y_CAR);
@@ -192,19 +241,26 @@ int main() {
                 if (event->is<Event::Closed>()) {
                     window.close();
                 }
-                const char * received = receive_serial_data();
+            }
+            const char * received = receive_serial_data();
                 if (strcmp(received, "") != 0) {
+                    printf("Received raw serial data %s\n", received);
+                    int position;
                     if (handle_turn == 0) {
-                        printf("Simulated position of square 1: %s\n", received);
+                        position = resolvePosition(atoi(received)-FIRST_VALUE_FIRST_POTENTIOMETER, lookuptable_firstPotentiometer, lookuptable1_size);
+                        car.move(position);
+                        //printf("Simulated position of square 1: %d\n", );
                     } else {
-                        printf("Simulated position of square 2: %s\n", received);
+                        position = resolvePosition(atoi(received)-FIRST_VALUE_SECOND_POTENTIOMETER, lookuptable_firstPotentiometer, lookuptable1_size);
+                        car_2.move(position);
+                        //printf("Simulated position of square 2: %d\n", resolvePosition(atoi(received), lookuptable_secondPotentiometer, lookuptable2_size));
                     } 
+                    printf("Simulated position of square %d: %d\n", handle_turn+1, position);
                     //printf("Real time elapsed: %d\n", real_time_elapsed);
                     //printf("Game time elapsed: %d\n", game_time_elapsed);
                     handle_turn = (handle_turn + 1) % 2;
                     //exit(0);
                 }
-            }
         }
         real_time_elapsed += clock.restart().asMilliseconds();
         /*
