@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <inttypes.h>
 #include <serial.hpp>
+#include <memory>
 #include <string.h>
 
 
@@ -36,6 +37,7 @@ bool pressed = false;
 
 std::int32_t real_time_elapsed = 0;
 std::int32_t game_time_elapsed = 0;
+int handle_turn = 0;
 
 struct Point {
     float x;
@@ -161,6 +163,7 @@ int verifyCollision(Car car, sf::RectangleShape wall) {
 /*Update method*/
 
 int main() {
+    default_configure();
     RenderWindow window(VideoMode({SCREEN_SIZE_X, SCREEN_SIZE_Y}), "Test1");
     Car car;
     Car car_2;
@@ -189,12 +192,17 @@ int main() {
                 if (event->is<Event::Closed>()) {
                     window.close();
                 }
-               if (strcmp(receive_serial_data(), "") != 0 && !pressed) {
-                    printf("Position of t: %f\n", car.t);
-                    printf("Real time elapsed: %d\n", real_time_elapsed);
-                    printf("Game time elapsed: %d\n", game_time_elapsed);
-                    pressed = true;
-                    exit(0);
+                const char * received = receive_serial_data();
+                if (strcmp(received, "") != 0) {
+                    if (handle_turn == 0) {
+                        printf("Simulated position of square 1: %s\n", received);
+                    } else {
+                        printf("Simulated position of square 2: %s\n", received);
+                    } 
+                    //printf("Real time elapsed: %d\n", real_time_elapsed);
+                    //printf("Game time elapsed: %d\n", game_time_elapsed);
+                    handle_turn = (handle_turn + 1) % 2;
+                    //exit(0);
                 }
             }
         }

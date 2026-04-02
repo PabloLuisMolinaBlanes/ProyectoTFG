@@ -113,12 +113,13 @@ int main() {
             }
         }
         real_time_elapsed += clock.restart().asMilliseconds();
-        if (strcmp(receive_serial_data(), "") != 0 && !pressed){
+        const char * received = receive_serial_data();
+        if (strcmp(received, "") != 0 && !pressed){
             printf("Position of t: %f\n", car.t);
             printf("Real time elapsed: %d\n", real_time_elapsed);
             printf("Game time elapsed: %d\n", game_time_elapsed);
             pressed = true;
-            exit(0);
+            //exit(0);
         }
         window.clear(Color::Blue);
         car.moveAlongPath(&path, 600);

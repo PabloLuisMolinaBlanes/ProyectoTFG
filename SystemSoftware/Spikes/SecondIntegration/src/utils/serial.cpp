@@ -11,6 +11,8 @@
 #include <unistd.h> // write(), read(), close()
 #include <stdlib.h>
 
+#include <memory>
+
 int serial_port = open("/dev/ttyUSB0", O_RDWR);
 char read_buf [256];
 struct termios tty;
