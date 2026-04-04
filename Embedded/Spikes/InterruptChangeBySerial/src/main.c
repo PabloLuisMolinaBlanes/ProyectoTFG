@@ -18,9 +18,13 @@ void app_main(void)
     ESP_ERROR_CHECK(uart_param_config(CONFIG_ESP_CONSOLE_UART_NUM, &uart_config));
     char chr[RX_BUF_SIZE];
     while(1){
-        const int rxBytes = uart_read_bytes(CONFIG_ESP_CONSOLE_UART_NUM, chr, RX_BUF_SIZE, 200);
+        memset(&chr, '\0', sizeof(chr));
+        int rxBytes = uart_read_bytes(CONFIG_ESP_CONSOLE_UART_NUM, chr, RX_BUF_SIZE, 200/portTICK_PERIOD_MS);
         if (rxBytes > 0) {
-            printf("Read %d bytes: '%s'\n", rxBytes, chr);
+            printf("%s", chr);
+            //printf("%.*s\n", rxBytes, chr);
+            //char* test_str = "This is a test string.\n";
+            //uart_write_bytes(CONFIG_ESP_CONSOLE_UART_NUM, chr, 6);
         }
         vTaskDelay(200);
     }
