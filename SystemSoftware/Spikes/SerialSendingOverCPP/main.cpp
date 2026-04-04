@@ -12,9 +12,9 @@
 
 int serial_port = open("/dev/ttyUSB0", O_RDWR);
 struct termios tty;
-unsigned char msg[] = { 'H', 'e', 'l', 'l', 'o', '\r' };
-const char * message_2 = "test_2\n";
-const char * message_3 = "exit\n";
+unsigned char msg[] = { 't', 'e', 's', 't', '_', '1' };
+unsigned char message_2[] = { 't', 'e', 's', 't', '_', '2' };
+unsigned char message_3[] = { 'e', 'x', 'i', 't' };
 char read_buf [256];
 
 int main() {
@@ -66,12 +66,30 @@ int main() {
             return 1;
         }
         printf("Read %i bytes. Received message: %s\n", num_bytes_read, read_buf);
-        //int num_bytes_2 = write(serial_port, &message_3, strlen(message_3));
+        int num_bytes_2 = write(serial_port, &message_3, sizeof(message_3));
         //printf("Sent %i bytes. Sent message: %s\n", num_bytes_2, message_3);
-        //int num_bytes_3 = write(serial_port, &message_2, strlen(message_2));
+        num_bytes_read = read(serial_port, &read_buf, sizeof(read_buf));
+        if (num_bytes_read < 0) {
+            printf("Error reading: %s", strerror(errno));
+            return 1;
+        }
+        printf("Read %i bytes. Received message: %s\n", num_bytes_read, read_buf);
+        int num_bytes_3 = write(serial_port, &message_2, sizeof(message_2));
         //printf("Sent %i bytes. Sent message: %s\n", num_bytes_3, message_2);
-        //int num_bytes_4 = write(serial_port, &message_3, strlen(message_3));
+        num_bytes_read = read(serial_port, &read_buf, sizeof(read_buf));
+        if (num_bytes_read < 0) {
+            printf("Error reading: %s", strerror(errno));
+            return 1;
+        }
+        printf("Read %i bytes. Received message: %s\n", num_bytes_read, read_buf);
+        int num_bytes_4 = write(serial_port, &message_3, sizeof(message_3));
         //printf("Sent %i bytes. Sent message: %s\n", num_bytes_4, message_3);
+        num_bytes_read = read(serial_port, &read_buf, sizeof(read_buf));
+        if (num_bytes_read < 0) {
+            printf("Error reading: %s", strerror(errno));
+            return 1;
+        }
+        printf("Read %i bytes. Received message: %s\n", num_bytes_read, read_buf);
     }
     close(serial_port);
     return 0; // success
