@@ -37,3 +37,7 @@ int read_from_uart(int nMilliseconds) {
     } 
     return 0;
 }
+
+int is_uart_already_configured() {
+    return configured;
+} 
