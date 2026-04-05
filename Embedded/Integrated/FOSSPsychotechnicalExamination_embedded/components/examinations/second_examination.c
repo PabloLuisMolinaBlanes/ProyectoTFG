@@ -13,7 +13,7 @@ adc_oneshot_unit_handle_t handle = NULL;
 adc_oneshot_unit_handle_t handle_2 = NULL;
 adc_cali_handle_t cali_handle = NULL;
 adc_cali_handle_t cali_handle_2 = NULL;
-int configured = 0;
+int configured_second = 0;
 #define MILLISECONDS_BETWEEN_CHECKS 10
 
 
@@ -46,7 +46,7 @@ adc_cali_line_fitting_config_t cali_config_2 = {
     };
 
 void configure_second_test() {
-    if (configured == 1) {
+    if (configured_second == 1) {
         return;
     } 
     
@@ -65,7 +65,7 @@ void configure_second_test() {
     if (is_uart_already_configured() == 0) {
         configure_uart_with_default_options();
     }
-    configured = 1;
+    configured_second = 1;
 }
 
 void second_examination_loop() {

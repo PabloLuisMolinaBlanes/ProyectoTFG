@@ -8,10 +8,10 @@ static const gpio_num_t button_pin = GPIO_NUM_13;
 #define MILLISECONDS_TO_CHECK 10
 
 
-int configured = 0;
+int configured_first = 0;
 
 void configure_first_test() {
-    if (configured == 1) {
+    if (configured_first == 1) {
         return;
     }
     gpio_reset_pin(button_pin);
@@ -19,7 +19,7 @@ void configure_first_test() {
     if (is_uart_already_configured() == 0) {
         configure_uart_with_default_options();
     }
-    configured = 1;
+    configured_first = 1;
 }
 
 void first_examination_loop() {

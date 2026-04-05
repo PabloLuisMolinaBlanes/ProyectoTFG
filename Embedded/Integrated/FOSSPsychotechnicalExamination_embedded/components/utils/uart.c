@@ -1,7 +1,7 @@
 #include "driver/uart.h"
 #include "uart.h"
 
-int configured = 0;
+int configured_uart = 0;
 
 const uart_config_t default_uart_config = {
         .baud_rate = 115200,
@@ -15,18 +15,18 @@ const uart_config_t default_uart_config = {
 char uart_buffer[RX_BUF_SIZE];
 
 int configure_uart_with_default_options() {
-    if (configured == 1) {
+    if (configured_uart == 1) {
         printf("Error. configure_uart_with_default_options() has been run previously already\n");
         return 1;
     }
     ESP_ERROR_CHECK(uart_driver_install(CONFIG_ESP_CONSOLE_UART_NUM, 256, 0, 0, NULL, 0));
     ESP_ERROR_CHECK(uart_param_config(CONFIG_ESP_CONSOLE_UART_NUM, &default_uart_config));
-    configured = 1;
+    configured_uart = 1;
     return 0;
 }
 
 int read_from_uart(int nMilliseconds) {
-    if (configured == 0) {
+    if (configured_uart == 0) {
         printf("Error. You should configure the UART device first by running configure_uart_with_default_options()\n");
         return 1;
     }
@@ -39,5 +39,5 @@ int read_from_uart(int nMilliseconds) {
 }
 
 int is_uart_already_configured() {
-    return configured;
+    return configured_uart;
 } 
