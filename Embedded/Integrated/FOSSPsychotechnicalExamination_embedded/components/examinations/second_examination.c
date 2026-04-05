@@ -1,6 +1,6 @@
 #include "uart.h"
 
-void configure_default_adc() {
+void configure_second_test() {
 
 }
 
