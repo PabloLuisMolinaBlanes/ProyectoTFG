@@ -18,7 +18,9 @@ void first_examination_loop() {
         if (gpio_get_level(button_pin) == 0) {
             printf("7900\n");
         }
-        read_from_uart(200);
+        if (read_from_uart(200) == EXIT_VALUE) {
+            break;
+        }
         vTaskDelay(sleep_time/portTICK_PERIOD_MS);
     }
 }

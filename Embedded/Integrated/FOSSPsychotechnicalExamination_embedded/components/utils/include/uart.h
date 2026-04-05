@@ -5,6 +5,9 @@
 #define RX_BUF_SIZE 128
 #endif
 
+#define EXIT_VALUE 3
+
+
 /*
 Esta funcion configura el dispositivo UART con opciones por defecto.
 
