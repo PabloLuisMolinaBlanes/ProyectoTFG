@@ -16,7 +16,7 @@ char uart_buffer[RX_BUF_SIZE];
 
 int configure_uart_with_default_options() {
     if (configured == 1) {
-        printf("Error. configure_uart_with_default_options() has been run previously already");
+        printf("Error. configure_uart_with_default_options() has been run previously already\n");
         return 1;
     }
     ESP_ERROR_CHECK(uart_driver_install(CONFIG_ESP_CONSOLE_UART_NUM, 256, 0, 0, NULL, 0));
@@ -25,13 +25,13 @@ int configure_uart_with_default_options() {
     return 0;
 }
 
-int read_from_uart() {
+int read_from_uart(int nMilliseconds) {
     if (configured == 0) {
         printf("Error. You should configure the UART device first by running configure_uart_with_default_options()\n");
         return 1;
     }
     memset(&uart_buffer, '\0', sizeof(uart_buffer));
-    int rxBytes = uart_read_bytes(CONFIG_ESP_CONSOLE_UART_NUM, uart_buffer, RX_BUF_SIZE, 200/portTICK_PERIOD_MS);
+    int rxBytes = uart_read_bytes(CONFIG_ESP_CONSOLE_UART_NUM, uart_buffer, RX_BUF_SIZE, nMilliseconds/portTICK_PERIOD_MS);
     if (rxBytes > 0) {
         return 1;
     } 

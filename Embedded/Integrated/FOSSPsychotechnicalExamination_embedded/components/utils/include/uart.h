@@ -32,4 +32,4 @@ Si ha realizado un cambio de tarea, devuelve un número que indica la tarea a la
 
 Esta función no es activada por interrupción; se debe llamar manualmente por el desarrollador.
 */
-int read_from_uart();
+int read_from_uart(int nMilliseconds);
