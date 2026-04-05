@@ -4,7 +4,6 @@
 #include "freertos/timers.h"
 
 static const gpio_num_t button_pin = GPIO_NUM_13;
-static const uint32_t sleep_time = 500;
 #define BUTTON_GPIO 13
 #define MILLISECONDS_TO_CHECK 10
 
@@ -25,12 +24,15 @@ void configure_first_test() {
 
 void first_examination_loop() {
     while (1) {
+        /*Comprueba si el boton está siendo pulsado en el momento de la llamada */
         if (gpio_get_level(button_pin) == 0) {
             printf("7900\n");
         }
+
+        /*Comprueba si host ha enviado un valor para salir */
         if (read_from_uart(MILLISECONDS_TO_CHECK) == EXIT_VALUE) {
             break;
         }
-        vTaskDelay(sleep_time/portTICK_PERIOD_MS);
+        vTaskDelay(MILLISECONDS_TO_CHECK/portTICK_PERIOD_MS);
     }
 }

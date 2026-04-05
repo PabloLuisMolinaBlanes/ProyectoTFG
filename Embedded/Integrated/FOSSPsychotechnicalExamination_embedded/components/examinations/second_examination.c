@@ -1,7 +1,7 @@
 #include "uart.h"
 #include <esp_adc/adc_oneshot.h>
 #include <hal/adc_types.h>
-
+#include "freertos/FreeRTOS.h"
 #include <esp_adc/adc_cali_scheme.h>
 #include <esp_adc/adc_cali.h>
 
@@ -14,6 +14,8 @@ adc_oneshot_unit_handle_t handle_2 = NULL;
 adc_cali_handle_t cali_handle = NULL;
 adc_cali_handle_t cali_handle_2 = NULL;
 int configured = 0;
+#define MILLISECONDS_BETWEEN_CHECKS 10
+
 
 /* Configuraciones */
 adc_oneshot_unit_init_cfg_t init_config1 = {
@@ -67,5 +69,21 @@ void configure_second_test() {
 }
 
 void second_examination_loop() {
+    while (1) {
+        /* Lee y envia valor del primer potenciometro */
+        ESP_ERROR_CHECK(adc_oneshot_read(handle, ADC_CHANNEL_7, &potentiometer_read));
+        adc_cali_raw_to_voltage(cali_handle, potentiometer_read, &potentiometer_output);
+        printf("%d\n", potentiometer_output);
 
+        /* Lee y envia valor del segundo potenciometro */
+        ESP_ERROR_CHECK(adc_oneshot_read(handle_2, ADC_CHANNEL_7, &potentiometer_read_2));
+        adc_cali_raw_to_voltage(cali_handle_2, potentiometer_read_2, &potentiometer_output_2);
+        printf("%d\n", potentiometer_output_2);
+
+        /*Comprueba si host ha enviado un valor para salir */
+        if (read_from_uart(MILLISECONDS_BETWEEN_CHECKS) == EXIT_VALUE) {
+            break;
+        }
+        vTaskDelay(MILLISECONDS_BETWEEN_CHECKS/portTICK_PERIOD_MS);
+    }
 }
