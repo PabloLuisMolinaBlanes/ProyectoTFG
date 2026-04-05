@@ -13,5 +13,5 @@ set(TEST_COMPONENTS "examinations;utils" CACHE STRING "List of components to tes
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 # "Trim" the build. Include the minimal set of components, main, and anything it depends on.
-#idf_build_set_property(MINIMAL_BUILD ON)
-project(FOSSPsychotechnicalExamination_embedded)
+idf_build_set_property(MINIMAL_BUILD ON)
+project(FOSSPsychotechnicalExamination_embedded_test)
