@@ -23,6 +23,10 @@ void configure_first_test() {
 }
 
 void first_examination_loop() {
+    if (configured_first == 0) {
+        printf("Error. You should configure this examination first configure_first_test()\n");
+        return;
+    }
     while (1) {
         /*Comprueba si el boton está siendo pulsado en el momento de la llamada */
         if (gpio_get_level(button_pin) == 0) {

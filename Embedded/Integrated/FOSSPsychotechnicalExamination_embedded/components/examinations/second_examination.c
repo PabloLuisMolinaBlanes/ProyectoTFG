@@ -69,6 +69,10 @@ void configure_second_test() {
 }
 
 void second_examination_loop() {
+    if (configured_second == 0) {
+        printf("Error. You should configure this examination first configure_second_test()\n");
+        return;
+    }
     while (1) {
         /* Lee y envia valor del primer potenciometro */
         ESP_ERROR_CHECK(adc_oneshot_read(handle, ADC_CHANNEL_7, &potentiometer_read));
