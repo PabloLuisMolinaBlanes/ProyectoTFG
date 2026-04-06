@@ -5,7 +5,7 @@
 #include "freertos/timers.h"
 
 static const gpio_num_t button_pin = GPIO_NUM_13;
-static const uint32_t sleep_time = 500;
+static const uint32_t sleep_time = 100;
 #define BUTTON_GPIO 13
 
 /*

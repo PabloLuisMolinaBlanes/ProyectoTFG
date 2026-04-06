@@ -20,6 +20,10 @@ bool pressed = false;
 std::int32_t real_time_elapsed = 0;
 std::int32_t game_time_elapsed = 0;
 
+#define NUMBER_OF_TESTS 3
+
+char test_data[NUMBER_OF_TESTS]; 
+
 struct Point {
     float x;
     float y;
@@ -44,12 +48,13 @@ class Car {
         float x;
         float y;
         float t = 0;
+        float velocity = 0.005;
         sf::RectangleShape shape;
         void moveAlongPath(struct Path *path, float screen_x) {
             float vel = path->P1.x - path->P0.y;
             float next_x = path->P0.x + vel*t;
             float next_dx = next_x-actual_x;
-            t = t + 0.005;
+            t = t + velocity;
             move(screen_x, next_dx);
         }
 
@@ -90,6 +95,14 @@ Car initCar(int car_x, int car_y) {
 
 /*Update method*/
 
+void reset_test(Car * car) {
+    car->shape.setPosition(sf::Vector2f(300.0f, 300.0f));
+    car->velocity = 0.005;
+    car->t = 0;
+    car->x = 300.0f;
+    car->actual_x = car->x;
+} 
+
 int main() {
     default_configure();
     RenderWindow window(VideoMode({600, 600}), "Test1");
@@ -118,7 +131,8 @@ int main() {
             printf("Position of t: %f\n", car.t);
             printf("Real time elapsed: %d\n", real_time_elapsed);
             printf("Game time elapsed: %d\n", game_time_elapsed);
-            pressed = true;
+            //pressed = true;
+            reset_test(&car);
             //exit(0);
         }
         window.clear(Color::Blue);
