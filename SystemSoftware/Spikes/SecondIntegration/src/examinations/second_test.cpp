@@ -6,6 +6,7 @@
 #include <serial.hpp>
 #include <memory>
 #include <string.h>
+#include <fstream>
 
 
 using sf::Color;
@@ -17,7 +18,7 @@ using sf::Clock;
 
 #define NUMBER_OF_WALLS 5
 #define DEGREE_OF_SEPARATION 0.48
-#define NUMBER_OF_POSITIONS 400
+#define NUMBER_OF_POSITIONS 200
 #define INITIAL_X_WALL 450
 #define INITIAL_X_WALL_2 100
 #define INITIAL_Y_WALL 250
@@ -41,6 +42,15 @@ bool pressed = false;
 std::int32_t real_time_elapsed = 0;
 std::int32_t game_time_elapsed = 0;
 int handle_turn = 0;
+
+int test_data_1[NUMBER_OF_POSITIONS-NUMBER_OF_WALLS];
+int test_data_2[NUMBER_OF_POSITIONS-NUMBER_OF_WALLS];
+
+int position_counter_1 = 0;
+int position_counter_2 = 0;
+
+std::ofstream outfile_1;
+std::ofstream outfile_2;
 
 struct Point {
     float x;
@@ -181,7 +191,42 @@ void initializeLookUpTable(int * collection, int multiple) {
         }
         current_position++;
     }
-} 
+}
+
+void add_data(int data, int potentiometer) {
+    if (potentiometer == 1 && position_counter_1 < NUMBER_OF_POSITIONS-NUMBER_OF_WALLS) {
+        test_data_1[position_counter_1] = data;
+        position_counter_1++;
+    }
+    if (potentiometer == 2 && position_counter_2 < NUMBER_OF_POSITIONS-NUMBER_OF_WALLS) {
+        test_data_2[position_counter_2] = data;
+        position_counter_2++;
+    }
+}
+
+int save_data() {
+    std::string addResults_1 = "";
+    std::string addResults_2 = "";
+    for (int i = 0; i < NUMBER_OF_POSITIONS-NUMBER_OF_WALLS; i++) {
+        addResults_1 += std::to_string(test_data_1[i]);
+        if (i != NUMBER_OF_POSITIONS-NUMBER_OF_WALLS-1) {
+            addResults_1 += ",";
+        }
+    }
+    addResults_1 += "\n";
+    for (int i = 0; i < NUMBER_OF_POSITIONS-NUMBER_OF_WALLS; i++) {
+        addResults_2 += std::to_string(test_data_2[i]);
+        if (i != NUMBER_OF_POSITIONS-NUMBER_OF_WALLS-1) {
+            addResults_2 += ",";
+        }
+    }
+    addResults_2 += "\n";
+    outfile_1.open("second_test_1.txt", std::ios_base::app);
+    outfile_2.open("second_test_2.txt", std::ios_base::app);
+    outfile_1 << addResults_1;
+    outfile_2 << addResults_2;
+    return 0;
+}
 
 /*Update method*/
 
@@ -272,6 +317,8 @@ int main() {
             //exit(0);
         }
         */
+        add_data(car.x, 1);
+        add_data(car_2.x, 2);
         window.clear(Color::Blue);
         //car.moveAlongPath(&path, 600);
         drawWalls(&window, walls);
@@ -283,6 +330,9 @@ int main() {
             positionCounter++;
             setPositions(walls, positions, positionCounter, 1);
             setPositions(walls_2, positions, positionCounter, -1);
+        } else {
+            save_data();
+            exit(0);
         }
         game_time_elapsed += clock.getElapsedTime().asMilliseconds();
         real_time_elapsed += clock.getElapsedTime().asMilliseconds();
