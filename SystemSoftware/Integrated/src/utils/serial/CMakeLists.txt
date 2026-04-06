@@ -1,8 +1,6 @@
-add_library(serial serial.cpp)
-
 include_directories(include)
-
+add_library(serial serial.cpp)
 target_include_directories(serial
-    PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
+    INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
