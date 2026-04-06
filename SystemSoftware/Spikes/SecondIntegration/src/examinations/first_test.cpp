@@ -6,6 +6,7 @@
 #include <string.h>
 #include <inttypes.h>
 #include <serial.hpp>
+#include <fstream>
 
 using sf::Color;
 using sf::CircleShape;
@@ -22,7 +23,11 @@ std::int32_t game_time_elapsed = 0;
 
 #define NUMBER_OF_TESTS 3
 
-char test_data[NUMBER_OF_TESTS]; 
+float test_data[NUMBER_OF_TESTS];
+
+int test_counter = 0;
+
+std::ofstream outfile;
 
 struct Point {
     float x;
@@ -101,7 +106,25 @@ void reset_test(Car * car) {
     car->t = 0;
     car->x = 300.0f;
     car->actual_x = car->x;
-} 
+}
+
+void add_data(float data) {
+    test_data[test_counter] = data;
+}
+
+int save_data() {
+    std::string addResults = "";
+    for (int i = 0; i < NUMBER_OF_TESTS; i++) {
+        addResults += std::to_string(test_data[i]);
+        if (i != NUMBER_OF_TESTS-1) {
+            addResults += ",";
+        }
+    }
+    addResults += "\n";
+    outfile.open("first_test.txt", std::ios_base::app);
+    outfile << addResults;
+    return 0;
+}
 
 int main() {
     default_configure();
@@ -132,8 +155,13 @@ int main() {
             printf("Real time elapsed: %d\n", real_time_elapsed);
             printf("Game time elapsed: %d\n", game_time_elapsed);
             //pressed = true;
+            add_data(car.t);
             reset_test(&car);
-            //exit(0);
+            test_counter++;
+            if (test_counter >= NUMBER_OF_TESTS) {
+                save_data();
+                exit(0);
+            }
         }
         window.clear(Color::Blue);
         car.moveAlongPath(&path, 600);
