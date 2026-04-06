@@ -296,7 +296,7 @@ int main() {
                         car.move(position);
                         //printf("Simulated position of square 1: %d\n", );
                     } else {
-                        position = resolvePosition(atoi(received)-FIRST_VALUE_SECOND_POTENTIOMETER, lookuptable_firstPotentiometer, lookuptable1_size);
+                        position = resolvePosition(SECOND_VALUE_SECOND_POTENTIOMETER-(atoi(received)-FIRST_VALUE_SECOND_POTENTIOMETER), lookuptable_secondPotentiometer, lookuptable2_size);
                         car_2.move(position);
                         //printf("Simulated position of square 2: %d\n", resolvePosition(atoi(received), lookuptable_secondPotentiometer, lookuptable2_size));
                     } 
