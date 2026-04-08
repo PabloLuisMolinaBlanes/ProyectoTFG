@@ -5,7 +5,7 @@
 
 static const gpio_num_t button_pin = GPIO_NUM_13;
 #define BUTTON_GPIO 13
-#define MILLISECONDS_TO_CHECK 10
+#define MILLISECONDS_TO_CHECK 100
 
 
 int configured_first = 0;

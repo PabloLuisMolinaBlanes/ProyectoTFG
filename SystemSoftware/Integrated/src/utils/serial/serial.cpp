@@ -47,6 +47,8 @@ int default_configure() {
     tty.c_cc[VMIN] = 0;
     cfsetispeed(&tty, B115200);
     cfsetospeed(&tty, B115200);
+    int flags = fcntl(serial_port, F_GETFL, 0);
+    fcntl(serial_port, F_SETFL, flags | O_NONBLOCK);
     if (tcsetattr(serial_port, TCSANOW, &tty) != 0) {
         printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
         return 1;
@@ -59,7 +61,11 @@ const char * serial_read() {
     memset(&read_buf, '\0', sizeof(read_buf));
         int num_bytes = read(serial_port, &read_buf, sizeof(read_buf));
         if (num_bytes < 0) {
-            printf("Error reading: %s", strerror(errno));
+            if (errno == EAGAIN){
+                const char * result = "";
+                return result;
+            }
+            printf("Error reading: %s\n", strerror(errno));
             return "";
         } else if (num_bytes == 0) {
             return "";
@@ -67,10 +73,10 @@ const char * serial_read() {
         return read_buf;
 }
 
-int serial_send(char * data) {
+int serial_send(const unsigned char * data) {
     int num_bytes = write(serial_port, &data, sizeof(data));
     if (num_bytes < 0) {
-        printf("Error sending: %s", strerror(errno));
+        printf("Error sending: %s\n", strerror(errno));
         return 1;
     } 
     return 0;

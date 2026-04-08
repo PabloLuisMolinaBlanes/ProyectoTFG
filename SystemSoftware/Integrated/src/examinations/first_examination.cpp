@@ -127,7 +127,11 @@ int save_data() {
 }
 
 int main() {
-    default_configure();
+    printf("Do I at least turn on?\n");
+    int result = default_configure();
+    printf("%d\n", result);
+    result = serial_send(msg);
+    printf("%d\n", result);
     RenderWindow window(VideoMode({600, 600}), "Test1");
     Car car;
     sf::RectangleShape wall;
@@ -144,6 +148,7 @@ int main() {
         while (clock.getElapsedTime().asMilliseconds() < 16) {
             while (const std::optional event = window.pollEvent()) {
                 if (event->is<Event::Closed>()) {
+                    serial_send(message_3);
                     window.close();
                 }
             }
@@ -160,6 +165,7 @@ int main() {
             test_counter++;
             if (test_counter >= NUMBER_OF_TESTS) {
                 save_data();
+                serial_send(message_3);
                 exit(0);
             }
         }

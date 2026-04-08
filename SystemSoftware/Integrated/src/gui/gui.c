@@ -3,11 +3,12 @@
 #include <stdlib.h>
 
 void greet() {
-    system("./first_test");
+    
+    system("./first_examination");
 }
 
 void greet_2() {
-    system("./second_test");
+    system("./second_examination");
 }
 
 static void on_activate (GtkApplication *app) {
