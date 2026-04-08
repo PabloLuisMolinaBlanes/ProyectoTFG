@@ -11,7 +11,7 @@ void app_main(void)
 {
     configure_uart_with_default_options();
     while (1) {
-        int result = read_from_uart(20);
+        int result = read_from_uart(200);
         switch(result){
             case TEST_1:
                 configure_first_test();
