@@ -22,8 +22,14 @@ TEST_CASE("The user shouldnt be able to make a read from an UART device without 
     TEST_ASSERT_EQUAL(1, read_from_uart(200));
 }
 
-TEST_CASE("When the UART device reads something from the cable, it should return 1", "[uart]") {
+TEST_CASE("When the UART device reads something from the cable, it should return 0", "[uart]") {
     printf("You have 2 seconds to write down something.\n");
     configure_uart_with_default_options();
-    TEST_ASSERT_EQUAL(1, read_from_uart(2000));
+    TEST_ASSERT_EQUAL(0, read_from_uart(2000));
+}
+
+TEST_CASE("When the UART device reads test_1 from the cable, it should return 1", "[uart]") {
+    printf("You have 4 seconds to write down.\n");
+    configure_uart_with_default_options();
+    TEST_ASSERT_EQUAL(1, read_from_uart(4000));
 }

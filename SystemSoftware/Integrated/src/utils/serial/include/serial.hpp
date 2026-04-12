@@ -1,8 +1,3 @@
-
-const unsigned char msg[] = { 't', 'e', 's', 't', '_', '1' };
-const unsigned char message_2[] = { 't', 'e', 's', 't', '_', '2' };
-const unsigned char message_3[] = { 'e', 'x', 'i', 't' };
-
 /*
 Esta función realiza las funciones de configuración del dispositivo serial.
 
@@ -24,4 +19,4 @@ char * serial_read();
 /*
 Esta función escribe a través del dispositivo serial elegido por defecto.
 */
-int serial_send(const unsigned char * data);
+int serial_send(int message);

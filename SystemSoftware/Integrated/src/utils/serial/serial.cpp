@@ -10,13 +10,14 @@
 #include <termios.h> // Contains POSIX terminal control definitions
 #include <unistd.h> // write(), read(), close()
 
-int serial_port = open("/dev/ttyUSB0", O_RDWR);
-struct termios tty;
-char read_buf [256];
-int configured = 0;
 unsigned char msg[] = { 't', 'e', 's', 't', '_', '1' };
 unsigned char message_2[] = { 't', 'e', 's', 't', '_', '2' };
 unsigned char message_3[] = { 'e', 'x', 'i', 't' };
+
+int serial_port = open("/dev/ttyUSB0", O_RDWR);
+struct termios tty;
+int configured = 0;
+char read_buf [256];
 
 int default_configure() {
     if (configured == 1) {
@@ -47,8 +48,8 @@ int default_configure() {
     tty.c_cc[VMIN] = 0;
     cfsetispeed(&tty, B115200);
     cfsetospeed(&tty, B115200);
-    int flags = fcntl(serial_port, F_GETFL, 0);
-    fcntl(serial_port, F_SETFL, flags | O_NONBLOCK);
+    //int flags = fcntl(serial_port, F_GETFL, 0);
+    //fcntl(serial_port, F_SETFL, flags | O_NONBLOCK);
     if (tcsetattr(serial_port, TCSANOW, &tty) != 0) {
         printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
         return 1;
@@ -57,12 +58,12 @@ int default_configure() {
     return 0;
 } 
 
-const char * serial_read() {
+char * serial_read() {
     memset(&read_buf, '\0', sizeof(read_buf));
         int num_bytes = read(serial_port, &read_buf, sizeof(read_buf));
         if (num_bytes < 0) {
             if (errno == EAGAIN){
-                const char * result = "";
+                char * result = "";
                 return result;
             }
             printf("Error reading: %s\n", strerror(errno));
@@ -73,11 +74,24 @@ const char * serial_read() {
         return read_buf;
 }
 
-int serial_send(const unsigned char * data) {
-    int num_bytes = write(serial_port, &data, sizeof(data));
+int serial_send(int message) {
+    if (configured != 1) {
+        printf("Error. Please, configure the UART device before trying to send\n");
+        return 1;
+    }
+    int num_bytes = 0;
+    if (message == 1) {
+        num_bytes = write(serial_port, &msg, sizeof(msg));
+    }
+    if (message == 2) {
+        num_bytes = write(serial_port, &message_2, sizeof(message_2));
+    }
+    if (message == 3) {
+        num_bytes = write(serial_port, &message_3, sizeof(message_3));
+    }
     if (num_bytes < 0) {
         printf("Error sending: %s\n", strerror(errno));
         return 1;
-    } 
+    }
     return 0;
 } 

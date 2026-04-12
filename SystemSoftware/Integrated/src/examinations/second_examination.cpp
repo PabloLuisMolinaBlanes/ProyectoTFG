@@ -232,7 +232,7 @@ int save_data() {
 
 int main() {
     default_configure();
-    serial_send(message_2);
+    serial_send(2);
     RenderWindow window(VideoMode({SCREEN_SIZE_X, SCREEN_SIZE_Y}), "Test1");
     Car car;
     Car car_2;
@@ -244,29 +244,29 @@ int main() {
     int positionCounter = 0;
     if (NUMBER_OF_POSITIONS < NUMBER_OF_WALLS) {
         printf("Error. Cannot have more positions than walls.\n");
-        serial_send(message_3);
+        serial_send(3);
         exit(-1);
     }
     if (SECOND_VALUE_FIRST_POTENTIOMETER <= FIRST_VALUE_FIRST_POTENTIOMETER) {
         printf("Error. Top value of first potentiometer cannot be equal or shorter to bottom value");
-        serial_send(message_3);
+        serial_send(3);
         exit(-1);
     }
     if (SECOND_VALUE_SECOND_POTENTIOMETER <= FIRST_VALUE_SECOND_POTENTIOMETER) {
         printf("Error. Top value of second potentiometer cannot be equal or shorter to bottom value");
-        serial_send(message_3);
+        serial_send(3);
         exit(-1);
     }
     float division_1 = (SECOND_VALUE_FIRST_POTENTIOMETER-FIRST_VALUE_FIRST_POTENTIOMETER)/SCREEN_SIZE_X;
     if (division_1 < 1) {
         printf("Error, the range of the first potentiometer must be larger or equal to that of the screen size in the x coordinate");
-        serial_send(message_3);
+        serial_send(3);
         exit(-1);
     } 
     float division_2 = (SECOND_VALUE_SECOND_POTENTIOMETER-FIRST_VALUE_SECOND_POTENTIOMETER)/SCREEN_SIZE_X;
     if (division_2 < 1) {
         printf("Error, the range of the second potentiometer must be larger or equal to that of the screen size in the x coordinate");
-        serial_send(message_3);
+        serial_send(3);
         exit(-1);
     }
     const int multiple1 = (int)floor(division_1);
@@ -290,7 +290,7 @@ int main() {
         while (clock.getElapsedTime().asMilliseconds() < 200) {
             while (const std::optional event = window.pollEvent()) {
                 if (event->is<Event::Closed>()) {
-                    serial_send(message_3);
+                    serial_send(3);
                     window.close();
                 }
             }
@@ -323,7 +323,7 @@ int main() {
             setPositions(walls_2, positions, positionCounter, -1);
         } else {
             save_data();
-            serial_send(message_3);
+            serial_send(3);
             exit(0);
         }
         game_time_elapsed += clock.getElapsedTime().asMilliseconds();

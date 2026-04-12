@@ -3,6 +3,10 @@
 
 int configured_uart = 0;
 
+const char msg[] = { 't', 'e', 's', 't', '_', '1' };
+const char message_2[] = { 't', 'e', 's', 't', '_', '2' };
+const char message_3[] = { 'e', 'x', 'i', 't' };
+
 const uart_config_t default_uart_config = {
         .baud_rate = 115200,
         .data_bits = UART_DATA_8_BITS,
@@ -33,6 +37,7 @@ int read_from_uart(int nMilliseconds) {
     memset(&uart_buffer, '\0', sizeof(uart_buffer));
     int rxBytes = uart_read_bytes(CONFIG_ESP_CONSOLE_UART_NUM, uart_buffer, RX_BUF_SIZE, nMilliseconds/portTICK_PERIOD_MS);
     if (rxBytes > 0) {
+        printf("%s\n", uart_buffer);
         if (strcmp(uart_buffer, "test_1") == 0) {
             return 1;
         } else if (strcmp(uart_buffer, "test_2") == 0) {
