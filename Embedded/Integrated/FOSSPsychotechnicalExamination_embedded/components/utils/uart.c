@@ -37,7 +37,6 @@ int read_from_uart(int nMilliseconds) {
     memset(&uart_buffer, '\0', sizeof(uart_buffer));
     int rxBytes = uart_read_bytes(CONFIG_ESP_CONSOLE_UART_NUM, uart_buffer, RX_BUF_SIZE, nMilliseconds/portTICK_PERIOD_MS);
     if (rxBytes > 0) {
-        printf("%s\n", uart_buffer);
         if (strcmp(uart_buffer, "test_1") == 0) {
             return 1;
         } else if (strcmp(uart_buffer, "test_2") == 0) {
