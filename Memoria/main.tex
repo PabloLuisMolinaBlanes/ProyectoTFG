@@ -1,252 +1,1 @@
-% ======================================================================
-\documentclass[12pt,a4paper,twoside,openright]{book}
-
-%───────── Auxiliary packages ──────────────────────────────────────────
-\usepackage{blindtext}
-\usepackage{mwe}
-\usepackage{csquotes}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{siunitx}
-\usepackage{amsmath,amssymb}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{listings}
-\usepackage{nomencl}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\makenomenclature
-\usepackage[
-  backend=biber,
-  style=numeric,
-  sorting=nyt
-]{biblatex}
-\addbibresource{references.bib}
-
-% Listings config
-\lstset{
-  basicstyle=\ttfamily\small,
-  numbers=left,
-  numberstyle=\tiny,
-  columns=fullflexible,
-  frame=single,
-  breaklines=true,
-  tabsize=2
-}
-
-%───────── Template, covers, back cover ────────────────────────────────
-\usepackage{template/sty_files/template-TFGspanish-uma}
-
-\usepackage{template/sty_files/cotutor_cover-blueuma}
-\usepackage{template/sty_files/cotutor_cover-whiteuma}
-
-\usepackage{template/sty_files/backcover-uma}
-
-%======================================================================
-\begin{document}
-
-%────────────────────── Blue front cover (Cotutor) ───────────────────────
-
-\MakeBlueUMACover{
-  degree     = {Grado en Ingeniería del Software},
-  titleES    = {Recreación de exámenes psicotécnicos de conducción},
-  titleEN    = {Recreation of psychotechnical driving exams},
-  author     = {Pablo Luis Molina Blanes},
-  tutor      = {Cristian Martín Fernández},
-  cotutor= {Daniel Garrido Márquez},
-  dept       = {Departamento de Lenguajes y Ciencias de la Computación},
-  cityDate   = {Málaga, Junio, 2026},
-  logoLeft   = {template/logos/NEG-uma-logo.png},
-  logoRight  = {template/logos/NEG-etsi-logo.png}
-}
-
-%────────────────────── White front cover (Cotutor) ───────────────────────
-\MakeWhiteUMACover{
-  degree     = {Grado en Ingeniería del Software},
-  titleES    = {Recreación de exámenes psicotécnicos de conducción},
-  titleEN    = {Recreation of psychotechnical driving exams},
-  author     = {Pablo Luis Molina Blanes},
-  tutor      = {Cristian Martín Fernández},
-  cotutor= {Daniel Garrido Márquez},
-  dept       = {Departamento de Lenguajes y Ciencias de la Computación},
-  cityDate   = {Málaga, Junio, 2026},
-  defenseDate = {Julio, 2026},
-  logoLeft   = {template/logos/POS-uma-logo.png},
-  logoRight  = {template/logos/POS-etsi-logo.png}
-}
-
-\frontmatter
-
-%────────────────────── Abstracts ──────────────────────────────────────
-\renewcommand{\abstractname}{Resumen}
-
-
-%──────────────── Acknowledgments ───────────────────────────────────────
-\begin{umaacknowledgments}
-Agradezco su función a los tutores académicos de este proyecto. Agradezco el apoyo incondicional de mi familia. También me gustaría agradecer especialmente a todos los creadores de contenido tecnológico que hay en Internet; sin ellos, esto no habría sido posible. 
-\end{umaacknowledgments}
-
-%────────────────────── TOC and lists ──────────────────────────────────
-\clearpage
-\tableofcontents
-\clearpage
-\listoffigures
-\clearpage
-\listoftables
-\clearpage
-
-%────────────────────── Nomenclature ───────────────────────────────────
-
-\clearpage
-
-\mainmatter
-%────────────────────── Chapter 1 — Introduction ───────────────────────
-\chapter{Introducción}
-
-
-%────────────────────── Chapter 2 — Fundamentals ───────────────────────
-\chapter{Marco teórico}
-\section{Estado del arte}
-
-En el campo de los dispositivos para realizar test psicotécnicos a conductores, existen varios
-aparatos que realizan esta funcionalidad.
-
-\subsection{General ASDE}
-
-Originalmente conocidos como \textit{ASDE-Operator} hasta convertirse en la llamada \textit{General ASDE} a finales de 1988\cite{commodorearticle}, es una empresa dedicada al diseño, fabricación y mantenimiento de Productos Sanitarios, inscrita ante la AEMPS (Agencia Española del Medicamento y el Producto Sanitario); sus productos más conocidos son aquellos relativos al Reconocimiento Médico y Psicotécnico.
-
-Es una empresa con certificado ISO 9001, y desarrolla sus productos conforme a normativas europeas e internacionales; entre los que se incluye la Directiva Europea 93/42/CEE\cite{asde1}
-
-Su principal producto relativo a realizar reconocimientos psicotécnicos es el denominado Asde Driver Test N-845; basado en el programa predecesor Driver-Test, entonces desarrollado por el equipo compuesto por el profesor de la UPV (Universidad Politécnica de Madrid) Dr. Héctor Monterde i Bort, junto con José Urnaga.\cite{asde2}
-
-\subsection{LN Deter}
-
-El principal dispositivo de la compañía consiste en el LND-100; licenciado por la compañía LN Deter.
-
-\subsection{Técnicas y fórmulas matemáticas}
-
-\subsubsection{Media aritmética}
-
-La media aritmética es una técnica matemática perteneciente al campo de la estadística descriptiva.
-
-Esta técnica consiste en la suma de una colección de datos cuantitativos dividido por la cantidad de elementos contenidos dentro de la colección; se utiliza para informar sobre tendencias centrales de un conjunto de datos. Es vulnerable a valores extremos, haciéndola una métrica no robusta.
-
-Para un conjunto de datos $X = \{x_i\,\mid\, i \in S \subseteq \N \}$, se define la media aritmética como:
-
-\[{m}=\frac{1}{n}\left (\sum_{n = 1}^{n}x_i\right)=\frac{x_1+x_2+\dots+x_n}{n}\]
-
-\subsubsection{Porcentajes}
-
-\subsubsection{Detección de colisiones}
-
-\subsection{Técnicas y métricas cognitivo-psicológicas}
-
-\subsubsection{Tiempo de reacción}
-
-\subsubsection{Tiempo de anticipación}
-
-\subsubsection{Coordinación mano-ojo}
-
-\section{Metodología de desarrollo}
-
-La metodología de desarrollo principal que se ha utilizado para el proyecto ha sido la metodología Agile.
-
-Bajo la metodología Agile, se implementa el software a lo largo de una serie de sprints; en los que se especifican tareas a cumplir
-por cada sprint; y tras terminar el sprint, se evalua el trabajo realizado hasta entonces y se planifica el siguiente sprint.
-
-El trabajo se ha planificado de forma diaría, para lo cual se ha ido desarrollando una agenda con las tareas planificadas por cada día;
-y también de forma semanal, a partir de un calendario de uso personal.
-
-\section{Buenas prácticas y costumbres de desarrollo software}
-
-
-
-%────────────────────── Chapter 3 — Design ────────────────────────────
-\chapter{Diseño}
-\section{Diseño hardware}
-
-Con respecto al diseño del Hardware, se ha decidido utilizar una arquitectura basada en microcontroladores, los cuales reciben información de aparatos electrónicos.
-
-Se detalla más a fondo el hardware y los dispositivos electrónicos utilizados a lo largo del proyecto.
-
-\subsection{Electrónica}
-
-Se ha hecho uso de varios dispositivos electrónicos a lo largo del proyecto.
-
-Muchos de estos dispositivos consisten en sensores de determinadas cantidades, por ejemplo; el botón mide si se ha pulsado este o no.
-
-Abajo, se detallan los dispositivos electrónicos a los que se ha hecho uso a lo largo de este Proyecto de Fin de Carrera; junto con una breve explicación de su funcionamiento
-
-\subsubsection{Cables puente}
-
-Los cables puente es un tipo de cableado con un conector en cada punta. Estos cables suelen ser utilizados en placas breadboard para conectar dispositivos electrónicos que se encuentren en columnas distintas del breadboard.\cite{eswiki:161708674}
-
-\subsubsection{Placa de pruebas}
-
-Una Placa de pruebas, o mejor conocido por el anglicismo *breadboard*, es una placa electrónica que se utiliza para realizar circuitos electrónicos sin la necesidad de realizar soldaduras. Es generalmente utilizado en el desarrollo de prototipos, y contrasta con los circuitos soldados o circuitos impresos.\cite{eswiki:172543964}\cite{breadboard1}
-
-\subsubsection{Botón pulsador electrónico}
-
-Un button pulsador electrónico consiste en una resistencia que no deja pasar la corriente cuando se activa un pulsador.\cite{pushbuttonswitch}
-
-\subsubsection{Potenciómetro}
-
-Un potenciometro consiste en una resistencia que se puede configurar con un mango. Un potenciómetro puede cambiar su resistencia con respecto al ángulo de rotación de forma linear o logarítmica.\cite{potentiometer1}
-
-\subsubsection{Cableado USB (Universal Serial Bus)}
-
-Se utiliza un cable USB en este proyecto para realizar comunicación entre el dispositivo Raspberry Pi 5 y el dispositivo ESP-32 (se explicarán estos en la siguiente sección. 
-
-Este cable puede realizar funciones útiles en el desarrollo de sistemas empotrados; como cableado serial y de posibilidad de subir firmware a los microcontroladores. Es un cable muy versatil y de gran utilidad en el desarrollo de sistemas embebidos.
-
-El cable específico que se utiliza para el proyecto es un cable USB-C a USB.
-
-\subsection{Microcontroladores}
-
-Se ha utilizado un microcontrolador ESP-32 para el proyecto.
-
-\subsection{Ordenadores monoplaca}
-
-\section{Diseño software}
-\subsection{Sistemas empotrados}
-\subsection{Software de sistemas}
-\subsection{Web}
-\subsection{Datos}
-\subsection{Cloud}
-
-
-%────────────────────── Chapter 4 — Results ────────────────────────────
-\chapter{Funcionamiento}
-\section{Flujo de usuario}
-\section{Demo en YouTube}
-
-
-%────────────────────── Chapter 5 — Discussion ─────────────────────────
-\chapter{Conclusiones}
-
-
-%────────────────────── Appendices ─────────────────────────────────────
-\begin{umaappendices}
-
-\umaappendix{Manual de usuario}
-
-\umaappendix{Snippets de código interesantes}
-
-\section{SQL data pipeline}
-
-\section{Bash automation}
-
-\end{umaappendices}
-
-%────────────────────── Back cover and bibliography ────────────────────
-\backmatter
-\printbibliography[title={Bibliografía}]
-\cleardoublepage
-\MakeUMABackCover
-
-\end{document}
-% ======================================================================
+% ======================================================================\documentclass[12pt,a4paper,twoside,openright]{book}%───────── Auxiliary packages ──────────────────────────────────────────\usepackage{blindtext}\usepackage{mwe}\usepackage{csquotes}\usepackage{graphicx}\usepackage{booktabs}\usepackage{tabularx}\usepackage{siunitx}\usepackage{amsmath,amssymb}\usepackage{algorithm}\usepackage{algpseudocode}\usepackage{listings}\usepackage{nomencl}\newcommand{\N}{\mathbb{N}}\newcommand{\Z}{\mathbb{Z}}\newcommand{\Q}{\mathbb{Q}}\newcommand{\R}{\mathbb{R}}\newcommand{\C}{\mathbb{C}}\makenomenclature\usepackage[  backend=biber,  style=numeric,  sorting=nyt]{biblatex}\addbibresource{references.bib}% Listings config\lstset{  basicstyle=\ttfamily\small,  numbers=left,  numberstyle=\tiny,  columns=fullflexible,  frame=single,  breaklines=true,  tabsize=2}%───────── Template, covers, back cover ────────────────────────────────\usepackage{template/sty_files/template-TFGspanish-uma}\usepackage{template/sty_files/cotutor_cover-blueuma}\usepackage{template/sty_files/cotutor_cover-whiteuma}\usepackage{template/sty_files/backcover-uma}%======================================================================\begin{document}%────────────────────── Blue front cover (Cotutor) ───────────────────────\MakeBlueUMACover{  degree     = {Grado en Ingeniería del Software},  titleES    = {Recreación de exámenes psicotécnicos de conducción},  titleEN    = {Recreation of psychotechnical driving exams},  author     = {Pablo Luis Molina Blanes},  tutor      = {Cristian Martín Fernández},  cotutor= {Daniel Garrido Márquez},  dept       = {Departamento de Lenguajes y Ciencias de la Computación},  cityDate   = {Málaga, Junio, 2026},  logoLeft   = {template/logos/NEG-uma-logo.png},  logoRight  = {template/logos/NEG-etsi-logo.png}}%────────────────────── White front cover (Cotutor) ───────────────────────\MakeWhiteUMACover{  degree     = {Grado en Ingeniería del Software},  titleES    = {Recreación de exámenes psicotécnicos de conducción},  titleEN    = {Recreation of psychotechnical driving exams},  author     = {Pablo Luis Molina Blanes},  tutor      = {Cristian Martín Fernández},  cotutor= {Daniel Garrido Márquez},  dept       = {Departamento de Lenguajes y Ciencias de la Computación},  cityDate   = {Málaga, Junio, 2026},  defenseDate = {Julio, 2026},  logoLeft   = {template/logos/POS-uma-logo.png},  logoRight  = {template/logos/POS-etsi-logo.png}}\frontmatter%────────────────────── Abstracts ──────────────────────────────────────\renewcommand{\abstractname}{Resumen}%──────────────── Acknowledgments ───────────────────────────────────────\begin{umaacknowledgments}Agradezco su función a los tutores académicos de este proyecto. Agradezco el apoyo incondicional de mi familia. También me gustaría agradecer especialmente a todos los creadores de contenido tecnológico que hay en Internet; sin ellos, esto no habría sido posible. \end{umaacknowledgments}%────────────────────── TOC and lists ──────────────────────────────────\clearpage\tableofcontents\clearpage\listoffigures\clearpage\listoftables\clearpage%────────────────────── Nomenclature ───────────────────────────────────\clearpage\mainmatter%────────────────────── Chapter 1 — Introduction ───────────────────────\chapter{Introducción}%────────────────────── Chapter 2 — Fundamentals ───────────────────────\chapter{Marco teórico}\section{Estado del arte}En el campo de los dispositivos para realizar test psicotécnicos a conductores, existen variosaparatos que realizan esta funcionalidad.\subsection{General ASDE}Originalmente conocidos como \textit{ASDE-Operator} hasta convertirse en la llamada \textit{General ASDE} a finales de 1988\cite{commodorearticle}, es una empresa dedicada al diseño, fabricación y mantenimiento de Productos Sanitarios, inscrita ante la AEMPS (Agencia Española del Medicamento y el Producto Sanitario); sus productos más conocidos son aquellos relativos al Reconocimiento Médico y Psicotécnico.Es una empresa con certificado ISO 9001, y desarrolla sus productos conforme a normativas europeas e internacionales; entre los que se incluye la Directiva Europea 93/42/CEE\cite{asde1}Su principal producto relativo a realizar reconocimientos psicotécnicos es el denominado Asde Driver Test N-845; basado en el programa predecesor Driver-Test, entonces desarrollado por el equipo compuesto por el profesor de la UPV (Universidad Politécnica de Madrid) Dr. Héctor Monterde i Bort, junto con José Urnaga.\cite{asde2}\subsection{LN Deter}El principal dispositivo de la compañía consiste en el LND-100; licenciado por la compañía LN Deter.\subsection{Técnicas y fórmulas matemáticas}\subsubsection{Media aritmética}La media aritmética es una técnica matemática perteneciente al campo de la estadística descriptiva.Esta técnica consiste en la suma de una colección de datos cuantitativos dividido por la cantidad de elementos contenidos dentro de la colección; se utiliza para informar sobre tendencias centrales de un conjunto de datos. Es vulnerable a valores extremos, haciéndola una métrica no robusta.Para un conjunto de datos $X = \{x_i\,\mid\, i \in S \subseteq \N \}$, se define la media aritmética como:\[{m}=\frac{1}{n}\left (\sum_{n = 1}^{n}x_i\right)=\frac{x_1+x_2+\dots+x_n}{n}\]\subsubsection{Porcentajes}\subsubsection{Detección de colisiones}\subsection{Técnicas y métricas cognitivo-psicológicas}\subsubsection{Tiempo de reacción}\subsubsection{Tiempo de anticipación}\subsubsection{Coordinación mano-ojo}\section{Metodología de desarrollo}La metodología de desarrollo principal que se ha utilizado para el proyecto ha sido la metodología Agile.Bajo la metodología Agile, se implementa el software a lo largo de una serie de sprints; en los que se especifican tareas a cumplirpor cada sprint; y tras terminar el sprint, se evalua el trabajo realizado hasta entonces y se planifica el siguiente sprint.El trabajo se ha planificado de forma diaría, para lo cual se ha ido desarrollando una agenda con las tareas planificadas por cada día;y también de forma semanal, a partir de un calendario de uso personal.\section{Buenas prácticas y costumbres de desarrollo software}Se han tenido en cuenta varias prácticas importantes de desarrollo de software a lo largo de este proyecto\subsubsection{Pruebas}\subsubsection{Seguridad}\subsubsection{Rendimiento}\subsubsection{Documentación}%────────────────────── Chapter 3 — Design ────────────────────────────\chapter{Diseño}\section{Arquitectura general y otros aspectos generales}\section{Diseño hardware}Con respecto al diseño del Hardware, se ha decidido utilizar una arquitectura basada en microcontroladores, los cuales reciben información de aparatos electrónicos.Se detalla más a fondo el hardware y los dispositivos electrónicos utilizados a lo largo del proyecto.\subsection{Electrónica}Se ha hecho uso de varios dispositivos electrónicos a lo largo del proyecto.Muchos de estos dispositivos consisten en sensores de determinadas cantidades, por ejemplo; el botón mide si se ha pulsado este o no.Abajo, se detallan los dispositivos electrónicos a los que se ha hecho uso a lo largo de este Proyecto de Fin de Carrera; junto con una breve explicación de su funcionamiento\subsubsection{Cables puente}Los cables puente es un tipo de cableado con un conector en cada punta. Estos cables suelen ser utilizados en placas breadboard para conectar dispositivos electrónicos que se encuentren en columnas distintas del breadboard.\cite{eswiki:161708674}\subsubsection{Placa de pruebas}Una Placa de pruebas, o mejor conocido por el anglicismo *breadboard*, es una placa electrónica que se utiliza para realizar circuitos electrónicos sin la necesidad de realizar soldaduras. Es generalmente utilizado en el desarrollo de prototipos, y contrasta con los circuitos soldados o circuitos impresos.\cite{eswiki:172543964}\cite{breadboard1}\subsubsection{Botón pulsador electrónico}Un button pulsador electrónico consiste en una resistencia que no deja pasar la corriente cuando se activa un pulsador.\cite{pushbuttonswitch}\subsubsection{Potenciómetro}Un potenciometro consiste en una resistencia que se puede configurar con un mango. Un potenciómetro puede cambiar su resistencia con respecto al ángulo de rotación de forma linear o logarítmica.\cite{potentiometer1}\subsubsection{Cableado USB (Universal Serial Bus)}Se utiliza un cable USB en este proyecto para realizar comunicación entre el dispositivo Raspberry Pi 5 y el dispositivo ESP-32 (se explicarán estos en la siguiente sección. Este cable puede realizar funciones útiles en el desarrollo de sistemas empotrados; como cableado serial y de posibilidad de subir firmware a los microcontroladores. Es un cable muy versatil y de gran utilidad en el desarrollo de sistemas embebidos.El cable específico que se utiliza para el proyecto es un cable USB-C a USB.\subsection{Microcontroladores}Se ha utilizado un microcontrolador ESP-32 para el proyecto.\subsection{Ordenadores monoplaca}Se ha utilizado un dispositivo Raspberry PI 5 para realizar las funciones de computación general dentro del proyecto.\section{Diseño software}\subsection{Sistemas empotrados}\subsubsection{Arquitectura software}La arquitectura que se ha utilizado para el funcionamiento del software localizado en el sistema empotrado es una arquitectura \textbf{basada en módulos}.Es una arquitectura principalmente basada en polling, para recibir y actuar con respecto a eventos, ya sea su proveniencia desde el cable USB-to-UART conectado al dispositivo, o de los dispositivos electrónicos a los que se encuentra conectado el microcontrolador.No solo se reciben eventos; sino que la arquitectura también manda información a través del cable UART-to-USB para hacer conocer eventos que han ocurrido en el microcontrolador (valores de los potenciómetros recogidos en tiempo real, por ejemplo)\subsubsection{Requisitos identificados}Se han identificado los siguientes requisitos; dividiéndose estos en \textbf{funcionales} y en \textbf{no funcionales}.\textbf{Requisitos funcionales}Aquí destacan los siguientes requisitos:\begin{itemize}\item El microcontrolador debe ser capaz de recibir mensajes coherentes a partir del SBC (Single Board Computer)\item El microcontrolador debe poder detectar, en un plazo no superior a los 100 milisegundos, la pulsación de un botón electrónico físico por el usuario conectado a los pines GPIO del microcontrolador.\item El microcontrolador debe poder interpretar como valores digitales, en un plazo no superior a los 100 milisegundos, los valores de resistencia de dos potenciómetros conectados cada uno a pines independientes GPIO del microcontrolador.\end{itemize}\textbf{Requisitos no funcionales}Aquí destacan los siguientes requisitos\begin{itemize}  \item El sistema debe poder recibir información y tomar acción respecto a esta información, como mandarla a través del cable USB-to-UART al SBC, sin demora por encima de 300ms.  \item El sistema debe utilizar memoria de forma eficiente, favoreciendo el uso de memoria estática y espacio en memoria predecible a lo largo del flujo de vida de la aplicación\end{itemize}\subsubsection{Módulos de la aplicación}La aplicación se compone de 4 módulos principales; estos son los siguientes\textbf{Bucle principal}El bucle principal se implementa dentro del fichero localizado en la raiz del proyecto, y denominado \textbf{main.c}.Este bucle almacena tres mensajes, en codificación binaria \textit{UTF-8}, que indican acciones específicas a tomar al microcontrolador; principalmente, se indica a qué función relativa a la examinación se debe llamar debido a que una examinación va a comenzar de forma inminente en el sistema SBC, para inicializar la recepción de datos electrónicos relevantes a tal examinación.\textbf{Primera examinación}\textbf{Segunda examinación}\textbf{Utilidades relativas a dispositivos UART}\subsection{Software de sistemas}\subsubsection{Arquitectura software}La arquitectura que se ha utilizado para trabajar en el software de sistemas ha sido principalmente una \textbf{arquitectura modular}.Esta arquitectura se compone en la construcción de múltiples ejecutables, cada uno con funcionamiento independiente del otro, y ejecutados por separado. Todos los ejecutables menos el que renderiza la interfaz gráfica de usuario se comunican con una librería diseñada para poner en contacto cada examinación con el microcontrolador; permitiendo a estos enviar y recibir información de forma indirecta de los dispositivos electrónicos al igual que el microcontrolador.Al igual que la arquitectura software del sistema empotrado; esta también  se basa mucho en polling y en eventos; los cuales suelen ser enviados y recibidos de librerías externas; ya sea la librería de dispositivos UART, GTK o SFML.\subsubsection{Requisitos identificados}Se han identificado los siguientes requisitos; dividiéndose estos en \textbf{funcionales} y en \textbf{no funcionales}.\textbf{Requisitos funcionales}Aquí destacan los siguientes requisitos\begin{itemize}  \item Test\end{itemize}\textbf{Requisitos no funcionales}Aquí destacan los siguientes requisitos\begin{itemize}  \item Test\end{itemize}\subsubsection{Módulos de la aplicación}\subsection{Software de aplicación}\subsubsection{Arquitectura software}\subsubsection{Requisitos identificados}\subsubsection{Módulos de la aplicación}\subsection{Cloud}\subsubsection{Arquitectura software}\subsubsection{Requisitos identificados}\subsubsection{Módulos de la aplicación}%────────────────────── Chapter 4 — Resultados ────────────────────────────\chapter{Funcionamiento}\section{Flujo de usuario}\section{Demo en YouTube}%────────────────────── Chapter 5 — Discusión ─────────────────────────\chapter{Conclusiones}%────────────────────── Appendices ─────────────────────────────────────\begin{umaappendices}\umaappendix{Manual de usuario}\umaappendix{Snippets de código interesantes}\section{SQL data pipeline}\section{Bash automation}\end{umaappendices}%────────────────────── Back cover and bibliography ────────────────────\backmatter\printbibliography[title={Bibliografía}]\cleardoublepage\MakeUMABackCover\end{document}% ======================================================================
