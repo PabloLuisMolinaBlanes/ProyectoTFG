@@ -1,0 +1,23 @@
+{
+  "name": "generationofcryptographyanddatasending",
+  "version": "1.0.0",
+  "description": "Spike which generates encryption keys and sends them to cloud backend",
+  "keywords": [
+    "cryptography",
+    "bcrypt",
+    "encryption",
+    "security",
+    "cybersecurity"
+  ],
+  "license": "MIT",
+  "author": "Pablo Luis Molina Blanes",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^1.15.0",
+    "bcrypt": "^6.0.0"
+  }
+}

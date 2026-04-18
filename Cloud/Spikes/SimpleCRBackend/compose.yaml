@@ -1,0 +1,8 @@
+services:
+  db:
+    build: ./db
+  backend:
+    build: .
+    command: npm run build
+    ports:
+     - 3000:3000

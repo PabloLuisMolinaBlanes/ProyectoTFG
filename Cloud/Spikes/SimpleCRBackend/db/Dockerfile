@@ -1,0 +1,6 @@
+FROM mysql:latest
+
+ENV MYSQL_DATABASE=CloudDatabase \
+    MYSQL_ROOT_PASSWORD=root
+
+EXPOSE 3306
