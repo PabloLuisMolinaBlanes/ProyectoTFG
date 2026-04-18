@@ -11,13 +11,14 @@
   ],
   "license": "MIT",
   "author": "Pablo Luis Molina Blanes",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "dev": "npx tsc --build && node ./build/server.js",
     "build": "npx tsc --build"
   },
   "dependencies": {
+    "@prisma/adapter-mariadb": "^7.7.0",
     "@prisma/adapter-pg": "^7.7.0",
     "@prisma/client": "^7.7.0",
     "axios": "1.14.0",
