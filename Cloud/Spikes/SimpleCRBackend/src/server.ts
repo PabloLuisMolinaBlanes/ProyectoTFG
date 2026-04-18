@@ -1,7 +1,7 @@
 /*Imports*/
 import express from 'express'
 import cors from 'cors'
-import { PrismaClient, profile, test} from "./generated/prisma";
+import { PrismaClient } from "./generated/prisma";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 
 /*Database setup*/
@@ -15,7 +15,6 @@ const adapter = new PrismaMariaDb({
 const prisma : PrismaClient = new PrismaClient({ adapter });
 
 /*ORM functions*/
-
 async function createTest(id_received: string, hospital_password: string, first_exam: string, second_exam_first_potentio: string, second_exam_second_potentio: string) {
     const hospital_received = await prisma.profile.findFirst({
         where: {
