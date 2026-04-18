@@ -7,17 +7,17 @@ datasource db {
   provider = "mysql"
 }
 
-model Profile {
-  HospitalID Int    @id @default(autoincrement())
-  hospital   String @db.VarChar(100)
-  password   String @db.VarChar(100)
-  Test       Test[]
+model profile {
+  hospital_id Int    @id @default(autoincrement())
+  hospital    String @db.VarChar(100)
+  password    String @db.VarChar(100)
+  test        test[]
 }
 
-model Test {
+model test {
   id                           String  @id
   hospital_id                  Int
-  Profile                      Profile @relation(fields: [hospital_id], references: [HospitalID], onDelete: Cascade, map: "Hospital_FK")
+  profile                      profile @relation(fields: [hospital_id], references: [hospital_id], onDelete: Cascade, map: "Hospital_FK")
   results_reaction_time        String
   results_first_potentiometer  String
   results_second_potentiometer String

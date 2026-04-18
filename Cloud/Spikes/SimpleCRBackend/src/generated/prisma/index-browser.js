@@ -121,7 +121,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.ProfileScalarFieldEnum = {
-  HospitalID: 'HospitalID',
+  hospital_id: 'hospital_id',
   hospital: 'hospital',
   password: 'password'
 };
@@ -139,12 +139,12 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.ProfileOrderByRelevanceFieldEnum = {
+exports.Prisma.profileOrderByRelevanceFieldEnum = {
   hospital: 'hospital',
   password: 'password'
 };
 
-exports.Prisma.TestOrderByRelevanceFieldEnum = {
+exports.Prisma.testOrderByRelevanceFieldEnum = {
   id: 'id',
   results_reaction_time: 'results_reaction_time',
   results_first_potentiometer: 'results_first_potentiometer',
@@ -153,8 +153,8 @@ exports.Prisma.TestOrderByRelevanceFieldEnum = {
 
 
 exports.Prisma.ModelName = {
-  Profile: 'Profile',
-  Test: 'Test'
+  profile: 'profile',
+  test: 'test'
 };
 
 /**

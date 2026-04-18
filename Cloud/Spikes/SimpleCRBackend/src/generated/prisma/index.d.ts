@@ -14,15 +14,15 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Profile
+ * Model profile
  * 
  */
-export type Profile = $Result.DefaultSelection<Prisma.$ProfilePayload>
+export type profile = $Result.DefaultSelection<Prisma.$profilePayload>
 /**
- * Model Test
+ * Model test
  * 
  */
-export type Test = $Result.DefaultSelection<Prisma.$TestPayload>
+export type test = $Result.DefaultSelection<Prisma.$testPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -146,24 +146,24 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.profile`: Exposes CRUD operations for the **Profile** model.
+   * `prisma.profile`: Exposes CRUD operations for the **profile** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Profiles
     * const profiles = await prisma.profile.findMany()
     * ```
     */
-  get profile(): Prisma.ProfileDelegate<ExtArgs, ClientOptions>;
+  get profile(): Prisma.profileDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.test`: Exposes CRUD operations for the **Test** model.
+   * `prisma.test`: Exposes CRUD operations for the **test** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Tests
     * const tests = await prisma.test.findMany()
     * ```
     */
-  get test(): Prisma.TestDelegate<ExtArgs, ClientOptions>;
+  get test(): Prisma.testDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -598,8 +598,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Profile: 'Profile',
-    Test: 'Test'
+    profile: 'profile',
+    test: 'test'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -619,134 +619,134 @@ export namespace Prisma {
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Profile: {
-        payload: Prisma.$ProfilePayload<ExtArgs>
-        fields: Prisma.ProfileFieldRefs
+      profile: {
+        payload: Prisma.$profilePayload<ExtArgs>
+        fields: Prisma.profileFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ProfileFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload> | null
+            args: Prisma.profileFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profilePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ProfileFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+            args: Prisma.profileFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profilePayload>
           }
           findFirst: {
-            args: Prisma.ProfileFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload> | null
+            args: Prisma.profileFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profilePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ProfileFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+            args: Prisma.profileFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profilePayload>
           }
           findMany: {
-            args: Prisma.ProfileFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>[]
+            args: Prisma.profileFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profilePayload>[]
           }
           create: {
-            args: Prisma.ProfileCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+            args: Prisma.profileCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profilePayload>
           }
           createMany: {
-            args: Prisma.ProfileCreateManyArgs<ExtArgs>
+            args: Prisma.profileCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.ProfileDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+            args: Prisma.profileDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profilePayload>
           }
           update: {
-            args: Prisma.ProfileUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+            args: Prisma.profileUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profilePayload>
           }
           deleteMany: {
-            args: Prisma.ProfileDeleteManyArgs<ExtArgs>
+            args: Prisma.profileDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ProfileUpdateManyArgs<ExtArgs>
+            args: Prisma.profileUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.ProfileUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProfilePayload>
+            args: Prisma.profileUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$profilePayload>
           }
           aggregate: {
             args: Prisma.ProfileAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateProfile>
           }
           groupBy: {
-            args: Prisma.ProfileGroupByArgs<ExtArgs>
+            args: Prisma.profileGroupByArgs<ExtArgs>
             result: $Utils.Optional<ProfileGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ProfileCountArgs<ExtArgs>
+            args: Prisma.profileCountArgs<ExtArgs>
             result: $Utils.Optional<ProfileCountAggregateOutputType> | number
           }
         }
       }
-      Test: {
-        payload: Prisma.$TestPayload<ExtArgs>
-        fields: Prisma.TestFieldRefs
+      test: {
+        payload: Prisma.$testPayload<ExtArgs>
+        fields: Prisma.testFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.TestFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestPayload> | null
+            args: Prisma.testFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$testPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.TestFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestPayload>
+            args: Prisma.testFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$testPayload>
           }
           findFirst: {
-            args: Prisma.TestFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestPayload> | null
+            args: Prisma.testFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$testPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.TestFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestPayload>
+            args: Prisma.testFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$testPayload>
           }
           findMany: {
-            args: Prisma.TestFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestPayload>[]
+            args: Prisma.testFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$testPayload>[]
           }
           create: {
-            args: Prisma.TestCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestPayload>
+            args: Prisma.testCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$testPayload>
           }
           createMany: {
-            args: Prisma.TestCreateManyArgs<ExtArgs>
+            args: Prisma.testCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.TestDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestPayload>
+            args: Prisma.testDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$testPayload>
           }
           update: {
-            args: Prisma.TestUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestPayload>
+            args: Prisma.testUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$testPayload>
           }
           deleteMany: {
-            args: Prisma.TestDeleteManyArgs<ExtArgs>
+            args: Prisma.testDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.TestUpdateManyArgs<ExtArgs>
+            args: Prisma.testUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.TestUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestPayload>
+            args: Prisma.testUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$testPayload>
           }
           aggregate: {
             args: Prisma.TestAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateTest>
           }
           groupBy: {
-            args: Prisma.TestGroupByArgs<ExtArgs>
+            args: Prisma.testGroupByArgs<ExtArgs>
             result: $Utils.Optional<TestGroupByOutputType>[]
           }
           count: {
-            args: Prisma.TestCountArgs<ExtArgs>
+            args: Prisma.testCountArgs<ExtArgs>
             result: $Utils.Optional<TestCountAggregateOutputType> | number
           }
         }
@@ -859,8 +859,8 @@ export namespace Prisma {
     comments?: runtime.SqlCommenterPlugin[]
   }
   export type GlobalOmitConfig = {
-    profile?: ProfileOmit
-    test?: TestOmit
+    profile?: profileOmit
+    test?: testOmit
   }
 
   /* Types for Logging */
@@ -941,11 +941,11 @@ export namespace Prisma {
    */
 
   export type ProfileCountOutputType = {
-    Test: number
+    test: number
   }
 
   export type ProfileCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Test?: boolean | ProfileCountOutputTypeCountTestArgs
+    test?: boolean | ProfileCountOutputTypeCountTestArgs
   }
 
   // Custom InputTypes
@@ -963,7 +963,7 @@ export namespace Prisma {
    * ProfileCountOutputType without action
    */
   export type ProfileCountOutputTypeCountTestArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestWhereInput
+    where?: testWhereInput
   }
 
 
@@ -972,7 +972,7 @@ export namespace Prisma {
    */
 
   /**
-   * Model Profile
+   * Model profile
    */
 
   export type AggregateProfile = {
@@ -984,27 +984,27 @@ export namespace Prisma {
   }
 
   export type ProfileAvgAggregateOutputType = {
-    HospitalID: number | null
+    hospital_id: number | null
   }
 
   export type ProfileSumAggregateOutputType = {
-    HospitalID: number | null
+    hospital_id: number | null
   }
 
   export type ProfileMinAggregateOutputType = {
-    HospitalID: number | null
+    hospital_id: number | null
     hospital: string | null
     password: string | null
   }
 
   export type ProfileMaxAggregateOutputType = {
-    HospitalID: number | null
+    hospital_id: number | null
     hospital: string | null
     password: string | null
   }
 
   export type ProfileCountAggregateOutputType = {
-    HospitalID: number
+    hospital_id: number
     hospital: number
     password: number
     _all: number
@@ -1012,27 +1012,27 @@ export namespace Prisma {
 
 
   export type ProfileAvgAggregateInputType = {
-    HospitalID?: true
+    hospital_id?: true
   }
 
   export type ProfileSumAggregateInputType = {
-    HospitalID?: true
+    hospital_id?: true
   }
 
   export type ProfileMinAggregateInputType = {
-    HospitalID?: true
+    hospital_id?: true
     hospital?: true
     password?: true
   }
 
   export type ProfileMaxAggregateInputType = {
-    HospitalID?: true
+    hospital_id?: true
     hospital?: true
     password?: true
   }
 
   export type ProfileCountAggregateInputType = {
-    HospitalID?: true
+    hospital_id?: true
     hospital?: true
     password?: true
     _all?: true
@@ -1040,37 +1040,37 @@ export namespace Prisma {
 
   export type ProfileAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Profile to aggregate.
+     * Filter which profile to aggregate.
      */
-    where?: ProfileWhereInput
+    where?: profileWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Profiles to fetch.
+     * Determine the order of profiles to fetch.
      */
-    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
+    orderBy?: profileOrderByWithRelationInput | profileOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ProfileWhereUniqueInput
+    cursor?: profileWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Profiles from the position of the cursor.
+     * Take `±n` profiles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Profiles.
+     * Skip the first `n` profiles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Profiles
+     * Count returned profiles
     **/
     _count?: true | ProfileCountAggregateInputType
     /**
@@ -1110,11 +1110,11 @@ export namespace Prisma {
 
 
 
-  export type ProfileGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProfileWhereInput
-    orderBy?: ProfileOrderByWithAggregationInput | ProfileOrderByWithAggregationInput[]
+  export type profileGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: profileWhereInput
+    orderBy?: profileOrderByWithAggregationInput | profileOrderByWithAggregationInput[]
     by: ProfileScalarFieldEnum[] | ProfileScalarFieldEnum
-    having?: ProfileScalarWhereWithAggregatesInput
+    having?: profileScalarWhereWithAggregatesInput
     take?: number
     skip?: number
     _count?: ProfileCountAggregateInputType | true
@@ -1125,7 +1125,7 @@ export namespace Prisma {
   }
 
   export type ProfileGroupByOutputType = {
-    HospitalID: number
+    hospital_id: number
     hospital: string
     password: string
     _count: ProfileCountAggregateOutputType | null
@@ -1135,7 +1135,7 @@ export namespace Prisma {
     _max: ProfileMaxAggregateOutputType | null
   }
 
-  type GetProfileGroupByPayload<T extends ProfileGroupByArgs> = Prisma.PrismaPromise<
+  type GetProfileGroupByPayload<T extends profileGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<ProfileGroupByOutputType, T['by']> &
         {
@@ -1149,53 +1149,53 @@ export namespace Prisma {
     >
 
 
-  export type ProfileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    HospitalID?: boolean
+  export type profileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    hospital_id?: boolean
     hospital?: boolean
     password?: boolean
-    Test?: boolean | Profile$TestArgs<ExtArgs>
+    test?: boolean | profile$testArgs<ExtArgs>
     _count?: boolean | ProfileCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
 
 
-  export type ProfileSelectScalar = {
-    HospitalID?: boolean
+  export type profileSelectScalar = {
+    hospital_id?: boolean
     hospital?: boolean
     password?: boolean
   }
 
-  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"HospitalID" | "hospital" | "password", ExtArgs["result"]["profile"]>
-  export type ProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Test?: boolean | Profile$TestArgs<ExtArgs>
+  export type profileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"hospital_id" | "hospital" | "password", ExtArgs["result"]["profile"]>
+  export type profileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    test?: boolean | profile$testArgs<ExtArgs>
     _count?: boolean | ProfileCountOutputTypeDefaultArgs<ExtArgs>
   }
 
-  export type $ProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Profile"
+  export type $profilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "profile"
     objects: {
-      Test: Prisma.$TestPayload<ExtArgs>[]
+      test: Prisma.$testPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      HospitalID: number
+      hospital_id: number
       hospital: string
       password: string
     }, ExtArgs["result"]["profile"]>
     composites: {}
   }
 
-  type ProfileGetPayload<S extends boolean | null | undefined | ProfileDefaultArgs> = $Result.GetResult<Prisma.$ProfilePayload, S>
+  type profileGetPayload<S extends boolean | null | undefined | profileDefaultArgs> = $Result.GetResult<Prisma.$profilePayload, S>
 
-  type ProfileCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ProfileFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type profileCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<profileFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: ProfileCountAggregateInputType | true
     }
 
-  export interface ProfileDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Profile'], meta: { name: 'Profile' } }
+  export interface profileDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['profile'], meta: { name: 'profile' } }
     /**
      * Find zero or one Profile that matches the filter.
-     * @param {ProfileFindUniqueArgs} args - Arguments to find a Profile
+     * @param {profileFindUniqueArgs} args - Arguments to find a Profile
      * @example
      * // Get one Profile
      * const profile = await prisma.profile.findUnique({
@@ -1204,12 +1204,12 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends ProfileFindUniqueArgs>(args: SelectSubset<T, ProfileFindUniqueArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends profileFindUniqueArgs>(args: SelectSubset<T, profileFindUniqueArgs<ExtArgs>>): Prisma__profileClient<$Result.GetResult<Prisma.$profilePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Profile that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ProfileFindUniqueOrThrowArgs} args - Arguments to find a Profile
+     * @param {profileFindUniqueOrThrowArgs} args - Arguments to find a Profile
      * @example
      * // Get one Profile
      * const profile = await prisma.profile.findUniqueOrThrow({
@@ -1218,13 +1218,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ProfileFindUniqueOrThrowArgs>(args: SelectSubset<T, ProfileFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends profileFindUniqueOrThrowArgs>(args: SelectSubset<T, profileFindUniqueOrThrowArgs<ExtArgs>>): Prisma__profileClient<$Result.GetResult<Prisma.$profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Profile that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileFindFirstArgs} args - Arguments to find a Profile
+     * @param {profileFindFirstArgs} args - Arguments to find a Profile
      * @example
      * // Get one Profile
      * const profile = await prisma.profile.findFirst({
@@ -1233,14 +1233,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends ProfileFindFirstArgs>(args?: SelectSubset<T, ProfileFindFirstArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends profileFindFirstArgs>(args?: SelectSubset<T, profileFindFirstArgs<ExtArgs>>): Prisma__profileClient<$Result.GetResult<Prisma.$profilePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Profile that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileFindFirstOrThrowArgs} args - Arguments to find a Profile
+     * @param {profileFindFirstOrThrowArgs} args - Arguments to find a Profile
      * @example
      * // Get one Profile
      * const profile = await prisma.profile.findFirstOrThrow({
@@ -1249,13 +1249,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends ProfileFindFirstOrThrowArgs>(args?: SelectSubset<T, ProfileFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends profileFindFirstOrThrowArgs>(args?: SelectSubset<T, profileFindFirstOrThrowArgs<ExtArgs>>): Prisma__profileClient<$Result.GetResult<Prisma.$profilePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Profiles that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {profileFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Profiles
      * const profiles = await prisma.profile.findMany()
@@ -1263,15 +1263,15 @@ export namespace Prisma {
      * // Get first 10 Profiles
      * const profiles = await prisma.profile.findMany({ take: 10 })
      * 
-     * // Only select the `HospitalID`
-     * const profileWithHospitalIDOnly = await prisma.profile.findMany({ select: { HospitalID: true } })
+     * // Only select the `hospital_id`
+     * const profileWithHospital_idOnly = await prisma.profile.findMany({ select: { hospital_id: true } })
      * 
      */
-    findMany<T extends ProfileFindManyArgs>(args?: SelectSubset<T, ProfileFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends profileFindManyArgs>(args?: SelectSubset<T, profileFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$profilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a Profile.
-     * @param {ProfileCreateArgs} args - Arguments to create a Profile.
+     * @param {profileCreateArgs} args - Arguments to create a Profile.
      * @example
      * // Create one Profile
      * const Profile = await prisma.profile.create({
@@ -1281,11 +1281,11 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends ProfileCreateArgs>(args: SelectSubset<T, ProfileCreateArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends profileCreateArgs>(args: SelectSubset<T, profileCreateArgs<ExtArgs>>): Prisma__profileClient<$Result.GetResult<Prisma.$profilePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Profiles.
-     * @param {ProfileCreateManyArgs} args - Arguments to create many Profiles.
+     * @param {profileCreateManyArgs} args - Arguments to create many Profiles.
      * @example
      * // Create many Profiles
      * const profile = await prisma.profile.createMany({
@@ -1295,11 +1295,11 @@ export namespace Prisma {
      * })
      *     
      */
-    createMany<T extends ProfileCreateManyArgs>(args?: SelectSubset<T, ProfileCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends profileCreateManyArgs>(args?: SelectSubset<T, profileCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Delete a Profile.
-     * @param {ProfileDeleteArgs} args - Arguments to delete one Profile.
+     * @param {profileDeleteArgs} args - Arguments to delete one Profile.
      * @example
      * // Delete one Profile
      * const Profile = await prisma.profile.delete({
@@ -1309,11 +1309,11 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends ProfileDeleteArgs>(args: SelectSubset<T, ProfileDeleteArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends profileDeleteArgs>(args: SelectSubset<T, profileDeleteArgs<ExtArgs>>): Prisma__profileClient<$Result.GetResult<Prisma.$profilePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Profile.
-     * @param {ProfileUpdateArgs} args - Arguments to update one Profile.
+     * @param {profileUpdateArgs} args - Arguments to update one Profile.
      * @example
      * // Update one Profile
      * const profile = await prisma.profile.update({
@@ -1326,11 +1326,11 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ProfileUpdateArgs>(args: SelectSubset<T, ProfileUpdateArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends profileUpdateArgs>(args: SelectSubset<T, profileUpdateArgs<ExtArgs>>): Prisma__profileClient<$Result.GetResult<Prisma.$profilePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Profiles.
-     * @param {ProfileDeleteManyArgs} args - Arguments to filter Profiles to delete.
+     * @param {profileDeleteManyArgs} args - Arguments to filter Profiles to delete.
      * @example
      * // Delete a few Profiles
      * const { count } = await prisma.profile.deleteMany({
@@ -1340,13 +1340,13 @@ export namespace Prisma {
      * })
      * 
      */
-    deleteMany<T extends ProfileDeleteManyArgs>(args?: SelectSubset<T, ProfileDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends profileDeleteManyArgs>(args?: SelectSubset<T, profileDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Profiles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {profileUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Profiles
      * const profile = await prisma.profile.updateMany({
@@ -1359,11 +1359,11 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ProfileUpdateManyArgs>(args: SelectSubset<T, ProfileUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends profileUpdateManyArgs>(args: SelectSubset<T, profileUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Profile.
-     * @param {ProfileUpsertArgs} args - Arguments to update or create a Profile.
+     * @param {profileUpsertArgs} args - Arguments to update or create a Profile.
      * @example
      * // Update or create a Profile
      * const profile = await prisma.profile.upsert({
@@ -1378,14 +1378,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends ProfileUpsertArgs>(args: SelectSubset<T, ProfileUpsertArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends profileUpsertArgs>(args: SelectSubset<T, profileUpsertArgs<ExtArgs>>): Prisma__profileClient<$Result.GetResult<Prisma.$profilePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Profiles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileCountArgs} args - Arguments to filter Profiles to count.
+     * @param {profileCountArgs} args - Arguments to filter Profiles to count.
      * @example
      * // Count the number of Profiles
      * const count = await prisma.profile.count({
@@ -1394,8 +1394,8 @@ export namespace Prisma {
      *   }
      * })
     **/
-    count<T extends ProfileCountArgs>(
-      args?: Subset<T, ProfileCountArgs>,
+    count<T extends profileCountArgs>(
+      args?: Subset<T, profileCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
@@ -1434,7 +1434,7 @@ export namespace Prisma {
      * Group by Profile.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProfileGroupByArgs} args - Group by arguments.
+     * @param {profileGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1449,14 +1449,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ProfileGroupByArgs,
+      T extends profileGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ProfileGroupByArgs['orderBy'] }
-        : { orderBy?: ProfileGroupByArgs['orderBy'] },
+        ? { orderBy: profileGroupByArgs['orderBy'] }
+        : { orderBy?: profileGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1505,22 +1505,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ProfileGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProfileGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, profileGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProfileGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Profile model
+   * Fields of the profile model
    */
-  readonly fields: ProfileFieldRefs;
+  readonly fields: profileFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Profile.
+   * The delegate class that acts as a "Promise-like" for profile.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__profileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Test<T extends Profile$TestArgs<ExtArgs> = {}>(args?: Subset<T, Profile$TestArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    test<T extends profile$testArgs<ExtArgs> = {}>(args?: Subset<T, profile$testArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1547,404 +1547,404 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Profile model
+   * Fields of the profile model
    */
-  interface ProfileFieldRefs {
-    readonly HospitalID: FieldRef<"Profile", 'Int'>
-    readonly hospital: FieldRef<"Profile", 'String'>
-    readonly password: FieldRef<"Profile", 'String'>
+  interface profileFieldRefs {
+    readonly hospital_id: FieldRef<"profile", 'Int'>
+    readonly hospital: FieldRef<"profile", 'String'>
+    readonly password: FieldRef<"profile", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * Profile findUnique
+   * profile findUnique
    */
-  export type ProfileFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Profile
+     * Select specific fields to fetch from the profile
      */
-    select?: ProfileSelect<ExtArgs> | null
+    select?: profileSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Profile
+     * Omit specific fields from the profile
      */
-    omit?: ProfileOmit<ExtArgs> | null
+    omit?: profileOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProfileInclude<ExtArgs> | null
+    include?: profileInclude<ExtArgs> | null
     /**
-     * Filter, which Profile to fetch.
+     * Filter, which profile to fetch.
      */
-    where: ProfileWhereUniqueInput
+    where: profileWhereUniqueInput
   }
 
   /**
-   * Profile findUniqueOrThrow
+   * profile findUniqueOrThrow
    */
-  export type ProfileFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Profile
+     * Select specific fields to fetch from the profile
      */
-    select?: ProfileSelect<ExtArgs> | null
+    select?: profileSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Profile
+     * Omit specific fields from the profile
      */
-    omit?: ProfileOmit<ExtArgs> | null
+    omit?: profileOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProfileInclude<ExtArgs> | null
+    include?: profileInclude<ExtArgs> | null
     /**
-     * Filter, which Profile to fetch.
+     * Filter, which profile to fetch.
      */
-    where: ProfileWhereUniqueInput
+    where: profileWhereUniqueInput
   }
 
   /**
-   * Profile findFirst
+   * profile findFirst
    */
-  export type ProfileFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Profile
+     * Select specific fields to fetch from the profile
      */
-    select?: ProfileSelect<ExtArgs> | null
+    select?: profileSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Profile
+     * Omit specific fields from the profile
      */
-    omit?: ProfileOmit<ExtArgs> | null
+    omit?: profileOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProfileInclude<ExtArgs> | null
+    include?: profileInclude<ExtArgs> | null
     /**
-     * Filter, which Profile to fetch.
+     * Filter, which profile to fetch.
      */
-    where?: ProfileWhereInput
+    where?: profileWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Profiles to fetch.
+     * Determine the order of profiles to fetch.
      */
-    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
+    orderBy?: profileOrderByWithRelationInput | profileOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Profiles.
+     * Sets the position for searching for profiles.
      */
-    cursor?: ProfileWhereUniqueInput
+    cursor?: profileWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Profiles from the position of the cursor.
+     * Take `±n` profiles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Profiles.
+     * Skip the first `n` profiles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Profiles.
+     * Filter by unique combinations of profiles.
      */
     distinct?: ProfileScalarFieldEnum | ProfileScalarFieldEnum[]
   }
 
   /**
-   * Profile findFirstOrThrow
+   * profile findFirstOrThrow
    */
-  export type ProfileFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Profile
+     * Select specific fields to fetch from the profile
      */
-    select?: ProfileSelect<ExtArgs> | null
+    select?: profileSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Profile
+     * Omit specific fields from the profile
      */
-    omit?: ProfileOmit<ExtArgs> | null
+    omit?: profileOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProfileInclude<ExtArgs> | null
+    include?: profileInclude<ExtArgs> | null
     /**
-     * Filter, which Profile to fetch.
+     * Filter, which profile to fetch.
      */
-    where?: ProfileWhereInput
+    where?: profileWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Profiles to fetch.
+     * Determine the order of profiles to fetch.
      */
-    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
+    orderBy?: profileOrderByWithRelationInput | profileOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Profiles.
+     * Sets the position for searching for profiles.
      */
-    cursor?: ProfileWhereUniqueInput
+    cursor?: profileWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Profiles from the position of the cursor.
+     * Take `±n` profiles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Profiles.
+     * Skip the first `n` profiles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Profiles.
+     * Filter by unique combinations of profiles.
      */
     distinct?: ProfileScalarFieldEnum | ProfileScalarFieldEnum[]
   }
 
   /**
-   * Profile findMany
+   * profile findMany
    */
-  export type ProfileFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Profile
+     * Select specific fields to fetch from the profile
      */
-    select?: ProfileSelect<ExtArgs> | null
+    select?: profileSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Profile
+     * Omit specific fields from the profile
      */
-    omit?: ProfileOmit<ExtArgs> | null
+    omit?: profileOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProfileInclude<ExtArgs> | null
+    include?: profileInclude<ExtArgs> | null
     /**
-     * Filter, which Profiles to fetch.
+     * Filter, which profiles to fetch.
      */
-    where?: ProfileWhereInput
+    where?: profileWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Profiles to fetch.
+     * Determine the order of profiles to fetch.
      */
-    orderBy?: ProfileOrderByWithRelationInput | ProfileOrderByWithRelationInput[]
+    orderBy?: profileOrderByWithRelationInput | profileOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Profiles.
+     * Sets the position for listing profiles.
      */
-    cursor?: ProfileWhereUniqueInput
+    cursor?: profileWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Profiles from the position of the cursor.
+     * Take `±n` profiles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Profiles.
+     * Skip the first `n` profiles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Profiles.
+     * Filter by unique combinations of profiles.
      */
     distinct?: ProfileScalarFieldEnum | ProfileScalarFieldEnum[]
   }
 
   /**
-   * Profile create
+   * profile create
    */
-  export type ProfileCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Profile
+     * Select specific fields to fetch from the profile
      */
-    select?: ProfileSelect<ExtArgs> | null
+    select?: profileSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Profile
+     * Omit specific fields from the profile
      */
-    omit?: ProfileOmit<ExtArgs> | null
+    omit?: profileOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProfileInclude<ExtArgs> | null
+    include?: profileInclude<ExtArgs> | null
     /**
-     * The data needed to create a Profile.
+     * The data needed to create a profile.
      */
-    data: XOR<ProfileCreateInput, ProfileUncheckedCreateInput>
+    data: XOR<profileCreateInput, profileUncheckedCreateInput>
   }
 
   /**
-   * Profile createMany
+   * profile createMany
    */
-  export type ProfileCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Profiles.
+     * The data used to create many profiles.
      */
-    data: ProfileCreateManyInput | ProfileCreateManyInput[]
+    data: profileCreateManyInput | profileCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Profile update
+   * profile update
    */
-  export type ProfileUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Profile
+     * Select specific fields to fetch from the profile
      */
-    select?: ProfileSelect<ExtArgs> | null
+    select?: profileSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Profile
+     * Omit specific fields from the profile
      */
-    omit?: ProfileOmit<ExtArgs> | null
+    omit?: profileOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProfileInclude<ExtArgs> | null
+    include?: profileInclude<ExtArgs> | null
     /**
-     * The data needed to update a Profile.
+     * The data needed to update a profile.
      */
-    data: XOR<ProfileUpdateInput, ProfileUncheckedUpdateInput>
+    data: XOR<profileUpdateInput, profileUncheckedUpdateInput>
     /**
-     * Choose, which Profile to update.
+     * Choose, which profile to update.
      */
-    where: ProfileWhereUniqueInput
+    where: profileWhereUniqueInput
   }
 
   /**
-   * Profile updateMany
+   * profile updateMany
    */
-  export type ProfileUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Profiles.
+     * The data used to update profiles.
      */
-    data: XOR<ProfileUpdateManyMutationInput, ProfileUncheckedUpdateManyInput>
+    data: XOR<profileUpdateManyMutationInput, profileUncheckedUpdateManyInput>
     /**
-     * Filter which Profiles to update
+     * Filter which profiles to update
      */
-    where?: ProfileWhereInput
+    where?: profileWhereInput
     /**
-     * Limit how many Profiles to update.
+     * Limit how many profiles to update.
      */
     limit?: number
   }
 
   /**
-   * Profile upsert
+   * profile upsert
    */
-  export type ProfileUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Profile
+     * Select specific fields to fetch from the profile
      */
-    select?: ProfileSelect<ExtArgs> | null
+    select?: profileSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Profile
+     * Omit specific fields from the profile
      */
-    omit?: ProfileOmit<ExtArgs> | null
+    omit?: profileOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProfileInclude<ExtArgs> | null
+    include?: profileInclude<ExtArgs> | null
     /**
-     * The filter to search for the Profile to update in case it exists.
+     * The filter to search for the profile to update in case it exists.
      */
-    where: ProfileWhereUniqueInput
+    where: profileWhereUniqueInput
     /**
-     * In case the Profile found by the `where` argument doesn't exist, create a new Profile with this data.
+     * In case the profile found by the `where` argument doesn't exist, create a new profile with this data.
      */
-    create: XOR<ProfileCreateInput, ProfileUncheckedCreateInput>
+    create: XOR<profileCreateInput, profileUncheckedCreateInput>
     /**
-     * In case the Profile was found with the provided `where` argument, update it with this data.
+     * In case the profile was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ProfileUpdateInput, ProfileUncheckedUpdateInput>
+    update: XOR<profileUpdateInput, profileUncheckedUpdateInput>
   }
 
   /**
-   * Profile delete
+   * profile delete
    */
-  export type ProfileDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Profile
+     * Select specific fields to fetch from the profile
      */
-    select?: ProfileSelect<ExtArgs> | null
+    select?: profileSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Profile
+     * Omit specific fields from the profile
      */
-    omit?: ProfileOmit<ExtArgs> | null
+    omit?: profileOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProfileInclude<ExtArgs> | null
+    include?: profileInclude<ExtArgs> | null
     /**
-     * Filter which Profile to delete.
+     * Filter which profile to delete.
      */
-    where: ProfileWhereUniqueInput
+    where: profileWhereUniqueInput
   }
 
   /**
-   * Profile deleteMany
+   * profile deleteMany
    */
-  export type ProfileDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Profiles to delete
+     * Filter which profiles to delete
      */
-    where?: ProfileWhereInput
+    where?: profileWhereInput
     /**
-     * Limit how many Profiles to delete.
+     * Limit how many profiles to delete.
      */
     limit?: number
   }
 
   /**
-   * Profile.Test
+   * profile.test
    */
-  export type Profile$TestArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profile$testArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
-    where?: TestWhereInput
-    orderBy?: TestOrderByWithRelationInput | TestOrderByWithRelationInput[]
-    cursor?: TestWhereUniqueInput
+    include?: testInclude<ExtArgs> | null
+    where?: testWhereInput
+    orderBy?: testOrderByWithRelationInput | testOrderByWithRelationInput[]
+    cursor?: testWhereUniqueInput
     take?: number
     skip?: number
     distinct?: TestScalarFieldEnum | TestScalarFieldEnum[]
   }
 
   /**
-   * Profile without action
+   * profile without action
    */
-  export type ProfileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type profileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Profile
+     * Select specific fields to fetch from the profile
      */
-    select?: ProfileSelect<ExtArgs> | null
+    select?: profileSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Profile
+     * Omit specific fields from the profile
      */
-    omit?: ProfileOmit<ExtArgs> | null
+    omit?: profileOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProfileInclude<ExtArgs> | null
+    include?: profileInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Test
+   * Model test
    */
 
   export type AggregateTest = {
@@ -2024,37 +2024,37 @@ export namespace Prisma {
 
   export type TestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Test to aggregate.
+     * Filter which test to aggregate.
      */
-    where?: TestWhereInput
+    where?: testWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Tests to fetch.
+     * Determine the order of tests to fetch.
      */
-    orderBy?: TestOrderByWithRelationInput | TestOrderByWithRelationInput[]
+    orderBy?: testOrderByWithRelationInput | testOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: TestWhereUniqueInput
+    cursor?: testWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Tests from the position of the cursor.
+     * Take `±n` tests from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Tests.
+     * Skip the first `n` tests.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Tests
+     * Count returned tests
     **/
     _count?: true | TestCountAggregateInputType
     /**
@@ -2094,11 +2094,11 @@ export namespace Prisma {
 
 
 
-  export type TestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestWhereInput
-    orderBy?: TestOrderByWithAggregationInput | TestOrderByWithAggregationInput[]
+  export type testGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: testWhereInput
+    orderBy?: testOrderByWithAggregationInput | testOrderByWithAggregationInput[]
     by: TestScalarFieldEnum[] | TestScalarFieldEnum
-    having?: TestScalarWhereWithAggregatesInput
+    having?: testScalarWhereWithAggregatesInput
     take?: number
     skip?: number
     _count?: TestCountAggregateInputType | true
@@ -2121,7 +2121,7 @@ export namespace Prisma {
     _max: TestMaxAggregateOutputType | null
   }
 
-  type GetTestGroupByPayload<T extends TestGroupByArgs> = Prisma.PrismaPromise<
+  type GetTestGroupByPayload<T extends testGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<TestGroupByOutputType, T['by']> &
         {
@@ -2135,18 +2135,18 @@ export namespace Prisma {
     >
 
 
-  export type TestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type testSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     hospital_id?: boolean
     results_reaction_time?: boolean
     results_first_potentiometer?: boolean
     results_second_potentiometer?: boolean
-    Profile?: boolean | ProfileDefaultArgs<ExtArgs>
+    profile?: boolean | profileDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["test"]>
 
 
 
-  export type TestSelectScalar = {
+  export type testSelectScalar = {
     id?: boolean
     hospital_id?: boolean
     results_reaction_time?: boolean
@@ -2154,15 +2154,15 @@ export namespace Prisma {
     results_second_potentiometer?: boolean
   }
 
-  export type TestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hospital_id" | "results_reaction_time" | "results_first_potentiometer" | "results_second_potentiometer", ExtArgs["result"]["test"]>
-  export type TestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Profile?: boolean | ProfileDefaultArgs<ExtArgs>
+  export type testOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hospital_id" | "results_reaction_time" | "results_first_potentiometer" | "results_second_potentiometer", ExtArgs["result"]["test"]>
+  export type testInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    profile?: boolean | profileDefaultArgs<ExtArgs>
   }
 
-  export type $TestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Test"
+  export type $testPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "test"
     objects: {
-      Profile: Prisma.$ProfilePayload<ExtArgs>
+      profile: Prisma.$profilePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2174,18 +2174,18 @@ export namespace Prisma {
     composites: {}
   }
 
-  type TestGetPayload<S extends boolean | null | undefined | TestDefaultArgs> = $Result.GetResult<Prisma.$TestPayload, S>
+  type testGetPayload<S extends boolean | null | undefined | testDefaultArgs> = $Result.GetResult<Prisma.$testPayload, S>
 
-  type TestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type testCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<testFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: TestCountAggregateInputType | true
     }
 
-  export interface TestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Test'], meta: { name: 'Test' } }
+  export interface testDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['test'], meta: { name: 'test' } }
     /**
      * Find zero or one Test that matches the filter.
-     * @param {TestFindUniqueArgs} args - Arguments to find a Test
+     * @param {testFindUniqueArgs} args - Arguments to find a Test
      * @example
      * // Get one Test
      * const test = await prisma.test.findUnique({
@@ -2194,12 +2194,12 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends TestFindUniqueArgs>(args: SelectSubset<T, TestFindUniqueArgs<ExtArgs>>): Prisma__TestClient<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends testFindUniqueArgs>(args: SelectSubset<T, testFindUniqueArgs<ExtArgs>>): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Test that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {TestFindUniqueOrThrowArgs} args - Arguments to find a Test
+     * @param {testFindUniqueOrThrowArgs} args - Arguments to find a Test
      * @example
      * // Get one Test
      * const test = await prisma.test.findUniqueOrThrow({
@@ -2208,13 +2208,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends TestFindUniqueOrThrowArgs>(args: SelectSubset<T, TestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TestClient<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends testFindUniqueOrThrowArgs>(args: SelectSubset<T, testFindUniqueOrThrowArgs<ExtArgs>>): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Test that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestFindFirstArgs} args - Arguments to find a Test
+     * @param {testFindFirstArgs} args - Arguments to find a Test
      * @example
      * // Get one Test
      * const test = await prisma.test.findFirst({
@@ -2223,14 +2223,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends TestFindFirstArgs>(args?: SelectSubset<T, TestFindFirstArgs<ExtArgs>>): Prisma__TestClient<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends testFindFirstArgs>(args?: SelectSubset<T, testFindFirstArgs<ExtArgs>>): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Test that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestFindFirstOrThrowArgs} args - Arguments to find a Test
+     * @param {testFindFirstOrThrowArgs} args - Arguments to find a Test
      * @example
      * // Get one Test
      * const test = await prisma.test.findFirstOrThrow({
@@ -2239,13 +2239,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends TestFindFirstOrThrowArgs>(args?: SelectSubset<T, TestFindFirstOrThrowArgs<ExtArgs>>): Prisma__TestClient<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends testFindFirstOrThrowArgs>(args?: SelectSubset<T, testFindFirstOrThrowArgs<ExtArgs>>): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Tests that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {testFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Tests
      * const tests = await prisma.test.findMany()
@@ -2257,11 +2257,11 @@ export namespace Prisma {
      * const testWithIdOnly = await prisma.test.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends TestFindManyArgs>(args?: SelectSubset<T, TestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends testFindManyArgs>(args?: SelectSubset<T, testFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a Test.
-     * @param {TestCreateArgs} args - Arguments to create a Test.
+     * @param {testCreateArgs} args - Arguments to create a Test.
      * @example
      * // Create one Test
      * const Test = await prisma.test.create({
@@ -2271,11 +2271,11 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends TestCreateArgs>(args: SelectSubset<T, TestCreateArgs<ExtArgs>>): Prisma__TestClient<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends testCreateArgs>(args: SelectSubset<T, testCreateArgs<ExtArgs>>): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Tests.
-     * @param {TestCreateManyArgs} args - Arguments to create many Tests.
+     * @param {testCreateManyArgs} args - Arguments to create many Tests.
      * @example
      * // Create many Tests
      * const test = await prisma.test.createMany({
@@ -2285,11 +2285,11 @@ export namespace Prisma {
      * })
      *     
      */
-    createMany<T extends TestCreateManyArgs>(args?: SelectSubset<T, TestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends testCreateManyArgs>(args?: SelectSubset<T, testCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Delete a Test.
-     * @param {TestDeleteArgs} args - Arguments to delete one Test.
+     * @param {testDeleteArgs} args - Arguments to delete one Test.
      * @example
      * // Delete one Test
      * const Test = await prisma.test.delete({
@@ -2299,11 +2299,11 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends TestDeleteArgs>(args: SelectSubset<T, TestDeleteArgs<ExtArgs>>): Prisma__TestClient<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends testDeleteArgs>(args: SelectSubset<T, testDeleteArgs<ExtArgs>>): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Test.
-     * @param {TestUpdateArgs} args - Arguments to update one Test.
+     * @param {testUpdateArgs} args - Arguments to update one Test.
      * @example
      * // Update one Test
      * const test = await prisma.test.update({
@@ -2316,11 +2316,11 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends TestUpdateArgs>(args: SelectSubset<T, TestUpdateArgs<ExtArgs>>): Prisma__TestClient<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends testUpdateArgs>(args: SelectSubset<T, testUpdateArgs<ExtArgs>>): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Tests.
-     * @param {TestDeleteManyArgs} args - Arguments to filter Tests to delete.
+     * @param {testDeleteManyArgs} args - Arguments to filter Tests to delete.
      * @example
      * // Delete a few Tests
      * const { count } = await prisma.test.deleteMany({
@@ -2330,13 +2330,13 @@ export namespace Prisma {
      * })
      * 
      */
-    deleteMany<T extends TestDeleteManyArgs>(args?: SelectSubset<T, TestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends testDeleteManyArgs>(args?: SelectSubset<T, testDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Tests.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {testUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Tests
      * const test = await prisma.test.updateMany({
@@ -2349,11 +2349,11 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends TestUpdateManyArgs>(args: SelectSubset<T, TestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends testUpdateManyArgs>(args: SelectSubset<T, testUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create or update one Test.
-     * @param {TestUpsertArgs} args - Arguments to update or create a Test.
+     * @param {testUpsertArgs} args - Arguments to update or create a Test.
      * @example
      * // Update or create a Test
      * const test = await prisma.test.upsert({
@@ -2368,14 +2368,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends TestUpsertArgs>(args: SelectSubset<T, TestUpsertArgs<ExtArgs>>): Prisma__TestClient<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends testUpsertArgs>(args: SelectSubset<T, testUpsertArgs<ExtArgs>>): Prisma__testClient<$Result.GetResult<Prisma.$testPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Tests.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestCountArgs} args - Arguments to filter Tests to count.
+     * @param {testCountArgs} args - Arguments to filter Tests to count.
      * @example
      * // Count the number of Tests
      * const count = await prisma.test.count({
@@ -2384,8 +2384,8 @@ export namespace Prisma {
      *   }
      * })
     **/
-    count<T extends TestCountArgs>(
-      args?: Subset<T, TestCountArgs>,
+    count<T extends testCountArgs>(
+      args?: Subset<T, testCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
@@ -2424,7 +2424,7 @@ export namespace Prisma {
      * Group by Test.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestGroupByArgs} args - Group by arguments.
+     * @param {testGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2439,14 +2439,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends TestGroupByArgs,
+      T extends testGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TestGroupByArgs['orderBy'] }
-        : { orderBy?: TestGroupByArgs['orderBy'] },
+        ? { orderBy: testGroupByArgs['orderBy'] }
+        : { orderBy?: testGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2495,22 +2495,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, TestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, testGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Test model
+   * Fields of the test model
    */
-  readonly fields: TestFieldRefs;
+  readonly fields: testFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Test.
+   * The delegate class that acts as a "Promise-like" for test.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__TestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__testClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Profile<T extends ProfileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProfileDefaultArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    profile<T extends profileDefaultArgs<ExtArgs> = {}>(args?: Subset<T, profileDefaultArgs<ExtArgs>>): Prisma__profileClient<$Result.GetResult<Prisma.$profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2537,377 +2537,377 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Test model
+   * Fields of the test model
    */
-  interface TestFieldRefs {
-    readonly id: FieldRef<"Test", 'String'>
-    readonly hospital_id: FieldRef<"Test", 'Int'>
-    readonly results_reaction_time: FieldRef<"Test", 'String'>
-    readonly results_first_potentiometer: FieldRef<"Test", 'String'>
-    readonly results_second_potentiometer: FieldRef<"Test", 'String'>
+  interface testFieldRefs {
+    readonly id: FieldRef<"test", 'String'>
+    readonly hospital_id: FieldRef<"test", 'Int'>
+    readonly results_reaction_time: FieldRef<"test", 'String'>
+    readonly results_first_potentiometer: FieldRef<"test", 'String'>
+    readonly results_second_potentiometer: FieldRef<"test", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * Test findUnique
+   * test findUnique
    */
-  export type TestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
+    include?: testInclude<ExtArgs> | null
     /**
-     * Filter, which Test to fetch.
+     * Filter, which test to fetch.
      */
-    where: TestWhereUniqueInput
+    where: testWhereUniqueInput
   }
 
   /**
-   * Test findUniqueOrThrow
+   * test findUniqueOrThrow
    */
-  export type TestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
+    include?: testInclude<ExtArgs> | null
     /**
-     * Filter, which Test to fetch.
+     * Filter, which test to fetch.
      */
-    where: TestWhereUniqueInput
+    where: testWhereUniqueInput
   }
 
   /**
-   * Test findFirst
+   * test findFirst
    */
-  export type TestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
+    include?: testInclude<ExtArgs> | null
     /**
-     * Filter, which Test to fetch.
+     * Filter, which test to fetch.
      */
-    where?: TestWhereInput
+    where?: testWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Tests to fetch.
+     * Determine the order of tests to fetch.
      */
-    orderBy?: TestOrderByWithRelationInput | TestOrderByWithRelationInput[]
+    orderBy?: testOrderByWithRelationInput | testOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Tests.
+     * Sets the position for searching for tests.
      */
-    cursor?: TestWhereUniqueInput
+    cursor?: testWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Tests from the position of the cursor.
+     * Take `±n` tests from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Tests.
+     * Skip the first `n` tests.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Tests.
+     * Filter by unique combinations of tests.
      */
     distinct?: TestScalarFieldEnum | TestScalarFieldEnum[]
   }
 
   /**
-   * Test findFirstOrThrow
+   * test findFirstOrThrow
    */
-  export type TestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
+    include?: testInclude<ExtArgs> | null
     /**
-     * Filter, which Test to fetch.
+     * Filter, which test to fetch.
      */
-    where?: TestWhereInput
+    where?: testWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Tests to fetch.
+     * Determine the order of tests to fetch.
      */
-    orderBy?: TestOrderByWithRelationInput | TestOrderByWithRelationInput[]
+    orderBy?: testOrderByWithRelationInput | testOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Tests.
+     * Sets the position for searching for tests.
      */
-    cursor?: TestWhereUniqueInput
+    cursor?: testWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Tests from the position of the cursor.
+     * Take `±n` tests from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Tests.
+     * Skip the first `n` tests.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Tests.
+     * Filter by unique combinations of tests.
      */
     distinct?: TestScalarFieldEnum | TestScalarFieldEnum[]
   }
 
   /**
-   * Test findMany
+   * test findMany
    */
-  export type TestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
+    include?: testInclude<ExtArgs> | null
     /**
-     * Filter, which Tests to fetch.
+     * Filter, which tests to fetch.
      */
-    where?: TestWhereInput
+    where?: testWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Tests to fetch.
+     * Determine the order of tests to fetch.
      */
-    orderBy?: TestOrderByWithRelationInput | TestOrderByWithRelationInput[]
+    orderBy?: testOrderByWithRelationInput | testOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Tests.
+     * Sets the position for listing tests.
      */
-    cursor?: TestWhereUniqueInput
+    cursor?: testWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Tests from the position of the cursor.
+     * Take `±n` tests from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Tests.
+     * Skip the first `n` tests.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Tests.
+     * Filter by unique combinations of tests.
      */
     distinct?: TestScalarFieldEnum | TestScalarFieldEnum[]
   }
 
   /**
-   * Test create
+   * test create
    */
-  export type TestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
+    include?: testInclude<ExtArgs> | null
     /**
-     * The data needed to create a Test.
+     * The data needed to create a test.
      */
-    data: XOR<TestCreateInput, TestUncheckedCreateInput>
+    data: XOR<testCreateInput, testUncheckedCreateInput>
   }
 
   /**
-   * Test createMany
+   * test createMany
    */
-  export type TestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Tests.
+     * The data used to create many tests.
      */
-    data: TestCreateManyInput | TestCreateManyInput[]
+    data: testCreateManyInput | testCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Test update
+   * test update
    */
-  export type TestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
+    include?: testInclude<ExtArgs> | null
     /**
-     * The data needed to update a Test.
+     * The data needed to update a test.
      */
-    data: XOR<TestUpdateInput, TestUncheckedUpdateInput>
+    data: XOR<testUpdateInput, testUncheckedUpdateInput>
     /**
-     * Choose, which Test to update.
+     * Choose, which test to update.
      */
-    where: TestWhereUniqueInput
+    where: testWhereUniqueInput
   }
 
   /**
-   * Test updateMany
+   * test updateMany
    */
-  export type TestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Tests.
+     * The data used to update tests.
      */
-    data: XOR<TestUpdateManyMutationInput, TestUncheckedUpdateManyInput>
+    data: XOR<testUpdateManyMutationInput, testUncheckedUpdateManyInput>
     /**
-     * Filter which Tests to update
+     * Filter which tests to update
      */
-    where?: TestWhereInput
+    where?: testWhereInput
     /**
-     * Limit how many Tests to update.
+     * Limit how many tests to update.
      */
     limit?: number
   }
 
   /**
-   * Test upsert
+   * test upsert
    */
-  export type TestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
+    include?: testInclude<ExtArgs> | null
     /**
-     * The filter to search for the Test to update in case it exists.
+     * The filter to search for the test to update in case it exists.
      */
-    where: TestWhereUniqueInput
+    where: testWhereUniqueInput
     /**
-     * In case the Test found by the `where` argument doesn't exist, create a new Test with this data.
+     * In case the test found by the `where` argument doesn't exist, create a new test with this data.
      */
-    create: XOR<TestCreateInput, TestUncheckedCreateInput>
+    create: XOR<testCreateInput, testUncheckedCreateInput>
     /**
-     * In case the Test was found with the provided `where` argument, update it with this data.
+     * In case the test was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<TestUpdateInput, TestUncheckedUpdateInput>
+    update: XOR<testUpdateInput, testUncheckedUpdateInput>
   }
 
   /**
-   * Test delete
+   * test delete
    */
-  export type TestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
+    include?: testInclude<ExtArgs> | null
     /**
-     * Filter which Test to delete.
+     * Filter which test to delete.
      */
-    where: TestWhereUniqueInput
+    where: testWhereUniqueInput
   }
 
   /**
-   * Test deleteMany
+   * test deleteMany
    */
-  export type TestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Tests to delete
+     * Filter which tests to delete
      */
-    where?: TestWhereInput
+    where?: testWhereInput
     /**
-     * Limit how many Tests to delete.
+     * Limit how many tests to delete.
      */
     limit?: number
   }
 
   /**
-   * Test without action
+   * test without action
    */
-  export type TestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type testDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Test
+     * Select specific fields to fetch from the test
      */
-    select?: TestSelect<ExtArgs> | null
+    select?: testSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Test
+     * Omit specific fields from the test
      */
-    omit?: TestOmit<ExtArgs> | null
+    omit?: testOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TestInclude<ExtArgs> | null
+    include?: testInclude<ExtArgs> | null
   }
 
 
@@ -2926,7 +2926,7 @@ export namespace Prisma {
 
 
   export const ProfileScalarFieldEnum: {
-    HospitalID: 'HospitalID',
+    hospital_id: 'hospital_id',
     hospital: 'hospital',
     password: 'password'
   };
@@ -2953,22 +2953,22 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const ProfileOrderByRelevanceFieldEnum: {
+  export const profileOrderByRelevanceFieldEnum: {
     hospital: 'hospital',
     password: 'password'
   };
 
-  export type ProfileOrderByRelevanceFieldEnum = (typeof ProfileOrderByRelevanceFieldEnum)[keyof typeof ProfileOrderByRelevanceFieldEnum]
+  export type profileOrderByRelevanceFieldEnum = (typeof profileOrderByRelevanceFieldEnum)[keyof typeof profileOrderByRelevanceFieldEnum]
 
 
-  export const TestOrderByRelevanceFieldEnum: {
+  export const testOrderByRelevanceFieldEnum: {
     id: 'id',
     results_reaction_time: 'results_reaction_time',
     results_first_potentiometer: 'results_first_potentiometer',
     results_second_potentiometer: 'results_second_potentiometer'
   };
 
-  export type TestOrderByRelevanceFieldEnum = (typeof TestOrderByRelevanceFieldEnum)[keyof typeof TestOrderByRelevanceFieldEnum]
+  export type testOrderByRelevanceFieldEnum = (typeof testOrderByRelevanceFieldEnum)[keyof typeof testOrderByRelevanceFieldEnum]
 
 
   /**
@@ -3000,164 +3000,164 @@ export namespace Prisma {
    */
 
 
-  export type ProfileWhereInput = {
-    AND?: ProfileWhereInput | ProfileWhereInput[]
-    OR?: ProfileWhereInput[]
-    NOT?: ProfileWhereInput | ProfileWhereInput[]
-    HospitalID?: IntFilter<"Profile"> | number
-    hospital?: StringFilter<"Profile"> | string
-    password?: StringFilter<"Profile"> | string
-    Test?: TestListRelationFilter
+  export type profileWhereInput = {
+    AND?: profileWhereInput | profileWhereInput[]
+    OR?: profileWhereInput[]
+    NOT?: profileWhereInput | profileWhereInput[]
+    hospital_id?: IntFilter<"profile"> | number
+    hospital?: StringFilter<"profile"> | string
+    password?: StringFilter<"profile"> | string
+    test?: TestListRelationFilter
   }
 
-  export type ProfileOrderByWithRelationInput = {
-    HospitalID?: SortOrder
+  export type profileOrderByWithRelationInput = {
+    hospital_id?: SortOrder
     hospital?: SortOrder
     password?: SortOrder
-    Test?: TestOrderByRelationAggregateInput
-    _relevance?: ProfileOrderByRelevanceInput
+    test?: testOrderByRelationAggregateInput
+    _relevance?: profileOrderByRelevanceInput
   }
 
-  export type ProfileWhereUniqueInput = Prisma.AtLeast<{
-    HospitalID?: number
-    AND?: ProfileWhereInput | ProfileWhereInput[]
-    OR?: ProfileWhereInput[]
-    NOT?: ProfileWhereInput | ProfileWhereInput[]
-    hospital?: StringFilter<"Profile"> | string
-    password?: StringFilter<"Profile"> | string
-    Test?: TestListRelationFilter
-  }, "HospitalID">
+  export type profileWhereUniqueInput = Prisma.AtLeast<{
+    hospital_id?: number
+    AND?: profileWhereInput | profileWhereInput[]
+    OR?: profileWhereInput[]
+    NOT?: profileWhereInput | profileWhereInput[]
+    hospital?: StringFilter<"profile"> | string
+    password?: StringFilter<"profile"> | string
+    test?: TestListRelationFilter
+  }, "hospital_id">
 
-  export type ProfileOrderByWithAggregationInput = {
-    HospitalID?: SortOrder
+  export type profileOrderByWithAggregationInput = {
+    hospital_id?: SortOrder
     hospital?: SortOrder
     password?: SortOrder
-    _count?: ProfileCountOrderByAggregateInput
-    _avg?: ProfileAvgOrderByAggregateInput
-    _max?: ProfileMaxOrderByAggregateInput
-    _min?: ProfileMinOrderByAggregateInput
-    _sum?: ProfileSumOrderByAggregateInput
+    _count?: profileCountOrderByAggregateInput
+    _avg?: profileAvgOrderByAggregateInput
+    _max?: profileMaxOrderByAggregateInput
+    _min?: profileMinOrderByAggregateInput
+    _sum?: profileSumOrderByAggregateInput
   }
 
-  export type ProfileScalarWhereWithAggregatesInput = {
-    AND?: ProfileScalarWhereWithAggregatesInput | ProfileScalarWhereWithAggregatesInput[]
-    OR?: ProfileScalarWhereWithAggregatesInput[]
-    NOT?: ProfileScalarWhereWithAggregatesInput | ProfileScalarWhereWithAggregatesInput[]
-    HospitalID?: IntWithAggregatesFilter<"Profile"> | number
-    hospital?: StringWithAggregatesFilter<"Profile"> | string
-    password?: StringWithAggregatesFilter<"Profile"> | string
+  export type profileScalarWhereWithAggregatesInput = {
+    AND?: profileScalarWhereWithAggregatesInput | profileScalarWhereWithAggregatesInput[]
+    OR?: profileScalarWhereWithAggregatesInput[]
+    NOT?: profileScalarWhereWithAggregatesInput | profileScalarWhereWithAggregatesInput[]
+    hospital_id?: IntWithAggregatesFilter<"profile"> | number
+    hospital?: StringWithAggregatesFilter<"profile"> | string
+    password?: StringWithAggregatesFilter<"profile"> | string
   }
 
-  export type TestWhereInput = {
-    AND?: TestWhereInput | TestWhereInput[]
-    OR?: TestWhereInput[]
-    NOT?: TestWhereInput | TestWhereInput[]
-    id?: StringFilter<"Test"> | string
-    hospital_id?: IntFilter<"Test"> | number
-    results_reaction_time?: StringFilter<"Test"> | string
-    results_first_potentiometer?: StringFilter<"Test"> | string
-    results_second_potentiometer?: StringFilter<"Test"> | string
-    Profile?: XOR<ProfileScalarRelationFilter, ProfileWhereInput>
+  export type testWhereInput = {
+    AND?: testWhereInput | testWhereInput[]
+    OR?: testWhereInput[]
+    NOT?: testWhereInput | testWhereInput[]
+    id?: StringFilter<"test"> | string
+    hospital_id?: IntFilter<"test"> | number
+    results_reaction_time?: StringFilter<"test"> | string
+    results_first_potentiometer?: StringFilter<"test"> | string
+    results_second_potentiometer?: StringFilter<"test"> | string
+    profile?: XOR<ProfileScalarRelationFilter, profileWhereInput>
   }
 
-  export type TestOrderByWithRelationInput = {
+  export type testOrderByWithRelationInput = {
     id?: SortOrder
     hospital_id?: SortOrder
     results_reaction_time?: SortOrder
     results_first_potentiometer?: SortOrder
     results_second_potentiometer?: SortOrder
-    Profile?: ProfileOrderByWithRelationInput
-    _relevance?: TestOrderByRelevanceInput
+    profile?: profileOrderByWithRelationInput
+    _relevance?: testOrderByRelevanceInput
   }
 
-  export type TestWhereUniqueInput = Prisma.AtLeast<{
+  export type testWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: TestWhereInput | TestWhereInput[]
-    OR?: TestWhereInput[]
-    NOT?: TestWhereInput | TestWhereInput[]
-    hospital_id?: IntFilter<"Test"> | number
-    results_reaction_time?: StringFilter<"Test"> | string
-    results_first_potentiometer?: StringFilter<"Test"> | string
-    results_second_potentiometer?: StringFilter<"Test"> | string
-    Profile?: XOR<ProfileScalarRelationFilter, ProfileWhereInput>
+    AND?: testWhereInput | testWhereInput[]
+    OR?: testWhereInput[]
+    NOT?: testWhereInput | testWhereInput[]
+    hospital_id?: IntFilter<"test"> | number
+    results_reaction_time?: StringFilter<"test"> | string
+    results_first_potentiometer?: StringFilter<"test"> | string
+    results_second_potentiometer?: StringFilter<"test"> | string
+    profile?: XOR<ProfileScalarRelationFilter, profileWhereInput>
   }, "id">
 
-  export type TestOrderByWithAggregationInput = {
+  export type testOrderByWithAggregationInput = {
     id?: SortOrder
     hospital_id?: SortOrder
     results_reaction_time?: SortOrder
     results_first_potentiometer?: SortOrder
     results_second_potentiometer?: SortOrder
-    _count?: TestCountOrderByAggregateInput
-    _avg?: TestAvgOrderByAggregateInput
-    _max?: TestMaxOrderByAggregateInput
-    _min?: TestMinOrderByAggregateInput
-    _sum?: TestSumOrderByAggregateInput
+    _count?: testCountOrderByAggregateInput
+    _avg?: testAvgOrderByAggregateInput
+    _max?: testMaxOrderByAggregateInput
+    _min?: testMinOrderByAggregateInput
+    _sum?: testSumOrderByAggregateInput
   }
 
-  export type TestScalarWhereWithAggregatesInput = {
-    AND?: TestScalarWhereWithAggregatesInput | TestScalarWhereWithAggregatesInput[]
-    OR?: TestScalarWhereWithAggregatesInput[]
-    NOT?: TestScalarWhereWithAggregatesInput | TestScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Test"> | string
-    hospital_id?: IntWithAggregatesFilter<"Test"> | number
-    results_reaction_time?: StringWithAggregatesFilter<"Test"> | string
-    results_first_potentiometer?: StringWithAggregatesFilter<"Test"> | string
-    results_second_potentiometer?: StringWithAggregatesFilter<"Test"> | string
+  export type testScalarWhereWithAggregatesInput = {
+    AND?: testScalarWhereWithAggregatesInput | testScalarWhereWithAggregatesInput[]
+    OR?: testScalarWhereWithAggregatesInput[]
+    NOT?: testScalarWhereWithAggregatesInput | testScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"test"> | string
+    hospital_id?: IntWithAggregatesFilter<"test"> | number
+    results_reaction_time?: StringWithAggregatesFilter<"test"> | string
+    results_first_potentiometer?: StringWithAggregatesFilter<"test"> | string
+    results_second_potentiometer?: StringWithAggregatesFilter<"test"> | string
   }
 
-  export type ProfileCreateInput = {
+  export type profileCreateInput = {
     hospital: string
     password: string
-    Test?: TestCreateNestedManyWithoutProfileInput
+    test?: testCreateNestedManyWithoutProfileInput
   }
 
-  export type ProfileUncheckedCreateInput = {
-    HospitalID?: number
+  export type profileUncheckedCreateInput = {
+    hospital_id?: number
     hospital: string
     password: string
-    Test?: TestUncheckedCreateNestedManyWithoutProfileInput
+    test?: testUncheckedCreateNestedManyWithoutProfileInput
   }
 
-  export type ProfileUpdateInput = {
+  export type profileUpdateInput = {
     hospital?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    Test?: TestUpdateManyWithoutProfileNestedInput
+    test?: testUpdateManyWithoutProfileNestedInput
   }
 
-  export type ProfileUncheckedUpdateInput = {
-    HospitalID?: IntFieldUpdateOperationsInput | number
+  export type profileUncheckedUpdateInput = {
+    hospital_id?: IntFieldUpdateOperationsInput | number
     hospital?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    Test?: TestUncheckedUpdateManyWithoutProfileNestedInput
+    test?: testUncheckedUpdateManyWithoutProfileNestedInput
   }
 
-  export type ProfileCreateManyInput = {
-    HospitalID?: number
+  export type profileCreateManyInput = {
+    hospital_id?: number
     hospital: string
     password: string
   }
 
-  export type ProfileUpdateManyMutationInput = {
+  export type profileUpdateManyMutationInput = {
     hospital?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
-  export type ProfileUncheckedUpdateManyInput = {
-    HospitalID?: IntFieldUpdateOperationsInput | number
+  export type profileUncheckedUpdateManyInput = {
+    hospital_id?: IntFieldUpdateOperationsInput | number
     hospital?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TestCreateInput = {
+  export type testCreateInput = {
     id: string
     results_reaction_time: string
     results_first_potentiometer: string
     results_second_potentiometer: string
-    Profile: ProfileCreateNestedOneWithoutTestInput
+    profile: profileCreateNestedOneWithoutTestInput
   }
 
-  export type TestUncheckedCreateInput = {
+  export type testUncheckedCreateInput = {
     id: string
     hospital_id: number
     results_reaction_time: string
@@ -3165,15 +3165,15 @@ export namespace Prisma {
     results_second_potentiometer: string
   }
 
-  export type TestUpdateInput = {
+  export type testUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     results_reaction_time?: StringFieldUpdateOperationsInput | string
     results_first_potentiometer?: StringFieldUpdateOperationsInput | string
     results_second_potentiometer?: StringFieldUpdateOperationsInput | string
-    Profile?: ProfileUpdateOneRequiredWithoutTestNestedInput
+    profile?: profileUpdateOneRequiredWithoutTestNestedInput
   }
 
-  export type TestUncheckedUpdateInput = {
+  export type testUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     hospital_id?: IntFieldUpdateOperationsInput | number
     results_reaction_time?: StringFieldUpdateOperationsInput | string
@@ -3181,7 +3181,7 @@ export namespace Prisma {
     results_second_potentiometer?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TestCreateManyInput = {
+  export type testCreateManyInput = {
     id: string
     hospital_id: number
     results_reaction_time: string
@@ -3189,14 +3189,14 @@ export namespace Prisma {
     results_second_potentiometer: string
   }
 
-  export type TestUpdateManyMutationInput = {
+  export type testUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     results_reaction_time?: StringFieldUpdateOperationsInput | string
     results_first_potentiometer?: StringFieldUpdateOperationsInput | string
     results_second_potentiometer?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TestUncheckedUpdateManyInput = {
+  export type testUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     hospital_id?: IntFieldUpdateOperationsInput | number
     results_reaction_time?: StringFieldUpdateOperationsInput | string
@@ -3231,45 +3231,45 @@ export namespace Prisma {
   }
 
   export type TestListRelationFilter = {
-    every?: TestWhereInput
-    some?: TestWhereInput
-    none?: TestWhereInput
+    every?: testWhereInput
+    some?: testWhereInput
+    none?: testWhereInput
   }
 
-  export type TestOrderByRelationAggregateInput = {
+  export type testOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type ProfileOrderByRelevanceInput = {
-    fields: ProfileOrderByRelevanceFieldEnum | ProfileOrderByRelevanceFieldEnum[]
+  export type profileOrderByRelevanceInput = {
+    fields: profileOrderByRelevanceFieldEnum | profileOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type ProfileCountOrderByAggregateInput = {
-    HospitalID?: SortOrder
+  export type profileCountOrderByAggregateInput = {
+    hospital_id?: SortOrder
     hospital?: SortOrder
     password?: SortOrder
   }
 
-  export type ProfileAvgOrderByAggregateInput = {
-    HospitalID?: SortOrder
+  export type profileAvgOrderByAggregateInput = {
+    hospital_id?: SortOrder
   }
 
-  export type ProfileMaxOrderByAggregateInput = {
-    HospitalID?: SortOrder
+  export type profileMaxOrderByAggregateInput = {
+    hospital_id?: SortOrder
     hospital?: SortOrder
     password?: SortOrder
   }
 
-  export type ProfileMinOrderByAggregateInput = {
-    HospitalID?: SortOrder
+  export type profileMinOrderByAggregateInput = {
+    hospital_id?: SortOrder
     hospital?: SortOrder
     password?: SortOrder
   }
 
-  export type ProfileSumOrderByAggregateInput = {
-    HospitalID?: SortOrder
+  export type profileSumOrderByAggregateInput = {
+    hospital_id?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -3307,17 +3307,17 @@ export namespace Prisma {
   }
 
   export type ProfileScalarRelationFilter = {
-    is?: ProfileWhereInput
-    isNot?: ProfileWhereInput
+    is?: profileWhereInput
+    isNot?: profileWhereInput
   }
 
-  export type TestOrderByRelevanceInput = {
-    fields: TestOrderByRelevanceFieldEnum | TestOrderByRelevanceFieldEnum[]
+  export type testOrderByRelevanceInput = {
+    fields: testOrderByRelevanceFieldEnum | testOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type TestCountOrderByAggregateInput = {
+  export type testCountOrderByAggregateInput = {
     id?: SortOrder
     hospital_id?: SortOrder
     results_reaction_time?: SortOrder
@@ -3325,11 +3325,11 @@ export namespace Prisma {
     results_second_potentiometer?: SortOrder
   }
 
-  export type TestAvgOrderByAggregateInput = {
+  export type testAvgOrderByAggregateInput = {
     hospital_id?: SortOrder
   }
 
-  export type TestMaxOrderByAggregateInput = {
+  export type testMaxOrderByAggregateInput = {
     id?: SortOrder
     hospital_id?: SortOrder
     results_reaction_time?: SortOrder
@@ -3337,7 +3337,7 @@ export namespace Prisma {
     results_second_potentiometer?: SortOrder
   }
 
-  export type TestMinOrderByAggregateInput = {
+  export type testMinOrderByAggregateInput = {
     id?: SortOrder
     hospital_id?: SortOrder
     results_reaction_time?: SortOrder
@@ -3345,40 +3345,40 @@ export namespace Prisma {
     results_second_potentiometer?: SortOrder
   }
 
-  export type TestSumOrderByAggregateInput = {
+  export type testSumOrderByAggregateInput = {
     hospital_id?: SortOrder
   }
 
-  export type TestCreateNestedManyWithoutProfileInput = {
-    create?: XOR<TestCreateWithoutProfileInput, TestUncheckedCreateWithoutProfileInput> | TestCreateWithoutProfileInput[] | TestUncheckedCreateWithoutProfileInput[]
-    connectOrCreate?: TestCreateOrConnectWithoutProfileInput | TestCreateOrConnectWithoutProfileInput[]
-    createMany?: TestCreateManyProfileInputEnvelope
-    connect?: TestWhereUniqueInput | TestWhereUniqueInput[]
+  export type testCreateNestedManyWithoutProfileInput = {
+    create?: XOR<testCreateWithoutProfileInput, testUncheckedCreateWithoutProfileInput> | testCreateWithoutProfileInput[] | testUncheckedCreateWithoutProfileInput[]
+    connectOrCreate?: testCreateOrConnectWithoutProfileInput | testCreateOrConnectWithoutProfileInput[]
+    createMany?: testCreateManyProfileInputEnvelope
+    connect?: testWhereUniqueInput | testWhereUniqueInput[]
   }
 
-  export type TestUncheckedCreateNestedManyWithoutProfileInput = {
-    create?: XOR<TestCreateWithoutProfileInput, TestUncheckedCreateWithoutProfileInput> | TestCreateWithoutProfileInput[] | TestUncheckedCreateWithoutProfileInput[]
-    connectOrCreate?: TestCreateOrConnectWithoutProfileInput | TestCreateOrConnectWithoutProfileInput[]
-    createMany?: TestCreateManyProfileInputEnvelope
-    connect?: TestWhereUniqueInput | TestWhereUniqueInput[]
+  export type testUncheckedCreateNestedManyWithoutProfileInput = {
+    create?: XOR<testCreateWithoutProfileInput, testUncheckedCreateWithoutProfileInput> | testCreateWithoutProfileInput[] | testUncheckedCreateWithoutProfileInput[]
+    connectOrCreate?: testCreateOrConnectWithoutProfileInput | testCreateOrConnectWithoutProfileInput[]
+    createMany?: testCreateManyProfileInputEnvelope
+    connect?: testWhereUniqueInput | testWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
-  export type TestUpdateManyWithoutProfileNestedInput = {
-    create?: XOR<TestCreateWithoutProfileInput, TestUncheckedCreateWithoutProfileInput> | TestCreateWithoutProfileInput[] | TestUncheckedCreateWithoutProfileInput[]
-    connectOrCreate?: TestCreateOrConnectWithoutProfileInput | TestCreateOrConnectWithoutProfileInput[]
-    upsert?: TestUpsertWithWhereUniqueWithoutProfileInput | TestUpsertWithWhereUniqueWithoutProfileInput[]
-    createMany?: TestCreateManyProfileInputEnvelope
-    set?: TestWhereUniqueInput | TestWhereUniqueInput[]
-    disconnect?: TestWhereUniqueInput | TestWhereUniqueInput[]
-    delete?: TestWhereUniqueInput | TestWhereUniqueInput[]
-    connect?: TestWhereUniqueInput | TestWhereUniqueInput[]
-    update?: TestUpdateWithWhereUniqueWithoutProfileInput | TestUpdateWithWhereUniqueWithoutProfileInput[]
-    updateMany?: TestUpdateManyWithWhereWithoutProfileInput | TestUpdateManyWithWhereWithoutProfileInput[]
-    deleteMany?: TestScalarWhereInput | TestScalarWhereInput[]
+  export type testUpdateManyWithoutProfileNestedInput = {
+    create?: XOR<testCreateWithoutProfileInput, testUncheckedCreateWithoutProfileInput> | testCreateWithoutProfileInput[] | testUncheckedCreateWithoutProfileInput[]
+    connectOrCreate?: testCreateOrConnectWithoutProfileInput | testCreateOrConnectWithoutProfileInput[]
+    upsert?: testUpsertWithWhereUniqueWithoutProfileInput | testUpsertWithWhereUniqueWithoutProfileInput[]
+    createMany?: testCreateManyProfileInputEnvelope
+    set?: testWhereUniqueInput | testWhereUniqueInput[]
+    disconnect?: testWhereUniqueInput | testWhereUniqueInput[]
+    delete?: testWhereUniqueInput | testWhereUniqueInput[]
+    connect?: testWhereUniqueInput | testWhereUniqueInput[]
+    update?: testUpdateWithWhereUniqueWithoutProfileInput | testUpdateWithWhereUniqueWithoutProfileInput[]
+    updateMany?: testUpdateManyWithWhereWithoutProfileInput | testUpdateManyWithWhereWithoutProfileInput[]
+    deleteMany?: testScalarWhereInput | testScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -3389,32 +3389,32 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type TestUncheckedUpdateManyWithoutProfileNestedInput = {
-    create?: XOR<TestCreateWithoutProfileInput, TestUncheckedCreateWithoutProfileInput> | TestCreateWithoutProfileInput[] | TestUncheckedCreateWithoutProfileInput[]
-    connectOrCreate?: TestCreateOrConnectWithoutProfileInput | TestCreateOrConnectWithoutProfileInput[]
-    upsert?: TestUpsertWithWhereUniqueWithoutProfileInput | TestUpsertWithWhereUniqueWithoutProfileInput[]
-    createMany?: TestCreateManyProfileInputEnvelope
-    set?: TestWhereUniqueInput | TestWhereUniqueInput[]
-    disconnect?: TestWhereUniqueInput | TestWhereUniqueInput[]
-    delete?: TestWhereUniqueInput | TestWhereUniqueInput[]
-    connect?: TestWhereUniqueInput | TestWhereUniqueInput[]
-    update?: TestUpdateWithWhereUniqueWithoutProfileInput | TestUpdateWithWhereUniqueWithoutProfileInput[]
-    updateMany?: TestUpdateManyWithWhereWithoutProfileInput | TestUpdateManyWithWhereWithoutProfileInput[]
-    deleteMany?: TestScalarWhereInput | TestScalarWhereInput[]
+  export type testUncheckedUpdateManyWithoutProfileNestedInput = {
+    create?: XOR<testCreateWithoutProfileInput, testUncheckedCreateWithoutProfileInput> | testCreateWithoutProfileInput[] | testUncheckedCreateWithoutProfileInput[]
+    connectOrCreate?: testCreateOrConnectWithoutProfileInput | testCreateOrConnectWithoutProfileInput[]
+    upsert?: testUpsertWithWhereUniqueWithoutProfileInput | testUpsertWithWhereUniqueWithoutProfileInput[]
+    createMany?: testCreateManyProfileInputEnvelope
+    set?: testWhereUniqueInput | testWhereUniqueInput[]
+    disconnect?: testWhereUniqueInput | testWhereUniqueInput[]
+    delete?: testWhereUniqueInput | testWhereUniqueInput[]
+    connect?: testWhereUniqueInput | testWhereUniqueInput[]
+    update?: testUpdateWithWhereUniqueWithoutProfileInput | testUpdateWithWhereUniqueWithoutProfileInput[]
+    updateMany?: testUpdateManyWithWhereWithoutProfileInput | testUpdateManyWithWhereWithoutProfileInput[]
+    deleteMany?: testScalarWhereInput | testScalarWhereInput[]
   }
 
-  export type ProfileCreateNestedOneWithoutTestInput = {
-    create?: XOR<ProfileCreateWithoutTestInput, ProfileUncheckedCreateWithoutTestInput>
-    connectOrCreate?: ProfileCreateOrConnectWithoutTestInput
-    connect?: ProfileWhereUniqueInput
+  export type profileCreateNestedOneWithoutTestInput = {
+    create?: XOR<profileCreateWithoutTestInput, profileUncheckedCreateWithoutTestInput>
+    connectOrCreate?: profileCreateOrConnectWithoutTestInput
+    connect?: profileWhereUniqueInput
   }
 
-  export type ProfileUpdateOneRequiredWithoutTestNestedInput = {
-    create?: XOR<ProfileCreateWithoutTestInput, ProfileUncheckedCreateWithoutTestInput>
-    connectOrCreate?: ProfileCreateOrConnectWithoutTestInput
-    upsert?: ProfileUpsertWithoutTestInput
-    connect?: ProfileWhereUniqueInput
-    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutTestInput, ProfileUpdateWithoutTestInput>, ProfileUncheckedUpdateWithoutTestInput>
+  export type profileUpdateOneRequiredWithoutTestNestedInput = {
+    create?: XOR<profileCreateWithoutTestInput, profileUncheckedCreateWithoutTestInput>
+    connectOrCreate?: profileCreateOrConnectWithoutTestInput
+    upsert?: profileUpsertWithoutTestInput
+    connect?: profileWhereUniqueInput
+    update?: XOR<XOR<profileUpdateToOneWithWhereWithoutTestInput, profileUpdateWithoutTestInput>, profileUncheckedUpdateWithoutTestInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3488,117 +3488,117 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type TestCreateWithoutProfileInput = {
+  export type testCreateWithoutProfileInput = {
     id: string
     results_reaction_time: string
     results_first_potentiometer: string
     results_second_potentiometer: string
   }
 
-  export type TestUncheckedCreateWithoutProfileInput = {
+  export type testUncheckedCreateWithoutProfileInput = {
     id: string
     results_reaction_time: string
     results_first_potentiometer: string
     results_second_potentiometer: string
   }
 
-  export type TestCreateOrConnectWithoutProfileInput = {
-    where: TestWhereUniqueInput
-    create: XOR<TestCreateWithoutProfileInput, TestUncheckedCreateWithoutProfileInput>
+  export type testCreateOrConnectWithoutProfileInput = {
+    where: testWhereUniqueInput
+    create: XOR<testCreateWithoutProfileInput, testUncheckedCreateWithoutProfileInput>
   }
 
-  export type TestCreateManyProfileInputEnvelope = {
-    data: TestCreateManyProfileInput | TestCreateManyProfileInput[]
+  export type testCreateManyProfileInputEnvelope = {
+    data: testCreateManyProfileInput | testCreateManyProfileInput[]
     skipDuplicates?: boolean
   }
 
-  export type TestUpsertWithWhereUniqueWithoutProfileInput = {
-    where: TestWhereUniqueInput
-    update: XOR<TestUpdateWithoutProfileInput, TestUncheckedUpdateWithoutProfileInput>
-    create: XOR<TestCreateWithoutProfileInput, TestUncheckedCreateWithoutProfileInput>
+  export type testUpsertWithWhereUniqueWithoutProfileInput = {
+    where: testWhereUniqueInput
+    update: XOR<testUpdateWithoutProfileInput, testUncheckedUpdateWithoutProfileInput>
+    create: XOR<testCreateWithoutProfileInput, testUncheckedCreateWithoutProfileInput>
   }
 
-  export type TestUpdateWithWhereUniqueWithoutProfileInput = {
-    where: TestWhereUniqueInput
-    data: XOR<TestUpdateWithoutProfileInput, TestUncheckedUpdateWithoutProfileInput>
+  export type testUpdateWithWhereUniqueWithoutProfileInput = {
+    where: testWhereUniqueInput
+    data: XOR<testUpdateWithoutProfileInput, testUncheckedUpdateWithoutProfileInput>
   }
 
-  export type TestUpdateManyWithWhereWithoutProfileInput = {
-    where: TestScalarWhereInput
-    data: XOR<TestUpdateManyMutationInput, TestUncheckedUpdateManyWithoutProfileInput>
+  export type testUpdateManyWithWhereWithoutProfileInput = {
+    where: testScalarWhereInput
+    data: XOR<testUpdateManyMutationInput, testUncheckedUpdateManyWithoutProfileInput>
   }
 
-  export type TestScalarWhereInput = {
-    AND?: TestScalarWhereInput | TestScalarWhereInput[]
-    OR?: TestScalarWhereInput[]
-    NOT?: TestScalarWhereInput | TestScalarWhereInput[]
-    id?: StringFilter<"Test"> | string
-    hospital_id?: IntFilter<"Test"> | number
-    results_reaction_time?: StringFilter<"Test"> | string
-    results_first_potentiometer?: StringFilter<"Test"> | string
-    results_second_potentiometer?: StringFilter<"Test"> | string
+  export type testScalarWhereInput = {
+    AND?: testScalarWhereInput | testScalarWhereInput[]
+    OR?: testScalarWhereInput[]
+    NOT?: testScalarWhereInput | testScalarWhereInput[]
+    id?: StringFilter<"test"> | string
+    hospital_id?: IntFilter<"test"> | number
+    results_reaction_time?: StringFilter<"test"> | string
+    results_first_potentiometer?: StringFilter<"test"> | string
+    results_second_potentiometer?: StringFilter<"test"> | string
   }
 
-  export type ProfileCreateWithoutTestInput = {
+  export type profileCreateWithoutTestInput = {
     hospital: string
     password: string
   }
 
-  export type ProfileUncheckedCreateWithoutTestInput = {
-    HospitalID?: number
+  export type profileUncheckedCreateWithoutTestInput = {
+    hospital_id?: number
     hospital: string
     password: string
   }
 
-  export type ProfileCreateOrConnectWithoutTestInput = {
-    where: ProfileWhereUniqueInput
-    create: XOR<ProfileCreateWithoutTestInput, ProfileUncheckedCreateWithoutTestInput>
+  export type profileCreateOrConnectWithoutTestInput = {
+    where: profileWhereUniqueInput
+    create: XOR<profileCreateWithoutTestInput, profileUncheckedCreateWithoutTestInput>
   }
 
-  export type ProfileUpsertWithoutTestInput = {
-    update: XOR<ProfileUpdateWithoutTestInput, ProfileUncheckedUpdateWithoutTestInput>
-    create: XOR<ProfileCreateWithoutTestInput, ProfileUncheckedCreateWithoutTestInput>
-    where?: ProfileWhereInput
+  export type profileUpsertWithoutTestInput = {
+    update: XOR<profileUpdateWithoutTestInput, profileUncheckedUpdateWithoutTestInput>
+    create: XOR<profileCreateWithoutTestInput, profileUncheckedCreateWithoutTestInput>
+    where?: profileWhereInput
   }
 
-  export type ProfileUpdateToOneWithWhereWithoutTestInput = {
-    where?: ProfileWhereInput
-    data: XOR<ProfileUpdateWithoutTestInput, ProfileUncheckedUpdateWithoutTestInput>
+  export type profileUpdateToOneWithWhereWithoutTestInput = {
+    where?: profileWhereInput
+    data: XOR<profileUpdateWithoutTestInput, profileUncheckedUpdateWithoutTestInput>
   }
 
-  export type ProfileUpdateWithoutTestInput = {
+  export type profileUpdateWithoutTestInput = {
     hospital?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
-  export type ProfileUncheckedUpdateWithoutTestInput = {
-    HospitalID?: IntFieldUpdateOperationsInput | number
+  export type profileUncheckedUpdateWithoutTestInput = {
+    hospital_id?: IntFieldUpdateOperationsInput | number
     hospital?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TestCreateManyProfileInput = {
+  export type testCreateManyProfileInput = {
     id: string
     results_reaction_time: string
     results_first_potentiometer: string
     results_second_potentiometer: string
   }
 
-  export type TestUpdateWithoutProfileInput = {
+  export type testUpdateWithoutProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
     results_reaction_time?: StringFieldUpdateOperationsInput | string
     results_first_potentiometer?: StringFieldUpdateOperationsInput | string
     results_second_potentiometer?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TestUncheckedUpdateWithoutProfileInput = {
+  export type testUncheckedUpdateWithoutProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
     results_reaction_time?: StringFieldUpdateOperationsInput | string
     results_first_potentiometer?: StringFieldUpdateOperationsInput | string
     results_second_potentiometer?: StringFieldUpdateOperationsInput | string
   }
 
-  export type TestUncheckedUpdateManyWithoutProfileInput = {
+  export type testUncheckedUpdateManyWithoutProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
     results_reaction_time?: StringFieldUpdateOperationsInput | string
     results_first_potentiometer?: StringFieldUpdateOperationsInput | string
