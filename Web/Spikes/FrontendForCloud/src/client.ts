@@ -11,6 +11,7 @@ var tabla_de_extranjeria : Map<String, number> = new Map();
 type PostData = {
     id_received: string,
     hospital_password: string,
+    hospital_name: string,
     first_exam: string,
     second_exam_first_potentio: string,
     second_exam_second_potentio: string
@@ -158,9 +159,12 @@ function askForData() {
     var results_reaction_time = firstFileRawData.split("\n")[0]
     var results_first_potentiometer = secondFileRawData.split("\n")[0]
     var results_second_potentiometer = secondFileRawData.split("\n")[1]
+    var hospital_alias = hospitalCredentials.split("\n")[0]
+    var hospital_pass = hospitalCredentials.split("\n")[1] 
     const data_to_send: PostData = {
         id_received: nombre_interesado.toUpperCase()+"_"+dni_interesado.toUpperCase()+"_"+generateRandomString(20),
-        hospital_password: hospitalCredentials,
+        hospital_password: hospital_pass,
+        hospital_name: hospital_alias,
         first_exam: results_reaction_time,
         second_exam_first_potentio: results_first_potentiometer,
         second_exam_second_potentio: results_second_potentiometer
