@@ -168,8 +168,32 @@ function askForData() {
     sendData(data_to_send);
 }
 
-function getAllExaminations() {
-
+async function getAllExaminations() {
+    var hospitalCredentials : string = ""
+    try {
+        hospitalCredentials = fs.readFileSync("hospital_credentials.txt", "utf8");
+    } catch (err) {
+        console.log("No hemos podido encontrar uno de los archivos requeridos: " + err);
+        return;
+    }  
+    const received_data = await returnAllExaminations(hospitalCredentials);
+    if (received_data === undefined || received_data === null ) {
+        console.log("No se han recibido datos correctos");
+        return;
+    }
+    var html_beginning = "<html><head></head><body>"
+    var html_table = "<table><tr><th>Datos de paciente</th><th>Resultados primer examen</th><th>Resultados segundo examen 1</th><th>Resultados segundo examen 2</th></tr>"
+    for (const test of received_data) {
+        html_table = html_table + `<tr><td>${test.id}</td><td>${test.results_reaction_time}</td><td>${test.results_first_potentiometer}</td><td>${test.results_second_potentiometer}</td></tr>`
+    }
+    var html_end = "</table></body></html>"
+    var content = html_beginning + html_table + html_end;
+    try {
+        fs.writeFileSync('./html_results.html', content);
+    } catch (err) {
+        console.log("Se ha producido un error al escribir el archivo");
+        return;
+    } 
 }
 
 initializeNIFArray();
@@ -178,3 +202,4 @@ console.log("*****************************************")
 console.log("OPCIONES:")
 console.log("1. Agregar una examinacion al sistema")
 console.log("2. Obtener todos las examinaciones del hospital")
+console.log("3. Salir del programa")
