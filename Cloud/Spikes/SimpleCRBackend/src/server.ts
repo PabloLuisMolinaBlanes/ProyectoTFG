@@ -56,15 +56,15 @@ async function createTest(id_received: string, hospital_password: string, hospit
     return test;
 }
 
-async function getAllTestsPerHospital(hospital_password: string) {
-    const hospital_received = await prisma.profile.findFirst({
-        where: {
-            password: await hashPassword(hospital_password)
-        } 
-    })
+async function getAllTestsPerHospital(hospital_name: string, hospital_password: string) {
+    const hospital_received = await getProfile(hospital_name);
     if (hospital_received == undefined) {
-        return {error: "Invalid password"};
-    } 
+        return {error: "No hospital found with that name"};;
+    }
+    const passwordComparison = await comparePasswords(hospital_password, hospital_received.password);
+    if (!passwordComparison) {
+        return {error: "Wrong password"};
+    }
     const tests = await prisma.test.findMany({
         where: {
             hospital_id: hospital_received.hospital_id
@@ -90,7 +90,7 @@ app.post("/upload", async (req,res) => {
 });
 
 app.get("/receive", async (req,res) => {
-    return (JSON.stringify(await getAllTestsPerHospital(req.body.hospital_password)));
+    return (JSON.stringify(await getAllTestsPerHospital(req.body.hospital_password, req.body.hospital_name)));
 });
 
 app.listen(port, () => {

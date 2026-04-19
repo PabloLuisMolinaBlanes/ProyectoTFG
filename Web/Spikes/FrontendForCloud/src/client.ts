@@ -1,3 +1,5 @@
+/*Imports and definitions*/
+
 import axios, { AxiosResponse } from 'axios'
 import * as fs from 'fs';
 import * as readline from "readline"
@@ -7,6 +9,13 @@ type nullable<T> = T | null | undefined
 var tabla_de_residuos : String[]
 
 var tabla_de_extranjeria : Map<String, number> = new Map();
+
+const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+});
+
+/*Types*/
 
 type PostData = {
     id_received: string,
@@ -24,6 +33,8 @@ type Test = {
     results_second_potentiometer: string,
     hospital_id: number
 }
+
+/*Auxiliary functions*/
 
 function initializeNIFArray() {
     tabla_de_residuos.push("T")
@@ -64,8 +75,8 @@ async function sendData(data : PostData) : Promise<nullable<Test>>   {
     return (await dataPromise).data
 }
 
-async function returnAllExaminations(hospital_password_received: string) : Promise<nullable<Test[]>> {
-    const dataPromise : Promise<AxiosResponse<nullable<Test[]>>> = axios.post("http://localhost:5000/receive",{hospital_password: hospital_password_received}).then((response : AxiosResponse) => {
+async function returnAllExaminations(hospital_name_received: string, hospital_password_received: string) : Promise<nullable<Test[]>> {
+    const dataPromise : Promise<AxiosResponse<nullable<Test[]>>> = axios.post("http://localhost:5000/receive",{hospital_name: hospital_name_received, hospital_password: hospital_password_received}).then((response : AxiosResponse) => {
         if (response.data != undefined) {
             return response.data;
         }
@@ -111,7 +122,9 @@ function verifyNIFLetter(nif: string, condicion_extranjero: boolean) : boolean {
         console.log(`Letra de ${documento} obtenida: ` + nif[nif.length-1])
         return false;
     } 
-} 
+}
+
+/*Options*/
 
 function askForData() {
 
@@ -122,10 +135,6 @@ function askForData() {
     var nombre_interesado: string = ""
     var documento_en_uso: string = "";
     var dni_interesado: string = ""
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
 
     /*Read file data*/
     try {
@@ -179,8 +188,10 @@ async function getAllExaminations() {
     } catch (err) {
         console.log("No hemos podido encontrar uno de los archivos requeridos: " + err);
         return;
-    }  
-    const received_data = await returnAllExaminations(hospitalCredentials);
+    }
+    const hospital_name = hospitalCredentials.split("\n")[0];
+    const hospital_password = hospitalCredentials.split("\n")[1]; 
+    const received_data = await returnAllExaminations(hospital_name, hospital_password);
     if (received_data === undefined || received_data === null ) {
         console.log("No se han recibido datos correctos");
         return;
