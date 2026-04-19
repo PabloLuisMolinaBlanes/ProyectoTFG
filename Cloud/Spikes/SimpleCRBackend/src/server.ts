@@ -1,6 +1,7 @@
 /*Imports*/
 import express from 'express'
 import cors from 'cors'
+import bcrypt from 'bcrypt'
 import { PrismaClient } from "./generated/prisma";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 
@@ -14,15 +15,34 @@ const adapter = new PrismaMariaDb({
 });
 const prisma : PrismaClient = new PrismaClient({ adapter });
 
+/* Utils */
+
+async function hashPassword(password : string) : Promise<string> {
+    return await bcrypt.hash(password, 10)
+}
+
+async function comparePasswords(password : string, passwordHash : string) : Promise<boolean> {
+    return bcrypt.compare(password, passwordHash)
+}
+
 /*ORM functions*/
-async function createTest(id_received: string, hospital_password: string, first_exam: string, second_exam_first_potentio: string, second_exam_second_potentio: string) {
+async function getProfile(hospital_name: string) {
     const hospital_received = await prisma.profile.findFirst({
         where: {
-            password: hospital_password
+            hospital: hospital_name
         } 
     })
-    if (hospital_received == undefined) {
-        return {error: "Invalid password"};
+    return hospital_received;
+} 
+
+async function createTest(id_received: string, hospital_password: string, hospital_name: string, first_exam: string, second_exam_first_potentio: string, second_exam_second_potentio: string) {
+    const hospital = await getProfile(hospital_name);
+    if (hospital == undefined) {
+        return {error: "No hospital found with that name"};;
+    } 
+    const passwordComparison = await comparePasswords(hospital_password, hospital.password);
+    if (!passwordComparison) {
+        return {error: "Wrong password"};
     } 
     const test = await prisma.test.create({
         data: {
@@ -30,7 +50,7 @@ async function createTest(id_received: string, hospital_password: string, first_
             results_reaction_time: first_exam,
             results_first_potentiometer: second_exam_first_potentio,
             results_second_potentiometer: second_exam_second_potentio,
-            hospital_id: hospital_received.hospital_id
+            hospital_id: hospital.hospital_id
         }
     })
     return test;
@@ -39,7 +59,7 @@ async function createTest(id_received: string, hospital_password: string, first_
 async function getAllTestsPerHospital(hospital_password: string) {
     const hospital_received = await prisma.profile.findFirst({
         where: {
-            password: hospital_password
+            password: await hashPassword(hospital_password)
         } 
     })
     if (hospital_received == undefined) {
@@ -66,7 +86,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 app.post("/upload", async (req,res) => {
-    return (JSON.stringify(await createTest(req.body.id, req.body.hospital_password, req.body.first_exam, req.body.second_exam_first_potentio, req.body.second_exam_second_potentio)));
+    return (JSON.stringify(await createTest(req.body.id, req.body.hospital_password, req.body.hospital_name, req.body.first_exam, req.body.second_exam_first_potentio, req.body.second_exam_second_potentio)));
 });
 
 app.get("/receive", async (req,res) => {
