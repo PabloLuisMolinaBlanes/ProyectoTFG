@@ -2,11 +2,11 @@
 
 import axios, { AxiosResponse } from 'axios'
 import * as fs from 'fs';
-import * as readline from "readline"
+import * as readline from 'readline/promises'
 
 type nullable<T> = T | null | undefined
 
-var tabla_de_residuos : String[]
+var tabla_de_residuos : String[] = [] 
 
 var tabla_de_extranjeria : Map<String, number> = new Map();
 
@@ -99,7 +99,7 @@ function generateRandomString(length : number) : string {
 
 function verifyNIFLetter(nif: string, condicion_extranjero: boolean) : boolean {
     var regexp = new RegExp('[A-Z]')
-    var documento : String = condicion_extranjero ? "DNI" : "NIE"
+    var documento : String = condicion_extranjero ? "NIE" : "DNI"
     if (!(regexp.test(nif.charAt(nif.length-1)))) {
         console.log(`Error, no se ha introducido una letra de ${documento} al final del documento`)
         return false;
@@ -126,7 +126,7 @@ function verifyNIFLetter(nif: string, condicion_extranjero: boolean) : boolean {
 
 /*Options*/
 
-function askForData() {
+async function askForData() {
 
     /* Variable initialization */
     var firstFileRawData: string = ""
@@ -138,29 +138,58 @@ function askForData() {
 
     /*Read file data*/
     try {
-        firstFileRawData = fs.readFileSync("first_examination.txt", "utf8");
-        secondFileRawData = fs.readFileSync("second_examination.txt", "utf8");
-        hospitalCredentials = fs.readFileSync("hospital_credentials.txt", "utf8");
+        firstFileRawData = fs.readFileSync(__dirname + "/first_examination.txt", "utf8");
+        secondFileRawData = fs.readFileSync(__dirname + "/second_examination.txt", "utf8");
+        hospitalCredentials = fs.readFileSync(__dirname + "/hospital_credentials.txt", "utf8");
     } catch (err) {
         console.log("No hemos podido encontrar uno de los archivos requeridos: " + err);
         return;
     }
     console.log("Files have been found correctly.");
 
-    /* Read user-provided data */
-    rl.question(`Nombre del examinado`, name => {
-        nombre_interesado = name
-        rl.close();
-    });
-    rl.question(`Tipo de documento en uso (DNI/NIE)`, name => {
-        documento_en_uso = name
-        rl.close();
-    });
-    rl.question(`DNI del examinado (con letra incluida)`, dni => {
-        dni_interesado = dni
-        verifyNIFLetter(dni_interesado, documento_en_uso === "NIE" ? true : false)
-        rl.close();
-    });
+    var accepted: boolean = false;
+    while (!accepted) {
+        nombre_interesado = ""
+        documento_en_uso = ""
+        dni_interesado = ""
+        /* Read user-provided data */
+        nombre_interesado = await rl.question(`Nombre del examinado: `);
+        var documento_correcto: boolean = false;
+        while (!documento_correcto) {
+            documento_en_uso = await rl.question(`Tipo de documento en uso (DNI/NIE): `);
+            if (documento_en_uso === "DNI" || documento_en_uso === "NIE") {
+                documento_correcto = true;
+            } else {
+                console.log("Error, tipo de documento invalido")
+            } 
+        }
+        var numero_correcto: boolean = false;
+        while (!numero_correcto) {
+            dni_interesado = await rl.question(`DNI del examinado (con letra incluida): `);
+            if (verifyNIFLetter(dni_interesado, documento_en_uso === "NIE" ? true : false)) {
+                numero_correcto = true;
+            } else {
+                console.log("Error, numero de documento incorrecto; vuelva a indicarlo, por favor");
+            }
+        }
+        var valid_input: boolean = false;
+        console.log(`Nombre introducido: ${nombre_interesado}`);
+        console.log(`Tipo de documento: ${documento_en_uso}`);
+        console.log(`Numero de documento: ${dni_interesado}`);
+        while (!valid_input) {    
+            var response = await rl.question(`¿Proceder a la subida? (s/n) `);
+            if (response === "s") {
+                valid_input = true;
+                accepted = true
+            } else if (response === "n") {
+                valid_input = true;
+                console.log("Vuelva a introducir sus datos de nuevo")
+            } else {
+                console.log("Error, escriba 's' o 'n', por favor")
+            }
+        } 
+    } 
+    
 
     /*TODO: Escribir documento de Protección de Datos aquí*/
 
@@ -218,3 +247,4 @@ console.log("OPCIONES:")
 console.log("1. Agregar una examinacion al sistema")
 console.log("2. Obtener todos las examinaciones del hospital")
 console.log("3. Salir del programa")
+askForData();
