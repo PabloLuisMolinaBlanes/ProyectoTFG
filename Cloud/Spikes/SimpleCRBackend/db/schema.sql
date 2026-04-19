@@ -21,37 +21,8 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 -- GTID state at the beginning of the backup 
 --
 
-SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ 'fb767d9c-3c05-11f1-8aff-0242ac120003:1-21';
-
---
--- Table structure for table `_prisma_migrations`
---
-
-DROP TABLE IF EXISTS `_prisma_migrations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `_prisma_migrations` (
-  `id` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `checksum` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `finished_at` datetime(3) DEFAULT NULL,
-  `migration_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logs` text COLLATE utf8mb4_unicode_ci,
-  `rolled_back_at` datetime(3) DEFAULT NULL,
-  `started_at` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-  `applied_steps_count` int unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `_prisma_migrations`
---
-
-LOCK TABLES `_prisma_migrations` WRITE;
-/*!40000 ALTER TABLE `_prisma_migrations` DISABLE KEYS */;
-INSERT INTO `_prisma_migrations` VALUES ('e2cc58ea-3976-4380-a086-887de650af0c','fe6f9212006cfdee328b351da7815be0cf68da4c0c6722d969cf0dfb9942a071','2026-04-19 16:07:05.334','20260419160705_init',NULL,NULL,'2026-04-19 16:07:05.185',1);
-/*!40000 ALTER TABLE `_prisma_migrations` ENABLE KEYS */;
-UNLOCK TABLES;
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '4387de57-3c0d-11f1-a1c3-0242ac120002:1-7,
+fb767d9c-3c05-11f1-8aff-0242ac120003:1-21';
 
 --
 -- Table structure for table `profile`
@@ -62,8 +33,8 @@ DROP TABLE IF EXISTS `profile`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `profile` (
   `hospital_id` int NOT NULL AUTO_INCREMENT,
-  `hospital` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hospital` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`hospital_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -85,11 +56,11 @@ DROP TABLE IF EXISTS `test`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `test` (
-  `id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `hospital_id` int NOT NULL,
-  `results_reaction_time` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `results_first_potentiometer` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `results_second_potentiometer` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `results_reaction_time` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `results_first_potentiometer` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `results_second_potentiometer` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Hospital_FK` (`hospital_id`),
   CONSTRAINT `Hospital_FK` FOREIGN KEY (`hospital_id`) REFERENCES `profile` (`hospital_id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -119,4 +90,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-04-19 18:19:42
+-- Dump completed on 2026-04-19 18:35:46

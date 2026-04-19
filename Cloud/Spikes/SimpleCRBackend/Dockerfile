@@ -16,4 +16,4 @@ RUN npx prisma generate
 RUN mkdir build
 RUN mkdir build/src
 RUN cp -R src/generated build/src/generated
-CMD ["npm run dev"]
+CMD ["npm", "run", "dev"]
