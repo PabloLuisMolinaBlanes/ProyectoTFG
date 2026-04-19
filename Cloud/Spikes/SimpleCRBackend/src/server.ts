@@ -56,7 +56,7 @@ async function getAllTestsPerHospital(hospital_password: string) {
 /*Server*/
 const app = express()
 const corsOptions = {
-    origin: '*',
+    origin: 'localhost:5000',
     optionsSuccessStatus: 200
 }
 const port = 3000

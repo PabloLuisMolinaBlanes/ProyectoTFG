@@ -1,8 +1,12 @@
 services:
   db:
     build: ./db
+    ports:
+      - 3306:3306
   backend:
     build: .
-    command: npm run build
     ports:
      - 3000:3000
+    depends_on:
+      db:
+        condition: service_started

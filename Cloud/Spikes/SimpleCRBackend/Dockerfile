@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:alpine
 WORKDIR /app
 COPY package*.json .
 COPY tsconfig*.json .
@@ -14,5 +14,6 @@ RUN touch .env
 RUN printenv > .env
 RUN npx prisma generate
 RUN mkdir build
-RUN cp -R src/generated build/generated
-CMD ["npm", "run", "build"]
+RUN mkdir build/src
+RUN cp -R src/generated build/src/generated
+CMD ["npm run dev"]

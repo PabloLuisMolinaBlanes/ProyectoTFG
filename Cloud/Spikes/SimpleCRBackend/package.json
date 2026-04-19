@@ -14,7 +14,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tsc --build && node ./build/server.js",
+    "dev": "npx tsc --build && node ./build/src/server.js",
     "build": "npx tsc --build"
   },
   "dependencies": {
