@@ -197,7 +197,8 @@ async function askForData() {
         second_exam_first_potentio: results_first_potentiometer,
         second_exam_second_potentio: results_second_potentiometer
     }
-    await sendData(data_to_send);
+    const test_received = await sendData(data_to_send);
+    console.log(`Test with id ${test_received?.id} successfully built!`)
 }
 
 async function getAllExaminations() {
@@ -238,5 +239,5 @@ console.log("OPCIONES:")
 console.log("1. Agregar una examinacion al sistema")
 console.log("2. Obtener todos las examinaciones del hospital")
 console.log("3. Salir del programa")
-getAllExaminations()
+//getAllExaminations()
 //askForData();
