@@ -1,5 +1,5 @@
 /*Imports*/
-import express from 'express'
+import express, {Request}  from 'express'
 import cors from 'cors'
 import bcrypt from 'bcrypt'
 const { loadEnvFile } = require('node:process');
@@ -7,10 +7,10 @@ loadEnvFile(__dirname + '/../../.env');
 import { PrismaClient } from "./generated/prisma";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 
-console.log(process.env.DATABASE_HOST)
-console.log(process.env.DATABASE_USER)
-console.log(process.env.DATABASE_PASSWORD)
-console.log(process.env.DATABASE_NAME)
+interface RequestData {
+    hospital_password: string,
+    hospital_name: string
+}
 
 /*Database setup*/
 const adapter = new PrismaMariaDb({
@@ -96,11 +96,15 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 app.post("/upload", async (req,res) => {
-    return (JSON.stringify(await createTest(req.body.id, req.body.hospital_password, req.body.hospital_name, req.body.first_exam, req.body.second_exam_first_potentio, req.body.second_exam_second_potentio)));
-});
+    const result = await createTest(req.body.id, req.body.hospital_password, req.body.hospital_name, req.body.first_exam, req.body.second_exam_first_potentio, req.body.second_exam_second_potentio);
+    const tosend = await JSON.stringify(result)
+    res.send(tosend);
+}); 
 
-app.get("/receive", async (req,res) => {
-    return (JSON.stringify(await getAllTestsPerHospital(req.body.hospital_password, req.body.hospital_name)));
+app.get("/receive", async (req: Request<{},{},{},RequestData>,res) => {
+    const result = await getAllTestsPerHospital(req.query.hospital_name, req.query.hospital_password)
+    const tosend = await JSON.stringify(result)
+    res.send(tosend);
 });
 
 app.listen(port, () => {

@@ -75,14 +75,9 @@ async function sendData(data : PostData) : Promise<nullable<Test>>   {
     return (await dataPromise).data
 }
 
-async function returnAllExaminations(hospital_name_received: string, hospital_password_received: string) : Promise<nullable<Test[]>> {
-    const dataPromise : Promise<AxiosResponse<nullable<Test[]>>> = axios.post("http://localhost:3000/receive",{hospital_name: hospital_name_received, hospital_password: hospital_password_received}).then((response : AxiosResponse) => {
-        if (response.data != undefined) {
-            return response.data;
-        }
-        return undefined;
-    });
-    return (await dataPromise).data
+async function returnAllExaminations(hospital_name_received: string, hospital_password_received: string) : Promise<nullable<Test[]>>  {
+    const dataPromise : AxiosResponse<nullable<Test[]>> = await axios.get(`http://localhost:3000/receive?hospital_name=${hospital_name_received}&hospital_password=${hospital_password_received}`);
+    return dataPromise.data
 }
 
 function generateRandomString(length : number) : string {
@@ -207,13 +202,13 @@ async function askForData() {
         second_exam_first_potentio: results_first_potentiometer,
         second_exam_second_potentio: results_second_potentiometer
     }
-    sendData(data_to_send);
+    await sendData(data_to_send);
 }
 
 async function getAllExaminations() {
     var hospitalCredentials : string = ""
     try {
-        hospitalCredentials = fs.readFileSync("hospital_credentials.txt", "utf8");
+        hospitalCredentials = fs.readFileSync(__dirname + "/hospital_credentials.txt", "utf8");
     } catch (err) {
         console.log("No hemos podido encontrar uno de los archivos requeridos: " + err);
         return;
@@ -221,6 +216,7 @@ async function getAllExaminations() {
     const hospital_name = hospitalCredentials.split("\n")[0];
     const hospital_password = hospitalCredentials.split("\n")[1]; 
     const received_data = await returnAllExaminations(hospital_name, hospital_password);
+    console.log(received_data)
     if (received_data === undefined || received_data === null ) {
         console.log("No se han recibido datos correctos");
         return;
@@ -233,7 +229,7 @@ async function getAllExaminations() {
     var html_end = "</table></body></html>"
     var content = html_beginning + html_table + html_end;
     try {
-        fs.writeFileSync('./html_results.html', content);
+        fs.writeFileSync(__dirname + '/html_results.html', content);
     } catch (err) {
         console.log("Se ha producido un error al escribir el archivo");
         return;
@@ -247,4 +243,5 @@ console.log("OPCIONES:")
 console.log("1. Agregar una examinacion al sistema")
 console.log("2. Obtener todos las examinaciones del hospital")
 console.log("3. Salir del programa")
-askForData();
+getAllExaminations()
+//askForData();
