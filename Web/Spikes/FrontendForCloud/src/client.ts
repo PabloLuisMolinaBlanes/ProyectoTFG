@@ -66,7 +66,7 @@ function initializeNIFArray() {
 } 
 
 async function sendData(data : PostData) : Promise<nullable<Test>>   {
-    const dataPromise : Promise<AxiosResponse<nullable<Test>>> = axios.post("http://localhost:5000/upload", data).then((response : AxiosResponse) => {
+    const dataPromise : Promise<AxiosResponse<nullable<Test>>> = axios.post("http://localhost:3000/upload", data).then((response : AxiosResponse) => {
         if (response.data != undefined) {
             return response.data;
         }
@@ -76,7 +76,7 @@ async function sendData(data : PostData) : Promise<nullable<Test>>   {
 }
 
 async function returnAllExaminations(hospital_name_received: string, hospital_password_received: string) : Promise<nullable<Test[]>> {
-    const dataPromise : Promise<AxiosResponse<nullable<Test[]>>> = axios.post("http://localhost:5000/receive",{hospital_name: hospital_name_received, hospital_password: hospital_password_received}).then((response : AxiosResponse) => {
+    const dataPromise : Promise<AxiosResponse<nullable<Test[]>>> = axios.post("http://localhost:3000/receive",{hospital_name: hospital_name_received, hospital_password: hospital_password_received}).then((response : AxiosResponse) => {
         if (response.data != undefined) {
             return response.data;
         }

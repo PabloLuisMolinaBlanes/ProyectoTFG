@@ -6,7 +6,7 @@ ARG DATABASE_URL="mysql://root:root@db:3306/CloudDatabase"
 ARG DATABASE_USER="root"
 ARG DATABASE_PASSWORD="root"
 ARG DATABASE_NAME="CloudDatabase"
-ARG DATABASE_HOST="localhost"
+ARG DATABASE_HOST="db"
 ARG DATABASE_PORT=3306
 RUN npm install
 COPY . .
