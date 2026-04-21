@@ -1,5 +1,5 @@
 /*Imports and definitions*/
-
+import * as crypto from 'crypto';
 import axios, { AxiosResponse } from 'axios'
 import * as fs from 'fs';
 import * as readline from 'readline/promises'
@@ -14,6 +14,9 @@ const rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
 });
+
+var key : NonSharedBuffer;
+var iv : NonSharedBuffer;
 
 /*Types*/
 
@@ -63,6 +66,19 @@ function initializeNIFArray() {
     tabla_de_extranjeria.set("X",0)
     tabla_de_extranjeria.set("Y",1)
     tabla_de_extranjeria.set("Z",2) 
+}
+
+function initializeEncryptionParameters() {
+    try {
+        const encryptionparameters = fs.readFileSync(__dirname + '/encryptionparameters.txt', 'utf-8')
+        key = Buffer.from(encryptionparameters.split("\n")[0], 'hex')
+        iv = Buffer.from(encryptionparameters.split("\n")[1], 'hex')
+    } catch (err) {
+        key = crypto.randomBytes(32)
+        iv = crypto.randomBytes(16)
+        const content = `${key.toString('hex')}\n${iv.toString('hex')}`
+        fs.writeFileSync(__dirname + '/encryptionparameters.txt', content);
+    }
 } 
 
 async function sendData(data : PostData) : Promise<nullable<Test>>   {
@@ -188,9 +204,12 @@ async function askForData() {
     var results_first_potentiometer = secondFileRawData.split("\n")[0]
     var results_second_potentiometer = secondFileRawData.split("\n")[1]
     var hospital_alias = hospitalCredentials.split("\n")[0]
-    var hospital_pass = hospitalCredentials.split("\n")[1] 
+    var hospital_pass = hospitalCredentials.split("\n")[1]
+    const id_to_send = nombre_interesado.toUpperCase()+"_"+dni_interesado.toUpperCase()+"_"+generateRandomString(20)
+    const cipher = crypto.createCipheriv('aes256', key, iv)
+    const encryptedId = cipher.update(id_to_send, 'utf-8', 'hex') + cipher.final('hex')
     const data_to_send: PostData = {
-        id: nombre_interesado.toUpperCase()+"_"+dni_interesado.toUpperCase()+"_"+generateRandomString(20),
+        id: encryptedId,
         hospital_password: hospital_pass,
         hospital_name: hospital_alias,
         first_exam: results_reaction_time,
@@ -217,10 +236,12 @@ async function getAllExaminations() {
         console.log("No se han recibido datos correctos");
         return;
     }
+    const decipher = crypto.createDecipheriv('aes256', key, iv)
     var html_beginning = "<html><head></head><body>"
     var html_table = "<table><tr><th>Datos de paciente</th><th>Resultados primer examen</th><th>Resultados segundo examen 1</th><th>Resultados segundo examen 2</th></tr>"
     for (const test of received_data) {
-        html_table = html_table + `<tr><td>${test.id}</td><td>${test.results_reaction_time}</td><td>${test.results_first_potentiometer}</td><td>${test.results_second_potentiometer}</td></tr>`
+        const decryptedId = decipher.update(test.id, 'hex', 'utf-8') + decipher.final('utf-8')
+        html_table = html_table + `<tr><td>${decryptedId}</td><td>${test.results_reaction_time}</td><td>${test.results_first_potentiometer}</td><td>${test.results_second_potentiometer}</td></tr>`
     }
     var html_end = "</table></body></html>"
     var content = html_beginning + html_table + html_end;
@@ -239,5 +260,6 @@ console.log("OPCIONES:")
 console.log("1. Agregar una examinacion al sistema")
 console.log("2. Obtener todos las examinaciones del hospital")
 console.log("3. Salir del programa")
-//getAllExaminations()
+initializeEncryptionParameters()
+getAllExaminations()
 //askForData();
