@@ -300,17 +300,17 @@ int main() {
                     int position;
                     if (handle_turn == 0) {
                         position = resolvePosition(atoi(received)-FIRST_VALUE_FIRST_POTENTIOMETER, lookuptable_firstPotentiometer, lookuptable1_size);
-                        car.move(position);
+                        car_2.move(position);
                     } else {
                         position = resolvePosition(SECOND_VALUE_SECOND_POTENTIOMETER-(atoi(received)-FIRST_VALUE_SECOND_POTENTIOMETER), lookuptable_secondPotentiometer, lookuptable2_size);
-                        car_2.move(position);
+                        car.move(position);
                     } 
                     handle_turn = (handle_turn + 1) % 2;
                 }
         }
         real_time_elapsed += clock.restart().asMilliseconds();
-        add_data(car.x, 1);
-        add_data(car_2.x, 2);
+        add_data(car.x, 2);
+        add_data(car_2.x, 1);
         window.clear(Color::Blue);
         drawWalls(&window, walls);
         drawWalls(&window, walls_2);
