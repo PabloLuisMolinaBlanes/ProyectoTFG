@@ -18,7 +18,7 @@ const rl = readline.createInterface({
 /*Types*/
 
 type PostData = {
-    id_received: string,
+    id: string,
     hospital_password: string,
     hospital_name: string,
     first_exam: string,
@@ -200,7 +200,7 @@ async function askForData() {
     var hospital_alias = hospitalCredentials.split("\n")[0]
     var hospital_pass = hospitalCredentials.split("\n")[1] 
     const data_to_send: PostData = {
-        id_received: nombre_interesado.toUpperCase()+"_"+dni_interesado.toUpperCase()+"_"+generateRandomString(20),
+        id: nombre_interesado.toUpperCase()+"_"+dni_interesado.toUpperCase()+"_"+generateRandomString(20),
         hospital_password: hospital_pass,
         hospital_name: hospital_alias,
         first_exam: results_reaction_time,

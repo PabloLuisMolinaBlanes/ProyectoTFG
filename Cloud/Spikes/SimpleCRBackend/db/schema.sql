@@ -21,7 +21,8 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 -- GTID state at the beginning of the backup 
 --
 
-SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '4387de57-3c0d-11f1-a1c3-0242ac120002:1-7,
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '1b9d4d3c-3c0e-11f1-8e27-0242ac130002:1-11,
+4387de57-3c0d-11f1-a1c3-0242ac120002:1-7,
 fb767d9c-3c05-11f1-8aff-0242ac120003:1-21';
 
 --
@@ -36,7 +37,7 @@ CREATE TABLE `profile` (
   `hospital` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`hospital_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +46,7 @@ CREATE TABLE `profile` (
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
+INSERT INTO `profile` VALUES (1,'HOSPITAL_MARIA_CRISTINA','$2a$10$0Sn/SIAuVxOzkEfsareZw.mhwizizyj0M6y/lKKppP4PfLcn5T7RO');
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,9 +60,9 @@ DROP TABLE IF EXISTS `test`;
 CREATE TABLE `test` (
   `id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `hospital_id` int NOT NULL,
-  `results_reaction_time` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `results_first_potentiometer` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `results_second_potentiometer` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `results_reaction_time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `results_first_potentiometer` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `results_second_potentiometer` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Hospital_FK` (`hospital_id`),
   CONSTRAINT `Hospital_FK` FOREIGN KEY (`hospital_id`) REFERENCES `profile` (`hospital_id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -90,4 +92,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-04-19 18:35:46
+-- Dump completed on 2026-04-21 17:58:39

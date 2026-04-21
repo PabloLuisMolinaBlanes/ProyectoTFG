@@ -19,6 +19,6 @@ model test {
     hospital_id Int
     profile profile @relation(fields: [hospital_id], references: [hospital_id], onDelete: Cascade, map: "Hospital_FK")
     results_reaction_time String
-    results_first_potentiometer String
-    results_second_potentiometer String    
+    results_first_potentiometer String @db.Text
+    results_second_potentiometer String @db.Text  
 } 
