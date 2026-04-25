@@ -2,12 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void greet() {
-    
+void call_first_examination() {
     system("./first_examination");
 }
 
-void greet_2() {
+void call_second_examination() {
     system("./second_examination");
 }
 
@@ -17,15 +16,15 @@ static void on_activate (GtkApplication *app) {
   // Create a new grid
   GtkWidget *grid;
   // Create a new button
-  GtkWidget *button = gtk_button_new_with_label ("Test 1");
-  GtkWidget *button_2 = gtk_button_new_with_label ("Test 2");
+  GtkWidget *button = gtk_button_new_with_label ("Examen 1");
+  GtkWidget *button_2 = gtk_button_new_with_label ("Examen 2");
   // Initialize grid
   grid = gtk_grid_new ();
   gtk_window_set_child (GTK_WINDOW (window), grid);
   // When the button is clicked, close the window passed as an argument
-  g_signal_connect(G_OBJECT(button), "clicked", greet, NULL);
+  g_signal_connect(G_OBJECT(button), "clicked", call_first_examination, NULL);
   gtk_grid_attach (GTK_GRID (grid), button, 0, 0, 1, 1);
-  g_signal_connect(G_OBJECT(button_2), "clicked", greet_2, NULL);
+  g_signal_connect(G_OBJECT(button_2), "clicked", call_second_examination, NULL);
   gtk_grid_attach (GTK_GRID (grid), button_2, 1, 0, 1, 1);
   gtk_window_present (GTK_WINDOW (window));
 }
