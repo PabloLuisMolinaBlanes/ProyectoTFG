@@ -1,3 +1,5 @@
+/*Includes*/
+
 #include <SFML/Graphics.hpp>
 #include <math.h>
 #include <stdlib.h>
@@ -8,6 +10,7 @@
 #include <string.h>
 #include <fstream>
 
+/*Imports y definiciones*/
 
 using sf::Color;
 using sf::CircleShape;
@@ -36,6 +39,8 @@ using sf::Clock;
 #define SECOND_VALUE_FIRST_POTENTIOMETER 3139
 #define SECOND_VALUE_SECOND_POTENTIOMETER 3155
 
+/*Parámetros y variables*/
+
 bool started = false;
 bool pressed = false;
 
@@ -52,20 +57,20 @@ int position_counter_2 = 0;
 std::ofstream outfile_1;
 std::ofstream outfile_2;
 
-struct Point {
-    float x;
-    float y;
-};
+/*Clases*/
 
 class Car {
     public:
+        // Verdadera posición x del coche.
         float actual_x;
+        // Verdadera posición y del coche.
         float actual_y;
+        // Posición en x mostrada, no puede superar los bordes en x de la pantalla
         float x;
+        // Posición en y mostrada, no puede superar los bordes en y de la pantalla
         float y;
-        float t = 0;
         sf::RectangleShape shape;
-
+        //Realiza el movimiento del coche en pantalla a partir de un valor x recibido
         void move(float x_received) {
             actual_x = x_received;
             if (actual_x > SCREEN_SIZE_X) {
@@ -115,12 +120,14 @@ void setPositions(sf::RectangleShape * walls, int * positions, int counter, int 
     } 
 } 
 
+/*Inicializa todas las vallas*/
 void initializeWalls(sf::RectangleShape * walls, int initial_x_wall, float size_x, float size_y) {
     for (int i = 0; i < NUMBER_OF_WALLS; i++) {
         walls[i] = initShape(initial_x_wall,INITIAL_Y_WALL*DEGREE_OF_SEPARATION*i,size_x,size_y);
     }
 }
 
+/*Dibuja todas las vallas dado una ventana*/
 void drawWalls(RenderWindow * window, sf::RectangleShape * walls) {
     for (int i = 0; i < NUMBER_OF_WALLS; i++) {
         window->draw(walls[i]);
