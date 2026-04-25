@@ -1,12 +1,18 @@
+/*Includes*/
 #include "driver/uart.h"
 #include "uart.h"
 
+/*Parámetros del programa*/
+
+// ¿Se ha configurado el dispositivo UART?
 int configured_uart = 0;
 
+// Mensajes que se pueden recibir; uno de salida, y dos referidos a examinaciones.
 const char msg[] = { 't', 'e', 's', 't', '_', '1' };
 const char message_2[] = { 't', 'e', 's', 't', '_', '2' };
 const char message_3[] = { 'e', 'x', 'i', 't' };
 
+// Configuración del dispositivo UART
 const uart_config_t default_uart_config = {
         .baud_rate = 115200,
         .data_bits = UART_DATA_8_BITS,
@@ -17,6 +23,8 @@ const uart_config_t default_uart_config = {
 };
 
 char uart_buffer[RX_BUF_SIZE];
+
+/*Funciones del programa*/
 
 int configure_uart_with_default_options() {
     if (configured_uart == 1) {

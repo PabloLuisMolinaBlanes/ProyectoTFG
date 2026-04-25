@@ -69,6 +69,7 @@ void configure_second_test() {
 }
 
 void second_examination_loop() {
+    /*No debemos iniciar la examinación sin configurarla antes*/
     if (configured_second == 0) {
         printf("Error. You should configure this examination first configure_second_test()\n");
         return;
@@ -88,6 +89,7 @@ void second_examination_loop() {
         if (read_from_uart(MILLISECONDS_BETWEEN_CHECKS) == EXIT_VALUE) {
             break;
         }
+        // Duerme por el tiempo indicado
         vTaskDelay(MILLISECONDS_BETWEEN_CHECKS/portTICK_PERIOD_MS);
     }
 }
