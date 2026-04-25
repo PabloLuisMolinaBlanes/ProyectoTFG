@@ -57,18 +57,6 @@ struct Point {
     float y;
 };
 
-class Path {
-    public:
-        struct Point P0;
-        struct Point P1;
-        void generatePath(float car_x, float car_y, float screen_y) {
-            P0.x = car_x;
-            P0.y = car_y;
-            P1.x = car_x;
-            P1.y = screen_y;
-        }
-};
-
 class Car {
     public:
         float actual_x;
@@ -77,13 +65,6 @@ class Car {
         float y;
         float t = 0;
         sf::RectangleShape shape;
-        void moveAlongPath(struct Path *path) {
-            float vel = path->P1.y - path->P0.y;
-            float next_y = path->P0.y + vel*t;
-            float next_dy = next_y-actual_y;
-            t = t + 0.005;
-            move(next_dy);
-        }
 
         void move(float x_received) {
             actual_x = x_received;
@@ -121,9 +102,11 @@ Car initCar(int car_x, int car_y) {
     return car;
 }
 
+/*Para cada valla, este método asigna la posición que le corresponde; haciendo una especie de efecto camino en pantalla*/
 void setPositions(sf::RectangleShape * walls, int * positions, int counter, int direction) {
     for (int i = 0; i < NUMBER_OF_WALLS; i++) {
         int nextPosition = walls[i].getPosition().x+(positions[counter]*direction);
+        // Esto sirve para evitar que las vallas se entrecruzen o se salgan de los bordes de la pantalla.
         if (nextPosition < 0 || (abs(nextPosition-(SCREEN_SIZE_X/2)) < 50) || nextPosition > (SCREEN_SIZE_X - SIZE_X_WALL)) {
             nextPosition = walls[i].getPosition().x;
         } 
@@ -144,6 +127,10 @@ void drawWalls(RenderWindow * window, sf::RectangleShape * walls) {
     }
 }
 
+/*Inicializa el array de posiciones a partir de un camino pseudo-aleatorio.
+*
+* Advertencia: Al haberse asignado semilla 1 al pseudogenerador; bajo esta implementación siempre se inicializará el mismo camino. Esto es deliberado.
+**/
 void initializePositions(int * positions) {
     for (int i = 0; i < NUMBER_OF_WALLS; i++) {
         positions[i] = 0;
@@ -289,7 +276,6 @@ int main() {
     sf::RectangleShape walls[NUMBER_OF_WALLS];
     sf::RectangleShape walls_2[NUMBER_OF_WALLS];
     int positions[NUMBER_OF_POSITIONS];
-    Path path;
     sf::Clock clock;
     int positionCounter = 0;
     /*Validamos primero que los parámetros son compatibles con los cálculos que vamos a hacer*/
@@ -310,7 +296,6 @@ int main() {
         car = initCar(INITIAL_X_CAR, INITIAL_Y_CAR);
         car_2 = initCar(INITIAL_X_CAR_2, INITIAL_Y_CAR);
         started = true;
-        path.generatePath(car.x, car.y, 600);
         initializePositions(positions);
         initializeWalls(walls,INITIAL_X_WALL,SIZE_X_WALL, SIZE_Y_WALL);
         initializeWalls(walls_2,INITIAL_X_WALL_2,SIZE_X_WALL, SIZE_Y_WALL);
