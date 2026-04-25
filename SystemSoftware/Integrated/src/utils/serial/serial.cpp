@@ -58,7 +58,14 @@ int default_configure() {
     return 0;
 } 
 
+/*
+Esta función lee a partir del dispositivo serial por defecto.
+*/
 char * serial_read() {
+    if (configured != 1) {
+        printf("Error. Please, configure the UART device before trying to read\n");
+        return "";
+    }
     memset(&read_buf, '\0', sizeof(read_buf));
         int num_bytes = read(serial_port, &read_buf, sizeof(read_buf));
         if (num_bytes < 0) {
@@ -74,6 +81,9 @@ char * serial_read() {
         return read_buf;
 }
 
+/*
+Esta función escribe a través del dispositivo serial elegido por defecto.
+*/
 int serial_send(int message) {
     if (configured != 1) {
         printf("Error. Please, configure the UART device before trying to send\n");

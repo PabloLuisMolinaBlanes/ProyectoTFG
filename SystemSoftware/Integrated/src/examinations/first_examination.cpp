@@ -1,3 +1,4 @@
+/*Includes*/
 #include <SFML/Graphics.hpp>
 #include <math.h>
 #include <stdlib.h>
@@ -8,6 +9,7 @@
 #include "serial.hpp"
 #include <fstream>
 
+/*Importaciones*/
 using sf::Color;
 using sf::CircleShape;
 using sf::Event;
@@ -15,6 +17,7 @@ using sf::RenderWindow;
 using sf::VideoMode;
 using sf::Clock;
 
+/*Parámetros y variables*/
 bool started = false;
 bool pressed = false;
 
@@ -33,6 +36,8 @@ struct Point {
     float x;
     float y;
 };
+
+/*Clases*/
 
 class Path {
     public:
@@ -76,6 +81,8 @@ class Car {
         }
 };
 
+/*Métodos auxiliares*/
+
 sf::RectangleShape initShape(int pos_x, int pos_y) {
     sf::RectangleShape shape(sf::Vector2f(20.0f, 20.0f));
     shape.setPosition(sf::Vector2f(pos_x,pos_y));
@@ -97,8 +104,6 @@ Car initCar(int car_x, int car_y) {
     car.shape = initShape(car.x, car.y);
     return car;
 }
-
-/*Update method*/
 
 void reset_test(Car * car) {
     car->shape.setPosition(sf::Vector2f(300.0f, 300.0f));
@@ -126,12 +131,11 @@ int save_data() {
     return 0;
 }
 
+/*Bucle principal*/
+
 int main() {
-    printf("Do I at least turn on?\n");
-    int result = default_configure();
-    printf("%d\n", result);
-    result = serial_send(1);
-    printf("%d\n", result);
+    default_configure();
+    serial_send(1);
     RenderWindow window(VideoMode({600, 600}), "Test1");
     Car car;
     sf::RectangleShape wall;
