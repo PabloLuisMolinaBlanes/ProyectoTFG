@@ -164,6 +164,7 @@ void initializePositions(int * positions) {
     }
 }
 
+/*Detector de colisiones en x, calcula si el coche se encuentra fuera de la pared en la misma posición en y que el coche*/
 int verifyCollision(Car car, sf::RectangleShape wall) {
     int result = car.shape.getPosition().x;
     int result_2 = wall.getPosition().x;
@@ -173,6 +174,7 @@ int verifyCollision(Car car, sf::RectangleShape wall) {
     return 1;
 }
 
+/*A partir de un índice calculado del voltaje obtenido del potenciómetro, calcula la posición en pantalla*/
 int resolvePosition(int index, int * collection, int size_array) {
     if (index < 0) {
         return 0;
@@ -183,6 +185,11 @@ int resolvePosition(int index, int * collection, int size_array) {
     } 
 }
 
+/*Inicializa una lookup table vacía a partir de un múltiplo.
+*
+* Por ejemplo, para una pantalla de tamaño 600, y 5 posiciones en x disponibles por valor de potenciómetro devolvería:
+* {0,0,0,0,0,1,1,1,1,1,...,599,599,599,599,599,600,600,600,600,600}
+*/
 void initializeLookUpTable(int * collection, int multiple) {
     int current_position = 0;
     for (int i = 0; i <= (multiple*SCREEN_SIZE_X)-multiple; i += multiple) {
@@ -193,6 +200,7 @@ void initializeLookUpTable(int * collection, int multiple) {
     }
 }
 
+/*Agrega la información de posición en x dependiendo del potenciometro*/
 void add_data(int data, int potentiometer) {
     if (potentiometer == 1 && position_counter_1 < NUMBER_OF_POSITIONS-NUMBER_OF_WALLS) {
         test_data_1[position_counter_1] = data;
@@ -208,20 +216,25 @@ void add_data(int data, int potentiometer) {
 int save_data() {
     std::string addResults_1 = "";
     std::string addResults_2 = "";
+    // Formateado de los resultados ("<posicion_x_1>,<posicion_x_2>,...")
     for (int i = 0; i < NUMBER_OF_POSITIONS-NUMBER_OF_WALLS; i++) {
         addResults_1 += std::to_string(test_data_1[i]);
         if (i != NUMBER_OF_POSITIONS-NUMBER_OF_WALLS-1) {
             addResults_1 += ",";
         }
     }
+    // Nos aseguramos que el buffer hace flush
     addResults_1 += "\n";
+    // Formateado de los resultados ("<posicion_x_1>,<posicion_x_2>,...")
     for (int i = 0; i < NUMBER_OF_POSITIONS-NUMBER_OF_WALLS; i++) {
         addResults_2 += std::to_string(test_data_2[i]);
         if (i != NUMBER_OF_POSITIONS-NUMBER_OF_WALLS-1) {
             addResults_2 += ",";
         }
     }
+    // Nos aseguramos que el buffer hace flush
     addResults_2 += "\n";
+    /*Escribe los archivos a partir de los descriptores de ficheros*/
     outfile_1.open("second_test_1.txt", std::ios_base::app);
     outfile_2.open("second_test_2.txt", std::ios_base::app);
     outfile_1 << addResults_1;

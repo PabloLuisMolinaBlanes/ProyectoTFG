@@ -137,6 +137,7 @@ int save_data() {
     }
     // Nos aseguramos que el buffer hace flush
     addResults += "\n";
+    /*Escribe el archivo a partir del descriptor de ficheros*/
     outfile.open("first_test.txt", std::ios_base::app);
     outfile << addResults;
     return 0;
