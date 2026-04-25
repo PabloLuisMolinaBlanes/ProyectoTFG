@@ -204,6 +204,7 @@ void add_data(int data, int potentiometer) {
     }
 }
 
+/*Formatea y almacena los datos en un fichero en el sistema de archivos*/
 int save_data() {
     std::string addResults_1 = "";
     std::string addResults_2 = "";
@@ -228,12 +229,48 @@ int save_data() {
     return 0;
 }
 
-/*Update method*/
+/*Valida que todos los parámetros definidos en tiempo de compilación son compatibles con los cálculos que se van a realizar*/
+void validate_all_parameters(float division_1, float division_2) {
+    // No deben haber más vallas que posiciones puedan tomar
+    if (NUMBER_OF_POSITIONS < NUMBER_OF_WALLS) {
+        printf("Error. Cannot have more positions than walls.\n");
+        serial_send(3);
+        exit(-1);
+    }
+    // El valor máximo del primer potenciómetro ha de ser estrictamente mayor que el valor mínimo del primer potenciometro
+    if (SECOND_VALUE_FIRST_POTENTIOMETER <= FIRST_VALUE_FIRST_POTENTIOMETER) {
+        printf("Error. Top value of first potentiometer cannot be equal or shorter to bottom value");
+        serial_send(3);
+        exit(-1);
+    }
+    // El valor máximo del segundo potenciómetro ha de ser estrictamente mayor que el valor mínimo del segundo potenciometro
+    if (SECOND_VALUE_SECOND_POTENTIOMETER <= FIRST_VALUE_SECOND_POTENTIOMETER) {
+        printf("Error. Top value of second potentiometer cannot be equal or shorter to bottom value");
+        serial_send(3);
+        exit(-1);
+    }
+    // Debe haber al menos una posición en x a la que podamos asignar cada valor del primer potenciometro 
+    if (division_1 < 1) {
+        printf("Error, the range of the first potentiometer must be larger or equal to that of the screen size in the x coordinate");
+        serial_send(3);
+        exit(-1);
+    }
+    // Debe haber al menos una posición en x a la que podamos asignar cada valor del segundo potenciometro
+    if (division_2 < 1) {
+        printf("Error, the range of the second potentiometer must be larger or equal to that of the screen size in the x coordinate");
+        serial_send(3);
+        exit(-1);
+    }
+} 
+
+/*Método principal de la función*/
 
 int main() {
+    /*Configuramos el puerto serial y le indicamos al microcontrolador que puede comenzar a ejecutar su programa de examinacion*/
     default_configure();
     serial_send(2);
-    RenderWindow window(VideoMode({SCREEN_SIZE_X, SCREEN_SIZE_Y}), "Test1");
+    /*Aquí se inicializan variables locales para la examinacion*/
+    RenderWindow window(VideoMode({SCREEN_SIZE_X, SCREEN_SIZE_Y}), "Test2");
     Car car;
     Car car_2;
     sf::RectangleShape walls[NUMBER_OF_WALLS];
@@ -242,39 +279,18 @@ int main() {
     Path path;
     sf::Clock clock;
     int positionCounter = 0;
-    if (NUMBER_OF_POSITIONS < NUMBER_OF_WALLS) {
-        printf("Error. Cannot have more positions than walls.\n");
-        serial_send(3);
-        exit(-1);
-    }
-    if (SECOND_VALUE_FIRST_POTENTIOMETER <= FIRST_VALUE_FIRST_POTENTIOMETER) {
-        printf("Error. Top value of first potentiometer cannot be equal or shorter to bottom value");
-        serial_send(3);
-        exit(-1);
-    }
-    if (SECOND_VALUE_SECOND_POTENTIOMETER <= FIRST_VALUE_SECOND_POTENTIOMETER) {
-        printf("Error. Top value of second potentiometer cannot be equal or shorter to bottom value");
-        serial_send(3);
-        exit(-1);
-    }
+    /*Validamos primero que los parámetros son compatibles con los cálculos que vamos a hacer*/
     float division_1 = (SECOND_VALUE_FIRST_POTENTIOMETER-FIRST_VALUE_FIRST_POTENTIOMETER)/SCREEN_SIZE_X;
-    if (division_1 < 1) {
-        printf("Error, the range of the first potentiometer must be larger or equal to that of the screen size in the x coordinate");
-        serial_send(3);
-        exit(-1);
-    } 
     float division_2 = (SECOND_VALUE_SECOND_POTENTIOMETER-FIRST_VALUE_SECOND_POTENTIOMETER)/SCREEN_SIZE_X;
-    if (division_2 < 1) {
-        printf("Error, the range of the second potentiometer must be larger or equal to that of the screen size in the x coordinate");
-        serial_send(3);
-        exit(-1);
-    }
+    validate_all_parameters(division_1, division_2);
+    /*Cálculo de parámetros relativos a las Lookup Tables*/
     const int multiple1 = (int)floor(division_1);
     const int multiple2 = (int)floor(division_2);
     const int lookuptable1_size = multiple1*SCREEN_SIZE_X;
     const int lookuptable2_size = multiple2*SCREEN_SIZE_X;
     int * lookuptable_firstPotentiometer = new int[lookuptable1_size];
     int * lookuptable_secondPotentiometer = new int[lookuptable2_size];
+    /*Inicializa las lookup tables para cada potenciómetro*/
     initializeLookUpTable(lookuptable_firstPotentiometer, multiple1);
     initializeLookUpTable(lookuptable_secondPotentiometer, multiple2);
     if (!started) {
@@ -286,7 +302,9 @@ int main() {
         initializeWalls(walls,INITIAL_X_WALL,SIZE_X_WALL, SIZE_Y_WALL);
         initializeWalls(walls_2,INITIAL_X_WALL_2,SIZE_X_WALL, SIZE_Y_WALL);
     }
+    /*Cuando lo hemos inicializado todo, entramos en este bucle*/
     while (window.isOpen()) {
+        /*Buscamos asegurar que se ejecuta lógica del examen solo cada 200 milisegundos*/
         while (clock.getElapsedTime().asMilliseconds() < 200) {
             while (const std::optional event = window.pollEvent()) {
                 if (event->is<Event::Closed>()) {
@@ -294,17 +312,20 @@ int main() {
                     window.close();
                 }
             }
+            /*Lee del serial, y actua solo si hemos recibido datos*/
             const char * received = serial_read();
                 if (strcmp(received, "") != 0) {
-                    printf("Received raw serial data %s\n", received);
                     int position;
                     if (handle_turn == 0) {
+                        // Transforma el voltaje recibido a un valor x en pantalla conforme a nuestra lookup table
                         position = resolvePosition(atoi(received)-FIRST_VALUE_FIRST_POTENTIOMETER, lookuptable_firstPotentiometer, lookuptable1_size);
                         car_2.move(position);
                     } else {
+                        // Transforma el voltaje recibido a un valor x en pantalla conforme a nuestra lookup table
                         position = resolvePosition(SECOND_VALUE_SECOND_POTENTIOMETER-(atoi(received)-FIRST_VALUE_SECOND_POTENTIOMETER), lookuptable_secondPotentiometer, lookuptable2_size);
                         car.move(position);
-                    } 
+                    }
+                    // Cambia el turno al siguiente potenciometro 
                     handle_turn = (handle_turn + 1) % 2;
                 }
         }
@@ -317,12 +338,15 @@ int main() {
         window.draw(car.shape);
         window.draw(car_2.shape);
         window.display();
+        /*Mientras que siga habiendo futuras posiciones en x para todas las paredes, cambia las posiciones de las paredes a sus nuevos valores*/
         if (positionCounter+NUMBER_OF_WALLS < NUMBER_OF_POSITIONS) {
             positionCounter++;
             setPositions(walls, positions, positionCounter, 1);
             setPositions(walls_2, positions, positionCounter, -1);
         } else {
+            /*Si hemos realizado el número de tests necesarios, guardamos datos y cerramos*/
             save_data();
+            // Indica al microcontrolador que vamos a terminar la examinación.
             serial_send(3);
             exit(0);
         }
