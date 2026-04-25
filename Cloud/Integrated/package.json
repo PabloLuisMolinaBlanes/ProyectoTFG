@@ -1,0 +1,41 @@
+{
+  "name": "simplecrbackend",
+  "version": "1.0.0",
+  "description": "The backend for the cloud",
+  "keywords": [
+    "backend",
+    "cloud",
+    "aws",
+    "crud",
+    "prisma"
+  ],
+  "license": "MIT",
+  "author": "Pablo Luis Molina Blanes",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tsc --build && node ./build/src/server.js",
+    "build": "npx tsc --build"
+  },
+  "dependencies": {
+    "@prisma/adapter-mariadb": "^7.7.0",
+    "@prisma/adapter-pg": "^7.7.0",
+    "@prisma/client": "^7.7.0",
+    "axios": "1.14.0",
+    "bcrypt": "^6.0.0",
+    "body-parser": "2.2.2",
+    "cors": "2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "5.2.1",
+    "pg": "^8.20.0",
+    "typescript": "6.0.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "2.8.19",
+    "@types/express": "5.0.6",
+    "@types/node": "25.5.0",
+    "@types/pg": "^8.20.0",
+    "prisma": "^7.7.0"
+  }
+}
