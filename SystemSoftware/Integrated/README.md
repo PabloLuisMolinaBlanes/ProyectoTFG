@@ -57,10 +57,41 @@ El funcionamiento general de los programas pertenecientes a este componente cons
 
 #### ```first_examination.cpp```
 
+Aquí se implementa todo lo relativo a la primera examinación, la prueba de tiempo de anticipación.
+
+Más o menos, el funcionamiento consiste en lo siguiente:
+
+- Primero se inicializan los parámetros, clases y valores relativos a la examinación.
+- Después se entra en un bucle, donde se comprueba si se ha mandado información por el dispositivo serial, y si es así, reinicia la examinación o termina la examinación.
+- Al finalizar la examinación, guarda toda la información recolectada sobre este para su auditoría, y cierra el programa de forma automática
+
 #### ```second_examination.cpp```
+
+Aquí se implementa todo lo relativo a la primera examinación, la prueba de coordinación mano-ojo.
+
+Tiene un funcionamiento algo más complejo que la otra examinación.
+
+- Primero se inicializan todos los parámetros, clases y valores; incluidos una serie de vallas, posiciones, y dos lookup tables; uno asociado con cada potenciómetro.
+- Se calculan una serie de parámetros para inicializar de forma correcta los lookup tables
+- Después, se entra en un bucle; donde se obtiene el voltaje recibido del potenciómetro respectivo, y se realizan los siguientes pasos: 
+    - Se obtiene el lookup table que corresponde al potenciómetro del que proviene el voltaje
+    - Se transforma este voltaje a un índice en el lookup table.
+    - A partir de este índice calculado, obtenemos una posición de x
+    - El vehículo asociado al potenciómetro donde viene el voltaje se desplaza hacia al valor en x obtenido.
+    - Terminado esto, indica que el siguiente valor de voltaje recibido corresponderá al otro potenciómetro.
+- Por último, si no se han terminado aún las posiciones que podemos asignar a las vallas, se asignan las siguientes posiciones.
+- Si hubiesen terminado las posiciones que podemos asignar, se guarda toda la información recolectada sobre la examinación para su auditoría, y cierra el programa de forma automática
+
+### ```gui```
+
+Consiste en un único programa que inicializa una interfaz gráfica; según el botón que se pulse, se ejecuta un programa de examinación u otro.
+
+Utiliza la librería GTK-4 internamente como librería de interfaz de usuario.
 
 ### ```utils```
 
 Aquí se implementan funciones auxiliares en los que se apoyan las examinaciones para realizar sus acometidos
 
 #### ```serial.cpp```
+
+Este programa se encarga de proporcionar configuraciones, y métodos para configurar un dispositivo serial, leer de este, y mandar información a través de este; asume que el dispositivo del que lee y escribe ejecuta el sistema software https://github.com/PabloLuisMolinaBlanes/ProyectoTFG/tree/main/Embedded/Integrated/FOSSPsychotechnicalExamination_embedded
