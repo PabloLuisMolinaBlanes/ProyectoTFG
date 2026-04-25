@@ -4,6 +4,6 @@
 
 ## FAQ
 
-## Instrucciones de compilación y ejecución
+## Instrucciones de traducción y ejecución
 
 ## Componentes del programa
