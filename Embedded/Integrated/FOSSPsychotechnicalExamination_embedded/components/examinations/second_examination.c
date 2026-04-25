@@ -1,3 +1,5 @@
+/*Código derivado del repositorio LTKDT-s_small_projects (https://github.com/ltkdt/LTKDT-s_small_projects/) por Lê Trung Kiên; código fuente original: https://github.com/ltkdt/LTKDT-s_small_projects/blob/master/esp_idf_adc/main.c*/
+
 #include "uart.h"
 #include <esp_adc/adc_oneshot.h>
 #include <hal/adc_types.h>

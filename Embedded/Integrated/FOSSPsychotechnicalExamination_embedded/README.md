@@ -2,6 +2,10 @@
 
 ## Introducción
 
+Este programa implementa los programas del proyecto FOSSPsychotechnicalExamination que se ejecutan en el microcontrolador.
+
+Para leer más sobre FOSSPsychotechnicalExamination, consúltese el documento README.md en el fichero raiz del proyecto.
+
 ## FAQ
 
 ### ¿Con qué placas se ha probado esto?
@@ -13,6 +17,13 @@ Para compilar con ESP-IDF, se puede asumir una placa **ESP32-Chip (via ESP-PROG)
 ### ¿Con qué versión de ESP-IDF se ha desarrollado el proyecto?
 
 Se ha desarrollado en la versión v5.5.3 de ESP-IDF.
+
+### ¿Se ha utilizado inteligencia artificial generativa en este proyecto?
+
+No he utilizado IA generativa de forma deliberada para realizar ninguna parte de este proyecto; esto incluye documentación, código fuente, y parámetros de configuración o construcción.
+
+Aún así, utilizo librerías externas, hay algunas porciones de código fuente que han sido tomadas de Internet, y he consultado documentación externa; desconozco su provenencia, y por ende, no puedo asegurar que no haya habido IA generativa involucrada en su creación.
+
 
 ## Instrucciones de compilación
 
@@ -40,13 +51,24 @@ Se ha desarrollado en la versión v5.5.3 de ESP-IDF.
 
 #### ```first_examination.c```
 
+Este componente incluye toda la funcionalidad relativa al primer examen psicotécnico.
+
+Para utilizarlo, primero se ha de configurar los pines GPIO a través de la función ```configure_first_test```, tras ello, se ha de llamar al método ```first_examination_loop```.
+
 #### ```second_examination.c```
+
+Este componente incluye toda la funcionalidad relativa al segundo examen psicotécnico.
 
 ### ```utils```
 
 ```utils``` es un componente del proyecto que implementa funcionamiento que asiste a los exámenes psicotécnicos en su funcionamiento
 
 #### ```uart.c```
+
+```uart.c``` es un componente auxiliar del proyecto. Tiene la responsabilidad de proporcionar métodos para: 
+
+- Configurar un dispositivo UART (por defecto, asumimos un dispositivo USB-to-UART en el puerto UART de consola por defecto)
+- Leer datos transferidos por el puerto UART.
 
 ### ```main.c```
 
