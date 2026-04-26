@@ -3,6 +3,7 @@ import * as crypto from 'crypto';
 import axios, { AxiosResponse } from 'axios'
 import * as fs from 'fs';
 import * as readline from 'readline/promises'
+import { exit } from 'process';
 
 /*Variables*/
 type nullable<T> = T | null | undefined
@@ -49,6 +50,12 @@ type DocumentData =  {
 type UserData =  {
     nombre_interesado: string,
     nif_interesado: string
+}
+
+type OptionToFunction = {
+    option_label: string,
+    async: boolean,
+    function_to_execute: () => void 
 } 
 
 /*Auxiliary functions*/
@@ -264,6 +271,7 @@ async function askForData() {
     var resultingSent = await sendRequest(parsedData, userData.nombre_interesado, userData.nif_interesado)
     /*Send HTTP request*/
     console.log(`Test with id ${resultingSent?.id} successfully built!`)
+    return;
 } 
 
 /*Genera el fichero HTML con los datos de cada usuario*/
@@ -289,7 +297,7 @@ async function askForData() {
     * </html>
     *
     * */
-function generateHTMLString(decipher: crypto.Decipheriv, received_data: nullable<Test[]> ) : string {
+function generateHTMLString(received_data: nullable<Test[]> ) : string {
     if (received_data === undefined || received_data === null ) {
         console.log("No se han recibido datos correctos");
         return "";
@@ -297,6 +305,8 @@ function generateHTMLString(decipher: crypto.Decipheriv, received_data: nullable
     var html_beginning = "<html><head></head><body>"
     var html_table = "<table><tr><th>Datos de paciente</th><th>Resultados primer examen</th><th>Resultados segundo examen 1</th><th>Resultados segundo examen 2</th></tr>"
     for (const test of received_data) {
+        // You have to create the decipher every time you want to use it; otherwise, it throws exception
+        const decipher: crypto.Decipheriv = crypto.createDecipheriv('aes256', key, iv)
         const decryptedId = decipher.update(test.id, 'hex', 'utf-8') + decipher.final('utf-8')
         html_table = html_table + `<tr><td>${decryptedId}</td><td>${test.results_reaction_time}</td><td>${test.results_first_potentiometer}</td><td>${test.results_second_potentiometer}</td></tr>`
     }
@@ -317,25 +327,70 @@ async function getAllExaminations() {
     const hospital_name = hospitalCredentials.split("\n")[0];
     const hospital_password = hospitalCredentials.split("\n")[1]; 
     const received_data = await returnAllExaminations(hospital_name, hospital_password);
-    const decipher = crypto.createDecipheriv('aes256', key, iv)
-    var content = generateHTMLString(decipher, received_data);
+    var content = generateHTMLString(received_data);
     try {
         fs.writeFileSync(__dirname + '/html_results.html', content);
     } catch (err) {
         console.log("Se ha producido un error al escribir el archivo");
         return;
-    } 
+    }
+    console.log("Se han escrito los datos en el fichero html_results.html") 
+    return;
 }
 
-/*TODO: Pasar esto a un menú real*/
+var optionsToFunctions : OptionToFunction[] =[
+    {
+    option_label: "1",
+    async: true,
+    function_to_execute: async () => await askForData()
+    },
+    {
+    option_label: "2",
+    async: true,
+    function_to_execute: async () => await getAllExaminations()
+    },
+    {
+    option_label: "3",
+    async: false,
+    function_to_execute: () => process.exit(0)
+    },
+] 
 
-initializeNIFArray();
-console.log("¡Bienvenido/a!");
-console.log("*****************************************")
-console.log("OPCIONES:")
-console.log("1. Agregar una examinacion al sistema")
-console.log("2. Obtener todos las examinaciones del hospital")
-console.log("3. Salir del programa")
-initializeEncryptionParameters()
-getAllExaminations()
-//askForData();
+async function mainLoop() {
+    initializeNIFArray()
+    while (true) {
+        initializeEncryptionParameters()
+        var opcion_escogida = ""
+        console.log("¡Bienvenido/a!");
+        console.log("*****************************************")
+        console.log("OPCIONES:")
+        console.log("1. Agregar una examinacion al sistema")
+        console.log("2. Obtener todos las examinaciones del hospital")
+        console.log("3. Salir del programa")
+        opcion_escogida = await rl.question("");
+        var result : OptionToFunction[] = optionsToFunctions.filter((item) => item.option_label === opcion_escogida)
+        if (result.length === 0) {
+            console.log("Opcion no reconocida, vuelva a elegir de nuevo");
+        } else {
+            if (result[0].async == true ) {
+                await result[0].function_to_execute(); 
+            } else {
+                result[0].function_to_execute();
+            }
+        } 
+        /*if (opcion_escogida === "1") {
+            askForData()
+        } else if (opcion_escogida === "2") {
+            getAllExaminations();
+        } else if (opcion_escogida === "3") {
+            return;
+        } else {
+            console.log("Opcion no reconocida, vuelva a elegir de nuevo");
+        } 
+        */
+    } 
+} 
+
+
+
+mainLoop()
