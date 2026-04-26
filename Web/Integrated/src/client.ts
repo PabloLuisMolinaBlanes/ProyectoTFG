@@ -4,6 +4,7 @@ import axios, { AxiosResponse } from 'axios'
 import * as fs from 'fs';
 import * as readline from 'readline/promises'
 
+/*Variables*/
 type nullable<T> = T | null | undefined
 
 var tabla_de_residuos : String[] = [] 
@@ -39,6 +40,7 @@ type Test = {
 
 /*Auxiliary functions*/
 
+/*Inicializa lookup table para asignar un resto a una letra*/
 function initializeNIFArray() {
     tabla_de_residuos.push("T")
     tabla_de_residuos.push("R")
@@ -68,6 +70,9 @@ function initializeNIFArray() {
     tabla_de_extranjeria.set("Z",2) 
 }
 
+/*
+Obtiene clave de encripción e IV de archivo en codificación hexadecimal; si no existen, el programa las genera y almacena en el fichero encryptionparameters.txt.
+*/
 function initializeEncryptionParameters() {
     try {
         const encryptionparameters = fs.readFileSync(__dirname + '/encryptionparameters.txt', 'utf-8')
@@ -81,16 +86,21 @@ function initializeEncryptionParameters() {
     }
 } 
 
+/*Envía petición de mandar datos de examinación*/
 async function sendData(data : PostData) : Promise<nullable<Test>>   {
     const dataPromise : AxiosResponse<nullable<Test>> = await axios.post("http://localhost:3000/upload", data);
     return dataPromise.data;
 }
 
+/*Envía petición de obtener datos de examinación*/
 async function returnAllExaminations(hospital_name_received: string, hospital_password_received: string) : Promise<nullable<Test[]>>  {
     const dataPromise : AxiosResponse<nullable<Test[]>> = await axios.get(`http://localhost:3000/receive?hospital_name=${hospital_name_received}&hospital_password=${hospital_password_received}`);
     return dataPromise.data
 }
 
+/*Genera un string aleatorio de longitud length
+* Código basado del código original por Roger Knapp y editado por el usuario TylerH (https://stackoverflow.com/a/1349426); Licenciado bajo CC BY-SA 4.0. (https://creativecommons.org/licenses/by-sa/2.5/)
+*/
 function generateRandomString(length : number) : string {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -103,6 +113,7 @@ function generateRandomString(length : number) : string {
     return result;
 }
 
+/*Verifica que el número de identificación corresponde con la letra proporcionada*/
 function verifyNIFLetter(nif: string, condicion_extranjero: boolean) : boolean {
     var regexp = new RegExp('[A-Z]')
     var documento : String = condicion_extranjero ? "NIE" : "DNI"
@@ -132,6 +143,7 @@ function verifyNIFLetter(nif: string, condicion_extranjero: boolean) : boolean {
 
 /*Options*/
 
+/*Obtiene datos introducidos por el usuario, los valida, y después llama a funciones que envían los datos a la nube.*/
 async function askForData() {
 
     /* Variable initialization */
@@ -199,12 +211,13 @@ async function askForData() {
 
     /*TODO: Escribir documento de Protección de Datos aquí*/
 
-    /*Send data*/
+    /*Parse data*/
     var results_reaction_time = firstFileRawData.split("\n")[0]
     var results_first_potentiometer = secondFileRawData.split("\n")[0]
     var results_second_potentiometer = secondFileRawData.split("\n")[1]
     var hospital_alias = hospitalCredentials.split("\n")[0]
     var hospital_pass = hospitalCredentials.split("\n")[1]
+    /*Generate HTTP request*/
     const id_to_send = nombre_interesado.toUpperCase()+"_"+dni_interesado.toUpperCase()+"_"+generateRandomString(20)
     const cipher = crypto.createCipheriv('aes256', key, iv)
     const encryptedId = cipher.update(id_to_send, 'utf-8', 'hex') + cipher.final('hex')
@@ -216,10 +229,12 @@ async function askForData() {
         second_exam_first_potentio: results_first_potentiometer,
         second_exam_second_potentio: results_second_potentiometer
     }
+    /*Send and return success*/
     const test_received = await sendData(data_to_send);
     console.log(`Test with id ${test_received?.id} successfully built!`)
 }
 
+/*Obtiene los datos de examinaciones según credenciales y genera archivo .html con datos desencriptados*/ 
 async function getAllExaminations() {
     var hospitalCredentials : string = ""
     try {
@@ -237,6 +252,29 @@ async function getAllExaminations() {
         return;
     }
     const decipher = crypto.createDecipheriv('aes256', key, iv)
+    /*Comienzo de generación de fichero HTML*/
+    /*Resultado de ejemplo (\n solo incluidos con fines de legibilidad)
+    * <html>
+    *  <head></head>
+    *  <body>
+    *   <table>
+    *    <tr>
+    *     <th>Datos de paciente</th>
+    *     <th>Resultados primer examen</th>
+    *     <th>Resultados segundo examen 1</th>
+    *     <th>Resultados segundo examen 2</th>   
+    *    </tr>
+    *    <tr>
+    *     <td><NOMBRE y APELLIDOS>_<NUMERO DOCUMENTO>_<STRING ALEATORIO></td>
+    *     <td>0.433,0.788,0.888</td>
+    *     <td>0,0,0,0,1,1,2,3,2,1,1,1</td>
+    *     <td>599,599,599,598,590,589,589,590,591,585,587,588</td>
+    *    </tr>
+    *   </table>
+    *  </body>
+    * </html>
+    *
+    * */
     var html_beginning = "<html><head></head><body>"
     var html_table = "<table><tr><th>Datos de paciente</th><th>Resultados primer examen</th><th>Resultados segundo examen 1</th><th>Resultados segundo examen 2</th></tr>"
     for (const test of received_data) {
@@ -252,6 +290,8 @@ async function getAllExaminations() {
         return;
     } 
 }
+
+/*TODO: Pasar esto a un menú real*/
 
 initializeNIFArray();
 console.log("¡Bienvenido/a!");
