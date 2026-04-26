@@ -10,13 +10,22 @@ FetchContent_Declare(
     SYSTEM
 )
 FetchContent_MakeAvailable(googletest)
+FetchContent_Declare(SFML
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG 3.0.2
+    GIT_SHALLOW ON
+    EXCLUDE_FROM_ALL
+    SYSTEM)
+FetchContent_MakeAvailable(SFML)
 add_executable(first_examination_test first_examination_test.cpp)
 add_executable(second_examination_test second_examination_test.cpp)
 add_executable(serial_test serial_test.cpp)
 target_link_libraries(first_examination_test PUBLIC GTest::gtest_main)
 target_link_libraries(second_examination_test PUBLIC GTest::gtest_main)
+target_link_libraries(first_examination_test  PRIVATE SFML::Graphics)
+target_link_libraries(second_examination_test  PRIVATE SFML::Graphics)
 target_link_libraries(serial_test PUBLIC GTest::gtest_main)
 target_link_libraries(serial_test PUBLIC serial)
+target_link_libraries(first_examination_test PUBLIC first_examination_library)
 add_test(NAME first_examination_test COMMAND first_examination_test)
 add_test(NAME second_examination_test COMMAND second_examination_test)
-add_test(NAME third_examination_test COMMAND third_examination_test)

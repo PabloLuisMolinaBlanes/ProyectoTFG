@@ -1,3 +1,5 @@
 add_subdirectory(utils)
 add_subdirectory(examinations)
-add_subdirectory(gui)
+if (NOT TEST)
+    add_subdirectory(gui)
+endif()

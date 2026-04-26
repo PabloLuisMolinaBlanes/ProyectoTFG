@@ -271,7 +271,7 @@ void validate_all_parameters(float division_1, float division_2) {
 } 
 
 /*Método principal de la función*/
-
+#ifndef __TEST__
 int main() {
     /*Configuramos el puerto serial y le indicamos al microcontrolador que puede comenzar a ejecutar su programa de examinacion*/
     default_configure();
@@ -359,3 +359,4 @@ int main() {
         real_time_elapsed += clock.getElapsedTime().asMilliseconds();
     }
 }
+#endif

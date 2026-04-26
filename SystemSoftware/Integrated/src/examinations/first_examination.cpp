@@ -145,6 +145,7 @@ int save_data() {
 
 /*Función principal*/
 
+#ifndef __TEST__
 int main() {
     /*Configuramos el puerto serial y le indicamos al microcontrolador que puede comenzar a ejecutar su programa de examinacion*/
     default_configure();
@@ -200,3 +201,4 @@ int main() {
         real_time_elapsed += clock.getElapsedTime().asMilliseconds();
     }
 }
+#endif
