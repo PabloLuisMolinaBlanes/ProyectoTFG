@@ -38,6 +38,19 @@ type Test = {
     hospital_id: number
 }
 
+type DocumentData =  {
+    results_reaction_time: string,
+    results_first_potentiometer: string,
+    results_second_potentiometer: string,
+    hospital_alias: string,
+    hospital_pass: string
+}
+
+type UserData =  {
+    nombre_interesado: string,
+    nif_interesado: string
+} 
+
 /*Auxiliary functions*/
 
 /*Inicializa lookup table para asignar un resto a una letra*/
@@ -141,30 +154,10 @@ function verifyNIFLetter(nif: string, condicion_extranjero: boolean) : boolean {
     } 
 }
 
-/*Options*/
-
-/*Obtiene datos introducidos por el usuario, los valida, y después llama a funciones que envían los datos a la nube.*/
-async function askForData() {
-
-    /* Variable initialization */
-    var firstFileRawData: string = ""
-    var secondFileRawData: string = ""
-    var hospitalCredentials: string = ""
+async function userDataLoop(resolve : (value: UserData | PromiseLike<UserData>) => void) {
     var nombre_interesado: string = ""
     var documento_en_uso: string = "";
     var dni_interesado: string = ""
-
-    /*Read file data*/
-    try {
-        firstFileRawData = fs.readFileSync(__dirname + "/first_examination.txt", "utf8");
-        secondFileRawData = fs.readFileSync(__dirname + "/second_examination.txt", "utf8");
-        hospitalCredentials = fs.readFileSync(__dirname + "/hospital_credentials.txt", "utf8");
-    } catch (err) {
-        console.log("No hemos podido encontrar uno de los archivos requeridos: " + err);
-        return;
-    }
-    console.log("Files have been found correctly.");
-
     var accepted: boolean = false;
     while (!accepted) {
         nombre_interesado = ""
@@ -198,61 +191,82 @@ async function askForData() {
             var response = await rl.question(`¿Proceder a la subida? (s/n) `);
             if (response === "s") {
                 valid_input = true;
-                accepted = true
+                accepted = true;
+                var userData: UserData = {nombre_interesado: nombre_interesado, nif_interesado: dni_interesado}; 
+                resolve(userData)
             } else if (response === "n") {
                 valid_input = true;
                 console.log("Vuelva a introducir sus datos de nuevo")
             } else {
                 console.log("Error, escriba 's' o 'n', por favor")
             }
-        } 
-    } 
-    
+        }
+    }
+}
 
-    /*TODO: Escribir documento de Protección de Datos aquí*/
 
-    /*Parse data*/
+async function getUserData() : Promise<UserData> {
+    return new Promise((resolve) => {userDataLoop(resolve)}); 
+}
+
+function parseDocumentData(firstFileRawData: string, secondFileRawData: string, hospitalCredentials: string) : DocumentData {
     var results_reaction_time = firstFileRawData.split("\n")[0]
     var results_first_potentiometer = secondFileRawData.split("\n")[0]
     var results_second_potentiometer = secondFileRawData.split("\n")[1]
     var hospital_alias = hospitalCredentials.split("\n")[0]
     var hospital_pass = hospitalCredentials.split("\n")[1]
-    /*Generate HTTP request*/
+    var document_data : DocumentData = {
+        results_reaction_time: results_reaction_time,
+        results_first_potentiometer: results_first_potentiometer,
+        results_second_potentiometer: results_second_potentiometer,
+        hospital_alias: hospital_alias,
+        hospital_pass: hospital_pass,
+    } 
+    return document_data
+}
+
+async function sendRequest(parsedData: DocumentData, nombre_interesado: string, dni_interesado: string) : Promise<nullable<Test>> {
     const id_to_send = nombre_interesado.toUpperCase()+"_"+dni_interesado.toUpperCase()+"_"+generateRandomString(20)
     const cipher = crypto.createCipheriv('aes256', key, iv)
     const encryptedId = cipher.update(id_to_send, 'utf-8', 'hex') + cipher.final('hex')
     const data_to_send: PostData = {
         id: encryptedId,
-        hospital_password: hospital_pass,
-        hospital_name: hospital_alias,
-        first_exam: results_reaction_time,
-        second_exam_first_potentio: results_first_potentiometer,
-        second_exam_second_potentio: results_second_potentiometer
+        hospital_password: parsedData.hospital_pass,
+        hospital_name: parsedData.hospital_alias,
+        first_exam: parsedData.results_reaction_time,
+        second_exam_first_potentio: parsedData.results_first_potentiometer,
+        second_exam_second_potentio: parsedData.results_second_potentiometer
     }
     /*Send and return success*/
     const test_received = await sendData(data_to_send);
-    console.log(`Test with id ${test_received?.id} successfully built!`)
-}
+    return test_received;
+}  
 
-/*Obtiene los datos de examinaciones según credenciales y genera archivo .html con datos desencriptados*/ 
-async function getAllExaminations() {
-    var hospitalCredentials : string = ""
+/*Obtiene datos introducidos por el usuario, los valida, y después llama a funciones que envían los datos a la nube.*/
+async function askForData() {
+    /* Variable initialization */
+    var firstFileRawData: string = ""
+    var secondFileRawData: string = ""
+    var hospitalCredentials: string = ""
+    /*Read file data*/
     try {
+        firstFileRawData = fs.readFileSync(__dirname + "/first_examination.txt", "utf8");
+        secondFileRawData = fs.readFileSync(__dirname + "/second_examination.txt", "utf8");
         hospitalCredentials = fs.readFileSync(__dirname + "/hospital_credentials.txt", "utf8");
     } catch (err) {
         console.log("No hemos podido encontrar uno de los archivos requeridos: " + err);
         return;
     }
-    const hospital_name = hospitalCredentials.split("\n")[0];
-    const hospital_password = hospitalCredentials.split("\n")[1]; 
-    const received_data = await returnAllExaminations(hospital_name, hospital_password);
-    console.log(received_data)
-    if (received_data === undefined || received_data === null ) {
-        console.log("No se han recibido datos correctos");
-        return;
-    }
-    const decipher = crypto.createDecipheriv('aes256', key, iv)
-    /*Comienzo de generación de fichero HTML*/
+    console.log("Files have been found correctly.");
+    var userData = await getUserData();
+    /*TODO: Escribir documento de Protección de Datos aquí*/
+    var parsedData = parseDocumentData(firstFileRawData, secondFileRawData, hospitalCredentials);
+    var resultingSent = await sendRequest(parsedData, userData.nombre_interesado, userData.nif_interesado)
+    /*Send HTTP request*/
+    console.log(`Test with id ${resultingSent?.id} successfully built!`)
+} 
+
+/*Genera el fichero HTML con los datos de cada usuario*/
     /*Resultado de ejemplo (\n solo incluidos con fines de legibilidad)
     * <html>
     *  <head></head>
@@ -275,6 +289,11 @@ async function getAllExaminations() {
     * </html>
     *
     * */
+function generateHTMLString(decipher: crypto.Decipheriv, received_data: nullable<Test[]> ) : string {
+    if (received_data === undefined || received_data === null ) {
+        console.log("No se han recibido datos correctos");
+        return "";
+    }
     var html_beginning = "<html><head></head><body>"
     var html_table = "<table><tr><th>Datos de paciente</th><th>Resultados primer examen</th><th>Resultados segundo examen 1</th><th>Resultados segundo examen 2</th></tr>"
     for (const test of received_data) {
@@ -283,6 +302,23 @@ async function getAllExaminations() {
     }
     var html_end = "</table></body></html>"
     var content = html_beginning + html_table + html_end;
+    return content;
+} 
+
+/*Obtiene los datos de examinaciones según credenciales y genera archivo .html con datos desencriptados*/ 
+async function getAllExaminations() {
+    var hospitalCredentials : string = ""
+    try {
+        hospitalCredentials = fs.readFileSync(__dirname + "/hospital_credentials.txt", "utf8");
+    } catch (err) {
+        console.log("No hemos podido encontrar uno de los archivos requeridos: " + err);
+        return;
+    }
+    const hospital_name = hospitalCredentials.split("\n")[0];
+    const hospital_password = hospitalCredentials.split("\n")[1]; 
+    const received_data = await returnAllExaminations(hospital_name, hospital_password);
+    const decipher = crypto.createDecipheriv('aes256', key, iv)
+    var content = generateHTMLString(decipher, received_data);
     try {
         fs.writeFileSync(__dirname + '/html_results.html', content);
     } catch (err) {
