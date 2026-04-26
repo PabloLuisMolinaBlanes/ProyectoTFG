@@ -22,7 +22,7 @@ TEST(InitShapeInitsShapeWithCorrectPosXAndPosYAndSize, BasicAssertions) {
     sf::RectangleShape testShape = initShape(pos_x, pos_y, size_x, size_y);
     // Assert
     bool result = testShape.getPosition().x == 35 && testShape.getPosition().y == 35;
-    bool result_2 = testShape.getSize().x == 35 && testShape.getSize().y == 35;
+    bool result_2 = testShape.getSize().x == 45.0f && testShape.getSize().y == 45.0f;
     bool finalResult = result && result_2;
     EXPECT_EQ(true, finalResult);
 }
