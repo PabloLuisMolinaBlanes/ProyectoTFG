@@ -28,10 +28,6 @@ const prisma : PrismaClient = new PrismaClient({ adapter });
 
 /* Utils */
 
-
-
-
-
 /*ORM functions*/
 
 /*Devuelve un perfil de usuario según un nombre de hospital*/
