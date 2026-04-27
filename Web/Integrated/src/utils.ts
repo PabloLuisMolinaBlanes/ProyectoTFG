@@ -49,7 +49,9 @@ export function generateRandomString(length : number) : string {
 
 /*Verifica que el número de identificación corresponde con la letra proporcionada*/
 export function verifyNIFLetter(nif: string, condicion_extranjero: boolean) : boolean {
-    initializeNIFArray()
+    if (tabla_de_residuos.length === 0) {
+        initializeNIFArray()
+    }
     var regexp = new RegExp('[A-Z]')
     var documento : String = condicion_extranjero ? "NIE" : "DNI"
     if (!(regexp.test(nif.charAt(nif.length-1)))) {
