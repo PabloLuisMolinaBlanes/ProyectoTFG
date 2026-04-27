@@ -1,7 +1,7 @@
 /*Imports*/
 import express, {Request}  from 'express'
 import cors from 'cors'
-import bcrypt from 'bcrypt'
+import { comparePasswords } from './password'; 
 const { loadEnvFile } = require('node:process');
 loadEnvFile(__dirname + '/../../.env');
 import { PrismaClient } from "./generated/prisma";
@@ -28,14 +28,9 @@ const prisma : PrismaClient = new PrismaClient({ adapter });
 
 /* Utils */
 
-/*Genera un hash bcrypt2 de la clave enviada; con 10 iteraciones de semilla*/
-async function hashPassword(password : string) : Promise<string> {
-    return await bcrypt.hash(password, 10)
-}
 
-async function comparePasswords(password : string, passwordHash : string) : Promise<boolean> {
-    return bcrypt.compare(password, passwordHash)
-}
+
+
 
 /*ORM functions*/
 
