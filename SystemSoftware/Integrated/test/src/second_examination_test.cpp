@@ -108,3 +108,85 @@ TEST(PositionsAreAssignedCorrectly, BasicAssertions) {
     }
     EXPECT_EQ(true, result);
 }
+
+TEST(VerifyCollisionVerifiesCorrectly, BasicAssertions) {
+    // Arrange
+    Car car = initCar(300, 300);
+    // Arrange
+    int pos_x = 300;
+    int pos_y = 300;
+    float size_x = 200.0f;
+    float size_y = 200.0f;
+    // Act
+    sf::RectangleShape testShape = initShape(pos_x, pos_y, size_x, size_y);
+    EXPECT_EQ(1, verifyCollision(car, testShape));
+}
+
+TEST(VerifyCollisionVerifiesCorrectly_II, BasicAssertions) {
+    // Arrange
+    Car car = initCar(299, 299);
+    // Arrange
+    int pos_x = 300;
+    int pos_y = 300;
+    float size_x = 200.0f;
+    float size_y = 200.0f;
+    // Act
+    sf::RectangleShape testShape = initShape(pos_x, pos_y, size_x, size_y);
+    EXPECT_EQ(0, verifyCollision(car, testShape));
+}
+
+TEST(VerifyCollisionVerifiesCorrectly_III, BasicAssertions) {
+    // Arrange
+    Car car = initCar(331, 331);
+    // Arrange
+    int pos_x = 300;
+    int pos_y = 300;
+    float size_x = 50.0f;
+    float size_y = 50.0f;
+    // Act
+    sf::RectangleShape testShape = initShape(pos_x, pos_y, size_x, size_y);
+    EXPECT_EQ(0, verifyCollision(car, testShape));
+}
+
+TEST(VerifyCollisionVerifiesCorrectly_IV, BasicAssertions) {
+    // Arrange
+    Car car = initCar(330, 330);
+    // Arrange
+    int pos_x = 300;
+    int pos_y = 300;
+    float size_x = 50.0f;
+    float size_y = 50.0f;
+    // Act
+    sf::RectangleShape testShape = initShape(pos_x, pos_y, size_x, size_y);
+    EXPECT_EQ(1, verifyCollision(car, testShape));
+}
+
+TEST(VerifyResolvePositionI, BasicAssertions) {
+    // Arrange
+    int test[2] = {0,1}; 
+    EXPECT_EQ(0, resolvePosition(-1, test, 2));
+}
+
+TEST(VerifyResolvePositionII, BasicAssertions) {
+    // Arrange
+    int test[2] = {0,1}; 
+    EXPECT_EQ(0, resolvePosition(0, test, 2));
+}
+
+TEST(VerifyResolvePositionIII, BasicAssertions) {
+    // Arrange
+    int test[2] = {0,1}; 
+    EXPECT_EQ(1, resolvePosition(1, test, 2));
+}
+
+TEST(VerifyResolvePositionIV, BasicAssertions) {
+    // Arrange
+    int test[2] = {0,1}; 
+    EXPECT_EQ(1, resolvePosition(2, test, 2));
+}
+
+TEST(VerifyResolvePositionV, BasicAssertions) {
+    // Arrange
+    int test[2] = {0,1}; 
+    EXPECT_EQ(1, resolvePosition(3, test, 2));
+}
