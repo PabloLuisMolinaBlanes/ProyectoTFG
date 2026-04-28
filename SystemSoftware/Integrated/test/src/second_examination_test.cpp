@@ -86,3 +86,25 @@ TEST(InitializeLookUpTableInitializesTableCorectly, BasicAssertions) {
     }
     EXPECT_EQ(true, result);
 }
+
+TEST(PositionsAreAssignedCorrectly, BasicAssertions) {
+    int positions[200];
+    int multiple = 5;
+    sf::RectangleShape walls[5];
+    int initial_x_wall = 0;
+    float size_x = 200;
+    float size_y = 200;
+    // Arrange
+    initializePositions(positions);
+    initializeWalls(walls, initial_x_wall, size_x, size_y);
+    bool result = true;
+    for (int i = 0; i < 200; i++) {
+        for (int j = i; j < i+5; j++) {
+            setPositions(walls, positions, j, 1);
+        }
+        for (int i = 0; i < 5; i++) {
+            result = result && (abs(walls[i].getPosition().x-300) >= 50) && (walls[i].getPosition().x <= 400);
+        }
+    }
+    EXPECT_EQ(true, result);
+}
