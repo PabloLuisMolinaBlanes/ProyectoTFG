@@ -24,6 +24,11 @@ No he utilizado IA generativa de forma deliberada para realizar ninguna parte de
 
 Aún así, utilizo librerías externas, hay algunas porciones de código fuente que han sido tomadas de Internet, y he consultado documentación externa; desconozco su provenencia, y por ende, no puedo asegurar que no haya habido IA generativa involucrada en su creación.
 
+## Diagrama electrónico del proyecto
+
+El diagrama de conexiones se puede encontrar [aquí](https://wokwi.com/projects/462661598182332417) 
+
+
 
 ## Instrucciones de compilación
 
