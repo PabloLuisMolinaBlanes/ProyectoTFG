@@ -16,3 +16,5 @@ biber main
 xelatex main
 xelatex main
 ```
+
+Aparecerán muchos archivos auxiliares de compilación y un archivo denominado ```main.pdf```, en formato PDF (Portable Document Format). Es en este archivo donde se puede leer una versión renderizada en cualquier lector de archivos PDF.
