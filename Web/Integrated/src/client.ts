@@ -77,13 +77,13 @@ function initializeEncryptionParameters() {
 
 /*Envía petición de mandar datos de examinación*/
 async function sendData(data : PostData) : Promise<nullable<Test>>   {
-    const dataPromise : AxiosResponse<nullable<Test>> = await axios.post("https://localhost:3000/upload", data);
+    const dataPromise : AxiosResponse<nullable<Test>> = await axios.post("http://localhost:3000/upload", data);
     return dataPromise.data;
 }
 
 /*Envía petición de obtener datos de examinación*/
 async function returnAllExaminations(hospital_name_received: string, hospital_password_received: string) : Promise<nullable<Test[]>>  {
-    const dataPromise : AxiosResponse<nullable<Test[]>> = await axios.get(`https://localhost:3000/receive?hospital_name=${hospital_name_received}&hospital_password=${hospital_password_received}`);
+    const dataPromise : AxiosResponse<nullable<Test[]>> = await axios.get(`http://localhost:3000/receive?hospital_name=${hospital_name_received}&hospital_password=${hospital_password_received}`);
     return dataPromise.data
 }
 
