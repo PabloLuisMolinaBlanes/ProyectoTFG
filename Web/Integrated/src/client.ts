@@ -63,14 +63,13 @@ type OptionToFunction = {
 Obtiene clave de encripción e IV de archivo en codificación hexadecimal; si no existen, el programa las genera y almacena en el fichero encryptionparameters.txt.
 */
 function initializeEncryptionParameters() {
+    iv = crypto.randomBytes(16)
     try {
         const encryptionparameters = fs.readFileSync(__dirname + '/encryptionparameters.txt', 'utf-8')
         key = Buffer.from(encryptionparameters.split("\n")[0], 'hex')
-        iv = Buffer.from(encryptionparameters.split("\n")[1], 'hex')
     } catch (err) {
         key = crypto.randomBytes(32)
-        iv = crypto.randomBytes(16)
-        const content = `${key.toString('hex')}\n${iv.toString('hex')}`
+        const content = `${key.toString('hex')}\n`
         fs.writeFileSync(__dirname + '/encryptionparameters.txt', content);
     }
 } 
@@ -163,7 +162,7 @@ async function sendRequest(parsedData: DocumentData, nombre_interesado: string, 
     const cipher = crypto.createCipheriv('aes256', key, iv)
     const encryptedId = cipher.update(id_to_send, 'utf-8', 'hex') + cipher.final('hex')
     const data_to_send: PostData = {
-        id: encryptedId,
+        id: encryptedId+";"+iv.toString('hex'),
         hospital_password: parsedData.hospital_pass,
         hospital_name: parsedData.hospital_alias,
         first_exam: parsedData.results_reaction_time,
@@ -231,9 +230,11 @@ function generateHTMLString(received_data: nullable<Test[]> ) : string {
     var html_beginning = "<html><head></head><body>"
     var html_table = "<table><tr><th>Datos de paciente</th><th>Resultados primer examen</th><th>Resultados segundo examen 1</th><th>Resultados segundo examen 2</th></tr>"
     for (const test of received_data) {
+        var iv_obtained : NonSharedBuffer = Buffer.from(test.id.split(";")[1], 'hex') 
+        var content_obtained : string = test.id.split(";")[0]
         // You have to create the decipher every time you want to use it; otherwise, it throws exception
-        const decipher: crypto.Decipheriv = crypto.createDecipheriv('aes256', key, iv)
-        const decryptedId = decipher.update(test.id, 'hex', 'utf-8') + decipher.final('utf-8')
+        const decipher: crypto.Decipheriv = crypto.createDecipheriv('aes256', key, iv_obtained)
+        const decryptedId = decipher.update(content_obtained, 'hex', 'utf-8') + decipher.final('utf-8')
         html_table = html_table + `<tr><td>${decryptedId}</td><td>${test.results_reaction_time}</td><td>${test.results_first_potentiometer}</td><td>${test.results_second_potentiometer}</td></tr>`
     }
     var html_end = "</table></body></html>"
