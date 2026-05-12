@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include "first_examination/definitions_first_examination.hpp"
 #include "first_examination/first_examination.hpp"
 
 TEST(InitShapeInitsShapeWithCorrectPosXAndPosY, BasicAssertions) {

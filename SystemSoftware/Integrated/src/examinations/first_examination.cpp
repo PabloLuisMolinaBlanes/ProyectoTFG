@@ -7,6 +7,7 @@
 #include <string.h>
 #include <inttypes.h>
 #include "serial.hpp"
+#include "include/first_examination/definitions_first_examination.hpp"
 #include <fstream>
 
 /*Importaciones*/
@@ -22,8 +23,6 @@ bool started = false;
 
 std::int32_t real_time_elapsed = 0;
 std::int32_t game_time_elapsed = 0;
-
-#define NUMBER_OF_TESTS 3
 
 float test_data[NUMBER_OF_TESTS];
 

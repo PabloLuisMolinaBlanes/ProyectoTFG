@@ -1,0 +1,1 @@
+#define NUMBER_OF_TESTS 3

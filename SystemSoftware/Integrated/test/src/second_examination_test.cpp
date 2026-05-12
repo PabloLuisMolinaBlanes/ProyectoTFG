@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
+#include "second_examination/definitions_second_examination.hpp"
 #include "second_examination/second_examination.hpp"
+#include <cmath>
 
 TEST(InitShapeInitsShapeWithCorrectPosXAndPosY, BasicAssertions) {
     // Arrange
@@ -39,15 +41,15 @@ TEST(InitCarActuallyInitsTheCar, BasicAssertions) {
 }
 
 TEST(InitializeWallsInitializesWallsCorectly, BasicAssertions) {
-    sf::RectangleShape walls[5];
-    int initial_x_wall = 0;
-    float size_x = 200;
-    float size_y = 200; 
+    sf::RectangleShape walls[NUMBER_OF_WALLS];
+    int initial_x_wall = INITIAL_X_WALL;
+    float size_x = SIZE_X_WALL;
+    float size_y = SIZE_Y_WALL; 
     // Arrange
     initializeWalls(walls, initial_x_wall, size_x, size_y);
     // Assert
     bool result = true;
-    for (int i = 0; i<5; i++) {
+    for (int i = 0; i<NUMBER_OF_WALLS; i++) {
         result = result & walls[i].getPosition().x == initial_x_wall;
         result = result & walls[i].getSize().x == size_x;
         result = result & walls[i].getSize().y == size_y;
@@ -56,26 +58,27 @@ TEST(InitializeWallsInitializesWallsCorectly, BasicAssertions) {
 }
 
 TEST(InitializePositionsInitializesPositionsCorectly, BasicAssertions) {
-    int positions[200];
+    int positions[NUMBER_OF_POSITIONS];
     // Arrange
     initializePositions(positions);
     // Assert
     bool result = true;
-    for (int i = 0; i<200; i++) {
+    for (int i = 0; i<NUMBER_OF_POSITIONS; i++) {
         result = result && (positions[i] == -10 || positions[i] == 0 || positions[i] == 10);
     } 
     EXPECT_EQ(true, result);
 }
 
 TEST(InitializeLookUpTableInitializesTableCorectly, BasicAssertions) {
-    int collection[3000];
-    int multiple = 5;
+    float division_1 = (SECOND_VALUE_FIRST_POTENTIOMETER-FIRST_VALUE_FIRST_POTENTIOMETER)/SCREEN_SIZE_X;
+    const int multiple = (int)floor(division_1);
+    int collection[multiple*SCREEN_SIZE_X];
     // Arrange
     initializeLookUpTable(collection, multiple);
     // Assert
     bool result = true;
     int past_past_collection = -1;
-    for (int i = 0; i<3000; i += multiple) {
+    for (int i = 0; i<(multiple*SCREEN_SIZE_X)-multiple; i += multiple) {
         int past_collection = collection[i];
         result = result && collection[i] != past_past_collection;  
         for (int j = i; j < i+multiple; j++) {
@@ -88,21 +91,20 @@ TEST(InitializeLookUpTableInitializesTableCorectly, BasicAssertions) {
 }
 
 TEST(PositionsAreAssignedCorrectly, BasicAssertions) {
-    int positions[200];
-    int multiple = 5;
-    sf::RectangleShape walls[5];
+    int positions[NUMBER_OF_POSITIONS];
+    sf::RectangleShape walls[NUMBER_OF_WALLS];
     int initial_x_wall = 0;
-    float size_x = 200;
-    float size_y = 200;
+    float size_x = SIZE_X_WALL;
+    float size_y = SIZE_Y_WALL;
     // Arrange
     initializePositions(positions);
     initializeWalls(walls, initial_x_wall, size_x, size_y);
     bool result = true;
-    for (int i = 0; i < 200; i++) {
-        for (int j = i; j < i+5; j++) {
+    for (int i = 0; i < NUMBER_OF_POSITIONS; i++) {
+        for (int j = i; j < i+NUMBER_OF_WALLS; j++) {
             setPositions(walls, positions, j, 1);
         }
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < NUMBER_OF_WALLS; i++) {
             result = result && (abs(walls[i].getPosition().x-300) >= 50) && (walls[i].getPosition().x <= 400);
         }
     }
