@@ -105,7 +105,7 @@ TEST(PositionsAreAssignedCorrectly, BasicAssertions) {
             setPositions(walls, positions, j, 1);
         }
         for (int i = 0; i < NUMBER_OF_WALLS; i++) {
-            result = result && (abs(walls[i].getPosition().x-300) >= 50) && (walls[i].getPosition().x <= 400);
+            result = result && (abs(walls[i].getPosition().x-(SCREEN_SIZE_X/2)) >= 50) && (walls[i].getPosition().x <= (SCREEN_SIZE_X - SIZE_X_WALL));
         }
     }
     EXPECT_EQ(true, result);
