@@ -113,12 +113,12 @@ TEST(PositionsAreAssignedCorrectly, BasicAssertions) {
 
 TEST(VerifyCollisionVerifiesCorrectly, BasicAssertions) {
     // Arrange
-    Car car = initCar(300, 300);
+    Car car = initCar(INITIAL_X_WALL, INITIAL_Y_WALL);
     // Arrange
-    int pos_x = 300;
-    int pos_y = 300;
-    float size_x = 200.0f;
-    float size_y = 200.0f;
+    int pos_x = INITIAL_X_WALL;
+    int pos_y = INITIAL_Y_WALL;
+    float size_x = SIZE_X_WALL;
+    float size_y = SIZE_Y_WALL;
     // Act
     sf::RectangleShape testShape = initShape(pos_x, pos_y, size_x, size_y);
     EXPECT_EQ(1, verifyCollision(car, testShape));
@@ -126,12 +126,12 @@ TEST(VerifyCollisionVerifiesCorrectly, BasicAssertions) {
 
 TEST(VerifyCollisionVerifiesCorrectly_II, BasicAssertions) {
     // Arrange
-    Car car = initCar(299, 299);
+    Car car = initCar(INITIAL_X_WALL-1, INITIAL_Y_WALL);
     // Arrange
-    int pos_x = 300;
-    int pos_y = 300;
-    float size_x = 200.0f;
-    float size_y = 200.0f;
+    int pos_x = INITIAL_X_WALL;
+    int pos_y = INITIAL_Y_WALL;
+    float size_x = SIZE_X_WALL;
+    float size_y = SIZE_X_WALL;
     // Act
     sf::RectangleShape testShape = initShape(pos_x, pos_y, size_x, size_y);
     EXPECT_EQ(0, verifyCollision(car, testShape));
@@ -139,12 +139,12 @@ TEST(VerifyCollisionVerifiesCorrectly_II, BasicAssertions) {
 
 TEST(VerifyCollisionVerifiesCorrectly_III, BasicAssertions) {
     // Arrange
-    Car car = initCar(331, 331);
+    Car car = initCar(INITIAL_X_WALL+(SIZE_X_WALL-CAR_SIZE_X)+1, INITIAL_Y_WALL);
     // Arrange
-    int pos_x = 300;
-    int pos_y = 300;
-    float size_x = 50.0f;
-    float size_y = 50.0f;
+    int pos_x = INITIAL_X_WALL;
+    int pos_y = INITIAL_Y_WALL;
+    float size_x = SIZE_X_WALL;
+    float size_y = SIZE_Y_WALL;
     // Act
     sf::RectangleShape testShape = initShape(pos_x, pos_y, size_x, size_y);
     EXPECT_EQ(0, verifyCollision(car, testShape));
@@ -152,12 +152,12 @@ TEST(VerifyCollisionVerifiesCorrectly_III, BasicAssertions) {
 
 TEST(VerifyCollisionVerifiesCorrectly_IV, BasicAssertions) {
     // Arrange
-    Car car = initCar(330, 330);
+    Car car = initCar(INITIAL_X_WALL+(SIZE_X_WALL-CAR_SIZE_X), INITIAL_Y_WALL);
     // Arrange
-    int pos_x = 300;
-    int pos_y = 300;
-    float size_x = 50.0f;
-    float size_y = 50.0f;
+    int pos_x = INITIAL_X_WALL;
+    int pos_y = INITIAL_Y_WALL;
+    float size_x = SIZE_X_WALL;
+    float size_y = SIZE_Y_WALL;
     // Act
     sf::RectangleShape testShape = initShape(pos_x, pos_y, size_x, size_y);
     EXPECT_EQ(1, verifyCollision(car, testShape));
