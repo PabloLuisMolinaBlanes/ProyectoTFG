@@ -15,7 +15,6 @@ const rl = readline.createInterface({
 });
 
 var key : NonSharedBuffer;
-var iv : NonSharedBuffer;
 
 /*Types*/
 
@@ -60,10 +59,9 @@ type OptionToFunction = {
 
 
 /*
-Obtiene clave de encripción e IV de archivo en codificación hexadecimal; si no existen, el programa las genera y almacena en el fichero encryptionparameters.txt.
+Obtiene clave de encriptación de archivo en codificación hexadecimal; si no existe, el programa la genera y almacena en el fichero encryptionparameters.txt.
 */
 function initializeEncryptionParameters() {
-    iv = crypto.randomBytes(16)
     try {
         const encryptionparameters = fs.readFileSync(__dirname + '/encryptionparameters.txt', 'utf-8')
         key = Buffer.from(encryptionparameters.split("\n")[0], 'hex')
@@ -157,17 +155,22 @@ function parseDocumentData(firstFileRawData: string, secondFileRawData: string, 
     return document_data
 }
 
+function encryptData(plaintext: string) {
+    var iv : NonSharedBuffer = crypto.randomBytes(16);
+    const cipher = crypto.createCipheriv('aes256', key, iv)
+    const ciphertext = cipher.update(plaintext, 'utf-8', 'hex') + cipher.final('hex')
+    return ciphertext+";"+iv.toString('hex')
+}
+
 async function sendRequest(parsedData: DocumentData, nombre_interesado: string, dni_interesado: string) : Promise<nullable<Test>> {
     const id_to_send = nombre_interesado.toUpperCase()+"_"+dni_interesado.toUpperCase()+"_"+generateRandomString(20)
-    const cipher = crypto.createCipheriv('aes256', key, iv)
-    const encryptedId = cipher.update(id_to_send, 'utf-8', 'hex') + cipher.final('hex')
     const data_to_send: PostData = {
-        id: encryptedId+";"+iv.toString('hex'),
+        id: encryptData(id_to_send),
         hospital_password: parsedData.hospital_pass,
         hospital_name: parsedData.hospital_alias,
-        first_exam: parsedData.results_reaction_time,
-        second_exam_first_potentio: parsedData.results_first_potentiometer,
-        second_exam_second_potentio: parsedData.results_second_potentiometer
+        first_exam: encryptData(parsedData.results_reaction_time),
+        second_exam_first_potentio: encryptData(parsedData.results_first_potentiometer),
+        second_exam_second_potentio: encryptData(parsedData.results_second_potentiometer)
     }
     /*Send and return success*/
     const test_received = await sendData(data_to_send);
@@ -198,6 +201,15 @@ async function askForData() {
     console.log(`Test with id ${resultingSent?.id} successfully built!`)
     return;
 } 
+
+function decryptString(ciphertext: string) {
+    var iv_obtained : NonSharedBuffer = Buffer.from(ciphertext.split(";")[1], 'hex') 
+    var content_obtained : string = ciphertext.split(";")[0]
+    // You have to create the decipher every time you want to use it; otherwise, it throws exception
+    const decipher: crypto.Decipheriv = crypto.createDecipheriv('aes256', key, iv_obtained)
+    const plaintext = decipher.update(content_obtained, 'hex', 'utf-8') + decipher.final('utf-8')
+    return plaintext
+}
 
 /*Genera el fichero HTML con los datos de cada usuario*/
     /*Resultado de ejemplo (\n solo incluidos con fines de legibilidad)
@@ -230,12 +242,7 @@ function generateHTMLString(received_data: nullable<Test[]> ) : string {
     var html_beginning = "<html><head></head><body>"
     var html_table = "<table><tr><th>Datos de paciente</th><th>Resultados primer examen</th><th>Resultados segundo examen 1</th><th>Resultados segundo examen 2</th></tr>"
     for (const test of received_data) {
-        var iv_obtained : NonSharedBuffer = Buffer.from(test.id.split(";")[1], 'hex') 
-        var content_obtained : string = test.id.split(";")[0]
-        // You have to create the decipher every time you want to use it; otherwise, it throws exception
-        const decipher: crypto.Decipheriv = crypto.createDecipheriv('aes256', key, iv_obtained)
-        const decryptedId = decipher.update(content_obtained, 'hex', 'utf-8') + decipher.final('utf-8')
-        html_table = html_table + `<tr><td>${decryptedId}</td><td>${test.results_reaction_time}</td><td>${test.results_first_potentiometer}</td><td>${test.results_second_potentiometer}</td></tr>`
+        html_table = html_table + `<tr><td>${decryptString(test.id)}</td><td>${decryptString(test.results_reaction_time)}</td><td>${decryptString(test.results_first_potentiometer)}</td><td>${decryptString(test.results_second_potentiometer)}</td></tr>`
     }
     var html_end = "</table></body></html>"
     var content = html_beginning + html_table + html_end;
