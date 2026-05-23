@@ -44,7 +44,7 @@ async function getProfile(hospital_name: string) {
 async function createTest(id_received: string, hospital_password: string, hospital_name: string, first_exam: string, second_exam_first_potentio: string, second_exam_second_potentio: string) {
     const hospital = await getProfile(hospital_name);
     if (hospital == undefined) {
-        return {error: "No hospital found with that name"};;
+        return {error: "Wrong password"};
     } 
     const passwordComparison = await comparePasswords(hospital_password, hospital.password);
     if (!passwordComparison) {
