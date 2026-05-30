@@ -114,7 +114,7 @@ Me gustaría agradecer también a todos los creadores de contenido tecnológico 
 %────────────────────── Chapter 1 — Introducción ───────────────────────
 \chapter{Introducción}
 
-FOSS Psychotechnical Examination busca ser una recreación, en forma de software libre y abierto, de una suite software de examinación psicotécnica para conductores.
+FOSS Psychotechnical Examination busca ser una recreación, en forma de software libre y abierto, de una suite software de evaluación psicotécnica para conductores.
 
 Dispone de componentes software para sistemas empotrados, de software de sistemas, y de software de aplicación.
 
@@ -123,6 +123,42 @@ Tradicionalmente, las suites software ya existentes para este tipo de uso, como 
 La recreación no se suele considerar habitualmente como 'innovación', y no se valora como esfuerzo original y propio en muchos campos; pero es gracias a la recreación que podemos conocer cuándo una técnica funciona de forma consistente, y podemos establecer qué es lo que funciona, y lo que no.
 
 Con las nuevas tecnologías y buenas prácticas de las que disponemos, es especialmente importante esta replicación, nos permite desarrollar sobre las fórmulas que ya funcionaron en el pasado, y obtener nuevo conocimiento gracias a esta tarea de adaptación a un mundo distinto. 
+
+\section{Descripción por capítulo}
+
+\subsection{Marco teórico}
+
+En el marco teórico se expone y se describe y se acreditan los temas, campos del saber, y técnicas más relevantes y utilizadas para FOSS Psychotechnical Examination.
+
+Aquí se introduce una colección de técnicas matemáticas, psicológicas y de desarrollo software; además del contexto legal y social de herramientas de evaluación psicotécnica.
+
+\subsection{Análisis}
+
+En la sección de análisis nos introducimos a las funcionalidades de cada componente de FOSS Psychotechnical Examination. Busca ser una colección resumida de las funcionalidades más importantes para el correcto funcionamiento del suite software.
+
+\subsection{Diseño}
+
+En esta sección se expone la arquitectura de la suite software en general; y de todos sus componentes individuales. También se entra en detalle en la arquitectura y decisiones relativa a hardware y dispositivos electrónicos utilizados en el proyecto.
+
+\subsection{Implementación}
+
+En esta sección se describen y desarrollan los flujos de ejecución principales de la aplicación, desarrollados paso a paso y con explicaciones varias.
+
+\subsection{Funcionamiento}
+
+En esta sección se introducen los roles que pueden tomar los usuarios de la aplicación; se han incluido roles tradicionales como el del usuario o el del doctor; y también se ha incluido aquí el rol de atacante para enfatizar posibles intentos de ataque, y protecciones otorgadas por la suite software ante estos ataques
+
+\subsection{Pruebas}
+
+Aquí se describen las tecnologías de pruebas que se han utilizado para cada componente de esta suite software; además de las pruebas realizadas, su razonamiento, y los resultados esperados.
+
+\subsection{Conclusiones}
+
+Aquí se da una recolección de lo aprendido y realizado en este proyecto; desde el ángulo de vista de la retrospectiva.
+
+\subsection{Anexos}
+
+Aquí se introducen documentos explicativos, que sirven para desarrollar aspectos no fácilmente desarrollables como secciones dentro del documento de la memoria; se incluye un manual de usuario, un manual de instalación, y un modelo de formulario de consentimiento para el tratamiento de los datos de usuarios.
 
 %────────────────────── Chapter 2 — Marco teórico ───────────────────────
 \chapter{Marco teórico}
@@ -149,16 +185,6 @@ El principal dispositivo de la compañía consiste en el LND-100 \cite{lndeter1}
 
 
 \section{Técnicas y fórmulas matemáticas}
-
-\subsection{Media aritmética}
-
-La media aritmética es una técnica matemática perteneciente al campo de la estadística descriptiva.
-
-Esta técnica consiste en la suma de una colección de datos cuantitativos dividido por la cantidad de elementos contenidos dentro de la colección; se utiliza para informar sobre tendencias centrales de un conjunto de datos. Es vulnerable a valores extremos, haciéndola una métrica no robusta.
-
-Para un conjunto de datos $X = \{x_i\,\mid\, i \in S \subseteq \N \}$, se define la media aritmética como:
-
-\[{m}=\frac{1}{n}\left (\sum_{n = 1}^{n}x_i\right)=\frac{x_1+x_2+\dots+x_n}{n}\]
 
 \subsection{Detección de colisiones}
 
@@ -292,7 +318,7 @@ En este Real Decreto se acredita, específicamente "La acreditación de la aptit
 
 Se detallan los requisitos psicotécnicos necesarios en específico para obtener semejante acreditación en los anexos del Real Decreto.
 
-Aún no teniendo relación estricta con la conducción, es relevante para compañías que quieren expandir sus productos informáticos de examinación psicotécnica; por ejemplo, General ASDE ha desarrollado su producto ASDE DRIVER TEST N-845 para que, además de evaluar las aptitudes psicofísicas de conductores, también se pueda evaluar con el mismo producto la aptitud psicofísica para obtener la licencia de armas de fuego. 
+Aún no teniendo relación estricta con la conducción, es relevante para compañías que quieren expandir sus productos informáticos de evaluación psicotécnica; por ejemplo, General ASDE ha desarrollado su producto ASDE DRIVER TEST N-845 para que, además de evaluar las aptitudes psicofísicas de conductores, también se pueda evaluar con el mismo producto la aptitud psicofísica para obtener la licencia de armas de fuego. 
 
 \subsubsection{Reglamento de centros de reconocimiento destinados a verificar las aptitudes psicofísicas de los conductores.}
 
@@ -335,6 +361,40 @@ por cada sprint; y tras terminar el sprint, se evalua el trabajo realizado hasta
 
 El trabajo se ha planificado de forma diaría, para lo cual se ha ido desarrollando una agenda con las tareas planificadas por cada día;
 y también de forma semanal, a partir de un calendario de uso personal.
+
+\subsection{Métodos ágiles en el desarrollo de software}
+
+Los métodos ágiles se describieron en el denominado Agile Manifesto, redactado por en 2001. Este manifiesto prioriza determinados conceptos y prácticas tradicionalmente no priorizados en la ingeniería de software tradicional; personas sobre los procesos; cambio por encima de la planificación, entre otros. 
+
+\subsubsection{Sprints}
+
+Se trata de un concepto generalmente utilizado en la práctica dentro de los métodos ágiles. Un sprint consiste en un periodo de tiempo, habitualmente de unas dos semanas, que se da de trabajo con el fin de realizar una serie de funcionalidades por un equipo ágil.
+
+\subsubsection{Scrum}
+
+Scrum es una metodología específica dentro de los métodos ágiles; y distinguida de otras metodologías ágiles como la programación extrema.
+
+Su nombre proviene del concepto de \textit{scrum}, utilizado en el rugby; en esta metodología, se organiza el trabajo a partir de una serie de \textit{sprints}; los cuales son evaluados en reuniones de finalización de sprint.
+
+También es costumbre hacer dos reuniones al final de cada sprint; con los interesados y clientes, y una reunión interna donde se evalua en retrospectiva el sprint anterior
+
+\subsubsection{Kanban}
+
+Kanban es una metodología para la organización del tiempo y de los recursos. Generalmente hace uso de una tabla de trabajo en proceso; en donde se dividen las tareas a realizar en varias secciones; habitualmente \textit{Backlog}, \textit{En progreso}, \textit{Por revisar} y \textit{Realizada} 
+
+\subsection{Método ágil modificado en el transcurso del proyecto}
+
+Al ser solo una persona la implementadora de este proyecto, y al no haber un cliente específico; no aplican los métodos ágiles directamente en el sentido que comúnmente se realiza en empresas. Aquí se describe cómo se han modificado los procedimientos y metodologías habituales a los métodos ágiles para este contexto particular.
+
+\subsubsection{Organización de tareas}
+
+Las tareas se han ido organizando de forma semanal.
+
+\subsubsection{Organización del tiempo}
+
+Se ha organizado el tiempo utilizando la herramienta \textbf{Google Calendar}. Se han desarrollado objetivos semanales, los cuales se han ido incluyendo en el calendario, y se ha dado plazo de una semana para realizar; esto permite al desarrollador 
+
+\subsubsection{Resumen de calendario}
 
 \section{Buenas prácticas y costumbres de desarrollo software}
 
@@ -468,22 +528,22 @@ Aquí destacan los siguientes requisitos
 
 Aquí destacan los siguientes requisitos
 
-\begin{itemize}
-  \item Deberan incluirse dos tipos de examinación; una examinación de tiempo de reacción, y una examinación de coordinación mano-ojo.
-  \item Los programas de examinación deben procesar información de los dispositivos electrónicos en un tiempo menor a 100ms
-  \item Los programas de examinación deben mostrar feedback visual sin latencia excesiva al usuario en pantalla.
-  \item Los programas de examinación deben almacenar los resultados de examinación de forma veraz, que den posibilidad a su verificación y puntuación.
-\end{itemize}
+\begin{enumerate}
+  \item Deberan incluirse dos tipos de evaluación; una evaluación de tiempo de reacción, y una evaluación de coordinación mano-ojo.
+  \item Los programas de evaluación deben procesar información de los dispositivos electrónicos en un tiempo menor a 100ms
+  \item Los programas de evaluación deben mostrar feedback visual sin latencia excesiva al usuario en pantalla.
+  \item Los programas de evaluación deben almacenar los resultados de evaluación de forma veraz, que den posibilidad a su verificación y puntuación.
+\end{enumerate}
 
 \subsection{Requisitos no funcionales}
 
 Aquí destacan los siguientes requisitos
 
-\begin{itemize}
-  \item Los programas de examinación deberán ser fácilmente interpretables para los usuarios.
-  \item Los programas de examinación no deben permitir memorización.
-  \item Los programas de examinación deben adherirse a las mejores prácticas técnico-científicas para recolectar información psicotécnica. 
-\end{itemize}
+\begin{enumerate}
+  \item Los programas de evaluación deberán ser fácilmente interpretables para los usuarios.
+  \item Los programas de evaluación no deben permitir memorización.
+  \item Los programas de evaluación deben adherirse a las mejores prácticas técnico-científicas para recolectar información psicotécnica. 
+\end{enumerate}
 
 \section{Cliente local}
 
@@ -491,23 +551,23 @@ Aquí destacan los siguientes requisitos
 
 Aquí destacan los siguientes requisitos
 
-\begin{itemize}
+\begin{enumerate}
   \item Los datos personales que se manden al servidor deben mandarse encriptados algorítmicamente.
-  \item El programa ofrece una opción para mandar datos de examinaciones al servidor.
-  \item El programa ofrece una opción para obtener datos de examinaciones al servidor.
+  \item El programa ofrece una opción para mandar datos de evaluaciones al servidor.
+  \item El programa ofrece una opción para obtener datos de evaluaciones al servidor.
   \item El programa debe verificar que los números proporcionados de documentación personal corresponden con la letra proporcionada.
   \item El programa debe encriptar los datos proporcionados en un formato de encriptación seguro
   \item El programa debe poder desencriptar los datos que se han encriptado con este, siempre que se dispongan de los parámetros de encriptación originalmente utilizados.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Requisitos no funcionales}
 
 Aquí destacan los siguientes requisitos
 
-\begin{itemize}
+\begin{enumerate}
   \item El programa debe soportar la documentación autorizada para identificar personas conforme a la Ley Española
   \item El programa debe considerar la seguridad, y no abrir puertos no necesarios para la estricta realización de sus funciones.
-\end{itemize}
+\end{enumerate}
 
 \section{Servidor en nube}
 
@@ -515,19 +575,19 @@ Aquí destacan los siguientes requisitos
 
 Aquí destacan los siguientes requisitos
 
-\begin{itemize}
+\begin{enumerate}
   \item Los datos personales que se manden al servidor deben mandarse encriptados algorítmicamente.
   \item Se deben considerar los documentos DNI y NIE para agregar sobre el usuario.
   \item Se genera un archivo HTML con los datos desencriptados de los examinados cada vez que así lo pide un doctor.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Requisitos no funcionales}
 
 Aquí destacan los siguientes requisitos
 
-\begin{itemize}
+\begin{enumerate}
   \item La aplicación debe considerar posibles ataques de externos que busquen revelar y divulgar datos personales de examinados
-\end{itemize}
+\end{enumerate}
 
 %────────────────────── Chapter 3 — Diseño ────────────────────────────
 \chapter{Diseño}
@@ -700,7 +760,7 @@ No solo se reciben eventos; sino que la arquitectura también manda información
 
 La arquitectura que se ha utilizado para implementar este software dirigido a sistemas ha sido una \textbf{arquitectura modular}.
 
-Esta arquitectura se distingue por la construcción de varios ejecutables, cada uno con funcionamiento independiente del otro, y ejecutables por separado. Todos los ejecutables, menos el que renderiza la interfaz gráfica de usuario, se comunican con una librería diseñada para poner en contacto cada examinación con el microcontrolador; permitiendo a estos enviar a y recibir información de forma indirecta de los dispositivos electrónicos a través del microcontrolador.
+Esta arquitectura se distingue por la construcción de varios ejecutables, cada uno con funcionamiento independiente del otro, y ejecutables por separado. Todos los ejecutables, menos el que renderiza la interfaz gráfica de usuario, se comunican con una librería diseñada para poner en contacto cada evaluación con el microcontrolador; permitiendo a estos enviar a y recibir información de forma indirecta de los dispositivos electrónicos a través del microcontrolador.
 
 Al igual que la arquitectura del software dirigido a los sistemas empotrados; esta también hace uso exhaustivo del \textbf{polling}, que escucha de forma reiterada unos \textbf{eventos}, los cuales suelen ser recibidos y procesados a partir de librerías y dispositivos externas; como lo puede ser la librería implementada en \textbf{serial.cpp}, que a su vez escucha eventos desde un dispositivo \textbf{USB-to-UART}; la librería externa \textbf{GTK} o la librería externa \textbf{SFML}
 
@@ -712,7 +772,7 @@ La arquitectura utilizada para el cliente local no es estrictamente la de un \te
 
 En una arquitectura típica \textit{frontend-backend}; el \textit{frontend} necesita de archivos informáticos para poder realizar funciones relativas a la renderización de componentes visuales; esto en general requiere desplegar un servidor web que albergue los ficheros del \textit{frontend}, y los pueda enviar en respuesta a peticiones específicas. Algunos servidores web comunmente utilizados para esta tarea incluyen \textit{Apache Web Server} o \textit{Nginx}.
 
-El problema es que en este tipo de aplicaciones, con requisitos muy estrictos de seguridad, queremos reducir a un mínimo los puertos a los que nuestro dispositivo, localizado en la clínica donde se realizan las examinaciones, estará escuchando en todo momento con el objetivo de reducir lo más posible la superficie de ataque. Por eso este cliente se asemeja más a un cliente local que a lo que comúnmente se conoce como un \textit{frontend}.
+El problema es que en este tipo de aplicaciones, con requisitos muy estrictos de seguridad, queremos reducir a un mínimo los puertos a los que nuestro dispositivo, localizado en la clínica donde se realizan las evaluaciones, estará escuchando en todo momento con el objetivo de reducir lo más posible la superficie de ataque. Por eso este cliente se asemeja más a un cliente local que a lo que comúnmente se conoce como un \textit{frontend}.
 
 Con respecto a la arquitectura software del cliente en si; su arquitectura software se basa fundamentalmente en el concepto del \textbf{entramado}; se le dan al usuario una amplia gama de posibles decisiones; y el programa se adapta a ellas e interpreta las decisiones por cada instrucción que se le indica al cliente.
 
@@ -762,7 +822,7 @@ Aquí se almacena un hash de contraseña, junto con la semilla. Este es el forma
 
 \subsubsection{Tabla \textit{test}}
 
-En esta tabla se incluyen todos los datos relativos a una examinación completa por parte de un examinado en el contexto de una clínica u hospital examinador.
+En esta tabla se incluyen todos los datos relativos a una evaluación completa por parte de un examinado en el contexto de una clínica u hospital examinador.
 
 \textbf{\textit{id}}
 
@@ -780,7 +840,7 @@ Consiste en el siguiente formato:
 
 \textbf{\textit{first\_examination}}
 
-En este campo se almacenan los resultados relativos a la primera examinación de un examinado.
+En este campo se almacenan los resultados relativos a la primera evaluación de un examinado.
 
 Se almacenan del siguiente modo:
 
@@ -788,7 +848,7 @@ Se almacenan del siguiente modo:
 
 \textbf{\textit{second\_examination\_*}}
 
-En este campo se almacenan los resultados relativos a la segunda examinación de un examinado.
+En este campo se almacenan los resultados relativos a la segunda evaluación de un examinado.
 
 Se almacenan del siguiente modo:
 
@@ -800,7 +860,7 @@ Esta base de datos incluye los datos relativos a hospitales; tiene dos campos, u
 
 \subsubsection{tests}
 
-Esta base de datos incluye un id, que consiste de datos personales encriptados de los examinados; y dos campos, uno para cada examinación, que indica los movimientos realizados en cada examinación.
+Esta base de datos incluye un id, que consiste de datos personales encriptados de los examinados; y dos campos, uno para cada evaluación, que indica los movimientos realizados en cada evaluación.
 
 %────────────────────── Chapter 3 — Implementación ────────────────────────────
 \chapter{Implementación}
@@ -811,9 +871,9 @@ Esta base de datos incluye un id, que consiste de datos personales encriptados d
 
 El bucle principal se implementa dentro del fichero localizado en la raiz del proyecto, y denominado \textbf{main.c}.
 
-Este bucle almacena tres mensajes, en codificación binaria \textit{UTF-8}, que indican acciones específicas a tomar al microcontrolador; principalmente, se indica a qué función relativa a la examinación se debe llamar debido a que una examinación va a comenzar de forma inminente en el sistema SBC, para inicializar la recepción de datos electrónicos relevantes a tal examinación.
+Este bucle almacena tres mensajes, en codificación binaria \textit{UTF-8}, que indican acciones específicas a tomar al microcontrolador; principalmente, se indica a qué función relativa a la evaluación se debe llamar debido a que una evaluación va a comenzar de forma inminente en el sistema SBC, para inicializar la recepción de datos electrónicos relevantes a tal evaluación.
 
-\subsection{Primera examinación}
+\subsection{Primera evaluación}
 
 Esta parte se implementa dentro del fichero denominado first
 
@@ -827,35 +887,58 @@ El resto del programa consiste en un bucle infinito que realiza las siguientes o
   \item Por último, duerme 100 milisegundos antes de realizar un nuevo ciclo.
 \end{enumerate}
 
-\subsection{Segunda examinación}
+\subsection{Segunda evaluación}
 
-Esta parte se implementa dentro del fichero denominado second
+Esta parte se implementa dentro del fichero denominado second.c
 
-Este programa sigue un bucle parecido al de la primera examinación; pero con algunos cambios debido a la naturaleza analógica de los potenciómetros.
+Este programa sigue un bucle parecido al de la primera evaluación; pero con algunos cambios debido a la naturaleza analógica de los potenciómetros.
+
+Antes que nada, se comprueba que los pines GPIO relevantes hayan sido antes configurados como de entrada antes de comenzar el programa; de no ser así, devuelve un mensaje de error.
+
+El resto del programa consiste en un bucle infinito que realiza las siguientes operaciones:
+
+\begin{enumerate}
+  \item Si se han configurado los pines GPIO, entonces el programa lee el voltaje analógico; que interpreta como un voltaje específico.
+  \item El programa configura los parámetros para el proceso ADC (Analog-to-Digital conversion)
+  \item El programa lee y convierte el valor analógico en un valor digital utilizando los procesos ADC anteriormente configurados
+  \item Por último, duerme 10 milisegundos antes de realizar un nuevo ciclo.
+\end{enumerate}
 
 \subsection{Utilidades relativas a dispositivos UART}
 
 Esta parte se implementa dentro del fichero denominado \textit{uart.c}
 
+Antes que nada, se comprueba que el dispositivo UART relevante haya sido antes configurado antes de comenzar el programa; de no ser así, devuelve un mensaje de error.
+
+\begin{enumerate}
+\item Primero, se configura el dispositivo UART; por defecto, no se asume un dispositivo UART externo; sino un dispositivo UART interno UART-to-USB
+\item Después, cada vez que se llame a read\_from\_uart, se realiza una lectura según la configuración; y se devuleve un valor según el valor que haya obtenido por el dispositivo UART, dependiendo del mensaje enviado 
+\end{enumerate}
+
 \section{Software de sistemas}
 
-\subsection{Primera examinación}
+\subsection{Primera evaluación}
 
-Aquí se implementa todo lo relativo a la primera examinación, la prueba de tiempo de anticipación.
+Aquí se implementa todo lo relativo a la primera evaluación, la prueba de tiempo de anticipación.
 
 Más o menos, el funcionamiento consiste en lo siguiente:
 \begin{itemize}
-  \item Primero se inicializan los parámetros, clases y valores relativos a la examinación.
-  \item Después se entra en un bucle, donde se comprueba si se ha mandado información por el dispositivo serial, y si es así, reinicia la examinación o termina la examinación.
-  \item Al finalizar la examinación, guarda toda la información recolectada sobre este para su auditoría, y cierra el programa de forma automática
+  \item Primero se inicializan los parámetros, clases y valores relativos a la evaluación.
+  \item Después se entra en un bucle, donde se comprueba si se ha mandado información por el dispositivo serial, y si es así, reinicia la evaluación o termina la evaluación.
+  \item Al finalizar la evaluación, guarda toda la información recolectada sobre este para su auditoría, y cierra el programa de forma automática
 \end{itemize}
 
+\begin{figure}[H]
+\includegraphics[width=1.1\textwidth]{DiagramaPrimeraEvaluacion_resized.png}
+\caption{Diagrama visual del flujo de ejecución de la primera evaluación. Diagrama realizado con Draw.IO}
+\end{figure}
 
-\subsection{Segunda examinación}
 
-Aquí se implementa todo lo relativo a la primera examinación, la prueba de coordinación mano-ojo.
+\subsection{Segunda evaluación}
 
-Tiene un funcionamiento algo más complejo que la otra examinación.
+Aquí se implementa todo lo relativo a la primera evaluación, la prueba de coordinación mano-ojo.
+
+Tiene un funcionamiento algo más complejo que la otra evaluación.
 
 \begin{itemize}
   \item Primero se inicializan todos los parámetros, clases y valores; incluidos una serie de vallas, posiciones, y dos lookup tables; uno asociado con cada potenciómetro.
@@ -867,38 +950,47 @@ Tiene un funcionamiento algo más complejo que la otra examinación.
   \subitem El vehículo asociado al potenciómetro donde viene el voltaje se desplaza hacia al valor en x obtenido.
   \subitem Terminado esto, indica que el siguiente valor de voltaje recibido corresponderá al otro potenciómetro.
   \item Por último, si no se han terminado aún las posiciones que podemos asignar a las vallas, se asignan las siguientes posiciones.
-  \item Si hubiesen terminado las posiciones que podemos asignar, se guarda toda la información recolectada sobre la examinación para su auditoría, y cierra el programa de forma automática
+  \item Si hubiesen terminado las posiciones que podemos asignar, se guarda toda la información recolectada sobre la evaluación para su auditoría, y cierra el programa de forma automática
 \end{itemize}
     
+\begin{figure}[H]
+\includegraphics[width=1.1\textwidth]{DiagramaSegundaEvaluacion_resized.png}
+\caption{Diagrama visual del flujo de ejecución de la segunda evaluación. Diagrama realizado con Draw.IO}
+\end{figure}
 
 \subsection{Utilidades UART}
 
-Este programa se encarga de proporcionar configuraciones, y métodos para configurar un dispositivo serial, leer de este, y mandar información a través de este; asume que el dispositivo del que lee y escribe ejecuta el sistema software https://github.com/PabloLuisMolinaBlanes/ProyectoTFG/tree/main/Embedded/Integrated/FOSSPsychotechnicalExamination\_embedded
+Este programa se encarga de proporcionar configuraciones, y métodos para configurar un dispositivo serial, leer de este, y mandar información a través de este; asume que el dispositivo del que lee y escribe ejecuta el sistema software es el descrito en la sección de diseño.
+
+Antes que nada, se comprueba que el dispositivo UART relevante haya sido antes configurado antes de comenzar el programa; de no ser así, devuelve un mensaje de error.
+
+\begin{enumerate}
+\item Primero, se configura el dispositivo UART; por defecto, no se asume un dispositivo UART externo; sino un dispositivo UART interno UART-to-USB
+\item Después, cada vez que se llame a read\_from\_uart, se realiza una lectura según la configuración; y se devuleve un valor según el valor que haya obtenido por el dispositivo UART.
+\end{enumerate}
 
 \section{Cliente local}
 
-\subsection{Recolección de datos de examinación}
+\subsection{Recolección de datos de evaluación}
 
 Hay una opción en el programa que permite recolectar los datos de un examinado; este es el flujo de funcionamiento:
 
 \begin{enumerate}
   \item Se intenta acceder a tres archivos:
-  %\item \begin{itemize}
-  %    \item first_examination.txt: Con los datos de examinación del primer examen
-  %    \item second_examination.txt: Con los datos de examinación del segundo examen
-  %    \item hospital_credentials.txt: Con los datos de identificación para el hospital.
-  %  \end{itemize}
+  \item[\textbullet] first\_examination.txt: Con los datos de evaluación del primer examen
+  \item[\textbullet] second\_examination.txt: Con los datos de evaluación del segundo examen
+  \item[\textbullet] hospital\_credentials.txt: Con los datos de identificación para el hospital.
   \item Si se localizan estos archivos, se empieza preguntando nombre y apellidos del usuario.
   \item Después, se pide tipo de documento; puede ser un DNI español, o un número NIE 
   \item Se pide el número de documentación escogido, más la letra; se contrasta que el número proporcionado corresponde con la letra proporcionada; si no es así, el número se considera inválido y se lanza un mensaje de error.
   \item Se muestra un formulario para confirmar los datos.
-  \item Se encriptan los datos personales del usuario con unos parámetros de encripción cargados o generados en segundo plano al iniciarse la aplicación; y se envían los datos de examinación al servidor.
+  \item Se encriptan los datos personales del usuario con unos parámetros de encripción cargados o generados en segundo plano al iniciarse la aplicación; y se envían los datos de evaluación al servidor.
 \end{enumerate}
 
 
 \subsection{Recepción de información}
 
-Esta opción permite obtener los datos de examinación de todos los usuarios examinados dentro del dispositivo; su flujo de funcionamiento es el siguiente:
+Esta opción permite obtener los datos de evaluación de todos los usuarios examinados dentro del dispositivo; su flujo de funcionamiento es el siguiente:
 
 \begin{enumerate}
   \item Se intenta acceder a hospital\_credentials.txt, un archivo con datos de identificación para el dispositivo asociado a un hospital.
@@ -909,7 +1001,14 @@ Esta opción permite obtener los datos de examinación de todos los usuarios exa
 
 \subsection{Utilidades de encriptación y desencriptación de datos}
 
-Hay muchas utilidades en el programa; hay funciones de lectura de archivos, de cifrado y descifrado, y de validación de datos para números de documentación españoles.
+Para encriptar los datos se utiliza una clave AES-256; para obtener esta clave, se sigue el siguiente flujo:
+
+\begin{enumerate}
+  \item Se intenta localizar el archivo denominado encryptionparameters.txt; si este existe, se carga la clave ya existente de ahí como buffer binario.
+  \item En caso de no existir, se genera una clave al azar. Esta clave se guarda en formato hexadecimal en el archivo encryptionparameters.txt
+\end{enumerate}
+
+Para la encriptación y desencriptación de los datos; el proceso es muy parecido entre sí; se introduce el texto a encriptar/desencriptar, se pasa ese texto por un cifrador/descifrador, y se devuelve el texto encriptado/desencriptado.
 
 \subsection{Utilidades para comunicación con interfaces cloud}
 
@@ -923,9 +1022,14 @@ Este es el flujo con el que se mandan peticiones al servidor:
   \item Se devuelve una promesa, un tipo de datos asíncrono, que permite devolver una instancia de un tipo concreto sin bloquear el programa en espera de este.
 \end{enumerate}
 
-\subsection{Utilización para validación de datos y ficheros}
+\subsection{Utilidad para introducción y validación de datos de documentación española}
 
-Se validan los datos de los documentos de identidad españoles bajo el reglamento oficial que se especifica en https://www.interior.gob.es/opencms/es/servicios-al-ciudadano/tramites-y-gestiones/dni/calculo-del-digito-de-control-del-nif-nie/
+\begin{enumerate}
+\item Primero, se pide al usuario que otorgue su tipo de documento (Documento Nacional de Identidad o Número de Identidad de Extranjero)
+\item El programa recoge el número correspondiente
+\item Se verifica que la letra introducida sea la correcta según las reglas de la normativa oficial Española para el cálculo de dígitos de control. \cite{digitocontrol}
+\item Si no se verifica correctamente; se pedirá al usuario que vuelva a introducir su número, y la letra esperada para el número que introducieron.
+\end{enumerate}
 
 \section{Servidor en nube}
 
@@ -952,9 +1056,21 @@ Dispone de varios componentes lógicos:
 
 El API REST implementa un CRUD parcial con funciones de lectura de todos los datos relativos a un hospital en concreto, dado un nombre de hospital y una clave; y una función para agregar una nueva fila a la base de datos.
 
+El flujo general de datos consiste en el siguiente:
+
+\begin{enumerate}
+  \item Primero, se obtiene el nombre del hospital en la petición. Si el hospital no existe; se devuelve un mensaje de clave incorrecta para esconder la verdadera causa del error, por motivos de seguridad.
+  \item Después, se obtiene la clave del hospital; esta se compara con el hash bcrypt2 existente en la base de datos asociada al nombre del hospital; si coincide esta clave con el hash, se procede al siguiente paso.
+  \item Se realiza la acción pedida, ya sea crear una nueva fila de datos en la base de datos; o devolver, para el hospital elegido, toda la tabla completa.
+\end{enumerate}
+
+No se ofrecen opciones más específicas para devolver datos individuales o de filtrado de datos en remoto, ya que prácticamente toda la información en la base de datos remota se asume encriptada; y no legible por el servidor remoto
+
 \subsubsection{Utilidades}
 
 Se incluyen funcionalidades para realizar comparación de contraseñas recibidas con hashes en base de datos.
+
+Las contraseñas se asumen en hash bcrypt2, con 10 iteraciones por defecto.
 
 %────────────────────── Chapter 4 — Funcionamiento ────────────────────────────
 \chapter{Funcionamiento}
@@ -965,22 +1081,22 @@ Dividiremos a los posibles tipos de usuarios en cuatro posibles tipos:
 
 \subsection{Examinado}
 
-Primero, el examinado llega a la sala. A este se le explicará el procedimiento para la primera examinación; la realizará.
+Primero, el examinado llega a la sala. A este se le explicará el procedimiento para la primera evaluación; la realizará.
 
-Después, el examinado le es explicado la segunda examinación; la realiza.
+Después, el examinado le es explicado la segunda evaluación; la realiza.
 
 Por último, el examinado ofrece sus datos; documento identificativo y su número; además de su nombre y apellidos.
 \subsection{Doctor}
 
-El doctor recibe al examinado; abre el programa de evaluación; abre el primer programa de examinación y espera a que el examinado termine; entonces abre el siguiente.
+El doctor recibe al examinado; abre el programa de evaluación; abre el primer programa de evaluación y espera a que el examinado termine; entonces abre el siguiente.
 
 El doctor abre el programa para recolectar los datos del examinado; pulsa 2 para comenzar el proceso de envío; cuando el programa lo indica, invita al examinado a leer y firmar la política de protección de datos; tras firmar manda los datos al servidor.
 
-Al pedirlo un auditor; el doctor proporcionará los datos de examinación encriptados para corregirlos; y bajo orden judicial, proporcionará los datos del examinado asociados a una examinación; mandando los datos relevantes desencriptados.
+Al pedirlo un auditor; el doctor proporcionará los datos de evaluación encriptados para corregirlos; y bajo orden judicial, proporcionará los datos del examinado asociados a una evaluación; mandando los datos relevantes desencriptados.
 
 \subsection{Auditor}
 
-El auditor pide acceso a los datos encriptados de cada hospital para auditar las examinaciones y que se hayan puntuado correctamente.
+El auditor pide acceso a los datos encriptados de cada hospital para auditar las evaluaciones y que se hayan puntuado correctamente.
 
 Puede, por orden judicial; recibir datos desencriptados relativos a la situación judicial immediata
 
@@ -1000,7 +1116,7 @@ El atacante entra en una habitación, accede al dispositivo del doctor, consigue
 
 Se ofrece dentro del repositorio una serie de vídeos demostrativos.
 
-Se demuestra la funcionalidad de examinación a partir de la realización de las dos examinaciones, utilizado los dispositivos electrónicos a tal efecto; y también se ofrece una demostración de adición de un examinado y sus resultados al servidor en nube, junto con su posterior recepción como archivo .html
+Se demuestra la funcionalidad de evaluación a partir de la realización de las dos evaluaciones, utilizado los dispositivos electrónicos a tal efecto; y también se ofrece una demostración de adición de un examinado y sus resultados al servidor en nube, junto con su posterior recepción como archivo .html
 
 \chapter{Pruebas}
 
@@ -1018,9 +1134,11 @@ Se han realizado algunas pruebas en el software dirigido a sistemas empotrados; 
   \item Ejecute el comando \begin{verbatim}idf.py -p <port> build\end{verbatim}
 \end{enumerate}
 
+\subsection{Métodos probados y resultados}
+
 \section{Software de sistemas}
 
-Se han realizado algunas pruebas en el software de sistemas; se prueban los métodos dentro de cada fichero implementado de examinación, asumiendo unos parámetros definidos específicos. Estos tests se realizan bajo la suite de tests GoogleTest.
+Se han realizado algunas pruebas en el software de sistemas; se prueban los métodos dentro de cada fichero implementado de evaluación, asumiendo unos parámetros definidos específicos. Estos tests se realizan bajo la suite de tests GoogleTest.
 
 \subsection{Instrucciones de compilación}
   
@@ -1031,6 +1149,8 @@ Se han realizado algunas pruebas en el software de sistemas; se prueban los mét
   \item Ejecutar el comando \begin{verbatim}cmake .\end{verbatim} Esto sirve para generar los archivos .make correctos 
   \item Ejecutar el comando \begin{verbatim}cmake --build .\end{verbatim} Los binarios se guardarán en la carpeta bin/
   \end{enumerate}
+
+\subsection{Métodos probados y resultados}
 
 \section{Cliente local}
 
@@ -1044,6 +1164,8 @@ Se han realizado algunas pruebas en el cliente local; sobre todo sobre las funci
   \item Ejecuta el comando \begin{verbatim}npm test\end{verbatim}
 \end{enumerate}
 
+\subsection{Métodos probados y resultados}
+
 \section{Servidor en nube}
 
 Se han realizado algunas pruebas en el servidor en nube; sobre todo sobre las funciones relativas a las utilidades. Estos tests se realizan bajo la suite de tests Jest.
@@ -1056,12 +1178,14 @@ Se han realizado algunas pruebas en el servidor en nube; sobre todo sobre las fu
   \item Ejecuta el comando \begin{verbatim}npm test\end{verbatim}
 \end{enumerate}
 
+\subsection{Métodos probados y resultados}
+
 %────────────────────── Chapter 5 — Discusión ─────────────────────────
 \chapter{Conclusiones}
 
-En esta memoria se ha desarrollado por escrito, y se ha explicado, una suite de examinaciones psicotécnicas para conductores.
+En esta memoria se ha desarrollado por escrito, y se ha explicado, una suite de evaluaciones psicotécnicas para conductores.
 
-Como se ha podido ver, se trata de un prototipo y una prueba de concepto, de lo que podrían ser las bases de un sistema de examinación psicotécnica para conductores mucho más complejo y desarrollado, incluso parte de un futuro dispositivo médico en el futuro.
+Como se ha podido ver, se trata de un prototipo y una prueba de concepto, de lo que podrían ser las bases de un sistema de evaluación psicotécnica para conductores mucho más complejo y desarrollado, incluso parte de un futuro dispositivo médico en el futuro.
 
 Aún siendo un prototipo, se han implementado componentes para prácticamente todas las funcionalidades básicas que se podría esperar de este tipo de sistemas; utilizando buenas prácticas como la documentación, las pruebas, el cuidado en el rendimiento, y la multidisciplinaridad.
 
@@ -1073,39 +1197,39 @@ Aún siendo un prototipo, se han implementado componentes para prácticamente to
 En este manual de usuario se busca introducir a todos los tipos de usuario, de forma sencilla, y paso por paso, a un uso adecuado de esta suite de software.
 \section{Para el usuario}
 
-\subsection{¿Cómo realizar una examinación?}
+\subsection{¿Cómo realizar una evaluación?}
 
-Para las examinaciones, lo más importante es la pantalla, y los botones o manivelas que hayas de utilizar. Cuando actuas sobre los botones o las manivelas, esto causará efectos en la pantalla, que están hechos para que se puedan visualizar fácilmente.
+Para las evaluaciones, lo más importante es la pantalla, y los botones o manivelas que hayas de utilizar. Cuando actuas sobre los botones o las manivelas, esto causará efectos en la pantalla, que están hechos para que se puedan visualizar fácilmente.
 
-Tu doctor te hará dos tipos de examinación, vamos a entrar un poco más en detalle en los exámenes que habrás de realizar:
+Tu doctor te hará dos tipos de evaluación, vamos a entrar un poco más en detalle en los exámenes que habrás de realizar:
 
-\subsubsection{Primera examinación}
+\subsubsection{Primera evaluación}
 
-La primera examinación busca medir tu tiempo de anticipación. Vamos a mostrar una fotografía de lo que probablemente vas a ver en la pantalla:
+La primera evaluación busca medir tu tiempo de anticipación. Vamos a mostrar una fotografía de lo que probablemente vas a ver en la pantalla:
 
 \begin{figure}[H]
 \includegraphics[width=1.1\textwidth]{pantalla1.png}
-\caption{Ejemplo visual de la primera examinación}
+\caption{Ejemplo visual de la primera evaluación}
 \end{figure}
 
-Tu objetivo en esta examinación consiste en, cuando el coche, representado por el cuadradito blanco, entre en el tunel, representado por el cuadrado grande por la izquierda; debes intentar anticiparte, y pulsar el botón cuando creas que el coche va a salir por la derecha.
+Tu objetivo en esta evaluación consiste en, cuando el coche, representado por el cuadradito blanco, entre en el tunel, representado por el cuadrado grande por la izquierda; debes intentar anticiparte, y pulsar el botón cuando creas que el coche va a salir por la derecha.
 
 El examen se repite tres veces; y en cada una, deberás hacer lo mismo; el programa se cerrará cuando haya concluido el examen.
 
-\subsubsection{Segunda examinación}
+\subsubsection{Segunda evaluación}
 
-La segunda examinación busca medir tu coordinación mano-ojo, utilizarás las dos manivelas que podrás ver en la pantalla. Aquí mostramos una foto de lo que verás durante el examen:
+La segunda evaluación busca medir tu coordinación mano-ojo, utilizarás las dos manivelas que podrás ver en la pantalla. Aquí mostramos una foto de lo que verás durante el examen:
 
 \begin{figure}[H]
 \includegraphics[width=1.1\textwidth]{pantalla2.png}
-\caption{Ejemplo visual de la segunda examinación}
+\caption{Ejemplo visual de la segunda evaluación}
 \end{figure}
 
-Tu objetivo en esta examinación consiste en mantener los coches, representados por los cuadraditos blancos, dentro de cada carretera; hay una carretera por cada coche. Esta carretera tiene curvas, y tu objetivo será mantener los dos cuadraditos en todo momento dentro de su carretera. El cuadradito de la izquierda tendrá que circular en la carretera de la izquierda en todo momento, y el cuadradito de la derecha tendrá que circular en la carretera de la derecha en todo momento.
+Tu objetivo en esta evaluación consiste en mantener los coches, representados por los cuadraditos blancos, dentro de cada carretera; hay una carretera por cada coche. Esta carretera tiene curvas, y tu objetivo será mantener los dos cuadraditos en todo momento dentro de su carretera. El cuadradito de la izquierda tendrá que circular en la carretera de la izquierda en todo momento, y el cuadradito de la derecha tendrá que circular en la carretera de la derecha en todo momento.
 
 Cuando haya terminado el examen, el programa se cerrará.
 
-\subsection{¿Cómo subo una examinación?}
+\subsection{¿Cómo subo una evaluación?}
 
 Tu doctor abrirá un programa donde tendrás que introducir los siguientes datos:
 
@@ -1121,25 +1245,25 @@ Después, se mostrará en la pantalla si quieres confirmar que todos tus datos s
 
 \section{Para el doctor}
 
-\subsection{¿Qué examinaciones se utilizan?}
+\subsection{¿Qué evaluaciones se utilizan?}
 
-\subsubsection{Primera examinación}
+\subsubsection{Primera evaluación}
 
-La primera examinación que se realiza se trata del test del tunel, originalmente basado del estudio por MARUYAMA, KINYA y KITAMURA, SEIRO en 1966 \cite{maruyama1966speed}
+La primera evaluación que se realiza se trata del test del tunel, originalmente basado del estudio por MARUYAMA, KINYA y KITAMURA, SEIRO en 1966 \cite{maruyama1966speed}
 
-\subsubsection{Segunda examinación}
+\subsubsection{Segunda evaluación}
 
-La segunda examinación que se realiza se trata del test del laberinto, originalmente derivado del polireactografo explicado en el libro por Bonnardel, Raymond en 1943 \cite{bonnardel1943adaptation}
+La segunda evaluación que se realiza se trata del test del laberinto, originalmente derivado del polireactografo explicado en el libro por Bonnardel, Raymond en 1943 \cite{bonnardel1943adaptation}
 
-\subsection{¿Cómo cargo los programas de examinación?}
+\subsection{¿Cómo cargo los programas de evaluación?}
 
-Los programas de examinación han de accederse a través de la carpeta \textit{bin/} que se pueden encontrar en la carpeta \textit{SystemSoftware/Integrated}. Hay dos programas, estos son:
+Los programas de evaluación han de accederse a través de la carpeta \textit{bin/} que se pueden encontrar en la carpeta \textit{SystemSoftware/Integrated}. Hay dos programas, estos son:
 
-\textit{gui}: Una interfaz sencilla que permite abrir los dos programas de examinación sin tener que acordarte de dónde está cada programa.
+\textit{gui}: Una interfaz sencilla que permite abrir los dos programas de evaluación sin tener que acordarte de dónde está cada programa.
 
-\textit{first\_examination}: Este programa es la primera examinación
+\textit{first\_examination}: Este programa es la primera evaluación
 
-\textit{second\_examination}: Este programa es la segunda examinación
+\textit{second\_examination}: Este programa es la segunda evaluación
 
 Has de abrir los programas para cada examen, y dar instrucciones al examinado sobre cómo realizar cada examen; preferiblemente deberías realizar una demostración, para luego que puedan hacer el examen real.
 
@@ -1247,7 +1371,7 @@ Se muestra aquí un ejemplo de un posible fichero \textit{html\_results.html}
 
 \subsection{¿Cómo puedo realizar auditoría de los datos?}
 
-Podrás obtener acceso a partir de las credenciales de cada hospital a los datos que se contienen en ellos; a partir de ahí, podrás obtener una tabla con todas las examinaciones realizadas.
+Podrás obtener acceso a partir de las credenciales de cada hospital a los datos que se contienen en ellos; a partir de ahí, podrás obtener una tabla con todas las evaluaciones realizadas.
 
 Todos los datos escritos relativos a las pruebas se deben verificar con la misma versión del programa con la que se han generado, de no ser así, se puede llegar a conclusiones erróneas.
 
@@ -1349,7 +1473,7 @@ Delegado de datos: delegado@hospital\_maria\_cristina.com
 
 \section{Fines de tratamiento de tus datos personales}
 
-Los datos personales relativos a examinados que obtenga el Hospital Santa María Cristina, con el consentimiento dado por estas personas; serán principalmente destinados a apuntarse en la base de datos de examinaciones, con fin de registrar información sobre nuestras examinaciones con fines de auditoría externa. La información mandada por el formulario virtual será utilizada con fin de ser sometida a una auditoría por medios telemáticos si esta fuese necesaria.
+Los datos personales relativos a examinados que obtenga el Hospital Santa María Cristina, con el consentimiento dado por estas personas; serán principalmente destinados a apuntarse en la base de datos de evaluaciones, con fin de registrar información sobre nuestras evaluaciones con fines de auditoría externa. La información mandada por el formulario virtual será utilizada con fin de ser sometida a una auditoría por medios telemáticos si esta fuese necesaria.
 
 \section{Destinatarios de tus datos personales}
 
@@ -1359,7 +1483,7 @@ El Hospital Santa María Cristina realiza copias de los datos personales de sus 
 
 \section{Plazo de conservación de datos personales}
 
-Los datos personales de examinados se conservarán durante un plazo máximo de 10 años, esto se debe a que es el plazo máximo de próxima examinación que se le puede asignar a un examinado.
+Los datos personales de examinados se conservarán durante un plazo máximo de 10 años, esto se debe a que es el plazo máximo de próxima evaluación que se le puede asignar a un examinado.
 
 \section{Derechos del usuario}
 
