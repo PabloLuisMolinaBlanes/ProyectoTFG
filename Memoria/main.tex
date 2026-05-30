@@ -1152,6 +1152,31 @@ Se han realizado algunas pruebas en el software de sistemas; se prueban los mét
 
 \subsection{Métodos probados y resultados}
 
+\subsubsection{Común a ambas evaluaciones}
+
+\begin{enumerate}
+ \item \textbf{InitShapeInitsShapeWithCorrectPosXAndPosY}: Se prueba que el método initShape con los parámetros $x=35$ e $y=35$ resultará en una instancia de sf::RectangleShape siendo generada con posición en x igual a 35, e posición en y igual a 35.
+ \item \textbf{InitShapeInitsShapeWithCorrectPosXAndPosYAndSize}: Se prueba que el método initShape con los parámetros $x=35$, $y=35$, $sizeX = 45.0f$ e $sizeY = 45.0f$ resultará en una instancia de sf::RectangleShape siendo generada con posición en x igual a 35, posición en y igual a 35, tamaño x igual a 45.0f e tamaño y igual a 45.0f.
+ \item \textbf{InitCarActuallyInitsTheCar}: Se prueba que el método initCar con los parámetros $x=200$ e $y=200$ resultará en una instancia de sf::RectangleShape siendo generada con posición en x igual a 200, posición en y igual a 200; y posición "real" para coordenada igual a la posición en x para cada coordenada.
+\end{enumerate}
+
+\subsubsection{Específicos a primera evaluación}
+
+\begin{enumerate}
+  \item \textbf{ResetTestActuallyAffectsTheCar}
+\end{enumerate}
+
+\subsubsection{Específicos a segunda evaluación}
+
+\begin{enumerate}
+\item \textbf{InitializeWallsInitializesWallsCorectly}: Se prueba que el método initializeWalls, dada un array vacio de instancias sf::RectangleShape con tamaño NUMBER\_OF\_WALLS; un tamaño de "pared" en las coordenadas x e y, y una posición inicial de la primera "pared" devolverá un array de paredes con la posición indicada en x; y los tamaños indicados para x e y en cada pared
+\item \textbf{InitializePositionsInitializesPositionsCorectly}: Se prueba que el método initializePositions, dado un array vacio de valores primitivos enteros (int), devolverá un array con todas las posiciones teniendo un valor de 10, 0 o -10
+\item \textbf{InitializeLookUpTableInitializesTableCorectly}: Se prueba que el método initializeLookUpTable, dado un radio del rango de valores máximo y mínimo de un potenciómetro con la longitud de la pantalla en x; y una colección igual al rango de posiciones del potenciómetro multiplicada por el radio anteriormente redondeado a entero por lo bajo; devolverá un array de enteros donde solo cambiará el valor asignado cada vez que se cuente un número "radio" de elementos dentro de ese array
+\item \textbf{PositionsAreAssignedCorrectly}
+\item \textbf{VerifyCollisionVerifiesCorrectly}
+\item \textbf{VerifyResolvePosition}
+\end{enumerate}
+
 \section{Cliente local}
 
 Se han realizado algunas pruebas en el cliente local; sobre todo sobre las funciones relativas a las utilidades. Estos tests se realizan bajo la suite de tests Jest.
