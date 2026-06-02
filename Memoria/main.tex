@@ -388,13 +388,29 @@ Al ser solo una persona la implementadora de este proyecto, y al no haber un cli
 
 \subsubsection{Organización de tareas}
 
-Las tareas se han ido organizando de forma semanal.
+Las tareas se han ido organizando de forma semanal. Al ser un proyecto con caracter explorativo, se decidió dividir la fase de desarrollo en módulos individuales llamados pinchos (\textit{spikes} en inglés); estos pinchos formarían las bases de los proyectos completos.
+
+Al ser un proyecto altamente multi-tecnología, también se organizó el entorno de trabajo en forma de un \textbf{monorepo}; esta forma de trabajar consiste en albergar multiples proyectos más pequeños dentro de un único repositorio que los alberga a todos. Esto permite, de un solo golpe de vista, visualizar múltiples proyectos al mismo tiempo; y hacer un todo más cohesivo.
 
 \subsubsection{Organización del tiempo}
 
-Se ha organizado el tiempo utilizando la herramienta \textbf{Google Calendar}. Se han desarrollado objetivos semanales, los cuales se han ido incluyendo en el calendario, y se ha dado plazo de una semana para realizar; esto permite al desarrollador 
+Se ha organizado el tiempo utilizando la herramienta \textbf{Google Calendar}. Se han desarrollado objetivos semanales, los cuales se han ido incluyendo en el calendario, y se ha dado plazo de una semana para realizar; esto permite al desarrollador ir desarrollando tareas específicas de forma paulatina, y, al final de la semana; reflexionar sobre lo realizado y planificar la siguiente semana.
+
+Planificar de forma semanal permite mantener cierta flexibilidad, que planificando de forma mensual o multi-semanal sería muy dificil debido a las posibles contingencias que podrían surgir; y también permite mantener cierta ruta y objetivos dificiles de mantener al largo plazo si vamos planificando de forma diaria qué tareas hacer 
 
 \subsubsection{Resumen de calendario}
+
+\begin{enumerate}
+  \item Primero, se comenzó implementando una serie de los pinchos. Estos consisten en una serie de funcionalidades individuales para probar funcionalidades individuales de la aplicación de forma progresiva y pautada. Estas partes se desarrollan y compilan de forma independiente a las otras partes y al proyecto final.
+  \item Después, se comenzaron a hacer las primeras implementaciones; esta parte entonces incluía pruebas muy básicas, como el conocido programa 'blink' en sistemas empotrados; la compilación correcta de mi proyecto anterior 'Aquarium', que formo la base del resto de mis evaluaciones.
+  \item Tras hacer esto, se implementó cada evaluación de forma independiente, en el sistema empotrado; y respectivamente, en el software de sistemas; hasta este momento, no se habían integrado ambos sistemas, y para simular la placa en el software de sistemas se utilizaba el ratón y teclado para enviar señales.
+  \item Cuando la implementación de cada evaluación por separado fue satisfactoria, se hizo funcionar la primera evaluación con el botón electrónico real de la placa; y tras esto, lo mismo con la segunda evaluación.
+  \item Tras estar satisfecho con esta implementación de 'spikes', fue cuando se comenzó con la versión definitiva, aquí se empezaron a redactar para los proyectos de Sistemas Empotrados y Software de Sistemas comentarios, documentación, y las primeras pruebas automáticas; la memoria se empezó a redactar a partir de este punto.
+  \item Después, se comenzó a implementar el cliente local y el servidor en nube; los pinchos de estos proyectos se terminaron muy rápidamente por mi experiencia previa desarrollando aplicaciones web; tardé poco en llegar a la versión final de cada uno. Se redactó documentación al respecto para estos proyectos.
+  \item Tras esto, se inició una instancia AWS EC2, y se subió el servidor en nube a esta instancia; la cual se probó a integrar con un servidor nginx con el cliente local. Funcionó correctamente, y de hecho se llegó a implementar un flujo HTTPS correcto; pero por problemas descritos en las limitaciones de este proyecto, en el repositorio de este proyecto se ha dejado implementado como conexión HTTP, y se han dejado instrucciones sobre cómo se convertiría a flujo HTTPS de tener los certificados correctos. Aquí se comenzó el desarrollo de esta memoria más a fondo.
+  \item Después, se comenzó a redactar la memoria como tarea principal y prácticamente única, limitando futura implementación a la resolución de bugs específicos o algunas mejorías de la interfaz de usuario. Se empezaron a redactar las secciones intermedias del proyecto; terminando con la introducción, conclusiones y anexos.
+  \item A partir de entonces, mis tareas consistieron, sobre todo, de mandar mi memoria a revisar, e implementar las correcciones de la memoria correspondientes que mis tutores iban recomendando.
+\end{enumerate}
 
 \section{Buenas prácticas y costumbres de desarrollo software}
 
@@ -508,9 +524,9 @@ Normalmente en forma de vídeos, estos ficheros pueden servir para introducir al
 Aquí destacan los siguientes requisitos:
 
 \begin{itemize}
-\item El microcontrolador debe ser capaz de recibir mensajes coherentes a partir del SBC (Single Board Computer)
-\item El microcontrolador debe poder detectar, en un plazo no superior a los 100 milisegundos, la pulsación de un botón electrónico físico por el usuario conectado a los pines GPIO del microcontrolador.
-\item El microcontrolador debe poder interpretar como valores digitales, en un plazo no superior a los 100 milisegundos, los valores de resistencia de dos potenciómetros conectados cada uno a pines independientes GPIO del microcontrolador.
+\item [RF1] El microcontrolador debe ser capaz de recibir mensajes coherentes a partir del SBC (Single Board Computer)
+\item [RF2] El microcontrolador debe poder detectar, en un plazo no superior a los 100 milisegundos, la pulsación de un botón electrónico físico por el usuario conectado a los pines GPIO del microcontrolador.
+\item [RF3] El microcontrolador debe poder interpretar como valores digitales, en un plazo no superior a los 100 milisegundos, los valores de resistencia de dos potenciómetros conectados cada uno a pines independientes GPIO del microcontrolador.
 \end{itemize}
 
 \subsection{Requisitos no funcionales}
@@ -518,8 +534,8 @@ Aquí destacan los siguientes requisitos:
 Aquí destacan los siguientes requisitos
 
 \begin{itemize}
-  \item El sistema debe poder recibir información y tomar acción respecto a esta información, como mandarla a través del cable USB-to-UART al SBC, sin demora por encima de 300ms.
-  \item El sistema debe utilizar memoria de forma eficiente, favoreciendo el uso de memoria estática y espacio en memoria predecible a lo largo del flujo de vida de la aplicación
+  \item [RNF1] El sistema debe poder recibir información y tomar acción respecto a esta información, como mandarla a través del cable USB-to-UART al SBC, sin demora por encima de 300ms.
+  \item [RNF2] El sistema debe utilizar memoria de forma eficiente, favoreciendo el uso de memoria estática y espacio en memoria predecible a lo largo del flujo de vida de la aplicación
 \end{itemize}
 
 \section{Software de sistemas}
@@ -528,22 +544,22 @@ Aquí destacan los siguientes requisitos
 
 Aquí destacan los siguientes requisitos
 
-\begin{enumerate}
-  \item Deberan incluirse dos tipos de evaluación; una evaluación de tiempo de reacción, y una evaluación de coordinación mano-ojo.
-  \item Los programas de evaluación deben procesar información de los dispositivos electrónicos en un tiempo menor a 100ms
-  \item Los programas de evaluación deben mostrar feedback visual sin latencia excesiva al usuario en pantalla.
-  \item Los programas de evaluación deben almacenar los resultados de evaluación de forma veraz, que den posibilidad a su verificación y puntuación.
-\end{enumerate}
+\begin{itemize}
+  \item [RF1] Deberan incluirse dos tipos de evaluación; una evaluación de tiempo de reacción, y una evaluación de coordinación mano-ojo.
+  \item [RF2] Los programas de evaluación deben procesar información de los dispositivos electrónicos en un tiempo menor a 100ms
+  \item [RF3] Los programas de evaluación deben mostrar feedback visual sin latencia excesiva al usuario en pantalla.
+  \item [RF4] Los programas de evaluación deben almacenar los resultados de evaluación de forma veraz, que den posibilidad a su verificación y puntuación.
+\end{itemize}
 
 \subsection{Requisitos no funcionales}
 
 Aquí destacan los siguientes requisitos
 
-\begin{enumerate}
-  \item Los programas de evaluación deberán ser fácilmente interpretables para los usuarios.
-  \item Los programas de evaluación no deben permitir memorización.
-  \item Los programas de evaluación deben adherirse a las mejores prácticas técnico-científicas para recolectar información psicotécnica. 
-\end{enumerate}
+\begin{itemize}
+  \item [RNF1] Los programas de evaluación deberán ser fácilmente interpretables para los usuarios.
+  \item [RNF2] Los programas de evaluación no deben permitir memorización.
+  \item [RNF3] Los programas de evaluación deben adherirse a las mejores prácticas técnico-científicas para recolectar información psicotécnica. 
+\end{itemize}
 
 \section{Cliente local}
 
@@ -551,23 +567,23 @@ Aquí destacan los siguientes requisitos
 
 Aquí destacan los siguientes requisitos
 
-\begin{enumerate}
-  \item Los datos personales que se manden al servidor deben mandarse encriptados algorítmicamente.
-  \item El programa ofrece una opción para mandar datos de evaluaciones al servidor.
-  \item El programa ofrece una opción para obtener datos de evaluaciones al servidor.
-  \item El programa debe verificar que los números proporcionados de documentación personal corresponden con la letra proporcionada.
-  \item El programa debe encriptar los datos proporcionados en un formato de encriptación seguro
-  \item El programa debe poder desencriptar los datos que se han encriptado con este, siempre que se dispongan de los parámetros de encriptación originalmente utilizados.
-\end{enumerate}
+\begin{itemize}
+  \item [RF1] Los datos personales que se manden al servidor deben mandarse encriptados algorítmicamente.
+  \item [RF2] El programa ofrece una opción para mandar datos de evaluaciones al servidor.
+  \item [RF3] El programa ofrece una opción para obtener datos de evaluaciones al servidor.
+  \item [RF4] El programa debe verificar que los números proporcionados de documentación personal corresponden con la letra proporcionada.
+  \item [RF5] El programa debe encriptar los datos proporcionados en un formato de encriptación seguro
+  \item [RF6] El programa debe poder desencriptar los datos que se han encriptado con este, siempre que se dispongan de los parámetros de encriptación originalmente utilizados.
+\end{itemize}
 
 \subsection{Requisitos no funcionales}
 
 Aquí destacan los siguientes requisitos
 
-\begin{enumerate}
-  \item El programa debe soportar la documentación autorizada para identificar personas conforme a la Ley Española
-  \item El programa debe considerar la seguridad, y no abrir puertos no necesarios para la estricta realización de sus funciones.
-\end{enumerate}
+\begin{itemize}
+  \item [RNF1] El programa debe soportar la documentación autorizada para identificar personas conforme a la Ley Española
+  \item [RNF2] El programa debe considerar la seguridad, y no abrir puertos no necesarios para la estricta realización de sus funciones.
+\end{itemize}
 
 \section{Servidor en nube}
 
@@ -575,19 +591,19 @@ Aquí destacan los siguientes requisitos
 
 Aquí destacan los siguientes requisitos
 
-\begin{enumerate}
-  \item Los datos personales que se manden al servidor deben mandarse encriptados algorítmicamente.
-  \item Se deben considerar los documentos DNI y NIE para agregar sobre el usuario.
-  \item Se genera un archivo HTML con los datos desencriptados de los examinados cada vez que así lo pide un doctor.
-\end{enumerate}
+\begin{itemize}
+  \item [RF1] Los datos personales que se manden al servidor deben mandarse encriptados algorítmicamente.
+  \item [RF2] Se deben considerar los documentos DNI y NIE para agregar sobre el usuario.
+  \item [RF3] Se genera un archivo HTML con los datos desencriptados de los examinados cada vez que así lo pide un doctor.
+\end{itemize}
 
 \subsection{Requisitos no funcionales}
 
 Aquí destacan los siguientes requisitos
 
-\begin{enumerate}
-  \item La aplicación debe considerar posibles ataques de externos que busquen revelar y divulgar datos personales de examinados
-\end{enumerate}
+\begin{itemize}
+  \item [RNF1] La aplicación debe considerar posibles ataques de externos que busquen revelar y divulgar datos personales de examinados
+\end{itemize}
 
 %────────────────────── Chapter 3 — Diseño ────────────────────────────
 \chapter{Diseño}
@@ -657,9 +673,7 @@ También se benefician de la limitada potencia eléctrica que se necesita para s
 
 Este microcontrolador es una clase de microcontrolador desarrollado por la compañía EspressIf. \cite{espressif-1}
 
-\textbf{Características del microcontrolador}
-
-Este microcontrolador dispone de las siguientes características relevantes a su funcionamiento. \cite{espressif-1} \cite{espressif-2}
+Dispone de las siguientes características relevantes a su funcionamiento. \cite{espressif-1} \cite{espressif-2}
 
 \begin{enumerate}
  \item Un procesador ESP32-WROOM-32E
@@ -670,12 +684,10 @@ Este microcontrolador dispone de las siguientes características relevantes a su
  \item Dos botones, uno de descarga, y otro de reinicio.
 \end{enumerate}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \includegraphics[width=1.1\textwidth]{esp32-devkitc-v4-functional-overview.png}
 \caption{Listado de partes de microcontrolador ESP-32 DevKit v4~\cite{espressif-1}}
 \end{figure}
-
-\textbf{Funcionalidades del microcontrolador}
 
 Se incluyen múltiples y variadas funciones dentro del microcontrolador. Entre estas se incluye:
 
@@ -685,7 +697,13 @@ Se incluyen múltiples y variadas funciones dentro del microcontrolador. Entre e
   \item \textbf{USB}: Es un protocolo de comunicación.
 \end{enumerate}
 
-\textbf{Diagrama de pines para el proyecto}
+\subsubsection{Alternativas consideradas}
+
+Se consideró el dispositivo Arduino Uno para realizar el proyecto; al final no se utilizo debido a su precio más elevado, y por su más reducido rendimiento comparado con sus competidores.
+
+También se consideró el dispositivo Raspberry Pico para realizar el proyecto como microcontrolador; pero se descartó debido a la falta de rendimiento comparado con el ESP-32.
+
+\subsection{Diagrama de pines para el proyecto}
 
 El dispositivo se conecta a tres dispositivos; utilizándose los siguientes pines:
 
@@ -695,16 +713,10 @@ El dispositivo se conecta a tres dispositivos; utilizándose los siguientes pine
  \item Potenciómetro segundo: Se conecta a los pines número 33, a un pin 3V3 y a un pin de GND
 \end{enumerate}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \includegraphics[width=1.1\textwidth]{espressdiagram.png}
 \caption{Diagrama electrónico de conexiones del proyecto. Diagrama realizado con Wowki}
 \end{figure}
-
-\textbf{Alternativas consideradas}
-
-Se consideró el dispositivo Arduino Uno para realizar el proyecto; al final no se utilizo debido a su precio más elevado, y por su más reducido rendimiento comparado con sus competidores.
-
-También se consideró el dispositivo Raspberry Pico para realizar el proyecto como microcontrolador; pero se descartó debido a la falta de rendimiento comparado con el ESP-32.
 
 \subsection{Ordenadores monoplaca}
 
@@ -731,17 +743,11 @@ Las características principales de este dispositivo incluyen:
 
 \subsubsection{Alternativas consideradas}
 
-\textbf{Otras versiones del Raspberry Pi 5}
-
 Existen varias versiones del Raspberry Pi 5 con menor capacidad de memoria RAM, estas al final no se escogieron para realizar este proyecto, aún siendo las recomendadas por el autor si se busca fabricar este producto de forma masiva por su menor coste, debido a que, al tratarse de un único prototipo no orientado a fabricarse de forma masiva por el momento, he decidido utilizar recursos más potentes al no conocer exáctamente qué recursos harían falta para realizar este proyecto.
 
-\textbf{Raspberry Pi 4 y versiones anteriores}
+No se escogió tampoco Raspberry Pi 4 u otras versiones anteriores un el mismo motivo que las versiones más baratas del Raspberry Pi 5.
 
-Estas no se escogieron por el mismo motivo que las versiones más baratas del Raspberry Pi 5.
-
-\textbf{MiniPC genérico}
-
-Esta opción no se escogió, ya que un Mini-PC genérico es una compilación de hardware propia responsabilidad de su autor, lo cual dificultaría las tareas de aprendizaje inicial; la documentación de Raspberry OS y Raspberry Pi 5 me pareció mucho más completa para un proyecto del cual habían aún muchas incógnitas antes de su comienzo.
+Tampoco se escogió un Mini-PC genérico. Este dispositivo es una compilación de hardware propia responsabilidad de su autor, lo cual dificultaría las tareas de aprendizaje inicial; la documentación de Raspberry OS y Raspberry Pi 5 me pareció mucho más completa para un proyecto del cual habían aún muchas incógnitas antes de su comienzo.
 
 \section{Diseño software}
 \subsection{Sistemas empotrados}
@@ -1136,6 +1142,13 @@ Se han realizado algunas pruebas en el software dirigido a sistemas empotrados; 
 
 \subsection{Métodos probados y resultados}
 
+Con respecto a pruebas; se prueban dos casos:
+
+\begin{enumerate}
+  \item ¿Puedo inicializar un programa de evaluación sin antes configurar el entorno?
+  \item ¿Se lee desde el dispositivo UART bien una información que sé me va a llegar?
+\end{enumerate}
+
 \section{Software de sistemas}
 
 Se han realizado algunas pruebas en el software de sistemas; se prueban los métodos dentro de cada fichero implementado de evaluación, asumiendo unos parámetros definidos específicos. Estos tests se realizan bajo la suite de tests GoogleTest.
@@ -1160,11 +1173,15 @@ Se han realizado algunas pruebas en el software de sistemas; se prueban los mét
  \item \textbf{InitCarActuallyInitsTheCar}: Se prueba que el método initCar con los parámetros $x=200$ e $y=200$ resultará en una instancia de sf::RectangleShape siendo generada con posición en x igual a 200, posición en y igual a 200; y posición "real" para coordenada igual a la posición en x para cada coordenada.
 \end{enumerate}
 
+Todas estas pruebas resuelven correctamente en la versión última del respositorio remoto.
+
 \subsubsection{Específicos a primera evaluación}
 
 \begin{enumerate}
-  \item \textbf{ResetTestActuallyAffectsTheCar}
+  \item \textbf{ResetTestActuallyAffectsTheCar}: Se comprueba que el método pensado para reiniciar la evaluación a sus parámetros determinados efectivamente realiza esta acción
 \end{enumerate}
+
+Todas estas pruebas resuelven correctamente en la versión última del respositorio remoto.
 
 \subsubsection{Específicos a segunda evaluación}
 
@@ -1172,10 +1189,12 @@ Se han realizado algunas pruebas en el software de sistemas; se prueban los mét
 \item \textbf{InitializeWallsInitializesWallsCorectly}: Se prueba que el método initializeWalls, dada un array vacio de instancias sf::RectangleShape con tamaño NUMBER\_OF\_WALLS; un tamaño de "pared" en las coordenadas x e y, y una posición inicial de la primera "pared" devolverá un array de paredes con la posición indicada en x; y los tamaños indicados para x e y en cada pared
 \item \textbf{InitializePositionsInitializesPositionsCorectly}: Se prueba que el método initializePositions, dado un array vacio de valores primitivos enteros (int), devolverá un array con todas las posiciones teniendo un valor de 10, 0 o -10
 \item \textbf{InitializeLookUpTableInitializesTableCorectly}: Se prueba que el método initializeLookUpTable, dado un radio del rango de valores máximo y mínimo de un potenciómetro con la longitud de la pantalla en x; y una colección igual al rango de posiciones del potenciómetro multiplicada por el radio anteriormente redondeado a entero por lo bajo; devolverá un array de enteros donde solo cambiará el valor asignado cada vez que se cuente un número "radio" de elementos dentro de ese array
-\item \textbf{PositionsAreAssignedCorrectly}
-\item \textbf{VerifyCollisionVerifiesCorrectly}
-\item \textbf{VerifyResolvePosition}
+\item \textbf{PositionsAreAssignedCorrectly}: Se comprueba que para un array de posiciones y un array de "paredes", las posiciones se asignan correctamente.
+\item \textbf{VerifyCollisionVerifiesCorrectly}: Se comprueba que la función verifyCollision resuelve colisiones correctamente según la función matemática de colisión descrita en el apartado 2.2.1 de esta memoria
+\item \textbf{VerifyResolvePosition}: Se comprueba que se resuelven colisiones correctamente para casos en los que el valor voltaje simulado se encuentra dentro del rango esperado del potenciómetro; y en casos en los que da un valor no dentro del rango esperado del potenciómetro (ya sea menor o mayor al valor asumido dentro del rango)
 \end{enumerate}
+
+Todas estas pruebas resuelven correctamente en la versión última del respositorio remoto.
 
 \section{Cliente local}
 
@@ -1190,6 +1209,12 @@ Se han realizado algunas pruebas en el cliente local; sobre todo sobre las funci
 \end{enumerate}
 
 \subsection{Métodos probados y resultados}
+
+Con respecto a pruebas; se prueban dos casos:
+
+\begin{enumerate}
+  \item ¿A partir de un número de documentación, este lo valida correctamente según la normativa española?
+\end{enumerate}
 
 \section{Servidor en nube}
 
@@ -1213,6 +1238,16 @@ En esta memoria se ha desarrollado por escrito, y se ha explicado, una suite de 
 Como se ha podido ver, se trata de un prototipo y una prueba de concepto, de lo que podrían ser las bases de un sistema de evaluación psicotécnica para conductores mucho más complejo y desarrollado, incluso parte de un futuro dispositivo médico en el futuro.
 
 Aún siendo un prototipo, se han implementado componentes para prácticamente todas las funcionalidades básicas que se podría esperar de este tipo de sistemas; utilizando buenas prácticas como la documentación, las pruebas, el cuidado en el rendimiento, y la multidisciplinaridad.
+
+\section{Limitaciones y posibles mejoras}
+
+El autor se hace cargo de las limitaciones de esta suite software para la puesta en práctica immediata; ya que no se ha consultado directamente con expertos en los campos trabajados, como lo pueden ser psicólogos especialistas en cognición, médicos, y otros perfiles relevantes dentro de la industria y la academia; este trabajo está pensado como base tecnológica y como demostración de una posible recreación con tecnologías modernas, todo publicado bajo licencias permisivas, para un posible dispositivo médico futuro. No está pensado para de por sí poder utilizarse directamente en el proceso de evaluación médica de pacientes.
+
+La interfaz de usuario puede no ser muy apropiada para perfiles de usuario típicos; aunque se ha intentado mitigar esto realizando scripts de instalación y de ejecución que simplifican este proceso, haciendo examinaciones muy visualmente contrastadas en términos de colores, y realizando vídeos demostrativos, manuales de instalación y de usuario; se requiere de un proceso instalación manual de dependencias externas y la configuración de un entorno electrónico apropiado para el funcionamiento correcto del sistema completo.
+
+Este proyecto no es portable a otros entornos informáticos; asume un entorno hardware y software muy específico en los parámetros configurados por defecto; y cualquier desviación puede resultar en el no correcto funcionamiento de componentes de la suite software. 
+
+Debido al precio que exige tener una instancia en nube encendida durante semanas o incluso meses, por el uso de AWS como tecnología en nube escogida, y por las políticas de precio por uso que existen en proveedores IaaS de forma general; y además, debido a que la configuración con HTTPS requiere de una dirección IP constante para la máquina, y un dominio web que asignar a esta dirección IP, se utiliza una conexión desencriptada con el servidor; al probar una configuración HTTPS en nube, debido a estas restricciones principalmente financieras, había de forzar a mi cliente local a confiar en cualquier certificado que le llegase; lo cual impidió una configuración completa de flujo HTTPS.
 
 %────────────────────── Appendices ─────────────────────────────────────
 \begin{umaappendices}
