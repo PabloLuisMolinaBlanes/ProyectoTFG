@@ -180,7 +180,7 @@ Su principal producto relativo a realizar reconocimientos psicotécnicos es el d
 
 LN Deter es una empresa española especializada en diseño, desarrollo y fabricación de tecnología médica y soluciones telemáticas \cite{lndeter2}
 
-El principal dispositivo de la compañía consiste en el LND-100 \cite{lndeter1}; el cual se comenzó a desarrollar por el propio fundador de la compañía, Fernando Ortiz, y un amigo suyo. Francisco Ortiz se iría después a Londrés, y habría desarrollado su idea. \cite{lndeter3}
+El principal dispositivo de la compañía consiste en el LND-100 \cite{lndeter1}; el cual se comenzó a desarrollar por el propio fundador de la compañía, Fernando Ortiz, y un amigo suyo. Francisco Ortiz se iría después a Londres, y habría desarrollado su idea. \cite{lndeter3}
 
 
 
@@ -206,7 +206,7 @@ Son funciones que generan una entrada de tamaño variable, y devuelven una salid
 
 \subsection{Encriptación en bloque}
 
-Consiste esta en una modalidad de encriptación que devuelve un texto cifrado cifrándolo a lo largo de varios bloques. El texto sin descifrar entonces se dividiría en varios bloques, cada uno del tamaño de la clave, y se cifraría progresivamente repitiendo la misma clave para todos los bloques.
+Consiste esta en una modalidad de encriptado que devuelve un texto cifrado cifrándolo a lo largo de varios bloques. El texto sin descifrar entonces se dividiría en varios bloques, cada uno del tamaño de la clave, y se cifraría progresivamente repitiendo la misma clave para todos los bloques.
 
 Para descifrar, sería cuestión de dividir el texto cifrado en bloques, y descifrar progresivamente haciendo la operación inversa con la clave.
 
@@ -217,25 +217,25 @@ Para este trabajo, en específico, se utiliza el cifrado AES-256.
 Se pueden utilizar dos modalidades distintas:
 
 \begin{enumerate}
-  \item \textbf{Modalidad ECB}: La modalidad ECB consiste en utilizar la clave únicamente para realizar la encriptación. Es un modelo poco recomendado ya que un atacante puede obtener patrones a partir del texto cifrado.
+  \item \textbf{Modalidad ECB}: La modalidad ECB consiste en utilizar la clave únicamente para realizar el encriptado. Es un modelo poco recomendado ya que un atacante puede obtener patrones a partir del texto cifrado.
   \item \textbf{Modalidad CBC}: La modalidad CBC añade el concepto de un vector de inicialización, que se genera de forma aleatoria, y que se utiliza para prevenir que un texto cifrado, para la misma entrada, sea siempre el mismo. Esto impide que un atacante pueda obtener información utilizando patrones del texto cifrado.
 \end{enumerate}
 
 \begin{figure}[H]
 \includegraphics[width=1.1\textwidth]{ECB_encryption.svg.png}
-\caption{Diagrama de encriptación ECB \cite{ecb1}}
+\caption{Diagrama de encriptado ECB \cite{ecb1}}
 \end{figure}
 \begin{figure}[H]
 \includegraphics[width=1.1\textwidth]{ECB_decryption.svg.png}
-\caption{Diagrama de desencriptación ECB \cite{ecb2}}
+\caption{Diagrama de desencriptado ECB \cite{ecb2}}
 \end{figure}
 \begin{figure}[H]
 \includegraphics[width=1.1\textwidth]{CBC_encryption.svg.png}
-\caption{Diagrama de encriptación CBC \cite{cbc1}}
+\caption{Diagrama de encriptado CBC \cite{cbc1}}
 \end{figure}
 \begin{figure}[H]
 \includegraphics[width=1.1\textwidth]{CBC_decryption.svg.png}
-\caption{Diagrama de desencriptación CBC \cite{cbc2}}
+\caption{Diagrama de desencriptado CBC \cite{cbc2}}
 \end{figure}
 
 \subsubsection{Cifrado AES}
@@ -262,7 +262,7 @@ Se define como la capacidad de un sujeto para percibir velocidades y trayectoria
 
 El examen de tiempo de anticipación se desarrolla primero en el artículo científico de 1966. \cite{maruyama1966speed}
 
-En este examen, se presentan dos objetos, un cuadrado blanco, y un tunel; el examinado deberá anticipar, al entrar el cuadrado blanco por un lado del tunel, cuándo saldrá por el otro lado de ese tunel.
+En este examen, se presentan dos objetos, un cuadrado blanco, y un túnel; el examinado deberá anticipar, al entrar el cuadrado blanco por un lado del túnel, cuándo saldrá por el otro lado de ese túnel.
 
 Un tiempo demasiado bajo se considera impulsivo, mientras que un tiempo demasiado alto se considera falto en tiempo de reacción.
 
@@ -282,9 +282,9 @@ El objetivo del examinado consiste en mantener los dos vehículos dentro de sus 
 
 La Protección de los Datos es un campo legal con una larga historia.
 
-En este campo se busca regular todo lo relativo al uso de los datos personales de indivíduos físicos.
+En este campo se busca regular todo lo relativo al uso de los datos personales de individuos físicos.
 
-Dentro del marco de este proyecto, es muy relevante esta regulación, ya que trabajamos con datos personales de indivíduos físicos directamente, y es importante tomar medidas organizativas y técnicas para prevenir el uso ilícito de estos datos.
+Dentro del marco de este proyecto, es muy relevante esta regulación, ya que trabajamos con datos personales de individuos físicos directamente, y es importante tomar medidas organizativas y técnicas para prevenir el uso ilícito de estos datos.
 
 En territorio Europeo, todo esto se regula bajo el Reglamento General de Protección de Datos; regulación que se implementa en los territorios nacionales de la Unión Europea.
 
@@ -300,15 +300,11 @@ Busca proteger los datos de personas físicas, denominadas como *interesados* en
   \item Obligación de los responsables a tomar medidas técnicas y organizativas para proteger los datos
 \end{enumerate}
 
-Se puede consultar la última versión del reglamento en el siguiente enlace: (https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32016R0679)
-
 Se ha incluido, a modo de ejemplo, un modelo de documento de política de protección de datos a fin de ejemplificación sobre cómo se podría aplicar esta regulación a este proyecto.
 
 \subsubsection{Ley Orgánica de Protección de Datos} \cite{BOE2018a}
 
 Implementa el marco legal instaurado con el Reglamento General de Protección de Datos a nivel Europeo en el marco legislativo Español.
-
-Se puede consultar su última versión en la página web del BOE (Boletín Oficial Español), en este documento digital: (https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673)
 
 \subsection{Legislación de Dispositivos Técnicos de medición de capacidades psicofísicas}
 
@@ -326,7 +322,7 @@ Aquí se regula el régimen de acreditación para centros que busquen medir la c
 
 Impone requisitos relativos a la composición de estos centros, de las entidades que pueden acreditar a estos centros, y del proceso de acreditación de los centros de reconocimiento.
 
-Esta legislación es fundamentalmente relevante para los desarrolladores de productos destinados a estos centros; ya que estos productos se deben desarrollar de forma que sean immediatamente compatibles con las obligaciones que impone el derecho sobre ellos.
+Esta legislación es fundamentalmente relevante para los desarrolladores de productos destinados a estos centros; ya que estos productos se deben desarrollar de forma que sean inmediatamente compatibles con las obligaciones que impone el derecho sobre ellos.
 
 \subsection{Propiedad intelectual \cite{apuntespropiedadintelectual}}
 
@@ -342,9 +338,7 @@ Vamos a detallar aquí un poco más este marco legal específico:
 
 Dentro del marco regulativo de España, esta es la ley que regula el derecho de Propiedad Intelectual.
 
-Divide los derechos que posee un autor en **derechos morales** y **derechos de explotación**, no excluyéndose otros derechos que el autor pueda poseer sobre su obra.
-
-Se puede consultar el texto legal actual en el siguiente enlace: (https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930)
+Divide los derechos que posee un autor en \textbf{derechos morales} y \textbf{derechos de explotación}, no excluyéndose otros derechos que el autor pueda poseer sobre su obra.
 
 \subsubsection{Patentes}
 
@@ -357,9 +351,9 @@ Este campo es muy amplio, pero a modo genérico podemos decir que un inventor pu
 La metodología de desarrollo principal que se ha utilizado para el proyecto ha sido la metodología Agile.
 
 Bajo la metodología Agile, se implementa el software a lo largo de una serie de sprints; en los que se especifican tareas a cumplir
-por cada sprint; y tras terminar el sprint, se evalua el trabajo realizado hasta entonces y se planifica el siguiente sprint.
+por cada sprint; y tras terminar el sprint, se evalúa el trabajo realizado hasta entonces y se planifica el siguiente sprint.
 
-El trabajo se ha planificado de forma diaría, para lo cual se ha ido desarrollando una agenda con las tareas planificadas por cada día;
+El trabajo se ha planificado de forma diaria, para lo cual se ha ido desarrollando una agenda con las tareas planificadas por cada día;
 y también de forma semanal, a partir de un calendario de uso personal.
 
 \subsection{Métodos ágiles en el desarrollo de software}
@@ -376,7 +370,7 @@ Scrum es una metodología específica dentro de los métodos ágiles; y distingu
 
 Su nombre proviene del concepto de \textit{scrum}, utilizado en el rugby; en esta metodología, se organiza el trabajo a partir de una serie de \textit{sprints}; los cuales son evaluados en reuniones de finalización de sprint.
 
-También es costumbre hacer dos reuniones al final de cada sprint; con los interesados y clientes, y una reunión interna donde se evalua en retrospectiva el sprint anterior
+También es costumbre hacer dos reuniones al final de cada sprint; con los interesados y clientes, y una reunión interna donde se evalúa en retrospectiva el sprint anterior
 
 \subsubsection{Kanban}
 
@@ -384,19 +378,19 @@ Kanban es una metodología para la organización del tiempo y de los recursos. G
 
 \subsection{Método ágil modificado en el transcurso del proyecto}
 
-Al ser solo una persona la implementadora de este proyecto, y al no haber un cliente específico; no aplican los métodos ágiles directamente en el sentido que comúnmente se realiza en empresas. Aquí se describe cómo se han modificado los procedimientos y metodologías habituales a los métodos ágiles para este contexto particular.
+Al ser solo una persona desarrolladora de este proyecto, y al no haber un cliente específico; no aplican los métodos ágiles directamente en el sentido que comúnmente se realiza en empresas. Aquí se describe cómo se han modificado los procedimientos y metodologías habituales a los métodos ágiles para este contexto particular.
 
 \subsubsection{Organización de tareas}
 
-Las tareas se han ido organizando de forma semanal. Al ser un proyecto con caracter explorativo, se decidió dividir la fase de desarrollo en módulos individuales llamados pinchos (\textit{spikes} en inglés); estos pinchos formarían las bases de los proyectos completos.
+Las tareas se han ido organizando de forma semanal. Al ser un proyecto con carácter explorativo, se decidió dividir la fase de desarrollo en módulos individuales llamados pinchos (\textit{spikes} en inglés); estos pinchos formarían las bases de los proyectos completos.
 
 Al ser un proyecto altamente multi-tecnología, también se organizó el entorno de trabajo en forma de un \textbf{monorepo}; esta forma de trabajar consiste en albergar multiples proyectos más pequeños dentro de un único repositorio que los alberga a todos. Esto permite, de un solo golpe de vista, visualizar múltiples proyectos al mismo tiempo; y hacer un todo más cohesivo.
 
 \subsubsection{Organización del tiempo}
 
-Se ha organizado el tiempo utilizando la herramienta \textbf{Google Calendar}. Se han desarrollado objetivos semanales, los cuales se han ido incluyendo en el calendario, y se ha dado plazo de una semana para realizar; esto permite al desarrollador ir desarrollando tareas específicas de forma paulatina, y, al final de la semana; reflexionar sobre lo realizado y planificar la siguiente semana.
+Se ha organizado el tiempo utilizando la herramienta \textbf{Google Calendar}. Se han desarrollado objetivos semanales, los cuales se han ido incluyendo en el calendario, y se ha dado plazo de una semana de forma provisional para realizar; esto permite al desarrollador ir desarrollando tareas específicas de forma paulatina, y, al final de la semana; reflexionar sobre lo realizado y planificar la siguiente semana.
 
-Planificar de forma semanal permite mantener cierta flexibilidad, que planificando de forma mensual o multi-semanal sería muy dificil debido a las posibles contingencias que podrían surgir; y también permite mantener cierta ruta y objetivos dificiles de mantener al largo plazo si vamos planificando de forma diaria qué tareas hacer 
+Planificar de forma semanal permite mantener cierta flexibilidad, que planificando de forma mensual o multi-semanal sería muy difícil debido a las posibles contingencias que podrían surgir; y también permite mantener cierta ruta y objetivos difíciles de mantener al largo plazo si vamos planificando de forma diaria qué tareas hacer 
 
 \subsubsection{Resumen de calendario}
 
@@ -405,10 +399,10 @@ Planificar de forma semanal permite mantener cierta flexibilidad, que planifican
   \item Después, se comenzaron a hacer las primeras implementaciones; esta parte entonces incluía pruebas muy básicas, como el conocido programa 'blink' en sistemas empotrados; la compilación correcta de mi proyecto anterior 'Aquarium', que formo la base del resto de mis evaluaciones.
   \item Tras hacer esto, se implementó cada evaluación de forma independiente, en el sistema empotrado; y respectivamente, en el software de sistemas; hasta este momento, no se habían integrado ambos sistemas, y para simular la placa en el software de sistemas se utilizaba el ratón y teclado para enviar señales.
   \item Cuando la implementación de cada evaluación por separado fue satisfactoria, se hizo funcionar la primera evaluación con el botón electrónico real de la placa; y tras esto, lo mismo con la segunda evaluación.
-  \item Tras estar satisfecho con esta implementación de 'spikes', fue cuando se comenzó con la versión definitiva, aquí se empezaron a redactar para los proyectos de Sistemas Empotrados y Software de Sistemas comentarios, documentación, y las primeras pruebas automáticas; la memoria se empezó a redactar a partir de este punto.
+  \item Tras estar satisfecho con esta implementación de pinchos, fue cuando se comenzó con la versión definitiva, aquí se empezaron a redactar para los proyectos de Sistemas Empotrados y Software de Sistemas comentarios, documentación, y las primeras pruebas automáticas; la memoria se empezó a redactar a partir de este punto.
   \item Después, se comenzó a implementar el cliente local y el servidor en nube; los pinchos de estos proyectos se terminaron muy rápidamente por mi experiencia previa desarrollando aplicaciones web; tardé poco en llegar a la versión final de cada uno. Se redactó documentación al respecto para estos proyectos.
-  \item Tras esto, se inició una instancia AWS EC2, y se subió el servidor en nube a esta instancia; la cual se probó a integrar con un servidor nginx con el cliente local. Funcionó correctamente, y de hecho se llegó a implementar un flujo HTTPS correcto; pero por problemas descritos en las limitaciones de este proyecto, en el repositorio de este proyecto se ha dejado implementado como conexión HTTP, y se han dejado instrucciones sobre cómo se convertiría a flujo HTTPS de tener los certificados correctos. Aquí se comenzó el desarrollo de esta memoria más a fondo.
-  \item Después, se comenzó a redactar la memoria como tarea principal y prácticamente única, limitando futura implementación a la resolución de bugs específicos o algunas mejorías de la interfaz de usuario. Se empezaron a redactar las secciones intermedias del proyecto; terminando con la introducción, conclusiones y anexos.
+  \item Tras esto, se inició una instancia AWS EC2, y se subió el servidor en nube a esta instancia; la cual se probó a integrar con un servidor \textit{nginx} con el cliente local. Funcionó correctamente, y de hecho se llegó a implementar un flujo HTTPS correcto; pero por problemas descritos en las limitaciones de este proyecto, en el repositorio de este proyecto se ha dejado implementado como conexión HTTP, y se han dejado instrucciones sobre cómo se convertiría a flujo HTTPS de tener los certificados correctos. Aquí se comenzó el desarrollo de esta memoria más a fondo.
+  \item Después, se comenzó a redactar la memoria como tarea principal y prácticamente única, limitando futura implementación a la resolución de fallas específicas o algunas mejorías de la interfaz de usuario. Se empezaron a redactar las secciones intermedias del proyecto; terminando con la introducción, conclusiones y anexos.
   \item A partir de entonces, mis tareas consistieron, sobre todo, de mandar mi memoria a revisar, e implementar las correcciones de la memoria correspondientes que mis tutores iban recomendando.
 \end{enumerate}
 
@@ -512,7 +506,7 @@ Un manual de usuario es un documento, donde se detalla, paso por paso, con el ob
 
 \subsubsection{Ficheros multimedia de demostración}
 
-Normalmente en forma de vídeos, estos ficheros pueden servir para introducir al usuario a un producto a partir de múltiples modalidades; esto ayuda al usuario a entender el producto por otros medios además del púramente escrito.
+Normalmente en forma de vídeos, estos ficheros pueden servir para introducir al usuario a un producto a partir de múltiples modalidades; esto ayuda al usuario a entender el producto por otros medios además del puramente escrito.
 
 
 \chapter{Análisis}
@@ -545,7 +539,7 @@ Aquí destacan los siguientes requisitos
 Aquí destacan los siguientes requisitos
 
 \begin{itemize}
-  \item [RF1] Deberan incluirse dos tipos de evaluación; una evaluación de tiempo de reacción, y una evaluación de coordinación mano-ojo.
+  \item [RF1] Deberán incluirse dos tipos de evaluación; una evaluación de tiempo de reacción, y una evaluación de coordinación mano-ojo.
   \item [RF2] Los programas de evaluación deben procesar información de los dispositivos electrónicos en un tiempo menor a 100ms
   \item [RF3] Los programas de evaluación deben mostrar feedback visual sin latencia excesiva al usuario en pantalla.
   \item [RF4] Los programas de evaluación deben almacenar los resultados de evaluación de forma veraz, que den posibilidad a su verificación y puntuación.
@@ -572,8 +566,8 @@ Aquí destacan los siguientes requisitos
   \item [RF2] El programa ofrece una opción para mandar datos de evaluaciones al servidor.
   \item [RF3] El programa ofrece una opción para obtener datos de evaluaciones al servidor.
   \item [RF4] El programa debe verificar que los números proporcionados de documentación personal corresponden con la letra proporcionada.
-  \item [RF5] El programa debe encriptar los datos proporcionados en un formato de encriptación seguro
-  \item [RF6] El programa debe poder desencriptar los datos que se han encriptado con este, siempre que se dispongan de los parámetros de encriptación originalmente utilizados.
+  \item [RF5] El programa debe encriptar los datos proporcionados en un formato de encriptado seguro
+  \item [RF6] El programa debe poder desencriptar los datos que se han encriptado con este, siempre que se dispongan de los parámetros de encriptado originalmente utilizados.
 \end{itemize}
 
 \subsection{Requisitos no funcionales}
@@ -643,7 +637,7 @@ Los cables puente es un tipo de cableado con un conector en cada punta. Estos ca
 
 \subsubsection{Placa de pruebas}
 
-Una Placa de pruebas, o mejor conocido por el anglicismo *breadboard*, es una placa electrónica que se utiliza para realizar circuitos electrónicos sin la necesidad de realizar soldaduras. Es generalmente utilizado en el desarrollo de prototipos, y contrasta con los circuitos soldados o circuitos impresos.\cite{eswiki:172543964}\cite{breadboard1}
+Una Placa de pruebas, o mejor conocido por el anglicismo \textit{breadboard}, es una placa electrónica que se utiliza para realizar circuitos electrónicos sin la necesidad de realizar soldaduras. Es generalmente utilizado en el desarrollo de prototipos, y contrasta con los circuitos soldados o circuitos impresos.\cite{eswiki:172543964}\cite{breadboard1}
 
 \subsubsection{Botón pulsador electrónico}
 
@@ -651,13 +645,13 @@ Un button pulsador electrónico consiste en una resistencia que no deja pasar la
 
 \subsubsection{Potenciómetro}
 
-Un potenciometro consiste en una resistencia que se puede configurar con un mango. Un potenciómetro puede cambiar su resistencia con respecto al ángulo de rotación de forma linear o logarítmica.\cite{potentiometer1}
+Un potenciómetro consiste en una resistencia que se puede configurar con un mango. Un potenciómetro puede cambiar su resistencia con respecto al ángulo de rotación de forma linear o logarítmica.\cite{potentiometer1}
 
 \subsubsection{Cableado USB (Universal Serial Bus)}
 
 Se utiliza un cable USB en este proyecto para realizar comunicación entre el dispositivo Raspberry Pi 5 y el dispositivo ESP-32 (se explicarán estos en la siguiente sección). 
 
-Este cable puede realizar funciones útiles en el desarrollo de sistemas empotrados; como cableado serial y de posibilidad de subir firmware a los microcontroladores. Es un cable muy versatil y de gran utilidad en el desarrollo de sistemas embebidos.
+Este cable puede realizar funciones útiles en el desarrollo de sistemas empotrados; como cableado serial y de posibilidad de subir firmware a los microcontroladores. Es un cable muy versátil y de gran utilidad en el desarrollo de sistemas embebidos.
 
 El cable específico que se utiliza para el proyecto es un cable USB-C a USB.
 
@@ -665,7 +659,7 @@ El cable específico que se utiliza para el proyecto es un cable USB-C a USB.
 
 Los microcontroladores son dispositivos informáticos auto-contenidos que se utilizan para proporcionar funcionalidades informáticas variadas sin amplios gastos de electricidad.
 
-En general, suelen ser utilizados cuando se precisa un control prácticamente completo del código que se ejecuta; han encontrado un nicho en el desarrollo de programas que comunican diréctamente con dispositivos electrónicos, o en el desarrollo de software con requisitos críticos de seguridad.
+En general, suelen ser utilizados cuando se precisa un control prácticamente completo del código que se ejecuta; han encontrado un nicho en el desarrollo de programas que comunican directamente con dispositivos electrónicos, o en el desarrollo de software con requisitos críticos de seguridad.
 
 También se benefician de la limitada potencia eléctrica que se necesita para su funcionamiento, permitiendo a estos sistemas ejecutar programas durante años sin estar conectados a una fuente de electricidad constante.
 
@@ -680,7 +674,7 @@ Dispone de las siguientes características relevantes a su funcionamiento. \cite
  \item Un chip puente UART-to-USB
  \item Un puerto USB-to-UART
  \item Un LED de 5V que se enciende cuando el dispositivo se enciende; es manipulable por los programas escritos a memoria FLASH
- \item Una serie de conectores, en forma de pines, que actuan como Entrada/Salida (pines ADC (Analog Digital Converter), RX, TX, GPIO, etc)
+ \item Una serie de conectores, en forma de pines, que actúan como Entrada/Salida (pines ADC (Analog Digital Converter), RX, TX, GPIO, etc)
  \item Dos botones, uno de descarga, y otro de reinicio.
 \end{enumerate}
 
@@ -743,7 +737,7 @@ Las características principales de este dispositivo incluyen:
 
 \subsubsection{Alternativas consideradas}
 
-Existen varias versiones del Raspberry Pi 5 con menor capacidad de memoria RAM, estas al final no se escogieron para realizar este proyecto, aún siendo las recomendadas por el autor si se busca fabricar este producto de forma masiva por su menor coste, debido a que, al tratarse de un único prototipo no orientado a fabricarse de forma masiva por el momento, he decidido utilizar recursos más potentes al no conocer exáctamente qué recursos harían falta para realizar este proyecto.
+Existen varias versiones del Raspberry Pi 5 con menor capacidad de memoria RAM, estas al final no se escogieron para realizar este proyecto, aún siendo las recomendadas por el autor si se busca fabricar este producto de forma masiva por su menor coste, debido a que, al tratarse de un único prototipo no orientado a fabricarse de forma masiva por el momento, he decidido utilizar recursos más potentes al no conocer exactamente qué recursos harían falta para realizar este proyecto.
 
 No se escogió tampoco Raspberry Pi 4 u otras versiones anteriores un el mismo motivo que las versiones más baratas del Raspberry Pi 5.
 
@@ -776,7 +770,7 @@ Al igual que la arquitectura del software dirigido a los sistemas empotrados; es
 
 La arquitectura utilizada para el cliente local no es estrictamente la de un \textit{frontend} que se utilizaría en una arquitectura \textit{frontend-backend}. Esto se hace así principalmente por motivos de seguridad.
 
-En una arquitectura típica \textit{frontend-backend}; el \textit{frontend} necesita de archivos informáticos para poder realizar funciones relativas a la renderización de componentes visuales; esto en general requiere desplegar un servidor web que albergue los ficheros del \textit{frontend}, y los pueda enviar en respuesta a peticiones específicas. Algunos servidores web comunmente utilizados para esta tarea incluyen \textit{Apache Web Server} o \textit{Nginx}.
+En una arquitectura típica \textit{frontend-backend}; el \textit{frontend} necesita de archivos informáticos para poder realizar funciones relativas al renderizado de componentes visuales; esto en general requiere desplegar un servidor web que albergue los ficheros del \textit{frontend}, y los pueda enviar en respuesta a peticiones específicas. Algunos servidores web comúnmente utilizados para esta tarea incluyen \textit{Apache Web Server} o \textit{Nginx}.
 
 El problema es que en este tipo de aplicaciones, con requisitos muy estrictos de seguridad, queremos reducir a un mínimo los puertos a los que nuestro dispositivo, localizado en la clínica donde se realizan las evaluaciones, estará escuchando en todo momento con el objetivo de reducir lo más posible la superficie de ataque. Por eso este cliente se asemeja más a un cliente local que a lo que comúnmente se conoce como un \textit{frontend}.
 
@@ -875,7 +869,7 @@ Esta base de datos incluye un id, que consiste de datos personales encriptados d
 
 \subsection{Bucle principal}
 
-El bucle principal se implementa dentro del fichero localizado en la raiz del proyecto, y denominado \textbf{main.c}.
+El bucle principal se implementa dentro del fichero localizado en la raíz del proyecto, y denominado \textbf{main.c}.
 
 Este bucle almacena tres mensajes, en codificación binaria \textit{UTF-8}, que indican acciones específicas a tomar al microcontrolador; principalmente, se indica a qué función relativa a la evaluación se debe llamar debido a que una evaluación va a comenzar de forma inminente en el sistema SBC, para inicializar la recepción de datos electrónicos relevantes a tal evaluación.
 
