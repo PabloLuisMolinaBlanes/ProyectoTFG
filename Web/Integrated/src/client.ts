@@ -234,7 +234,7 @@ function decryptString(ciphertext: string) {
     * </html>
     *
     * */
-function generateHTMLString(received_data: nullable<Test[]> ) : string {
+function generateHTMLString(received_data: nullable<Test[]>, auditor_mode: boolean) : string {
     if (received_data === undefined || received_data === null ) {
         console.log("No se han recibido datos correctos");
         return "";
@@ -242,7 +242,7 @@ function generateHTMLString(received_data: nullable<Test[]> ) : string {
     var html_beginning = "<html><head></head><body>"
     var html_table = "<table><tr><th>Datos de paciente</th><th>Resultados primer examen</th><th>Resultados segundo examen 1</th><th>Resultados segundo examen 2</th></tr>"
     for (const test of received_data) {
-        html_table = html_table + `<tr><td>${decryptString(test.id)}</td><td>${decryptString(test.results_reaction_time)}</td><td>${decryptString(test.results_first_potentiometer)}</td><td>${decryptString(test.results_second_potentiometer)}</td></tr>`
+        html_table = html_table + `<tr><td>${auditor_mode == false ? decryptString(test.id) : ""}</td><td>${decryptString(test.results_reaction_time)}</td><td>${decryptString(test.results_first_potentiometer)}</td><td>${decryptString(test.results_second_potentiometer)}</td></tr>`
     }
     var html_end = "</table></body></html>"
     var content = html_beginning + html_table + html_end;
@@ -250,7 +250,7 @@ function generateHTMLString(received_data: nullable<Test[]> ) : string {
 } 
 
 /*Obtiene los datos de examinaciones según credenciales y genera archivo .html con datos desencriptados*/ 
-async function getAllExaminations() {
+async function getAllExaminations(auditor_mode = true) {
     var hospitalCredentials : string = ""
     try {
         hospitalCredentials = fs.readFileSync(__dirname + "/hospital_credentials.txt", "utf8");
@@ -261,7 +261,7 @@ async function getAllExaminations() {
     const hospital_name = hospitalCredentials.split("\n")[0];
     const hospital_password = hospitalCredentials.split("\n")[1]; 
     const received_data = await returnAllExaminations(hospital_name, hospital_password);
-    var content = generateHTMLString(received_data);
+    var content = generateHTMLString(received_data, auditor_mode);
     try {
         fs.writeFileSync(__dirname + '/html_results.html', content);
     } catch (err) {
@@ -281,12 +281,17 @@ var optionsToFunctions : OptionToFunction[] =[
     {
     option_label: "2",
     async: true,
-    function_to_execute: async () => await getAllExaminations()
+    function_to_execute: async () => await getAllExaminations(true)
     },
     {
     option_label: "3",
     async: false,
     function_to_execute: () => process.exit(0)
+    },
+    {
+    option_label: "4",
+    async: true,
+    function_to_execute: () => getAllExaminations(false)
     },
 ] 
 
@@ -300,6 +305,7 @@ async function mainLoop() {
         console.log("1. Agregar una examinacion al sistema")
         console.log("2. Obtener todos las examinaciones del hospital")
         console.log("3. Salir del programa")
+        console.log("4. PELIGRO PELIGRO. Obtener toda la información desencriptada del hospital.")
         opcion_escogida = await rl.question("");
         var result : OptionToFunction[] = optionsToFunctions.filter((item) => item.option_label === opcion_escogida)
         if (result.length === 0) {
