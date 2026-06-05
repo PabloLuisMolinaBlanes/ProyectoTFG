@@ -862,6 +862,11 @@ Esta base de datos incluye los datos relativos a hospitales; tiene dos campos, u
 
 Esta base de datos incluye un id, que consiste de datos personales encriptados de los examinados; y dos campos, uno para cada evaluación, que indica los movimientos realizados en cada evaluación.
 
+\begin{figure}[H]
+\includegraphics[width=1.1\textwidth]{diagramaer.png}
+\caption{Diagrama entidad-relación del proyecto}
+\end{figure}
+
 %────────────────────── Chapter 3 — Implementación ────────────────────────────
 \chapter{Implementación}
 
@@ -1112,6 +1117,26 @@ El atacante intenta encontrar información comparando hashes; al incluirse con l
 
 El atacante entra en una habitación, accede al dispositivo del doctor, consigue desencriptar los datos de todo el hospital en un descuido; y confiado intenta acceder a los datos de otro hospital; no puede, ya que cada clave de hospital es única y generada al azar; y solo ha conseguido atacar a ese hospital en concreto; el resto sigue seguro
 
+\begin{figure}[H]
+\includegraphics[width=1.1\textwidth]{casosdeuso1.png}
+\caption{Caso de uso donde el evaluado se evalua. Diagrama realizado con Draw.IO}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=1.1\textwidth]{casodeuso2.png}
+\caption{Caso de uso donde el evaluado otorga su información. Diagrama realizado con Draw.IO}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=1.1\textwidth]{casodeuso3.png}
+\caption{Casos de uso entre auditoría y el doctor. Diagrama realizado con Draw.IO}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=1.1\textwidth]{casodeuso4.png}
+\caption{Casos de uso para el atacante. Diagrama realizado con Draw.IO}
+\end{figure}
+
 \section{Demo en formato vídeo}
 
 Se ofrece dentro del repositorio una serie de vídeos demostrativos.
@@ -1348,6 +1373,7 @@ OPCIONES:
 1. Agregar una examinacion al sistema
 2. Obtener todos las examinaciones del hospital
 3. Salir del programa
+4. PELIGRO PELIGRO. Obtener toda la informacion desencriptada del hospital.
 1
 
 Files have been found correctly.
