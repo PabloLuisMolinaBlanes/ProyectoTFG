@@ -24,6 +24,7 @@ bool started = false;
 std::int32_t real_time_elapsed = 0;
 std::int32_t game_time_elapsed = 0;
 
+
 float test_data[NUMBER_OF_TESTS];
 
 int test_counter = 0;
@@ -114,8 +115,15 @@ Car initCar(int car_x, int car_y) {
 }
 // Reiniciamos los parámetros de la examinación
 void reset_test(Car * car) {
+    int new_vel = std::rand();
     car->shape.setPosition(sf::Vector2f(300.0f, 300.0f));
-    car->velocity = 0.005;
+    if (new_vel % 3 == 0) {
+        car->velocity = 0.005;
+    } else if (new_vel % 3 == 1) {
+        car->velocity = 0.006;
+    } else {
+        car->velocity = 0.007;
+    }
     car->t = 0;
     car->x = 300.0f;
     car->actual_x = car->x;
@@ -149,12 +157,14 @@ int main() {
     /*Configuramos el puerto serial y le indicamos al microcontrolador que puede comenzar a ejecutar su programa de examinacion*/
     default_configure();
     serial_send(1);
+    std::srand(1);
     /*Aquí se inicializan variables locales para la examinacion*/ 
     RenderWindow window(VideoMode({600, 600}), "Test1");
     Car car;
     sf::RectangleShape wall;
     Path path;
     sf::Clock clock;
+    int ms_waittime = 16;
     if (!started) {
         car = initCar(300.0f, 300.0f);
         wall = initShape(450,250, 120.0f, 120.0f);
@@ -164,7 +174,7 @@ int main() {
     /*Cuando lo hemos inicializado todo, entramos en este bucle*/
     while (window.isOpen()) {
         /*Buscamos asegurar que se ejecuta lógica del examen solo cada 16 milisegundos*/
-        while (clock.getElapsedTime().asMilliseconds() < 16) {
+        while (clock.getElapsedTime().asMilliseconds() < ms_waittime) {
             while (const std::optional event = window.pollEvent()) {
                 if (event->is<Event::Closed>()) {
                     // Indica al microcontrolador que vamos a terminar la examinación.
@@ -173,6 +183,7 @@ int main() {
                 }
             }
         }
+        ms_waittime = 16;
         real_time_elapsed += clock.restart().asMilliseconds();
         /*Lee del serial, y actua solo si hemos recibido datos*/
         const char * received = serial_read();
@@ -189,6 +200,7 @@ int main() {
                 serial_send(3);
                 exit(0);
             }
+            ms_waittime = 1500;
         }
         /*Llamadas a métodos relativos a la interfaz gráfica*/
         window.clear(Color::Blue);
