@@ -1217,7 +1217,7 @@ Todas estas pruebas resuelven correctamente en la versión última del resposito
 
 \section{Cliente local}
 
-Se han realizado algunas pruebas en el cliente local; sobre todo sobre las funciones relativas a las utilidades. Estos tests se realizan bajo la suite de tests Jest.
+Se han realizado algunas pruebas en el cliente local; sobre todo sobre las funciones relativas a las utilidades. Estos tests se realizan bajo la suite de tests Vitest.
 
 \subsection{Instrucciones de compilación}
 
@@ -1233,11 +1233,12 @@ Con respecto a pruebas; se prueban dos casos:
 
 \begin{enumerate}
   \item ¿A partir de un número de documentación, este lo valida correctamente según la normativa española?
+  \item La función generateRandomString inicializada con un parámetro de longitud debería devolver un string de esa longitud 
 \end{enumerate}
 
 \section{Servidor en nube}
 
-Se han realizado algunas pruebas en el servidor en nube; sobre todo sobre las funciones relativas a las utilidades. Estos tests se realizan bajo la suite de tests Jest.
+Se han realizado algunas pruebas en el servidor en nube; sobre todo sobre las funciones relativas a las utilidades. Estos tests se realizan bajo la suite de tests Vitest.
 
 \subsection{Instrucciones de compilación}
 
@@ -1248,6 +1249,8 @@ Se han realizado algunas pruebas en el servidor en nube; sobre todo sobre las fu
 \end{enumerate}
 
 \subsection{Métodos probados y resultados}
+
+En estas pruebas, se compara un texto desencriptado y el equivalente encriptado; y se verifica que se compara de forma positiva a su hash
 
 %────────────────────── Chapter 5 — Discusión ─────────────────────────
 \chapter{Conclusiones}
