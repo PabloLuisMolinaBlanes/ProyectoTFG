@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "npx tsc --build && node ./build/src/server.js",
     "build": "npx tsc --build",
-    "test": "jest"
+    "test": "vitest"
   },
   "dependencies": {
     "@prisma/adapter-mariadb": "^7.7.0",
@@ -38,8 +38,8 @@
     "@types/jest": "^30.0.0",
     "@types/node": "25.5.0",
     "@types/pg": "^8.20.0",
-    "jest": "^30.3.0",
     "prisma": "^7.7.0",
-    "ts-jest": "^29.4.9"
+    "vitest": "^4.1.8",
+    "vitest-mock-extended": "^4.0.0"
   }
 }
