@@ -4,7 +4,7 @@ import cors from 'cors'
 import { comparePasswords } from './password'; 
 const { loadEnvFile } = require('node:process');
 loadEnvFile(__dirname + '/../../.env');
-import { PrismaClient } from "./generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 
 /*Types*/
