@@ -1,3 +1,5 @@
+import * as crypto from "node:crypto";
+
 var tabla_de_residuos : String[] = [] 
 
 var tabla_de_extranjeria : Map<String, number> = new Map();
@@ -32,19 +34,9 @@ function initializeNIFArray() {
     tabla_de_extranjeria.set("Z",2) 
 }
 
-/*Genera un string aleatorio de longitud length
-* Código basado del código original por Roger Knapp y editado por el usuario TylerH (https://stackoverflow.com/a/1349426); Licenciado bajo CC BY-SA 4.0. (https://creativecommons.org/licenses/by-sa/2.5/)
-*/
+/*Genera un string aleatorio de longitud length*2*/
 export function generateRandomString(length : number) : string {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    const charactersLength = characters.length
-    let counter = 0
-    while (counter < length) {
-        result += characters.charAt(Math.floor(Math.random()*charactersLength))
-        counter = counter+1
-    }
-    return result;
+    return crypto.randomBytes(length).toString('hex');
 }
 
 /*Verifica que el número de identificación corresponde con la letra proporcionada*/

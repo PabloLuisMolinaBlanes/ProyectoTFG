@@ -2,7 +2,7 @@ import {expect, test} from 'vitest';
 import { generateRandomString, verifyNIFLetter } from '../utils';
 
 test('Generated password should always have parameter length length', async () => {
-  expect(generateRandomString(10).length).toBe(10);
+  expect(generateRandomString(10).length).toBe(20);
 });
 
 test('Number without letter should fail', async () => {
