@@ -1,5 +1,5 @@
 % ======================================================================
-\documentclass[12pt,a4paper,oneside,openright]{book}
+\documentclass[12pt,a4paper,twoside,openright]{book}
 
 %───────── Auxiliary packages ──────────────────────────────────────────
 \usepackage{blindtext}
@@ -278,13 +278,13 @@ Este campo dispone de métricas y técnicas que resultan relevantes para asegura
 
 \subsection{Tiempo de reacción}
 
-El tiempo de reacción se define por la DGT (Dirección General de Tráfico) como el tiempo que pasa entre que un peligro aparece, y un conductor se percata del peligro.
+El tiempo de reacción se define por la DGT (Dirección General de Tráfico) como el tiempo que pasa entre que un peligro aparece, y un conductor se percata del peligro. \cite{tiemporeaccion}
 
-El tiempo estándar de un ser humano de reacción torna alrededor de unos 300 milisegundos.
+El tiempo estándar de un ser humano de reacción torna alrededor de unos 500 milisegundos y 1 segundo. \cite{tiemporeaccion2}
 
 \subsection{Velocidad de anticipación}
 
-Se define como la capacidad de un sujeto para percibir velocidades y trayectorias, y su capacidad de autocontrol
+Se define como la capacidad de un sujeto para percibir velocidades y trayectorias, y su capacidad de autocontrol \cite{velanticipacion}
 
 El examen de tiempo de anticipación se desarrolla primero en el artículo científico de 1966. \cite{maruyama1966speed}
 
@@ -1288,9 +1288,11 @@ El autor se hace cargo de las limitaciones de esta suite software para la puesta
 
 La interfaz de usuario puede no ser muy apropiada para perfiles de usuario típicos; aunque se ha intentado mitigar esto realizando scripts de instalación y de ejecución que simplifican este proceso, haciendo examinaciones muy visualmente contrastadas en términos de colores, y realizando vídeos demostrativos, manuales de instalación y de usuario; se requiere de un proceso instalación manual de dependencias externas y la configuración de un entorno electrónico apropiado para el funcionamiento correcto del sistema completo.
 
-Este proyecto no es portable a otros entornos informáticos; asume un entorno hardware y software muy específico en los parámetros configurados por defecto; y cualquier desviación puede resultar en el no correcto funcionamiento de componentes de la suite software. 
+Este proyecto no es portable a otros entornos informáticos; asume un entorno hardware y software muy específico en los parámetros configurados por defecto; y cualquier desviación puede resultar en el no correcto funcionamiento de componentes de la suite software.
 
-Debido al precio que exige tener una instancia en nube encendida durante semanas o incluso meses, por el uso de AWS como tecnología en nube escogida, y por las políticas de precio por uso que existen en proveedores IaaS de forma general; y además, debido a que la configuración con HTTPS requiere de una dirección IP constante para la máquina, y un dominio web que asignar a esta dirección IP, se utiliza una conexión desencriptada con el servidor; al probar una configuración HTTPS en nube, debido a estas restricciones principalmente financieras, había de forzar a mi cliente local a confiar en cualquier certificado que le llegase; lo cual impidió una configuración completa de flujo HTTPS.
+Este programa no es capaz de realizar auditorías de forma automática a partir de datos en bruto, o de mantener un control estable de las versiones que se han utilizado; esto complica la auditoría en sí ya que asume que esta se hará de forma manual, conociendo la versión del programa específica que se utilizó en la evaluación en específico. En el mundo real, es muy posible que no sea posible asegurar este tipo de circustancias óptimas para poder realizar una auditoría manual. Se ha intentado mitigar esto ofreciendo datos en bruto para cada evaluación.
+
+Las claves criptográficas se almacenan de forma local, dentro del dispositivo local utilizado para las evaluaciones, y sin nunca salir de ahí, sin siquiera a través de un protocolo de copias de seguridad; esto crea un riesgo de pérdida de disponibilidad de los datos personales si se pierden estas claves, considerándose una infracción según el Reglamento General de Protección de Datos. Es una decisión tomada debido a que la alternativa sería utilizar un servicio como Vault que almacenase la clave por nosotros, pero esto también puede incrementar la superficie de ataque al ser un servidor abierto a todo Internet; por lo que cualquier extensión de este estilo se ha dejado a considerar por futuros desarrolladores.
 
 %────────────────────── Appendices ─────────────────────────────────────
 \begin{umaappendices}
@@ -1501,6 +1503,19 @@ Existe un archivo install.sh en la raiz del proyecto, y otro run.sh; ejecuta eso
 
 \section{Instalación de hardware}
 
+Para instalar el hardware, se necesitará un Raspberry Pi, una placa ESP32-DevKitV4, un cable USB de datos, dos potenciómetros, una placa breadboard, y suficientes cables puente.
+\begin{enumerate}
+\item Conecte el Raspberry Pi a la corriente eléctrica.
+\item Conecte la placa ESP-32 a través de un cable USB-to-USB-C.
+\item Introduzca el botón electrónico en la breadboard.
+\item Conecte a corriente una de las patas del botón electrónico con el pin GPIO número número 13 según su layout de pins de la placa en específico.
+\item Conecte a suelo la otra pata del botón electrónico.
+\item Conecte cada uno de los potenciómetros siguiendo el siguiente procedimiento.
+\item[\textbullet] Conecte una de las patas de las esquinas del potenciómetro a una corriente 3V3.
+\item[\textbullet] Conecte la otra pata de las esquinas del potenciómetro a suelo.
+\item[\textbullet] Por último, conecte la pata central del potenciómetro a un pin GPIO, \textbf{solo servirán aquellos con un canal ADC asignado.} Podrá verificar en su datasheet generalmente los pines adecuados para ello, que seguirán la siguiente plantilla "ADC<número>\_CH<número>" 
+\end{enumerate}
+
 \section{Instalación de software para sistemas empotrados}
 
 \begin{enumerate}
@@ -1510,9 +1525,6 @@ Existe un archivo install.sh en la raiz del proyecto, y otro run.sh; ejecuta eso
   \item Realize la configuración que desee con \begin{verbatim}idf.py menuconfig\end{verbatim}
   \item Ejecute el comando \begin{verbatim}idf.py -p <port> build\end{verbatim}
 \end{enumerate}
-
-
-
 
 \section{Instalación de software de sistemas}
 
@@ -1547,7 +1559,11 @@ Por defecto, el Dockerfile asume un usuario root con clave root, esto es muy ins
 \begin{enumerate}
   \item Siga las instrucciones de máquina local.
   \item Acceda a su fichero de configuración nginx ( En Linux, se suele encontrar en la ruta /etc/nginx/sites-available/)
-  \item Incluya el siguiente parámetro dentro de su bloque server preferido:
+  \item Incluya el siguiente parámetro dentro de su bloque server preferido: \begin{verbatim}
+    location <ruta> {
+		  proxy_pass <protocolo_http_o_https>://127.0.0.1:<puerto de servidor>;
+    } 
+  \end{verbatim}
   \item Compruebe que su configuración sigue siendo válida con el comando \begin{verbatim}nginx -t\end{verbatim}
   \item Reinicie el servidor service nginx reload
 \end{enumerate}
