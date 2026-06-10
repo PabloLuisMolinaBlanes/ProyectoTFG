@@ -24,7 +24,7 @@ Más información específica sobre tecnologías se puede encontrar en los fiche
 
 ### ¿Hay algún script que permita hacer build automáticamente?
 
-No he desarrollado ningún script automatizado a tal efecto; aún así, para cada proyecto, se pueden encontrar instrucciones de compilación y despliegue en su ```README.md``` correspondiente; pero son instrucciones a ejecutar de forma manual.
+Efectivatmente, existen scripts a tal effecto; se ha realizado un script ```install.sh``` automático, junto con un script ```run.sh```. Aún así, no instalan dependencias externas ni intentan ir más allá de compilar cada componente o establecer un flujo básico de ejecución. 
 
 ### ¿Por qué no puedo compilar/ejecutar este proyecto? Me salen mensajes de error.
 
