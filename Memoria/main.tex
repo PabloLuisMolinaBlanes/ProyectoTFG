@@ -87,7 +87,7 @@
 %────────────────────── Abstracts ──────────────────────────────────────
 \renewcommand{\abstractname}{Resumen}
 \begin{abstract}
-FOSS Psychotechnical Examination busca ser una recreación, en forma de software libre y abierto, de una suite software de examinación psicotécnica para conductores.
+FOSS Psychotechnical Examination busca ser una recreación, en forma de software libre y abierto, de una suite software de evaluación psicotécnica para conductores.
 
 Dispone de componentes software para sistemas empotrados, de software de sistemas, y de software de aplicación.
 
@@ -142,13 +142,50 @@ Me gustaría agradecer también a todos los creadores de contenido tecnológico 
 
 FOSS Psychotechnical Examination busca ser una recreación, en forma de software libre y abierto, de una suite software de evaluación psicotécnica para conductores.
 
-Dispone de componentes software para sistemas empotrados, de software de sistemas, y de software de aplicación.
+Dispone de componentes software para sistemas empotrados, de software de aplicación, y de software local y en nube.
+
+\section{¿Por qué existe este proyecto?}
+
+\subsection{Efectos del código cerrado en este tipo de proyectos}
 
 Tradicionalmente, las suites software ya existentes para este tipo de uso, como por ejemplo, la proporcionada por General ASDE o LN Deter se ofrecen bajo servicios cerrados a clínicas; esto no permite estudiar su funcionamiento, ni mucho menos modificarlo o construir sobre estos productos.
 
-La recreación no se suele considerar habitualmente como 'innovación', y no se valora como esfuerzo original y propio en muchos campos; pero es gracias a la recreación que podemos conocer cuándo una técnica funciona de forma consistente, y podemos establecer qué es lo que funciona, y lo que no.
+Los sistemas de evaluación psicotécnicos forman un rol crítico en España para indicar quién podrá conducir, y a quién se le habrá de retirar dicho privilegio; si estos sistemas son cerrados y opacos en su código; no podremos saber qué criterios se utilizan para medir la capacidad psicotécnica de un conductor; tampoco podremos examinar el código para detectar fallos de programación que puedan causar injusticias sociales en el mundo real.
 
-Con las nuevas tecnologías y buenas prácticas de las que disponemos, es especialmente importante esta replicación, nos permite desarrollar sobre las fórmulas que ya funcionaron en el pasado, y obtener nuevo conocimiento gracias a esta tarea de adaptación a un mundo distinto. 
+\subsection{El importante rol de la recreación}
+
+Recrear un proyecto tan establecido desde hace mucho tiempo nos permite aplicar nuevas técnicas y estrategias a una base completamente distinta sobre la que trabajar. La recreación no se suele considerar habitualmente como innovación, y no se valora como esfuerzo original y propio en muchos campos, se refleja este estigma en frases comunes como "no reinventes la rueda". 
+
+Pero es gracias a la recreación que podemos conocer cuándo una técnica funciona de forma consistente, y podemos establecer qué es lo que funciona, y lo que no.
+
+La recreación es lo que nos permite evaluar de forma más objetiva qué es lo que funciona, y qué es lo que no funciona, o es más secundario; incluso nos permite obtener nuevo conocimiento ya que aplicamos nuevos marco y contextos técnicos, legales, sociales, industriales, entre otros; proporcionándonos otros puntos de vista relativos a lo que se recrea.
+
+En resumen, con las nuevas tecnologías y buenas prácticas de las que disponemos, es especialmente importante la replicación, nos permite desarrollar sobre las fórmulas que ya funcionaron en el pasado, y obtener nuevo conocimiento gracias a esta tarea de adaptación a un mundo distinto.
+
+\section{Objetivos principales del Trabajo}
+
+\begin{enumerate}
+  \item Realizar un prototipo bajo licencias permisivas de suite software para la evaluación psicotécnica de conductores, adaptada al hardware elegido.
+  \item Diseñar un proyecto software multidisciplinar, siguiendo las medidas de seguridad y de calidad del software más ampliamente reconocidas en el sector tecnológico.
+  \item Realizar documentación técnica y manuales de usuario e instalación adecuada dirigida hacia cada segmento de audiencia que pueda estar interesado en el proyecto
+\end{enumerate}
+\subsection{Objetivos para el componente de software para sistemas empotrados}
+
+\begin{enumerate}
+  \item Realizar un componente software que implemente funcionalidades para la recolección de datos desde dispositivos electrónicos, y el envío de estos datos, de forma que colabore con los objetivos principales del trabajo.
+\end{enumerate}
+
+\subsection{Objetivos para el componente de software de aplicación}
+
+\begin{enumerate}
+  \item Realizar un componente software que implemente una interfaz de usuario adecuada para la evaluación psicotécnica colaborando con los objetivos principales del trabajo. 
+\end{enumerate}
+
+\subsection{Objetivos para el componente de software local y de nube}
+
+\begin{enumerate}
+  \item Realizar un sistema servidor-cliente donde se permitan obtener y enviar datos de personas evaluadas y de resultados de evaluación de forma segura y cifrada.
+\end{enumerate}
 
 \section{Descripción por capítulo}
 
@@ -304,19 +341,19 @@ El objetivo del examinado consiste en mantener los dos vehículos dentro de sus 
 
 \section{Legalidad y conformidad a la legislación Española y Europeas}
 
-\subsection{Protección de Datos \cite{apuntesprotecciondatos}}
+\subsection{Protección de Datos}
 
-La Protección de los Datos es un campo legal con una larga historia.
+La Protección de los Datos es un campo legal con una larga historia. \cite{apuntesprotecciondatos}
 
-En este campo se busca regular todo lo relativo al uso de los datos personales de individuos físicos.
+En este campo se busca regular todo lo relativo al uso de los datos personales de individuos físicos. \cite{apuntesprotecciondatos}
 
-Dentro del marco de este proyecto, es muy relevante esta regulación, ya que trabajamos con datos personales de individuos físicos directamente, y es importante tomar medidas organizativas y técnicas para prevenir el uso ilícito de estos datos.
+Dentro del marco de este proyecto, es muy relevante esta regulación, ya que trabajamos con datos personales de individuos físicos directamente, y es importante tomar medidas organizativas y técnicas para prevenir el uso ilícito de estos datos. \cite{apuntesprotecciondatos}
 
-En territorio Europeo, todo esto se regula bajo el Reglamento General de Protección de Datos; regulación que se implementa en los territorios nacionales de la Unión Europea.
+En territorio Europeo, todo esto se regula bajo el Reglamento General de Protección de Datos; regulación que se implementa en los territorios nacionales de la Unión Europea. \cite{apuntesprotecciondatos}
 
-\subsubsection{Reglamento General de Protección de Datos} \cite{EuropeanParliament2016a}
+\subsubsection{Reglamento General de Protección de Datos}
 
-Reglamento con última versión datada el 4 de Mayo de 2016.
+Reglamento con última versión datada el 4 de Mayo de 2016. \cite{EuropeanParliament2016a}
 
 Busca proteger los datos de personas físicas, denominadas como *interesados* en el marco de esta legislación, obligando a los denominados *responsables* a tomar varias medidas por reglamento; se incluyen especificaciones de variada índole, entre las que se incluyen:
 \begin{enumerate}
@@ -328,9 +365,9 @@ Busca proteger los datos de personas físicas, denominadas como *interesados* en
 
 Se ha incluido, a modo de ejemplo, un modelo de documento de política de protección de datos a fin de ejemplificación sobre cómo se podría aplicar esta regulación a este proyecto.
 
-\subsubsection{Ley Orgánica de Protección de Datos} \cite{BOE2018a}
+\subsubsection{Ley Orgánica de Protección de Datos}
 
-Implementa el marco legal instaurado con el Reglamento General de Protección de Datos a nivel Europeo en el marco legislativo Español.
+Implementa el marco legal instaurado con el Reglamento General de Protección de Datos a nivel Europeo en el marco legislativo Español. \cite{BOE2018a}
 
 \subsection{Legislación de Dispositivos Técnicos de medición de capacidades psicofísicas}
 
@@ -350,19 +387,19 @@ Impone requisitos relativos a la composición de estos centros, de las entidades
 
 Esta legislación es fundamentalmente relevante para los desarrolladores de productos destinados a estos centros; ya que estos productos se deben desarrollar de forma que sean inmediatamente compatibles con las obligaciones que impone el derecho sobre ellos.
 
-\subsection{Propiedad intelectual \cite{apuntespropiedadintelectual}}
+\subsection{Propiedad intelectual}
 
 La Propiedad Intelectual e industrial son campos legales que tienen en común proteger las creaciones originales; ya sean de un creador de una obra intelectual, o ya sean de un inventor.
 
 Estos campos legales han tomado derivas muy distintas, y habitualmente se estudian por separado; pero para los fines de este trabajo, los vamos a tratar dentro de la misma sección.
 
-Este trabajo, especialmente al ser una recreación moderna de un tipo de productos ya existentes, ha de ser únicamente cuidadoso en respetar los derechos de autor y patente de las obras originales en las que se basa el proyecto; no debe utilizar código ni implementaciones de sus precursores sin autorización explícita de los titulares de los derechos de explotación y morales.
+Este trabajo, especialmente al ser una recreación moderna de un tipo de productos ya existentes, ha de ser únicamente cuidadoso en respetar los derechos de autor y patente de las obras originales en las que se basa el proyecto; no debe utilizar código ni implementaciones de sus precursores sin autorización explícita de los titulares de los derechos de explotación y morales. \cite{apuntespropiedadintelectual}
 
 Vamos a detallar aquí un poco más este marco legal específico:
 
-\subsubsection{Ley de Propiedad Intelectual} \cite{BOE1996a}
+\subsubsection{Ley de Propiedad Intelectual} 
 
-Dentro del marco regulativo de España, esta es la ley que regula el derecho de Propiedad Intelectual.
+Dentro del marco regulativo de España, esta es la ley que regula el derecho de Propiedad Intelectual. \cite{BOE1996a}
 
 Divide los derechos que posee un autor en \textbf{derechos morales} y \textbf{derechos de explotación}, no excluyéndose otros derechos que el autor pueda poseer sobre su obra.
 
@@ -427,9 +464,9 @@ Planificar de forma semanal permite mantener cierta flexibilidad, que planifican
   \item Cuando la implementación de cada evaluación por separado fue satisfactoria, se hizo funcionar la primera evaluación con el botón electrónico real de la placa; y tras esto, lo mismo con la segunda evaluación.
   \item Tras estar satisfecho con esta implementación de pinchos, fue cuando se comenzó con la versión definitiva, aquí se empezaron a redactar para los proyectos de Sistemas Empotrados y Software de Sistemas comentarios, documentación, y las primeras pruebas automáticas; la memoria se empezó a redactar a partir de este punto.
   \item Después, se comenzó a implementar el cliente local y el servidor en nube; los pinchos de estos proyectos se terminaron muy rápidamente por mi experiencia previa desarrollando aplicaciones web; tardé poco en llegar a la versión final de cada uno. Se redactó documentación al respecto para estos proyectos.
-  \item Tras esto, se inició una instancia AWS EC2, y se subió el servidor en nube a esta instancia; la cual se probó a integrar con un servidor \textit{nginx} con el cliente local. Funcionó correctamente, y de hecho se llegó a implementar un flujo HTTPS correcto; pero por problemas descritos en las limitaciones de este proyecto, en el repositorio de este proyecto se ha dejado implementado como conexión HTTP, y se han dejado instrucciones sobre cómo se convertiría a flujo HTTPS de tener los certificados correctos. Aquí se comenzó el desarrollo de esta memoria más a fondo.
+  \item Tras esto, se inició una instancia AWS EC2, y se subió el servidor en nube a esta instancia; la cual se probó a integrar con un servidor \textit{nginx} con el cliente local. Funcionó correctamente, y de hecho se llegó a implementar un flujo HTTPS correcto; entonces incompleto, pero terminado en las fases finales del proyecto. Aquí se comenzó el desarrollo de esta memoria más a fondo.
   \item Después, se comenzó a redactar la memoria como tarea principal y prácticamente única, limitando futura implementación a la resolución de fallas específicas o algunas mejorías de la interfaz de usuario. Se empezaron a redactar las secciones intermedias del proyecto; terminando con la introducción, conclusiones y anexos.
-  \item A partir de entonces, mis tareas consistieron, sobre todo, de mandar mi memoria a revisar, e implementar las correcciones de la memoria correspondientes que mis tutores iban recomendando.
+  \item A partir de entonces, mis tareas consistieron, sobre todo, de mandar mi memoria a revisar, e implementar las correcciones de la memoria correspondientes que mis tutores iban recomendando. También conseguí, a partir de un dominio de mi pertenencia, obtener certificados válidos SSL para la instancia EC2 en nube; terminando el flujo HTTPS adecuadamente
 \end{enumerate}
 
 \section{Buenas prácticas y costumbres de desarrollo software}
@@ -544,7 +581,7 @@ Normalmente en forma de vídeos, estos ficheros pueden servir para introducir al
 Aquí destacan los siguientes requisitos:
 
 \begin{itemize}
-\item [RF1] El microcontrolador debe ser capaz de recibir mensajes coherentes a partir del SBC (Single Board Computer)
+\item [RF1] El microcontrolador debe ser capaz de recibir tres tipos de mensajes específicos a partir del SBC (Single Board Computer); uno de entrada a la primera evaluación, otro de entrada a la segunda evaluación, y por último, uno general de salida.
 \item [RF2] El microcontrolador debe poder detectar, en un plazo no superior a los 100 milisegundos, la pulsación de un botón electrónico físico por el usuario conectado a los pines GPIO del microcontrolador.
 \item [RF3] El microcontrolador debe poder interpretar como valores digitales, en un plazo no superior a los 100 milisegundos, los valores de resistencia de dos potenciómetros conectados cada uno a pines independientes GPIO del microcontrolador.
 \end{itemize}
@@ -558,17 +595,15 @@ Aquí destacan los siguientes requisitos
   \item [RNF2] El sistema debe utilizar memoria de forma eficiente, favoreciendo el uso de memoria estática y espacio en memoria predecible a lo largo del flujo de vida de la aplicación
 \end{itemize}
 
-\section{Software de sistemas}
+\section{Software de aplicación}
 
 \subsection{Requisitos funcionales}
 
 Aquí destacan los siguientes requisitos
 
 \begin{itemize}
-  \item [RF1] Deberán incluirse dos tipos de evaluación; una evaluación de tiempo de reacción, y una evaluación de coordinación mano-ojo.
-  \item [RF2] Los programas de evaluación deben procesar información de los dispositivos electrónicos en un tiempo menor a 100ms
-  \item [RF3] Los programas de evaluación deben mostrar feedback visual sin latencia excesiva al usuario en pantalla.
-  \item [RF4] Los programas de evaluación deben almacenar los resultados de evaluación de forma veraz, que den posibilidad a su verificación y puntuación.
+  \item [RF1] Deberán incluirse dos tipos de evaluación; una evaluación de tiempo de anticipación, y una evaluación de coordinación mano-ojo.
+  \item [RF2] Los programas de evaluación deben mostrar feedback visual sin latencia excesiva al usuario en pantalla.
 \end{itemize}
 
 \subsection{Requisitos no funcionales}
@@ -577,8 +612,11 @@ Aquí destacan los siguientes requisitos
 
 \begin{itemize}
   \item [RNF1] Los programas de evaluación deberán ser fácilmente interpretables para los usuarios.
-  \item [RNF2] Los programas de evaluación no deben permitir memorización.
+  \item [RNF2] Los programas de evaluación no deben permitir memorización; es decir, debería depender la inicialización de los parámetros de evaluación de variables aleatorias.
   \item [RNF3] Los programas de evaluación deben adherirse a las mejores prácticas técnico-científicas para recolectar información psicotécnica. 
+  \item [RNF4] Los programas de evaluación deben almacenar los resultados de evaluación de forma veraz, que den posibilidad a su verificación y puntuación.
+  \item [RNF5] Los programas de evaluación deben procesar información de los dispositivos electrónicos en un tiempo menor a 100ms
+
 \end{itemize}
 
 \section{Cliente local}
@@ -588,7 +626,6 @@ Aquí destacan los siguientes requisitos
 Aquí destacan los siguientes requisitos
 
 \begin{itemize}
-  \item [RF1] Los datos personales que se manden al servidor deben mandarse encriptados algorítmicamente.
   \item [RF2] El programa ofrece una opción para mandar datos de evaluaciones al servidor.
   \item [RF3] El programa ofrece una opción para obtener datos de evaluaciones al servidor.
   \item [RF4] El programa debe verificar que los números proporcionados de documentación personal corresponden con la letra proporcionada.
@@ -603,6 +640,7 @@ Aquí destacan los siguientes requisitos
 \begin{itemize}
   \item [RNF1] El programa debe soportar la documentación autorizada para identificar personas conforme a la Ley Española
   \item [RNF2] El programa debe considerar la seguridad, y no abrir puertos no necesarios para la estricta realización de sus funciones.
+  \item [RNF3] Los datos personales que se manden al servidor deben mandarse encriptados algorítmicamente.
 \end{itemize}
 
 \section{Servidor en nube}
@@ -612,8 +650,6 @@ Aquí destacan los siguientes requisitos
 Aquí destacan los siguientes requisitos
 
 \begin{itemize}
-  \item [RF1] Los datos personales que se manden al servidor deben mandarse encriptados algorítmicamente.
-  \item [RF2] Se deben considerar los documentos DNI y NIE para agregar sobre el usuario.
   \item [RF3] Se genera un archivo HTML con los datos desencriptados de los examinados cada vez que así lo pide un doctor.
 \end{itemize}
 
@@ -623,6 +659,9 @@ Aquí destacan los siguientes requisitos
 
 \begin{itemize}
   \item [RNF1] La aplicación debe considerar posibles ataques de externos que busquen revelar y divulgar datos personales de examinados
+  \item [RNF2] Los datos personales que se manden al servidor deben mandarse encriptados algorítmicamente.
+  \item [RNF3] Se deben considerar los documentos DNI y NIE para agregar sobre el usuario.
+
 \end{itemize}
 
 %────────────────────── Chapter 3 — Diseño ────────────────────────────
@@ -659,7 +698,7 @@ A continuación, se detallan los dispositivos electrónicos a los que se ha hech
 
 \subsubsection{Cables puente}
 
-Los cables puente es un tipo de cableado con un conector en cada punta. Estos cables suelen ser utilizados en placas breadboard para conectar dispositivos electrónicos que se encuentren en columnas distintas del breadboard.\cite{eswiki:161708674}
+Los cables puente es un tipo de cableado con un conector en cada punta. Estos cables suelen ser utilizados en placas breadboard para conectar dispositivos electrónicos que se encuentren en columnas distintas del breadboard. \cite{eswiki:161708674}
 
 \subsubsection{Placa de pruebas}
 
@@ -667,7 +706,7 @@ Una Placa de pruebas, o mejor conocido por el anglicismo \textit{breadboard}, es
 
 \subsubsection{Botón pulsador electrónico}
 
-Un button pulsador electrónico consiste en una resistencia que no deja pasar la corriente cuando se activa un pulsador.\cite{pushbuttonswitch}
+Un button pulsador electrónico consiste en una resistencia que no deja pasar la corriente cuando se activa un pulsador. \cite{pushbuttonswitch}
 
 \subsubsection{Potenciómetro}
 
@@ -775,11 +814,11 @@ Es una arquitectura principalmente basada en \textbf{polling}, para recibir y ac
 
 No solo se reciben eventos; sino que la arquitectura también manda información a través del cable USB-to-UART para hacer conocer eventos que han ocurrido en el microcontrolador; por ejemplo, los valores de los dos potenciómetros, recogidos en tiempo real, a los que se encuentra conectado el microcontrolador.
 
-\subsection{Software de sistemas}
+\subsection{Software de aplicación}
 
 \subsubsection{Arquitectura software}
 
-La arquitectura que se ha utilizado para implementar este software dirigido a sistemas ha sido una \textbf{arquitectura modular}.
+La arquitectura que se ha utilizado para implementar este software de aplicación ha sido una \textbf{arquitectura modular}.
 
 Esta arquitectura se distingue por la construcción de varios ejecutables, cada uno con funcionamiento independiente del otro, y ejecutables por separado. Todos los ejecutables, menos el que renderiza la interfaz gráfica de usuario, se comunican con una librería diseñada para poner en contacto cada evaluación con el microcontrolador; permitiendo a estos enviar a y recibir información de forma indirecta de los dispositivos electrónicos a través del microcontrolador.
 
@@ -941,7 +980,12 @@ Antes que nada, se comprueba que el dispositivo UART relevante haya sido antes c
 \item Después, cada vez que se llame a read\_from\_uart, se realiza una lectura según la configuración; y se devuleve un valor según el valor que haya obtenido por el dispositivo UART, dependiendo del mensaje enviado 
 \end{enumerate}
 
-\section{Software de sistemas}
+\begin{figure}[H]
+\includegraphics[width=1.1\textwidth]{DiagramaFlujoEmpotrados.png}
+\caption{Diagrama visual del flujo de ejecución general de software para sistemas empotrados. Diagrama realizado con Draw.IO}
+\end{figure}
+
+\section{Software de aplicación}
 
 \subsection{Primera evaluación}
 
@@ -955,7 +999,7 @@ Más o menos, el funcionamiento consiste en lo siguiente:
 \end{itemize}
 
 \begin{figure}[H]
-\includegraphics[width=1.1\textwidth]{DiagramaPrimeraEvaluacion_resized.png}
+\includegraphics[width=1.1\textwidth]{DiagramaPrimeraEvaluacion_2.png}
 \caption{Diagrama visual del flujo de ejecución de la primera evaluación. Diagrama realizado con Draw.IO}
 \end{figure}
 
@@ -980,7 +1024,7 @@ Tiene un funcionamiento algo más complejo que la otra evaluación.
 \end{itemize}
     
 \begin{figure}[H]
-\includegraphics[width=1.1\textwidth]{DiagramaSegundaEvaluacion_resized.png}
+\includegraphics[width=1.1\textwidth]{DiagramaSegundaEvaluacion_2.png}
 \caption{Diagrama visual del flujo de ejecución de la segunda evaluación. Diagrama realizado con Draw.IO}
 \end{figure}
 
@@ -1056,6 +1100,11 @@ Este es el flujo con el que se mandan peticiones al servidor:
 \item Se verifica que la letra introducida sea la correcta según las reglas de la normativa oficial Española para el cálculo de dígitos de control. \cite{digitocontrol}
 \item Si no se verifica correctamente; se pedirá al usuario que vuelva a introducir su número, y la letra esperada para el número que introducieron.
 \end{enumerate}
+
+\begin{figure}[H]
+\includegraphics[width=1.1\textwidth]{DiagramaFlujoWeb.png}
+\caption{Diagrama visual del flujo de ejecución del cliente local. Diagrama realizado con Draw.IO}
+\end{figure}
 
 \section{Servidor en nube}
 
@@ -1160,7 +1209,7 @@ El atacante entra en una habitación, accede al dispositivo del doctor, consigue
 
 \section{Demo en formato vídeo}
 
-Se ofrece dentro del repositorio una serie de vídeos demostrativos.
+Se ofrece dentro del repositorio una serie de vídeos demostrativos. \cite{repo1}
 
 Se demuestra la funcionalidad de evaluación a partir de la realización de las dos evaluaciones, utilizado los dispositivos electrónicos a tal efecto; y también se ofrece una demostración de adición de un examinado y sus resultados al servidor en nube, junto con su posterior recepción como archivo .html
 
@@ -1189,9 +1238,9 @@ Con respecto a pruebas; se prueban dos casos:
   \item ¿Se lee desde el dispositivo UART bien una información que sé me va a llegar?
 \end{enumerate}
 
-\section{Software de sistemas}
+\section{Software de aplicación}
 
-Se han realizado algunas pruebas en el software de sistemas; se prueban los métodos dentro de cada fichero implementado de evaluación, asumiendo unos parámetros definidos específicos. Estos tests se realizan bajo la suite de tests GoogleTest.
+Se han realizado algunas pruebas en el software de aplicación; se prueban los métodos dentro de cada fichero implementado de evaluación, asumiendo unos parámetros definidos específicos. Estos tests se realizan bajo la suite de tests GoogleTest.
 
 \subsection{Instrucciones de compilación}
   
@@ -1276,11 +1325,23 @@ En estas pruebas, se compara un texto desencriptado y el equivalente encriptado;
 %────────────────────── Chapter 5 — Discusión ─────────────────────────
 \chapter{Conclusiones}
 
-En esta memoria se ha desarrollado por escrito, y se ha explicado, una suite de evaluaciones psicotécnicas para conductores.
-
 Como se ha podido ver, se trata de un prototipo y una prueba de concepto, de lo que podrían ser las bases de un sistema de evaluación psicotécnica para conductores mucho más complejo y desarrollado, incluso parte de un futuro dispositivo médico en el futuro.
 
 Aún siendo un prototipo, se han implementado componentes para prácticamente todas las funcionalidades básicas que se podría esperar de este tipo de sistemas; utilizando buenas prácticas como la documentación, las pruebas, el cuidado en el rendimiento, y la multidisciplinaridad.
+
+Aún queda mucho por hacer relativo a este proyecto para realizar una suite de evaluaciones psicotécnicas para conductores que verdaderamente pueda ser comparable con sus precursores; esto no ha sido sino el comienzo de semejante esfuerzo.
+
+\section{Retrospectiva}
+
+Se han llegado a estas conclusiones, mirando hacia atrás en retrospectiva.
+
+Se puede organizar un gran proyecto software a lo largo del tiempo; y también trabajar de forma efectiva con tecnologías desconocidas; No solo meramente aplicando lo aprendido; sino además, utilizando estrategias enfocadas a localizar recursos e información sobre aquello de lo que no se sabe que no se sabe.
+
+La realización de un sistema tan multidisciplinar como lo es este requiere el uso de estrategias flexibles y bastante eclécticas; no solo hay que idear y seguir una planificación pautada para satisfacer resultados, como en cualquier otro tipo de proyecto; sino que también se ha de permanecer en un estado de aprendizaje contínuo por tiempo indefinido.
+
+En muchas ocasiones, no todas las soluciones van a satisfacer todos los requisitos que se esperan; hay que saber elegir conforme a qué es lo mejor para el colectivo de todos los criterios; intentar focalizarse en un único criterio a maximizar en esta clase de proyectos es un enorme error.
+
+La ciberseguridad es fundamental en este tipo de proyectos; se han de tener en cuenta los tipos más importantes de amenazas, y se han de implementar estrategias para combatirlas, en la medida de lo razonable.
 
 \section{Limitaciones y posibles mejoras}
 
@@ -1526,7 +1587,7 @@ Para instalar el hardware, se necesitará un Raspberry Pi, una placa ESP32-DevKi
   \item Ejecute el comando \begin{verbatim}idf.py -p <port> build\end{verbatim}
 \end{enumerate}
 
-\section{Instalación de software de sistemas}
+\section{Instalación de software de aplicación}
 
 Para compilar el proyecto; se deben seguir las siguientes instrucciones:
 
@@ -1579,7 +1640,9 @@ Por defecto, el Dockerfile asume un usuario root con clave root, esto es muy ins
 
 Debería aparecer la interfaz CLI correctamente.
 
-\umaappendix{Ejemplo anexo de formulario de protección de datos \cite{politicaprivacidad1}} 
+\umaappendix{Ejemplo anexo de formulario de protección de datos}
+
+Basado en el documento de política de privacidad de la Fundación Gestión y Participación Social. \cite{politicaprivacidad1}
 
 \section{Política de privacidad}
 
