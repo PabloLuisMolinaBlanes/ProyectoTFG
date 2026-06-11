@@ -16,7 +16,7 @@ export async function getProfile(hospital_name: string) {
 /*Crea una examinación según datos recibidos*/
 export async function createTest(id_received: string, hospital_password: string, hospital_name: string, first_exam: string, second_exam_first_potentio: string, second_exam_second_potentio: string) {
     const hospital = await getProfile(hospital_name);
-    if (hospital == undefined) {
+    if (hospital == null) {
         return {error: "Wrong password"};
     } 
     const passwordComparison = await comparePasswords(hospital_password, hospital.password);
