@@ -2,3 +2,4 @@ node_modules/
 build/
 Example.env
 src/__tests__/
+src/__mocks__/

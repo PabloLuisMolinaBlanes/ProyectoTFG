@@ -1,9 +1,9 @@
 /*Imports*/
 import express, {Request}  from 'express'
 import cors from 'cors'
-import {createTest, getAllTestsPerHospital} from './crud'
 const { loadEnvFile } = require('node:process');
 loadEnvFile(__dirname + '/../../.env');
+import {createTest, getAllTestsPerHospital} from './crud'
 
 /*Types*/
 interface RequestData {
