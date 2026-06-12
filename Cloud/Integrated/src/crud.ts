@@ -38,7 +38,7 @@ export async function createTest(id_received: string, hospital_password: string,
 /*Obtiene todas las examinaciones de un hospital según datos recibidos*/
 export async function getAllTestsPerHospital(hospital_name: string, hospital_password: string) {
     const hospital_received = await getProfile(hospital_name);
-    if (hospital_received == undefined) {
+    if (hospital_received == null) {
         return {error: "Wrong password"};
     }
     const passwordComparison = await comparePasswords(hospital_password, hospital_received.password);

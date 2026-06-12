@@ -14,4 +14,8 @@ if [ ! -f "$CWD/build/.env" ]; then
 	echo "HOST_NAME=\"example.com\"" > $CWD/build/.env
 fi
 
+if [ ! -f "$CWD/build/hospital_credentials.txt" ]; then
+	echo "EXAMPLE\nEXAMPLE"" > $CWD/build/hospital_credentials.txt
+fi
+
 npm run dev
