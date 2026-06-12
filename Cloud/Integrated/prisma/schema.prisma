@@ -14,7 +14,7 @@ model profile {
 }
 
 model test {
-    id String @id @db.Text
+    id String @id
     hospital_id Int
     profile profile @relation(fields: [hospital_id], references: [hospital_id], onDelete: Cascade, map: "Hospital_FK")
     results_reaction_time String
