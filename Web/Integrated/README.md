@@ -28,6 +28,33 @@ En general, queremos reducir al mínimo los puertos a los que está escuchando e
 
 Al obtener los datos con una llamada al servidor en nube, y crear un archivo HTML a partir de esos datos; reducimos al mínimo los puertos a los que escucha nuestro dispositivo (el que abre temporalmente el cliente para la conexión TCP con el servidor externo).
 
+### Me sale un mensaje parecido a este: ```No hemos podido encontrar uno de los archivos requeridos: Error: ENOENT: no such file or directory, open '...hospital_credentials.txt'```
+
+El archivo ```hospital_credentials.txt``` no es creado por defecto; se tienen que incluir credenciales adecuadas para el correcto funcionamiento de este componente.
+
+El contenido de un archivo ```hospital_credentials.txt``` de ejemplo sería:
+
+```
+HOSPITAL_MARIA_CRISTINA
+GatitoPerez
+```
+
+HOSPITAL_MARIA_CRISTINA siendo un nombre de usuario y GatitoPerez una contraseña
+
+### No se conecta al servidor, no sé qué pasa
+
+Hay un comando en el script ```run.sh``` que crea un archivo ```.env``` con el siguiente contenido:
+
+```
+HOST_NAME=example.com
+```
+
+Prueba a modificar el dominio ```example.com``` con el dominio donde se despliegue el componente Cloud de este proyecto
+
+### Me aparece un error de HTTPS
+
+Asegurate que el servidor donde se despliegue el componente Cloud del proyecto acepte conexiones HTTPS, con certificados SSL no auto-firmados, y que el servidor esté configurado correctamente a tal efecto.
+
 ## Instrucciones de traducción y ejecución
 
 1. Descarga e instala [Node.JS](https://nodejs.org/en/download)

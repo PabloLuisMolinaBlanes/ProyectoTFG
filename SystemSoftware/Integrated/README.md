@@ -33,6 +33,10 @@ No he utilizado IA generativa de forma deliberada para realizar ninguna parte de
 
 Aún así, utilizo librerías externas, hay algunas porciones de código fuente que han sido tomadas de Internet, y he consultado documentación externa; desconozco su provenencia, y por ende, no puedo asegurar que no haya habido IA generativa involucrada en su creación.
 
+### Me aparece un fallo de compilación relativo a GTK4
+
+En general, este proyecto está pensado para compilar en una arquitectura muy específica, por lo que prueba a compilarlo en un sistema parecido al que describo en el README.md localizado en la raiz de este proyecto. De todas formas, es un error conocido en algunos sistemas Linux un poco más antiguos, ya que hay una opción GTK4 muy reciente que no existía hace unos años que puede causar problemas con sistemas Linux más antiguos. 
+
 ## Instrucciones de compilación del proyecto
 
 Para compilar el proyecto; se deben seguir las siguientes instrucciones:
