@@ -163,7 +163,7 @@ function encryptData(plaintext: string) {
 }
 
 async function sendRequest(parsedData: DocumentData, nombre_interesado: string, dni_interesado: string) : Promise<nullable<Test>> {
-    const id_to_send = nombre_interesado.toUpperCase()+"_"+dni_interesado.toUpperCase()+"_"+generateRandomString(20)
+    const id_to_send = nombre_interesado.toUpperCase()+"_"+dni_interesado.toUpperCase()+"_"+generateRandomString(10)
     const data_to_send: PostData = {
         id: encryptData(id_to_send),
         hospital_password: parsedData.hospital_pass,
