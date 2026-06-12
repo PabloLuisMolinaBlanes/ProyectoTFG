@@ -1147,6 +1147,11 @@ Se incluyen funcionalidades para realizar comparación de contraseñas recibidas
 
 Las contraseñas se asumen en hash bcrypt2, con 10 iteraciones por defecto.
 
+\begin{figure}[H]
+\includegraphics[width=1.1\textwidth]{DiagramaCloud.png}
+\caption{Diagrama visual del flujo de ejecución del componente cloud. Diagrama realizado con Draw.IO}
+\end{figure}
+
 %────────────────────── Chapter 4 — Funcionamiento ────────────────────────────
 \chapter{Funcionamiento}
 
@@ -1303,7 +1308,7 @@ Con respecto a pruebas; se prueban dos casos:
 
 \begin{enumerate}
   \item ¿A partir de un número de documentación, este lo valida correctamente según la normativa española?
-  \item La función generateRandomString inicializada con un parámetro de longitud debería devolver un string de esa longitud 
+  \item La función generateRandomString inicializada con un parámetro de longitud debería devolver un string de esa longitud multiplicada por 2 
 \end{enumerate}
 
 \section{Servidor en nube}
@@ -1321,6 +1326,8 @@ Se han realizado algunas pruebas en el servidor en nube; sobre todo sobre las fu
 \subsection{Métodos probados y resultados}
 
 En estas pruebas, se compara un texto desencriptado y el equivalente encriptado; y se verifica que se compara de forma positiva a su hash
+
+También se realiza una verificación sencilla con un mock del cliente de base de datos; donde se verifica que se devolverá un mensaje de error apropiado de no encontrarse el perfil correcto
 
 %────────────────────── Chapter 5 — Discusión ─────────────────────────
 \chapter{Conclusiones}
