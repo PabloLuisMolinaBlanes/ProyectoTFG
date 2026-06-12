@@ -10,7 +10,7 @@ if [ ! -f "$CWD/build/.env" ]; then
 fi
 
 if [ ! -f "$CWD/build/hospital_credentials.txt" ]; then
-	echo "EXAMPLE\nEXAMPLE"" > $CWD/build/hospital_credentials.txt
+	echo "EXAMPLE\nEXAMPLE" > $CWD/build/hospital_credentials.txt
 fi
 
 npm run dev
