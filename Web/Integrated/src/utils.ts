@@ -51,8 +51,9 @@ export function verifyNIFLetter(nif: string, condicion_extranjero: boolean) : bo
         return false;
     }
     if (condicion_extranjero) {
-        if (!(regexp.test(nif.charAt(0)))) {
-            console.log(`Error, no se ha introducido una letra de ${documento} al principio del documento`)
+	var regexp_principio = new RegExp('[X-Z]')
+        if (!(regexp_principio.test(nif.charAt(0)))) {
+            console.log(`Error, no se ha introducido una letra valida de ${documento} al principio del documento`)
             return false;
         }
         const letra: string = nif[0]
